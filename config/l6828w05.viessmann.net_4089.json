@@ -1,0 +1,221 @@
+{
+  "modules": {
+    "mustache": {
+      "configuration": {
+        "$timestamp": "2024-03-27T09:50:30.9994529Z",
+        "$version": 1
+      }
+    },
+    "azure": {
+      "configuration": {
+        "$timestamp": "2024-03-27T09:50:30.9843023Z",
+        "$version": 1
+      }
+    },
+    "center": {
+      "configuration": {
+        "$timestamp": "2024-03-27T09:50:31.0015072Z",
+        "$version": 1
+      }
+    },
+    "modbus": {
+      "configuration": {
+        "$messageOutputs": {},
+        "servers": {},
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.ModbusReaderModule/versions/2",
+        "$timestamp": "2024-03-27T09:50:30.9948703Z",
+        "$version": 1
+      }
+    },
+    "mqtt": {
+      "configuration": {
+        "$timestamp": "2024-03-27T09:50:30.9930241Z",
+        "$version": 1
+      }
+    },
+    "rfcreader": {
+      "configuration": {
+        "$timestamp": "2024-03-27T09:50:30.9995022Z",
+        "$version": 1
+      }
+    },
+    "opcua": {
+      "configuration": {
+        "servers": {
+          "W16EvacuationStationsIV9000000101": {
+            "endpoint": {
+              "pollGroups": {
+                "Evacuation": {
+                  "name": "Evacuation",
+                  "nodes": {
+                    "S3.TechnicalGases.VIN.Pomp1_line_5_PG": "ns=3;s=\"IOT_VacuumSplunk_DB\".\"Pump1L5\".\"VIN\"",
+                    "S3.TechnicalGases.VIN.Pomp2_line_5_PG": "ns=3;s=\"IOT_VacuumSplunk_DB\".\"Pump2L5\".\"VIN\"",
+                    "S3.TechnicalGases.VIN.Pomp3_line_5_PG": "ns=3;s=\"IOT_VacuumSplunk_DB\".\"Pump3L5\".\"VIN\"",
+                    "S3.TechnicalGases.VIN.Pomp4_line_5_PG": "ns=3;s=\"IOT_VacuumSplunk_DB\".\"Pump4L5\".\"VIN\"",
+                    "S3.TechnicalGases.VIN.Pomp1_line_6_PG": "ns=3;s=\"IOT_VacuumSplunk_DB\".\"Pump1L6\".\"VIN\"",
+                    "S3.TechnicalGases.VIN.Pomp2_line_6_PG": "ns=3;s=\"IOT_VacuumSplunk_DB\".\"Pump2L6\".\"VIN\"",
+                    "S3.TechnicalGases.Model.Pomp1_line_5_PG": "ns=3;s=\"IOT_VacuumSplunk_DB\".\"Pump1L5\".\"Model\"",
+                    "S3.TechnicalGases.Model.Pomp2_line_5_PG": "ns=3;s=\"IOT_VacuumSplunk_DB\".\"Pump2L5\".\"Model\"",
+                    "S3.TechnicalGases.Model.Pomp3_line_5_PG": "ns=3;s=\"IOT_VacuumSplunk_DB\".\"Pump3L5\".\"Model\"",
+                    "S3.TechnicalGases.Model.Pomp4_line_5_PG": "ns=3;s=\"IOT_VacuumSplunk_DB\".\"Pump4L5\".\"Model\"",
+                    "S3.TechnicalGases.Model.Pomp1_line_6_PG": "ns=3;s=\"IOT_VacuumSplunk_DB\".\"Pump1L6\".\"Model\"",
+                    "S3.TechnicalGases.Model.Pomp2_line_6_PG": "ns=3;s=\"IOT_VacuumSplunk_DB\".\"Pump2L6\".\"Model\"",
+                    "S3.TechnicalGases.Type_name.Pomp1_line_5_PG": "ns=3;s=\"IOT_VacuumSplunk_DB\".\"Pump1L5\".\"Type_Name\"",
+                    "S3.TechnicalGases.Type_name.Pomp2_line_5_PG": "ns=3;s=\"IOT_VacuumSplunk_DB\".\"Pump2L5\".\"Type_Name\"",
+                    "S3.TechnicalGases.Type_name.Pomp3_line_5_PG": "ns=3;s=\"IOT_VacuumSplunk_DB\".\"Pump3L5\".\"Type_Name\"",
+                    "S3.TechnicalGases.Type_name.Pomp4_line_5_PG": "ns=3;s=\"IOT_VacuumSplunk_DB\".\"Pump4L5\".\"Type_Name\"",
+                    "S3.TechnicalGases.Type_name.Pomp1_line_6_PG": "ns=3;s=\"IOT_VacuumSplunk_DB\".\"Pump1L6\".\"Type_Name\"",
+                    "S3.TechnicalGases.Type_name.Pomp2_line_6_PG": "ns=3;s=\"IOT_VacuumSplunk_DB\".\"Pump2L6\".\"Type_Name\"",
+                    "S3.TechnicalGases.Pressure.Pomp1_line_5_PG": "ns=3;s=\"IOT_VacuumSplunk_DB\".\"Pump1L5\".\"Vacuum_Value\"",
+                    "S3.TechnicalGases.Pressure.Pomp2_line_5_PG": "ns=3;s=\"IOT_VacuumSplunk_DB\".\"Pump2L5\".\"Vacuum_Value\"",
+                    "S3.TechnicalGases.Pressure.Pomp3_line_5_PG": "ns=3;s=\"IOT_VacuumSplunk_DB\".\"Pump3L5\".\"Vacuum_Value\"",
+                    "S3.TechnicalGases.Pressure.Pomp4_line_5_PG": "ns=3;s=\"IOT_VacuumSplunk_DB\".\"Pump4L5\".\"Vacuum_Value\"",
+                    "S3.TechnicalGases.Pressure.Pomp1_line_6_PG": "ns=3;s=\"IOT_VacuumSplunk_DB\".\"Pump1L6\".\"Vacuum_Value\"",
+                    "S3.TechnicalGases.Pressure.Pomp2_line_6_PG": "ns=3;s=\"IOT_VacuumSplunk_DB\".\"Pump2L6\".\"Vacuum_Value\""
+                  },
+                  "intervalMs": 1000,
+                  "outputTopic": "splunkPoll"
+                }
+              },
+              "subscriptionGroups": {
+                "Pumps_evacuation": {
+                  "onChangeSubmitFullModel": true,
+                  "onRepublishSubmitFullModel": false,
+                  "nodes": {
+                    "S3.TechnicalGases.VIN.Pomp1_line_5": "ns=3;s=\"IOT_VacuumSplunk_DB\".\"Pump1L5\".\"VIN\"",
+                    "S3.TechnicalGases.VIN.Pomp2_line_5": "ns=3;s=\"IOT_VacuumSplunk_DB\".\"Pump2L5\".\"VIN\"",
+                    "S3.TechnicalGases.VIN.Pomp3_line_5": "ns=3;s=\"IOT_VacuumSplunk_DB\".\"Pump3L5\".\"VIN\"",
+                    "S3.TechnicalGases.VIN.Pomp4_line_5": "ns=3;s=\"IOT_VacuumSplunk_DB\".\"Pump4L5\".\"VIN\"",
+                    "S3.TechnicalGases.VIN.Pomp1_line_6": "ns=3;s=\"IOT_VacuumSplunk_DB\".\"Pump1L6\".\"VIN\"",
+                    "S3.TechnicalGases.VIN.Pomp2_line_6": "ns=3;s=\"IOT_VacuumSplunk_DB\".\"Pump2L6\".\"VIN\"",
+                    "S3.TechnicalGases.Model.Pomp1_line_5": "ns=3;s=\"IOT_VacuumSplunk_DB\".\"Pump1L5\".\"Model\"",
+                    "S3.TechnicalGases.Model.Pomp2_line_5": "ns=3;s=\"IOT_VacuumSplunk_DB\".\"Pump2L5\".\"Model\"",
+                    "S3.TechnicalGases.Model.Pomp3_line_5": "ns=3;s=\"IOT_VacuumSplunk_DB\".\"Pump3L5\".\"Model\"",
+                    "S3.TechnicalGases.Model.Pomp4_line_5": "ns=3;s=\"IOT_VacuumSplunk_DB\".\"Pump4L5\".\"Model\"",
+                    "S3.TechnicalGases.Model.Pomp1_line_6": "ns=3;s=\"IOT_VacuumSplunk_DB\".\"Pump1L6\".\"Model\"",
+                    "S3.TechnicalGases.Model.Pomp2_line_6": "ns=3;s=\"IOT_VacuumSplunk_DB\".\"Pump2L6\".\"Model\"",
+                    "S3.TechnicalGases.Type_name.Pomp1_line_5": "ns=3;s=\"IOT_VacuumSplunk_DB\".\"Pump1L5\".\"Type_Name\"",
+                    "S3.TechnicalGases.Type_name.Pomp2_line_5": "ns=3;s=\"IOT_VacuumSplunk_DB\".\"Pump2L5\".\"Type_Name\"",
+                    "S3.TechnicalGases.Type_name.Pomp3_line_5": "ns=3;s=\"IOT_VacuumSplunk_DB\".\"Pump3L5\".\"Type_Name\"",
+                    "S3.TechnicalGases.Type_name.Pomp4_line_5": "ns=3;s=\"IOT_VacuumSplunk_DB\".\"Pump4L5\".\"Type_Name\"",
+                    "S3.TechnicalGases.Type_name.Pomp1_line_6": "ns=3;s=\"IOT_VacuumSplunk_DB\".\"Pump1L6\".\"Type_Name\"",
+                    "S3.TechnicalGases.Type_name.Pomp2_line_6": "ns=3;s=\"IOT_VacuumSplunk_DB\".\"Pump2L6\".\"Type_Name\"",
+                    "S3.TechnicalGases.Pressure.Pomp1_line_5": "ns=3;s=\"IOT_VacuumSplunk_DB\".\"Pump1L5\".\"Vacuum_Value\"",
+                    "S3.TechnicalGases.Pressure.Pomp2_line_5": "ns=3;s=\"IOT_VacuumSplunk_DB\".\"Pump2L5\".\"Vacuum_Value\"",
+                    "S3.TechnicalGases.Pressure.Pomp3_line_5": "ns=3;s=\"IOT_VacuumSplunk_DB\".\"Pump3L5\".\"Vacuum_Value\"",
+                    "S3.TechnicalGases.Pressure.Pomp4_line_5": "ns=3;s=\"IOT_VacuumSplunk_DB\".\"Pump4L5\".\"Vacuum_Value\"",
+                    "S3.TechnicalGases.Pressure.Pomp1_line_6": "ns=3;s=\"IOT_VacuumSplunk_DB\".\"Pump1L6\".\"Vacuum_Value\"",
+                    "S3.TechnicalGases.Pressure.Pomp2_line_6": "ns=3;s=\"IOT_VacuumSplunk_DB\".\"Pump2L6\".\"Vacuum_Value\"",
+                    "S1.TechnicalGases.TestActive.Pomp1_line5": "ns=3;s=\"IOT_VacuumSplunk_DB\".\"Pump1L5\".\"TestActive\"",
+                    "S1.TechnicalGases.TestActive.Pomp2_line5": "ns=3;s=\"IOT_VacuumSplunk_DB\".\"Pump2L5\".\"TestActive\"",
+                    "S1.TechnicalGases.TestActive.Pomp3_line5": "ns=3;s=\"IOT_VacuumSplunk_DB\".\"Pump3L5\".\"TestActive\"",
+                    "S1.TechnicalGases.TestActive.Pomp4_line5": "ns=3;s=\"IOT_VacuumSplunk_DB\".\"Pump4L5\".\"TestActive\"",
+                    "S1.TechnicalGases.TestActive.Pomp1_line6": "ns=3;s=\"IOT_VacuumSplunk_DB\".\"Pump1L6\".\"TestActive\"",
+                    "S1.TechnicalGases.TestActive.Pomp2_line6": "ns=3;s=\"IOT_VacuumSplunk_DB\".\"Pump2L6\".\"TestActive\""
+                  },
+                  "name": "Pumps_evacuation",
+                  "outputTopic": "splunk",
+                  "publishingIntervalMs": 1000
+                }
+              },
+              "subscriptions": {},
+              "url": "opc.tcp://199.216.0.29:4840",
+              "resetBlackListIntervalMs": 15000
+            },
+            "client": {
+              "application": {
+                "security": {
+                  "authentication": {
+                    "credentials": {},
+                    "strategy": "Anonymous"
+                  },
+                  "endpoint": {
+                    "isEnabled": true,
+                    "level": 0,
+                    "mode": "None",
+                    "policy": "None",
+                    "timeout": 15000
+                  }
+                }
+              },
+              "session": {
+                "subscription": {}
+              },
+              "optimizeNodeValueReadAccess": false
+            },
+            "edgeMethodMapping": {},
+            "conditions": {},
+            "statusCodeMapping": {}
+          }
+        },
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.OpcUaClientModule/versions/2",
+        "$messageOutputs": {
+          "W16EvacuationStationsIV9000000101.Evacuation": "splunkPoll",
+          "W16EvacuationStationsIV9000000101.Pumps_evacuation": "splunk"
+        },
+        "$timestamp": "2024-03-27T09:50:30.9995362Z",
+        "$version": 1
+      }
+    },
+    "streamprocessor": {
+      "configuration": {
+        "$timestamp": "2024-03-27T09:50:31.0016587Z",
+        "$version": 1
+      }
+    },
+    "logger": {
+      "configuration": {
+        "$timestamp": "2024-03-27T09:50:30.9993453Z",
+        "$version": 1
+      }
+    },
+    "splunk": {
+      "configuration": {
+        "endpoint": {
+          "url": "https://10.13.21.22:8088/services/collector/event",
+          "token": "6112a68b-c8f6-4946-a7dd-7d48a710bc83",
+          "sslCheck": false,
+          "proxy": ""
+        },
+        "host": "I6828w05.4089",
+        "interval": 1000,
+        "sendTimestamp": true,
+        "sourceType": "_json",
+        "bufferQueueSettings": {
+          "enablePersist": false
+        },
+        "$messageInputs": {
+          "splunkPoll": "telemetry",
+          "splunk": "event"
+        },
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.SplunkHecModule/versions/3",
+        "$timestamp": "2024-04-12T07:13:38.4822121Z",
+        "$version": 3
+      }
+    },
+    "system": {
+      "configuration": {
+        "firewallrules": {
+          "AdminAPIAutoRuleHTTP": {
+            "description": "Auto generated rule from AdminApiModule for HTTP Port.",
+            "action": "accept",
+            "direction": "inbound",
+            "protocol": "tcp",
+            "srcPort": 0,
+            "destPort": 80
+          },
+          "AdminAPIAutoRuleHTTPS": {
+            "description": "Auto generated rule from AdminApiModule for HTTPS Port.",
+            "action": "accept",
+            "direction": "inbound",
+            "protocol": "tcp",
+            "srcPort": 0,
+            "destPort": 443
+          }
+        },
+        "$timestamp": "2024-04-11T14:31:54.4753138Z",
+        "$version": 1
+      }
+    }
+  }
+}

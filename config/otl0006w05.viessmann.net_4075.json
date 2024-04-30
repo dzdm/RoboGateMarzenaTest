@@ -1,0 +1,611 @@
+{
+  "modules": {
+    "modbus": {
+      "configuration": {
+        "$messageOutputs": {
+          "modbus_test.slave.modbus_PG": "modbus_PG"
+        },
+        "servers": {
+          "modbus_test": {
+            "connection": {
+              "variant": "Tcp",
+              "tcp": {
+                "ipAddress": "10.31.128.114",
+                "port": 4840
+              }
+            },
+            "slaves": {
+              "slave": {
+                "pollGroups": {
+                  "modbus_PG": {
+                    "model": {
+                      "Sensor": {
+                        "registerStartAddress": 1,
+                        "registerLength": 1,
+                        "functionCode": 1
+                      }
+                    },
+                    "intervalMs": 1000,
+                    "sourceMode": "UseSlaveName"
+                  }
+                },
+                "setupGroups": {},
+                "slaveId": 1,
+                "subscriptionGroups": {}
+              }
+            }
+          }
+        },
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.ModbusReaderModule/versions/2",
+        "$timestamp": "2023-12-12T06:36:42.4880247Z",
+        "$version": 10
+      }
+    },
+    "center": {
+      "configuration": {
+        "$timestamp": "2023-12-12T06:36:42.4599605Z",
+        "$version": 10
+      }
+    },
+    "mqtt": {
+      "configuration": {
+        "$timestamp": "2023-12-12T06:36:42.4623963Z",
+        "$version": 10
+      }
+    },
+    "azure": {
+      "configuration": {
+        "$timestamp": "2023-12-12T06:36:42.4880094Z",
+        "$version": 10
+      }
+    },
+    "splunk": {
+      "configuration": {
+        "endpoint": {
+          "url": "https://10.10.212.27:8088/services/collector/event",
+          "token": "a5a26423-9874-4383-8f31-436c3c86a4ee",
+          "sslCheck": false
+        },
+        "host": "COTL0006W05-4075",
+        "interval": 1000,
+        "sendTimestamp": true,
+        "sourceType": "_json",
+        "bufferQueueSettings": {
+          "enablePersist": false
+        },
+        "$messageInputs": {
+          "splunkPoll": "telemetry",
+          "splunk": "event",
+          "$system_signals": "telemetry",
+          "W16HeliumTesterODUIV1673000304_DataBlock": "event",
+          "DB_100": "event"
+        },
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.SplunkHecModule/versions/3",
+        "$timestamp": "2023-12-12T06:36:42.5257794Z",
+        "$version": 20
+      }
+    },
+    "opcua": {
+      "configuration": {
+        "servers": {
+          "W16HeliumTesterODUIV1673000304": {
+            "endpoint": {
+              "pollGroups": {
+                "S1.Data": {
+                  "nodes": {
+                    "S1.Waiting_PG": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_1\".\"Waiting\"",
+                    "S1.MachineDowntime_PG": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_1\".\"MachineDowntime\"",
+                    "S1.MaintenanceMode_PG": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_1\".\"MaintenanceMode\"",
+                    "S1.Producing_PG": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_1\".\"Producing\"",
+                    "S1.SettingMode_PG": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_1\".\"SettingMode\"",
+                    "S1.PowerOn_PG": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_1\".\"PowerOn\""
+                  },
+                  "name": "S1.Data",
+                  "outputTopic": "splunkPoll",
+                  "intervalMs": 15000
+                },
+                "S7.Data ": {
+                  "nodes": {
+                    "S10.MachineFactor_PG": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"R_Maschinenfaktor\""
+                  },
+                  "name": "S7.Data ",
+                  "outputTopic": "splunkPoll",
+                  "intervalMs": 300000
+                }
+              },
+              "subscriptionGroups": {
+                "W16HeliumTesterODUIV1673000304": {
+                  "onChangeSubmitFullModel": false,
+                  "onRepublishSubmitFullModel": true,
+                  "nodes": {
+                    "S1.Connected": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_1\".\"Connected\"",
+                    "S1.PowerOn": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_1\".\"PowerOn\"",
+                    "S1.AutomaticMode": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_1\".\"AutomaticMode\"",
+                    "S1.ManualMode": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_1\".\"ManualMode\"",
+                    "S1.SetupMode": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_1\".\"SetupMode\"",
+                    "S1.InternalComm": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_1\".\"InternalComm\"",
+                    "S1.Producing": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_1\".\"Producing\"",
+                    "S1.Waiting": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_1\".\"Waiting\"",
+                    "S1.CollectedOperating": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_1\".\"CollectedOperating\"",
+                    "S1.CollectedMaintenance": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_1\".\"CollectedMaintenance\"",
+                    "S1.CollectedWarning": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_1\".\"CollectedWarning\"",
+                    "S1.QuantityPulse": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_1\".\"QuantityPulse\"",
+                    "S1.ValenceQuantityPulse": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_1\".\"ValenceQuantityPulse\"",
+                    "S1.CollectedError": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_1\".\"CollectedError\"",
+                    "S1.SettingMode": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_1\".\"SettingMode\"",
+                    "S1.MaintenanceMode": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_1\".\"MaintenanceMode\"",
+                    "S1.MachineDowntime": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_1\".\"MachineDowntime\"",
+                    "S3.Electricmeter1.Current_L1": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_3\".\"Electricmeter1\".\"Current_L1\"",
+                    "S3.Electricmeter1.Voltage_L1_N": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_3\".\"Electricmeter1\".\"Voltage_L1_N\"",
+                    "S3.Electricmeter1.ActivePower": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_3\".\"Electricmeter1\".\"ActivePower\"",
+                    "S3.Electricmeter1.ReactivePower": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_3\".\"Electricmeter1\".\"ReactivePower\"",
+                    "S3.Electricmeter1.Current_L2": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_3\".\"Electricmeter1\".\"Current_L2\"",
+                    "S3.Electricmeter1.Current_L3": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_3\".\"Electricmeter1\".\"Current_L3\"",
+                    "S3.Electricmeter1.Voltage_L2_N": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_3\".\"Electricmeter1\".\"Voltage_L2_N\"",
+                    "S3.Electricmeter1.Voltage_L3_N": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_3\".\"Electricmeter1\".\"Voltage_L3_N\"",
+                    "S3.Electricmeter1.Voltage_L1_L2": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_3\".\"Electricmeter1\".\"Voltage_L1_L2\"",
+                    "S3.Electricmeter1.Voltage_L2_L3": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_3\".\"Electricmeter1\".\"Voltage_L2_L3\"",
+                    "S3.Electricmeter1.Voltage_L3_L1": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_3\".\"Electricmeter1\".\"Voltage_L3_L1\"",
+                    "S3.Electricmeter1.ApparentPower": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_3\".\"Electricmeter1\".\"ApparentPower\"",
+                    "S3.Electricmeter1.Frequency": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_3\".\"Electricmeter1\".\"Frequency\"",
+                    "S3.Electricmeter1.CosPhiL1": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_3\".\"Electricmeter1\".\"CosPhiL1\"",
+                    "S3.Electricmeter1.CosPhiL2": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_3\".\"Electricmeter1\".\"CosPhiL2\"",
+                    "S3.Electricmeter1.CosPhiL3": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_3\".\"Electricmeter1\".\"CosPhiL3\"",
+                    "S3.Electricmeter1.CosPhiTotal": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_3\".\"Electricmeter1\".\"CosPhiTotal\"",
+                    "S3.Electricmeter1.ElectricMeter": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_3\".\"Electricmeter1\".\"ElectricMeter\"",
+                    "S3.Media.0.UtilityMeter": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_3\".\"Media\"[0].\"UtilityMeter\"",
+                    "S3.Media.0.ActualFlow": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_3\".\"Media\"[0].\"ActualFlow\"",
+                    "S3.Media.0.ActualPressure": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_3\".\"Media\"[0].\"ActualPressure\"",
+                    "S3.Media.0.ValveState": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_3\".\"Media\"[0].\"ValveState\"",
+                    "S3.Media.0.PressureMin": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_3\".\"Media\"[0].\"PressureMin\"",
+                    "S3.Media.0.PressureMax": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_3\".\"Media\"[0].\"PressureMax\"",
+                    "S3.Media.0.ValveRunTime": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_3\".\"Media\"[0].\"ValveRunTime\"",
+                    "S3.Media.1.UtilityMeter": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_3\".\"Media\"[1].\"UtilityMeter\"",
+                    "S3.Media.1.ActualFlow": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_3\".\"Media\"[1].\"ActualFlow\"",
+                    "S3.Media.1.ActualPressure": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_3\".\"Media\"[1].\"ActualPressure\"",
+                    "S3.Media.1.ValveState": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_3\".\"Media\"[1].\"ValveState\"",
+                    "S3.Media.1.PressureMin": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_3\".\"Media\"[1].\"PressureMin\"",
+                    "S3.Media.1.PressureMax": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_3\".\"Media\"[1].\"PressureMax\"",
+                    "S3.Media.1.ValveRunTime": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_3\".\"Media\"[1].\"ValveRunTime\"",
+                    "S3.Media.2.UtilityMeter": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_3\".\"Media\"[2].\"UtilityMeter\"",
+                    "S3.Media.2.ActualFlow": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_3\".\"Media\"[2].\"ActualFlow\"",
+                    "S3.Media.2.ActualPressure": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_3\".\"Media\"[2].\"ActualPressure\"",
+                    "S3.Media.2.ValveState": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_3\".\"Media\"[2].\"ValveState\"",
+                    "S3.Media.2.PressureMin": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_3\".\"Media\"[2].\"PressureMin\"",
+                    "S3.Media.2.PressureMax": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_3\".\"Media\"[2].\"PressureMax\"",
+                    "S3.Media.2.ValveRunTime": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_3\".\"Media\"[2].\"ValveRunTime\"",
+                    "S3.Media.3.UtilityMeter": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_3\".\"Media\"[3].\"UtilityMeter\"",
+                    "S3.Media.3.ActualFlow": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_3\".\"Media\"[3].\"ActualFlow\"",
+                    "S3.Media.3.ActualPressure": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_3\".\"Media\"[3].\"ActualPressure\"",
+                    "S3.Media.3.ValveState": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_3\".\"Media\"[3].\"ValveState\"",
+                    "S3.Media.3.PressureMin": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_3\".\"Media\"[3].\"PressureMin\"",
+                    "S3.Media.3.PressureMax": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_3\".\"Media\"[3].\"PressureMax\"",
+                    "S3.Media.3.ValveRunTime": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_3\".\"Media\"[3].\"ValveRunTime\"",
+                    "S3.Media.4.UtilityMeter": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_3\".\"Media\"[4].\"UtilityMeter\"",
+                    "S3.Media.4.ActualFlow": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_3\".\"Media\"[4].\"ActualFlow\"",
+                    "S3.Media.4.ActualPressure": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_3\".\"Media\"[4].\"ActualPressure\"",
+                    "S3.Media.4.ValveState": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_3\".\"Media\"[4].\"ValveState\"",
+                    "S3.Media.4.PressureMin": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_3\".\"Media\"[4].\"PressureMin\"",
+                    "S3.Media.4.PressureMax": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_3\".\"Media\"[4].\"PressureMax\"",
+                    "S3.Media.4.ValveRunTime": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_3\".\"Media\"[4].\"ValveRunTime\"",
+                    "S3.Media.5.UtilityMeter": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_3\".\"Media\"[5].\"UtilityMeter\"",
+                    "S3.Media.5.ActualFlow": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_3\".\"Media\"[5].\"ActualFlow\"",
+                    "S3.Media.5.ActualPressure": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_3\".\"Media\"[5].\"ActualPressure\"",
+                    "S3.Media.5.ValveState": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_3\".\"Media\"[5].\"ValveState\"",
+                    "S3.Media.5.PressureMin": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_3\".\"Media\"[5].\"PressureMin\"",
+                    "S3.Media.5.PressureMax": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_3\".\"Media\"[5].\"PressureMax\"",
+                    "S3.Media.5.ValveRunTime": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_3\".\"Media\"[5].\"ValveRunTime\"",
+                    "S7.ManufacturingNumber": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"Process\".\"Automatic\".\"ManufacturingNumber\"",
+                    "S7.ProductName": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"Process\".\"Automatic\".\"ProductName\"",
+                    "S7.Started": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"Process\".\"Automatic\".\"Started\"",
+                    "S7.inProgress": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"Process\".\"Automatic\".\"inProgress\"",
+                    "S7.Finished": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"Process\".\"Automatic\".\"Finished\"",
+                    "S7.Step": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"Process\".\"Automatic\".\"Step\"",
+                    "S7.Time": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"Process\".\"Automatic\".\"Time\"",
+                    "S2.EmergencyStopButton1": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_2\".\"EmergencyStopButton1\"",
+                    "S2.Door1": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_2\".\"Door1\"",
+                    "S2.EmergencyStop": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_2\".\"EmergencyStop\"",
+                    "S2.SafetySystem": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_2\".\"SafetySystem\"",
+                    "S4.Pieces.perShift.Total": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_4\".\"Pieces\".\"perShift\".\"Total\"",
+                    "S4.Pieces.perShift.Fail": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_4\".\"Pieces\".\"perShift\".\"Fail\"",
+                    "S4.Pieces.perShift.Pass": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_4\".\"Pieces\".\"perShift\".\"Pass\"",
+                    "S4.Pieces.perShift.Canceled": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_4\".\"Pieces\".\"perShift\".\"Canceled\"",
+                    "S4.Pieces.perShift.Scrap": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_4\".\"Pieces\".\"perShift\".\"Scrap\"",
+                    "S4.Pieces.Lifetime.Total": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_4\".\"Pieces\".\"Lifetime\".\"Total\"",
+                    "S4.Pieces.Lifetime.Pass": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_4\".\"Pieces\".\"Lifetime\".\"Pass\"",
+                    "S4.Pieces.Lifetime.Fail": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_4\".\"Pieces\".\"Lifetime\".\"Fail\"",
+                    "S4.Pieces.Lifetime.Canceled": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_4\".\"Pieces\".\"Lifetime\".\"Canceled\"",
+                    "S4.Pieces.Lifetime.Scrap": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_4\".\"Pieces\".\"Lifetime\".\"Scrap\"",
+                    "S4.OperatingHours.0": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_4\".\"OperatingHours\"[0]",
+                    "S4.OperatingHours.1": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_4\".\"OperatingHours\"[1]",
+                    "S4.OperatingHours.2": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_4\".\"OperatingHours\"[2]",
+                    "S4.OperatingHours.3": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_4\".\"OperatingHours\"[3]",
+                    "S4.OperatingHours.4": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_4\".\"OperatingHours\"[4]",
+                    "S4.OperatingHours.5": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_4\".\"OperatingHours\"[5]",
+                    "S4.OperatingHours.6": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_4\".\"OperatingHours\"[6]",
+                    "S4.OperatingHours.7": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_4\".\"OperatingHours\"[7]",
+                    "S4.OperatingHours.8": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_4\".\"OperatingHours\"[8]",
+                    "S4.OperatingHours.9": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"State_4\".\"OperatingHours\"[9]",
+                    "S7.ModelNumber": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"Process\".\"Automatic\".\"PartNumber\"",
+                    "S7.IdentNumber": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"Process\".\"Automatic\".\"ProductPartNumber\"",
+                    "S7.Result.Leackage-Rate": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"Process\".\"Automatic\".\"Result\".\"Leackage-Rate\"",
+                    "S7.Druck_Atmosph\u00e4re.In.w_x": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"Process\".\"Automatic\".\"Klima\".\"Druck_Atmosph\u00e4re\".\"In\".\"w_x\"",
+                    "S7.Druck_Atmosph\u00e4re.In.R_yMin": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"Process\".\"Automatic\".\"Klima\".\"Druck_Atmosph\u00e4re\".\"In\".\"R_yMin\"",
+                    "S7.Druck_Atmosph\u00e4re.In.R_yMax": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"Process\".\"Automatic\".\"Klima\".\"Druck_Atmosph\u00e4re\".\"In\".\"R_yMax\"",
+                    "S7.Druck_Atmosph\u00e4re.In.i_x0": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"Process\".\"Automatic\".\"Klima\".\"Druck_Atmosph\u00e4re\".\"In\".\"i_x0\"",
+                    "S7.Druck_Atmosph\u00e4re.In.R_y0": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"Process\".\"Automatic\".\"Klima\".\"Druck_Atmosph\u00e4re\".\"In\".\"R_y0\"",
+                    "S7.Druck_Atmosph\u00e4re.In.i_x1": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"Process\".\"Automatic\".\"Klima\".\"Druck_Atmosph\u00e4re\".\"In\".\"i_x1\"",
+                    "S7.Druck_Atmosph\u00e4re.In.R_y1": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"Process\".\"Automatic\".\"Klima\".\"Druck_Atmosph\u00e4re\".\"In\".\"R_y1\"",
+                    "S7.Druck_Atmosph\u00e4re.Out.R_Value": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"Process\".\"Automatic\".\"Klima\".\"Druck_Atmosph\u00e4re\".\"Out\".\"R_Value\"",
+                    "S7.Druck_Atmosph\u00e4re.Limit.R_Soll-SP": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"Process\".\"Automatic\".\"Klima\".\"Druck_Atmosph\u00e4re\".\"Limit\".\"R_Soll-SP\"",
+                    "S7.Druck_Atmosph\u00e4re.Limit.R_Soll-RP": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"Process\".\"Automatic\".\"Klima\".\"Druck_Atmosph\u00e4re\".\"Limit\".\"R_Soll-RP\"",
+                    "S7.Druck_Atmosph\u00e4re.Limit.R_Grenzwert_MIN": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"Process\".\"Automatic\".\"Klima\".\"Druck_Atmosph\u00e4re\".\"Limit\".\"R_Grenzwert_MIN\"",
+                    "S7.Druck_Atmosph\u00e4re.Limit.R_Grenzwert_MAX": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"Process\".\"Automatic\".\"Klima\".\"Druck_Atmosph\u00e4re\".\"Limit\".\"R_Grenzwert_MAX\"",
+                    "S7.Druck_Atmosph\u00e4re.Limit.t_Verz\u00f6gerungszeit_Soll-SP_nicht_erreicht": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"Process\".\"Automatic\".\"Klima\".\"Druck_Atmosph\u00e4re\".\"Limit\".\"t_Verz\u00f6gerungszeit_Soll-SP_nicht_erreicht\"",
+                    "S7.Druck_Atmosph\u00e4re.Limit.t_Verz\u00f6gerungszeit_Soll-RP_nicht_erreicht": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"Process\".\"Automatic\".\"Klima\".\"Druck_Atmosph\u00e4re\".\"Limit\".\"t_Verz\u00f6gerungszeit_Soll-RP_nicht_erreicht\"",
+                    "S7.Klimawerte_Haupt-Schaltschrank.Temperatur.In.w_x": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"Process\".\"Automatic\".\"Klima\".\"Klimawerte_Haupt-Schaltschrank\".\"Temperatur\".\"In\".\"w_x\"",
+                    "S7.Klimawerte_Haupt-Schaltschrank.Temperatur.In.i_Faktor": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"Process\".\"Automatic\".\"Klima\".\"Klimawerte_Haupt-Schaltschrank\".\"Temperatur\".\"In\".\"i_Faktor\"",
+                    "S7.Klima.Klimawerte_Haupt-Schaltschrank.Temperatur.Out.R_Value": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"Process\".\"Automatic\".\"Klima\".\"Klimawerte_Haupt-Schaltschrank\".\"Temperatur\".\"Out\".\"R_Value\"",
+                    "S7.Klima.Klimawerte_Haupt-Schaltschrank.Luftfeuchte.In.w_x": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"Process\".\"Automatic\".\"Klima\".\"Klimawerte_Haupt-Schaltschrank\".\"Luftfeuchte\".\"In\".\"w_x\"",
+                    "S7.Klima.Klimawerte_Haupt-Schaltschrank.Luftfeuchte.In.i_Faktor": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"Process\".\"Automatic\".\"Klima\".\"Klimawerte_Haupt-Schaltschrank\".\"Luftfeuchte\".\"In\".\"i_Faktor\"",
+                    "S7.Klima.Klimawerte_Haupt-Schaltschrank.Luftfeuchte.Out.R_Value": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"Process\".\"Automatic\".\"Klima\".\"Klimawerte_Haupt-Schaltschrank\".\"Luftfeuchte\".\"Out\".\"R_Value\"",
+                    "S7.Klima.Klimawerte_Pr\u00fcfstand.Temperatur.In.w_x": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"Process\".\"Automatic\".\"Klima\".\"Klimawerte_Pr\u00fcfstand\".\"Temperatur\".\"In\".\"w_x\"",
+                    "S7.Klima.Klimawerte_Pr\u00fcfstand.Temperatur.In.i_Faktor": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"Process\".\"Automatic\".\"Klima\".\"Klimawerte_Pr\u00fcfstand\".\"Temperatur\".\"In\".\"i_Faktor\"",
+                    "S7.Klima.Klimawerte_Pr\u00fcfstand.Temperatur.Out.R_Value": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"Process\".\"Automatic\".\"Klima\".\"Klimawerte_Pr\u00fcfstand\".\"Temperatur\".\"Out\".\"R_Value\"",
+                    "S7.Klima.Klimawerte_Pr\u00fcfstand.Luftfeuchte.In.w_x": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"Process\".\"Automatic\".\"Klima\".\"Klimawerte_Pr\u00fcfstand\".\"Luftfeuchte\".\"In\".\"w_x\"",
+                    "S7.Klima.Klimawerte_Pr\u00fcfstand.Luftfeuchte.In.i_Faktor": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"Process\".\"Automatic\".\"Klima\".\"Klimawerte_Pr\u00fcfstand\".\"Luftfeuchte\".\"In\".\"i_Faktor\"",
+                    "S7.Klima.Klimawerte_Pr\u00fcfstand.Luftfeuchte.Out.R_Value": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"Process\".\"Automatic\".\"Klima\".\"Klimawerte_Pr\u00fcfstand\".\"Luftfeuchte\".\"Out\".\"R_Value\"",
+                    "S7.TestingPassed": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"Process\".\"Automatic\".\"Result\".\"Pass\"",
+                    "S7.TestingFailed": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"Process\".\"Automatic\".\"Result\".\"Fail\"",
+                    "S7.TestingCanceled": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"Process\".\"Automatic\".\"Result\".\"Canceled\"",
+                    "S7.TestingScrap": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"Process\".\"Automatic\".\"Result\".\"Scrap\"",
+                    "S7.MESSWERTE": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"MESSWERTE\"",
+                    "S7.ZEITEN": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"ZEITEN\""
+                  },
+                  "name": "W16HeliumTesterODUIV1673000304",
+                  "outputTopic": "splunk",
+                  "publishingIntervalMs": 250
+                },
+                "W16HeliumTesterODUIV1673000304_DataBlock": {
+                  "onChangeSubmitFullModel": false,
+                  "onRepublishSubmitFullModel": true,
+                  "nodes": {
+                    "S7.MESSWERTE": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"MESSWERTE\"",
+                    "S7.ZEITEN": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"ZEITEN\"",
+                    "S7.R_Leckrate_ASI35_Messwert_Rohwert": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"R_Leckrate_ASI35_Messwert_Rohwert\"",
+                    "S7.R_Leckrate_ASI35_korrigiert": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"R_Leckrate_ASI35_korrigiert\"",
+                    "S7.R_Maschinenfaktor": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"R_Maschinenfaktor\"",
+                    "S7.SENSORWERTE PR\u00dcFSTAND": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"SENSORWERTE PR\u00dcFSTAND\"",
+                    "S7.R_HD-Druck_Pr\u00fcfstand_absolut_normiert": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"R_HD-Druck_Pr\u00fcfstand_absolut_normiert\"",
+                    "S7.R_ND-Druck_Pr\u00fcfstand_absolut_normiert": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"R_ND-Druck_Pr\u00fcfstand_absolut_normiert\"",
+                    "S7.R_Vakuumdruck_K\u00e4ltekreis_Pr\u00fcfstand_normiert": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"R_Vakuumdruck_K\u00e4ltekreis_Pr\u00fcfstand_normiert\"",
+                    "S7.SENSORWERTE PR\u00dcFLING ALT": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"SENSORWERTE PR\u00dcFLING ALT\"",
+                    "S7.ALT_i_HD-Druck_Pr\u00fcfling_Rohwert": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"ALT_i_HD-Druck_Pr\u00fcfling_Rohwert\"",
+                    "S7.ALT_R_HD-Druck_Pr\u00fcfling_relativ_normiert": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"ALT_R_HD-Druck_Pr\u00fcfling_relativ_normiert\"",
+                    "S7.ALT_i_ND-Druck_Pr\u00fcfling_Rohwert": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"ALT_i_ND-Druck_Pr\u00fcfling_Rohwert\"",
+                    "S7.ALT_R_ND-Druck_Pr\u00fcfling_absolut_normiert": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"ALT_R_ND-Druck_Pr\u00fcfling_absolut_normiert\"",
+                    "S7.R_Vakuumdruck_Kammer_normiert_Volt": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"R_Vakuumdruck_Kammer_normiert_Volt\"",
+                    "S7.R_Atmosph\u00e4rendruck": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"R_Atmosph\u00e4rendruck\"",
+                    "S7.ALT_R_Druckdifferenz_HD-ND_Pr\u00fcfling": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"ALT_R_Druckdifferenz_HD-ND_Pr\u00fcfling\"",
+                    "S7.R_Systemdruck_Stickstoff": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"R_Systemdruck_Stickstoff\"",
+                    "S7.R_Systemdruck_Helium": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"R_Systemdruck_Helium\"",
+                    "S7.R_Maximaldruck_Druckaufnehmer_100mbar": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"R_Maximaldruck_Druckaufnehmer_100mbar\"",
+                    "S7.ALT_R_Druckdifferenz_HD-Pr\u00fcfstand-HD-Pr\u00fcfling": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"ALT_R_Druckdifferenz_HD-Pr\u00fcfstand-HD-Pr\u00fcfling\"",
+                    "S7.ALT_R_Druckdifferenz_ND-Pr\u00fcfstand_ND-Pr\u00fcfling": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"ALT_R_Druckdifferenz_ND-Pr\u00fcfstand_ND-Pr\u00fcfling\"",
+                    "S7.T_Rest-Aufw\u00e4rmzeit_nach_Einschalten_Anlage": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"T_Rest-Aufw\u00e4rmzeit_nach_Einschalten_Anlage\"",
+                    "S7.R_HD-Druck_Pr\u00fcfstand_relativ_normiert": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"R_HD-Druck_Pr\u00fcfstand_relativ_normiert\"",
+                    "S7.R_ND-Druck_Pr\u00fcfstand_relativ_normiert": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"R_ND-Druck_Pr\u00fcfstand_relativ_normiert\"",
+                    "S7.ALT_R_HD-Druck_Pr\u00fcfling_absolut_normiert": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"ALT_R_HD-Druck_Pr\u00fcfling_absolut_normiert\"",
+                    "S7.ALT_R_ND-Druck_Pr\u00fcfling_relativ_normiert": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"ALT_R_ND-Druck_Pr\u00fcfling_relativ_normiert\"",
+                    "S7.R_Druckdifferenz_HD-ND_Pr\u00fcfstand": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"R_Druckdifferenz_HD-ND_Pr\u00fcfstand\"",
+                    "S7.R_Leckrate_ASI35_Messwert_nach_Stabilisierungszeit": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"R_Leckrate_ASI35_Messwert_nach_Stabilisierungszeit\"",
+                    "S7.R_Vakuumdruck_Kammer_Volt": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"R_Vakuumdruck_Kammer_Volt\"",
+                    "S7.R_Vakuumdruck_Kammer_mBar": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"R_Vakuumdruck_Kammer_mBar\"",
+                    "S7.R_Schaltpunkt_SHD": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"R_Schaltpunkt_SHD\"",
+                    "S7.T_Aufw\u00e4rmzeit_Lecksucher": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"T_Aufw\u00e4rmzeit_Lecksucher\"",
+                    "S7.SENSORWERTE PR\u00dcFLING_MBK": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"SENSORWERTE PR\u00dcFLING_MBK\"",
+                    "S7.i_HD-Druck_Pr\u00fcfling_Rohwert_MBK": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"i_HD-Druck_Pr\u00fcfling_Rohwert_MBK\"",
+                    "S7.R_HD-Druck_Pr\u00fcfling_absolut_normiert_MBK": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"R_HD-Druck_Pr\u00fcfling_absolut_normiert_MBK\"",
+                    "S7.R_HD-Druck_Pr\u00fcfling_relativ_normiert_MBK": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"R_HD-Druck_Pr\u00fcfling_relativ_normiert_MBK\"",
+                    "S7.i_ND-Druck_Pr\u00fcfling_Rohwert_MBK": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"i_ND-Druck_Pr\u00fcfling_Rohwert_MBK\"",
+                    "S7.R_ND-Druck_Pr\u00fcfling_absolut_normiert_MBK": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"R_ND-Druck_Pr\u00fcfling_absolut_normiert_MBK\"",
+                    "S7.R_ND-Druck_Pr\u00fcfling_relativ_normiert_MBK": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"R_ND-Druck_Pr\u00fcfling_relativ_normiert_MBK\"",
+                    "S7.R_Druckdifferenz_HD-ND_Pr\u00fcfling_MBK": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"R_Druckdifferenz_HD-ND_Pr\u00fcfling_MBK\"",
+                    "S7.R_Druckdifferenz_HD-Pr\u00fcfstand-HD-Pr\u00fcfling_MBK": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"R_Druckdifferenz_HD-Pr\u00fcfstand-HD-Pr\u00fcfling_MBK\"",
+                    "S7.R_Druckdifferenz_ND-Pr\u00fcfstand_ND-Pr\u00fcfling_MBK": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"R_Druckdifferenz_ND-Pr\u00fcfstand_ND-Pr\u00fcfling_MBK\"",
+                    "S7.ALT_R_Druckdifferenz_ND-HD_Pr\u00fcfling": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"ALT_R_Druckdifferenz_ND-HD_Pr\u00fcfling\"",
+                    "S7.R_Druckdifferenz_ND-HD_Pr\u00fcfling_MBK": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"R_Druckdifferenz_ND-HD_Pr\u00fcfling_MBK\"",
+                    "S7.ALT_R_Druckdifferenz_HD-Pr\u00fcfling-HD-Pr\u00fcfstand": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"ALT_R_Druckdifferenz_HD-Pr\u00fcfling-HD-Pr\u00fcfstand\"",
+                    "S7.R_Druckdifferenz_HD-Pr\u00fcfling-HD-Pr\u00fcfstand_MBK": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"R_Druckdifferenz_HD-Pr\u00fcfling-HD-Pr\u00fcfstand_MBK\"",
+                    "S7.ALT_R_Druckdifferenz_ND-Pr\u00fcfling-ND-Pr\u00fcfstand": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"ALT_R_Druckdifferenz_ND-Pr\u00fcfling-ND-Pr\u00fcfstand\"",
+                    "S7.R_Druckdifferenz_ND-Pr\u00fcfling-ND-Pr\u00fcfstand_MBK": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"R_Druckdifferenz_ND-Pr\u00fcfling-ND-Pr\u00fcfstand_MBK\"",
+                    "S7.R_Schaltpunkt_SND_MBK5": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"R_Schaltpunkt_SND_MBK5\"",
+                    "S7.R_Druck_Speicher_Helium": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"R_Druck_Speicher_Helium\"",
+                    "S7.R_Druckdifferenz_ND-HD_Pr\u00fcfstand": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"R_Druckdifferenz_ND-HD_Pr\u00fcfstand\"",
+                    "S7.BERECHNUNG_DRUCKDIFFERENZEN": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"BERECHNUNG DRUCKDIFFERENZEN\"",
+                    "S7.DRUCKWERTE_VERSORGUNG": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"DRUCKWERTE VERSORGUNG\"",
+                    "S7.BERECHNUNG_DRUCKDIFFERENZEN_ALT": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"BERECHNUNG DRUCKDIFFERENZEN_ALT\"",
+                    "S7.SENSORWERTE_VAKUUMKAMMER": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"SENSORWERTE VAKUUMKAMMER\"",
+                    "S7.R_1bar-Atmosph\u00e4rendruck_mBar": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"R_1bar-Atmosph\u00e4rendruck_mBar\"",
+                    "S7.R_1bar-Atmosph\u00e4rendruck_Bar": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"R_1bar-Atmosph\u00e4rendruck_Bar\"",
+                    "S7.R_HD-Druck_Pr\u00fcfstand_Anzeigewert_Victory": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"R_HD-Druck_Pr\u00fcfstand_Anzeigewert_Victory\"",
+                    "S7.R_ND-Druck_Pr\u00fcfstand_Anzeigewert_Victory": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"R_ND-Druck_Pr\u00fcfstand_Anzeigewert_Victory\"",
+                    "S7.R_HD-Druck_Pr\u00fcfling_MBK_Anzeigewert_Victory": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"R_HD-Druck_Pr\u00fcfling_MBK_Anzeigewert_Victory\"",
+                    "S7.R_ND-Druck_Pr\u00fcfling_MBK_Anzeigewert_Victory": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"R_ND-Druck_Pr\u00fcfling_MBK_Anzeigewert_Victory\"",
+                    "S7.R_Vakuumdruck_Kammer_mBar_Anzeigewert_Victory": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"R_Vakuumdruck_Kammer_mBar_Anzeigewert_Victory\"",
+                    "S7.ASI35_Lecksucher.b_Kommunikation_OK": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"ASI35_Lecksucher\".\"b_Kommunikation_OK\"",
+                    "S7.ASI35_Lecksucher.b_Status_Fehler": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"ASI35_Lecksucher\".\"b_Status_Fehler\"",
+                    "S7.ASI35_Lecksucher.b_Vakuumtest_aktiv": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"ASI35_Lecksucher\".\"b_Vakuumtest_aktiv\"",
+                    "S7.ASI35_Lecksucher.b_Schn\u00fcffeltest_aktiv": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"ASI35_Lecksucher\".\"b_Schn\u00fcffeltest_aktiv\"",
+                    "S7.ASI35_Lecksucher.b_Betriebsbereit": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"ASI35_Lecksucher\".\"b_Betriebsbereit\"",
+                    "S7.ASI35_Lecksucher.b_Leckdetektor_arbeitet": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"ASI35_Lecksucher\".\"b_Leckdetektor_arbeitet\"",
+                    "S7..ASI35_Lecksucher.b_Schn\u00fcffelventil_offen": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"ASI35_Lecksucher\".\"b_Schn\u00fcffelventil_offen\"",
+                    "S7.ASI35_Lecksucher.b_Faden_Anodenquelle_ein": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"ASI35_Lecksucher\".\"b_Faden_Anodenquelle_ein\"",
+                    "S7.ASI35_Lecksucher.b_Kalibrierung_fehlgeschlagen": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"ASI35_Lecksucher\".\"b_Kalibrierung_fehlgeschlagen\"",
+                    "S7..ASI35_Lecksucher.b_Schn\u00fcffler_blockiert": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"ASI35_Lecksucher\".\"b_Schn\u00fcffler_blockiert\"",
+                    "S7.b_HENA302-1_Status_Betriebsstundenz\u00e4hler": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Betriebsstundenz\u00e4hler_Vakuumpumpen\".\"b_HENA302-1_Status_Betriebsstundenz\u00e4hler\"",
+                    "S7.b_HENA302-2_Status_Betriebsstundenz\u00e4hler": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Betriebsstundenz\u00e4hler_Vakuumpumpen\".\"b_HENA302-2_Status_Betriebsstundenz\u00e4hler\"",
+                    "S7.b_HiLobe_Status_Betriebsstundenz\u00e4hler": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Betriebsstundenz\u00e4hler_Vakuumpumpen\".\"b_HiLobe_Status_Betriebsstundenz\u00e4hler\"",
+                    "S7.b_HENA41_Status_Betriebsstundenz\u00e4hler": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Betriebsstundenz\u00e4hler_Vakuumpumpen\".\"b_HENA41_Status_Betriebsstundenz\u00e4hler\"",
+                    "S7.b_DUO6M_Status_Betriebsstundenz\u00e4hler": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Betriebsstundenz\u00e4hler_Vakuumpumpen\".\"b_DUO6M_Status_Betriebsstundenz\u00e4hler\"",
+                    "S7.b_HENA302-1_Wartungstrigger_Sollstunden-erreicht": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Betriebsstundenz\u00e4hler_Vakuumpumpen\".\"b_HENA302-1_Wartungstrigger_Sollstunden-erreicht\"",
+                    "S7.b_HENA302-2_Wartungstrigger_Sollstunden-erreicht": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Betriebsstundenz\u00e4hler_Vakuumpumpen\".\"b_HENA302-2_Wartungstrigger_Sollstunden-erreicht\"",
+                    "S7.i_HENA302-2_Betriebsstunden_bis_n\u00e4chste_Wartung": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Betriebsstundenz\u00e4hler_Vakuumpumpen\".\"i_HENA302-2_Betriebsstunden_bis_n\u00e4chste_Wartung\"",
+                    "S7.i_HiLobe_Betriebsstunden_bis_n\u00e4chste_Wartung": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Betriebsstundenz\u00e4hler_Vakuumpumpen\".\"i_HiLobe_Betriebsstunden_bis_n\u00e4chste_Wartung\"",
+                    "S7.b_HiLobe_Wartungstrigger_Sollstunden-erreicht": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Betriebsstundenz\u00e4hler_Vakuumpumpen\".\"b_HiLobe_Wartungstrigger_Sollstunden-erreicht\"",
+                    "S7.i_DUO6M_Betriebsstunden_bis_n\u00e4chste_Wartung": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Betriebsstundenz\u00e4hler_Vakuumpumpen\".\"i_DUO6M_Betriebsstunden_bis_n\u00e4chste_Wartung\"",
+                    "S7.b_DUO6M_Wartungstrigger_Sollstunden-erreicht": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Betriebsstundenz\u00e4hler_Vakuumpumpen\".\"b_DUO6M_Wartungstrigger_Sollstunden-erreicht\"",
+                    "S7.b_HENA41_Wartungstrigger_Sollstunden-erreicht": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Betriebsstundenz\u00e4hler_Vakuumpumpen\".\"b_HENA41_Wartungstrigger_Sollstunden-erreicht\"",
+                    "S7.LDT_HENA302-1_Zeitpunkt_letzte_Wartung": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Betriebsstundenz\u00e4hler_Vakuumpumpen\".\"LDT_HENA302-1_Zeitpunkt_letzte_Wartung\"",
+                    "S7.i_HENA302-1_Betriebsstunden_bei_n\u00e4chster_Wartung": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Betriebsstundenz\u00e4hler_Vakuumpumpen\".\"i_HENA302-1_Betriebsstunden_bei_n\u00e4chster_Wartung\"",
+                    "S7.i_HENA302-1_Betriebsstunden_bei_letzter_Wartung": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Betriebsstundenz\u00e4hler_Vakuumpumpen\".\"i_HENA302-1_Betriebsstunden_bei_letzter_Wartung\"",
+                    "S7.i_HENA302-1_Gesamtbetriebsstunden_seit_Erstinbetriebnahme": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Betriebsstundenz\u00e4hler_Vakuumpumpen\".\"i_HENA302-1_Gesamtbetriebsstunden_seit_Erstinbetriebnahme\"",
+                    "S7.i_HENA302-1_Betriebsstunden_seit_letzter_Wartung": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Betriebsstundenz\u00e4hler_Vakuumpumpen\".\"i_HENA302-1_Betriebsstunden_seit_letzter_Wartung\"",
+                    "S7.i_HENA302-2_Betriebsstunden_bei_letzter_Wartung": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Betriebsstundenz\u00e4hler_Vakuumpumpen\".\"i_HENA302-2_Betriebsstunden_bei_letzter_Wartung\"",
+                    "S7.i_HENA302-2_Betriebsstunden_bei_n\u00e4chster_Wartung": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Betriebsstundenz\u00e4hler_Vakuumpumpen\".\"i_HENA302-2_Betriebsstunden_bei_n\u00e4chster_Wartung\"",
+                    "S7.LDT_HENA302-2_Zeitpunkt_letzte_Wartung": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Betriebsstundenz\u00e4hler_Vakuumpumpen\".\"LDT_HENA302-2_Zeitpunkt_letzte_Wartung\"",
+                    "S7.i_HiLobe_Betriebsstunden_bei_letzter_Wartung": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Betriebsstundenz\u00e4hler_Vakuumpumpen\".\"i_HiLobe_Betriebsstunden_bei_letzter_Wartung\"",
+                    "S7.i_HiLobe_Betriebsstunden_bei_n\u00e4chster_Wartung": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Betriebsstundenz\u00e4hler_Vakuumpumpen\".\"i_HiLobe_Betriebsstunden_bei_n\u00e4chster_Wartung\"",
+                    "S7.LDT_HiLobe_Zeitpunkt_letzte_Wartung": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Betriebsstundenz\u00e4hler_Vakuumpumpen\".\"LDT_HiLobe_Zeitpunkt_letzte_Wartung\"",
+                    "S7.i_HENA41_Betriebsstunden_bei_letzter_Wartung": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Betriebsstundenz\u00e4hler_Vakuumpumpen\".\"i_HENA41_Betriebsstunden_bei_letzter_Wartung\"",
+                    "S7.i_HENA41_Betriebsstunden_bei_n\u00e4chster_Wartung": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Betriebsstundenz\u00e4hler_Vakuumpumpen\".\"i_HENA41_Betriebsstunden_bei_n\u00e4chster_Wartung\"",
+                    "S7.LDT_HENA41_Zeitpunkt_letzte_Wartung": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Betriebsstundenz\u00e4hler_Vakuumpumpen\".\"LDT_HENA41_Zeitpunkt_letzte_Wartung\"",
+                    "S7.i_DUO6M_Betriebsstunden_bei_letzter_Wartung": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Betriebsstundenz\u00e4hler_Vakuumpumpen\".\"i_DUO6M_Betriebsstunden_bei_letzter_Wartung\"",
+                    "S7.i_DUO6M_Betriebsstunden_bei_n\u00e4chster_Wartung": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Betriebsstundenz\u00e4hler_Vakuumpumpen\".\"i_DUO6M_Betriebsstunden_bei_n\u00e4chster_Wartung\"",
+                    "S7.LDT_DUO6M_Zeitpunkt_letzte_Wartung": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Betriebsstundenz\u00e4hler_Vakuumpumpen\".\"LDT_DUO6M_Zeitpunkt_letzte_Wartung\"",
+                    "S7.i_DUO6M_Gesamtbetriebsstunden_seit_Erstinbetriebnahme": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Betriebsstundenz\u00e4hler_Vakuumpumpen\".\"i_DUO6M_Gesamtbetriebsstunden_seit_Erstinbetriebnahme\"",
+                    "S7.i_DUO6M_Betriebsstunden_seit_letzter_Wartung": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Betriebsstundenz\u00e4hler_Vakuumpumpen\".\"i_DUO6M_Betriebsstunden_seit_letzter_Wartung\"",
+                    "S7.i_HENA41_Gesamtbetriebsstunden_seit_Erstinbetriebnahme": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Betriebsstundenz\u00e4hler_Vakuumpumpen\".\"i_HENA41_Gesamtbetriebsstunden_seit_Erstinbetriebnahme\"",
+                    "S7.i_HENA41_Betriebsstunden_seit_letzter_Wartung": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Betriebsstundenz\u00e4hler_Vakuumpumpen\".\"i_HENA41_Betriebsstunden_seit_letzter_Wartung\"",
+                    "S7.i_HiLobe_Gesamtbetriebsstunden_seit_Erstinbetriebnahme": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Betriebsstundenz\u00e4hler_Vakuumpumpen\".\"i_HiLobe_Gesamtbetriebsstunden_seit_Erstinbetriebnahme\"",
+                    "S7.i_HiLobe_Betriebsstunden_Betriebsstunden_seit_letzter_Wartung": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Betriebsstundenz\u00e4hler_Vakuumpumpen\".\"i_HiLobe_Betriebsstunden_Betriebsstunden_seit_letzter_Wartung\"",
+                    "S7.i_HENA302-2_Gesamtbetriebsstunden_seit_Erstinbetriebnahme": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Betriebsstundenz\u00e4hler_Vakuumpumpen\".\"i_HENA302-2_Gesamtbetriebsstunden_seit_Erstinbetriebnahme\"",
+                    "S7.i_HENA302-2_Betriebsstunden_seit_letzter_Wartung": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Betriebsstundenz\u00e4hler_Vakuumpumpen\".\"i_HENA302-2_Betriebsstunden_seit_letzter_Wartung\"",
+                    "S7.i_HENA302-1_Betriebsstunden_bis_n\u00e4chste_Wartung": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Betriebsstundenz\u00e4hler_Vakuumpumpen\".\"i_HENA302-1_Betriebsstunden_bis_n\u00e4chste_Wartung\"",
+                    "S7.i_HENA41_Betriebsstunden_bis_n\u00e4chste_Wartung": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Betriebsstundenz\u00e4hler_Vakuumpumpen\".\"i_HENA41_Betriebsstunden_bis_n\u00e4chste_Wartung\"",
+                    "S7.St\u00f6rmeldungen_Taktketten.Abbruch_Grobleck": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"St\u00f6rmeldungen_Taktketten\".\"Abbruch_Grobleck\"",
+                    "S7.St\u00f6rmeldungen_Taktketten.Abbruch_\u00dcberdruck_>35bar_ND-Kreis": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"St\u00f6rmeldungen_Taktketten\".\"Abbruch_\u00dcberdruck_>35bar_ND-Kreis\"",
+                    "S7.St\u00f6rmeldungen_Taktketten.Abbruch_Messwertfehler_Lecksucher": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"St\u00f6rmeldungen_Taktketten\".\"Abbruch_Messwertfehler_Lecksucher\"",
+                    "S7.St\u00f6rmeldungen_Taktketten.Abbruch_Katastrophentrigger_HE-Lecktest": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"St\u00f6rmeldungen_Taktketten\".\"Abbruch_Katastrophentrigger_HE-Lecktest\"",
+                    "S7.St\u00f6rmeldungen_Taktketten.Abbruch_durch_Werker": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"St\u00f6rmeldungen_Taktketten\".\"Abbruch_durch_Werker\"",
+                    "S7.St\u00f6rmeldungen_Taktketten.Abbruch_Grobleck_Differenzdruck_Pr\u00fcfling-Pr\u00fcfstand_zu_gro\u00df": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"St\u00f6rmeldungen_Taktketten\".\"Abbruch_Grobleck_Differenzdruck_Pr\u00fcfling-Pr\u00fcfstand_zu_gro\u00df\"",
+                    "S7.St\u00f6rmeldungen_Taktketten.Druckdifferenz_HD/ND_Heizbetrieb_zu_hoch": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"St\u00f6rmeldungen_Taktketten\".\"Druckdifferenz_HD/ND_Heizbetrieb_zu_hoch\"",
+                    "S7.St\u00f6rmeldungen_Taktketten.Druckdifferenz_HD/ND_K\u00fchlbetrieb_zu_hoch": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"St\u00f6rmeldungen_Taktketten\".\"Druckdifferenz_HD/ND_K\u00fchlbetrieb_zu_hoch\"",
+                    "S7.St\u00f6rmeldungen_Taktketten.Abbruch_Druck_Sicherheitsventil_\u00fcberschritten": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"St\u00f6rmeldungen_Taktketten\".\"Abbruch_Druck_Sicherheitsventil_\u00fcberschritten\"",
+                    "S7.Taktzeiten.b_Kammert\u00fcr_schlie\u00dfen": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Taktzeiten\".\"b_Kammert\u00fcr_schlie\u00dfen\"",
+                    "S7.Taktzeiten.b_Kammer_evakuieren": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Taktzeiten\".\"b_Kammer_evakuieren\"",
+                    "S7.Taktzeiten.b_Grobleckpr\u00fcfung_N2-Druckaufbau": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Taktzeiten\".\"b_Grobleckpr\u00fcfung_N2-Druckaufbau\"",
+                    "S7.Taktzeiten.b_Grobleckpr\u00fcfung_Stabilisierungszeit": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Taktzeiten\".\"b_Grobleckpr\u00fcfung_Stabilisierungszeit\"",
+                    "S7.Taktzeiten.b_Grobleckpr\u00fcfung_Druckhaltezeit": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Taktzeiten\".\"b_Grobleckpr\u00fcfung_Druckhaltezeit\"",
+                    "S7.Taktzeiten.b_Hochdruckpr\u00fcfung(Verfl\u00fcssiger)_EEV-Ventil_schlie\u00dfen": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Taktzeiten\".\"b_Hochdruckpr\u00fcfung(Verfl\u00fcssiger)_EEV-Ventil_schlie\u00dfen\"",
+                    "S7.Taktzeiten.b_1.Hochdruckpr\u00fcfung(Verfl\u00fcssiger)_N2-Druckaufbau": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Taktzeiten\".\"b_1.Hochdruckpr\u00fcfung(Verfl\u00fcssiger)_N2-Druckaufbau\"",
+                    "S7.Taktzeiten.b_1.Hochdruckpr\u00fcfung(Verfl\u00fcssiger)_Druckhaltezeit": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Taktzeiten\".\"b_1.Hochdruckpr\u00fcfung(Verfl\u00fcssiger)_Druckhaltezeit\"",
+                    "S7.Taktzeiten.b_1.Hochdruckpr\u00fcfung(Verfl\u00fcssiger)_Druckabbau_auf_Umschaltdruck_4-Wege_Ventil": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Taktzeiten\".\"b_1.Hochdruckpr\u00fcfung(Verfl\u00fcssiger)_Druckabbau_auf_Umschaltdruck_4-Wege_Ventil\"",
+                    "S7.Taktzeiten.b_2.Hochdruckpr\u00fcfung(Verdampfer)_N2-Druckaufbau_SHD-Abfrage": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Taktzeiten\".\"b_2.Hochdruckpr\u00fcfung(Verdampfer)_N2-Druckaufbau_SHD-Abfrage\"",
+                    "S7.Taktzeiten.b_2.Hochdruckpr\u00fcfung(Verdampfer)_Druckhaltezeit": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Taktzeiten\".\"b_2.Hochdruckpr\u00fcfung(Verdampfer)_Druckhaltezeit\"",
+                    "S7.Taktzeiten.b_3.Hochdruckpr\u00fcfung(ND-Kreis)_N2-Druckaufbau": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Taktzeiten\".\"b_3.Hochdruckpr\u00fcfung(ND-Kreis)_N2-Druckaufbau\"",
+                    "S7.Taktzeiten.b_3.Hochdruckpr\u00fcfung(ND-Kreis)_N2-Druckhaltezeit": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Taktzeiten\".\"b_3.Hochdruckpr\u00fcfung(ND-Kreis)_N2-Druckhaltezeit\"",
+                    "S7.Taktzeiten.b_2.+3.Hochdruckpr\u00fcfung(HD+ND-Kreis)_Druckabbau_Umgebungsdruck": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Taktzeiten\".\"b_2.+3.Hochdruckpr\u00fcfung(HD+ND-Kreis)_Druckabbau_Umgebungsdruck\"",
+                    "S7.Taktzeiten.b_HE-Dichtpr\u00fcfung_Druckabbau": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Taktzeiten\".\"b_HE-Dichtpr\u00fcfung_Druckabbau\"",
+                    "S7.Taktzeiten.b_HE-Dichtpr\u00fcfung_Pr\u00fcfling_evakuieren": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Taktzeiten\".\"b_HE-Dichtpr\u00fcfung_Pr\u00fcfling_evakuieren\"",
+                    "S7.Taktzeiten.b_HE-Dichtpr\u00fcfung_Stabilisierungszeit_Lecktester": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Taktzeiten\".\"b_HE-Dichtpr\u00fcfung_Stabilisierungszeit_Lecktester\"",
+                    "S7.Taktzeiten.b_HE-Dichtpr\u00fcfung_HE-Druckaufbau": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Taktzeiten\".\"b_HE-Dichtpr\u00fcfung_HE-Druckaufbau\"",
+                    "S7.Taktzeiten.b_HE-Dichtpr\u00fcfung_Lecktestzeit": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Taktzeiten\".\"b_HE-Dichtpr\u00fcfung_Lecktestzeit\"",
+                    "S7.Taktzeiten.b_HE-Dichtpr\u00fcfung_HE-Druckabbau": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Taktzeiten\".\"b_HE-Dichtpr\u00fcfung_HE-Druckabbau\"",
+                    "S7.Taktzeiten.b_Grundstellungsfahrt_Pr\u00fcfling_evakuieren": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Taktzeiten\".\"b_Grundstellungsfahrt_Pr\u00fcfling_evakuieren\"",
+                    "S7.Taktzeiten.b_Grundstellungsfahrt_Kammer_fluten": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Taktzeiten\".\"b_Grundstellungsfahrt_Kammer_fluten\"",
+                    "S7.Taktzeiten.b_Grundstellungsfahrt_Kammert\u00fcr_auffahren": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Taktzeiten\".\"b_Grundstellungsfahrt_Kammert\u00fcr_auffahren\"",
+                    "S7.LeakRateASI35MeasValueResult": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"R_Ergebnis_Leckrate_ASI35_korrigiert\""
+                  },
+                  "name": "W16HeliumTesterODUIV1673000304_DataBlock",
+                  "outputTopic": "W16HeliumTesterODUIV1673000304_DataBlock",
+                  "publishingIntervalMs": 250
+                },
+                "DB_100": {
+                  "onChangeSubmitFullModel": false,
+                  "onRepublishSubmitFullModel": true,
+                  "nodes": {
+                    "TK01_Kammert\u00fcr_schlie\u00dfen.In.b_Start": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Automatikabl\u00e4ufe\".\"TK01_Kammert\u00fcr_schlie\u00dfen\".\"In\".\"b_Start\"",
+                    "TK01_Kammert\u00fcr_schlie\u00dfen.In.b_Quittieren": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Automatikabl\u00e4ufe\".\"TK01_Kammert\u00fcr_schlie\u00dfen\".\"In\".\"b_Quittieren\"",
+                    "TK01_Kammert\u00fcr_schlie\u00dfen.Out.i_Taktanzeige": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Automatikabl\u00e4ufe\".\"TK01_Kammert\u00fcr_schlie\u00dfen\".\"Out\".\"i_Taktanzeige\"",
+                    "TK01_Kammert\u00fcr_schlie\u00dfen.Out.b_Grundstellung": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Automatikabl\u00e4ufe\".\"TK01_Kammert\u00fcr_schlie\u00dfen\".\"Out\".\"b_Grundstellung\"",
+                    "TK01_Kammert\u00fcr_schlie\u00dfen.Out.b_Taktkette_gestartet": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Automatikabl\u00e4ufe\".\"TK01_Kammert\u00fcr_schlie\u00dfen\".\"Out\".\"b_Taktkette_gestartet\"",
+                    "TK01_Kammert\u00fcr_schlie\u00dfen.Out.b_Anf_Quittieren": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Automatikabl\u00e4ufe\".\"TK01_Kammert\u00fcr_schlie\u00dfen\".\"Out\".\"b_Anf_Quittieren\"",
+                    "TK02_N2-Grobleckpr\u00fcfung.In.b_Start": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Automatikabl\u00e4ufe\".\"TK02_N2-Grobleckpr\u00fcfung\".\"In\".\"b_Start\"",
+                    "TK02_N2-Grobleckpr\u00fcfung.In.b_Quittieren": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Automatikabl\u00e4ufe\".\"TK02_N2-Grobleckpr\u00fcfung\".\"In\".\"b_Quittieren\"",
+                    "TK02_N2-Grobleckpr\u00fcfung.Out.i_Taktanzeige": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Automatikabl\u00e4ufe\".\"TK02_N2-Grobleckpr\u00fcfung\".\"Out\".\"i_Taktanzeige\"",
+                    "TK02_N2-Grobleckpr\u00fcfung.Out.b_Grundstellung": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Automatikabl\u00e4ufe\".\"TK02_N2-Grobleckpr\u00fcfung\".\"Out\".\"b_Grundstellung\"",
+                    "TK02_N2-Grobleckpr\u00fcfung.Out.b_Taktkette_gestartet": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Automatikabl\u00e4ufe\".\"TK02_N2-Grobleckpr\u00fcfung\".\"Out\".\"b_Taktkette_gestartet\"",
+                    "TK02_N2-Grobleckpr\u00fcfung.Out.b_Anf_Quittieren": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Automatikabl\u00e4ufe\".\"TK02_N2-Grobleckpr\u00fcfung\".\"Out\".\"b_Anf_Quittieren\"",
+                    "TK03_N2-Hochdruckpr\u00fcfung_und_SHD-Schalter_pr\u00fcfen.In.b_Start": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Automatikabl\u00e4ufe\".\"TK03_N2-Hochdruckpr\u00fcfung_und_SHD-Schalter_pr\u00fcfen\".\"In\".\"b_Start\"",
+                    "TK03_N2-Hochdruckpr\u00fcfung_und_SHD-Schalter_pr\u00fcfen.In.b_Quittieren": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Automatikabl\u00e4ufe\".\"TK03_N2-Hochdruckpr\u00fcfung_und_SHD-Schalter_pr\u00fcfen\".\"In\".\"b_Quittieren\"",
+                    "TK03_N2-Hochdruckpr\u00fcfung_und_SHD-Schalter_pr\u00fcfen.Out.b_Anf_Quittieren": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Automatikabl\u00e4ufe\".\"TK03_N2-Hochdruckpr\u00fcfung_und_SHD-Schalter_pr\u00fcfen\".\"Out\".\"b_Anf_Quittieren\"",
+                    "TK03_N2-Hochdruckpr\u00fcfung_und_SHD-Schalter_pr\u00fcfen.Out.b_Taktkette_gestartet": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Automatikabl\u00e4ufe\".\"TK03_N2-Hochdruckpr\u00fcfung_und_SHD-Schalter_pr\u00fcfen\".\"Out\".\"b_Taktkette_gestartet\"",
+                    "TK03_N2-Hochdruckpr\u00fcfung_und_SHD-Schalter_pr\u00fcfen.Out.b_Grundstellung": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Automatikabl\u00e4ufe\".\"TK03_N2-Hochdruckpr\u00fcfung_und_SHD-Schalter_pr\u00fcfen\".\"Out\".\"b_Grundstellung\"",
+                    "TK03_N2-Hochdruckpr\u00fcfung_und_SHD-Schalter_pr\u00fcfen.Out.i_Taktanzeige": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Automatikabl\u00e4ufe\".\"TK03_N2-Hochdruckpr\u00fcfung_und_SHD-Schalter_pr\u00fcfen\".\"Out\".\"i_Taktanzeige\"",
+                    "TK04_HE-Lecksuche.In.b_Start": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Automatikabl\u00e4ufe\".\"TK04_HE-Lecksuche\".\"In\".\"b_Start\"",
+                    "TK04_HE-Lecksuche.In.b_Quittieren": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Automatikabl\u00e4ufe\".\"TK04_HE-Lecksuche\".\"In\".\"b_Quittieren\"",
+                    "TK04_HE-Lecksuche.Out.b_Anf_Quittieren": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Automatikabl\u00e4ufe\".\"TK04_HE-Lecksuche\".\"Out\".\"b_Anf_Quittieren\"",
+                    "TK04_HE-Lecksuche.Out.b_Taktkette_gestartet": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Automatikabl\u00e4ufe\".\"TK04_HE-Lecksuche\".\"Out\".\"b_Taktkette_gestartet\"",
+                    "TK04_HE-Lecksuche.Out.b_Grundstellung": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Automatikabl\u00e4ufe\".\"TK04_HE-Lecksuche\".\"Out\".\"b_Grundstellung\"",
+                    "TK04_HE-Lecksuche.Out.i_Taktanzeige": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Automatikabl\u00e4ufe\".\"TK04_HE-Lecksuche\".\"Out\".\"i_Taktanzeige\"",
+                    "TK05_Ablauf_beenden_und_Grundstellungsfahrt.In.b_Start": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Automatikabl\u00e4ufe\".\"TK05_Ablauf_beenden_und_Grundstellungsfahrt\".\"In\".\"b_Start\"",
+                    "TK05_Ablauf_beenden_und_Grundstellungsfahrt.In.b_Quittieren": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Automatikabl\u00e4ufe\".\"TK05_Ablauf_beenden_und_Grundstellungsfahrt\".\"In\".\"b_Quittieren\"",
+                    "TK05_Ablauf_beenden_und_Grundstellungsfahrt.Out.b_Anf_Quittieren": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Automatikabl\u00e4ufe\".\"TK05_Ablauf_beenden_und_Grundstellungsfahrt\".\"Out\".\"b_Anf_Quittieren\"",
+                    "TK05_Ablauf_beenden_und_Grundstellungsfahrt.Out.b_Taktkette_gestartet": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Automatikabl\u00e4ufe\".\"TK05_Ablauf_beenden_und_Grundstellungsfahrt\".\"Out\".\"b_Taktkette_gestartet\"",
+                    "TK05_Ablauf_beenden_und_Grundstellungsfahrt.Out.b_Grundstellung": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Automatikabl\u00e4ufe\".\"TK05_Ablauf_beenden_und_Grundstellungsfahrt\".\"Out\".\"b_Grundstellung\"",
+                    "TK05_Ablauf_beenden_und_Grundstellungsfahrt.Out.i_Taktanzeige": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Automatikabl\u00e4ufe\".\"TK05_Ablauf_beenden_und_Grundstellungsfahrt\".\"Out\".\"i_Taktanzeige\"",
+                    "TK06_Kammert\u00fcr_\u00f6ffnen.In.b_Start": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Automatikabl\u00e4ufe\".\"TK06_Kammert\u00fcr_\u00f6ffnen\".\"In\".\"b_Start\"",
+                    "TK06_Kammert\u00fcr_\u00f6ffnen.In.b_Quittieren": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Automatikabl\u00e4ufe\".\"TK06_Kammert\u00fcr_\u00f6ffnen\".\"In\".\"b_Quittieren\"",
+                    "TK06_Kammert\u00fcr_\u00f6ffnen.Out.b_Anf_Quittieren": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Automatikabl\u00e4ufe\".\"TK06_Kammert\u00fcr_\u00f6ffnen\".\"Out\".\"b_Anf_Quittieren\"",
+                    "TK06_Kammert\u00fcr_\u00f6ffnen.Out.b_Taktkette_gestartet": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Automatikabl\u00e4ufe\".\"TK06_Kammert\u00fcr_\u00f6ffnen\".\"Out\".\"b_Taktkette_gestartet\"",
+                    "TK06_Kammert\u00fcr_\u00f6ffnen.Out.b_Grundstellung": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Automatikabl\u00e4ufe\".\"TK06_Kammert\u00fcr_\u00f6ffnen\".\"Out\".\"b_Grundstellung\"",
+                    "TK06_Kammert\u00fcr_\u00f6ffnen.Out.i_Taktanzeige": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Automatikabl\u00e4ufe\".\"TK06_Kammert\u00fcr_\u00f6ffnen\".\"Out\".\"i_Taktanzeige\"",
+                    "E_Stellungsgeber_Eckventil_Kammer_evakuieren_offen": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"E_Stellungsgeber_Eckventil_Kammer_evakuieren_offen\"",
+                    "E_Stellungsgeber_Eckventil_Kammer_evakuieren_geschlossen": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"E_Stellungsgeber_Eckventil_Kammer_evakuieren_geschlossen\"",
+                    "R_HD-Druck_Pr\u00fcfstand_Anzeigewert_Victory": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"R_HD-Druck_Pr\u00fcfstand_Anzeigewert_Victory\"",
+                    "R_ND-Druck_Pr\u00fcfstand_Anzeigewert_Victory": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"R_ND-Druck_Pr\u00fcfstand_Anzeigewert_Victory\"",
+                    "R_HD-Druck_Pr\u00fcfling_MBK_Anzeigewert_Victory": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"R_HD-Druck_Pr\u00fcfling_MBK_Anzeigewert_Victory\"",
+                    "R_ND-Druck_Pr\u00fcfling_MBK_Anzeigewert_Victory": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"R_ND-Druck_Pr\u00fcfling_MBK_Anzeigewert_Victory\"",
+                    "E8.0": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"E_Stellungsgeber_Eckventil_f\u00fcr_Testleck-Kammer_offen\"",
+                    "E8.1": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"E_Stellungsgeber_Eckventil_f\u00fcr_Testleck-Kammer_geschlossen\"",
+                    "E8.2": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"E_Stellungsgeber_Eckventil_f\u00fcr_Testleck-Hena26_offen\"",
+                    "E8.3": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"E_Stellungsgeber_Eckventil_f\u00fcr_Testleck-Hena26_geschlossen\"",
+                    "R_Leckrate_ASI35_korrigiert": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"R_Leckrate_ASI35_korrigiert\"",
+                    "PartNumber": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"Process\".\"Automatic\".\"PartNumber\"",
+                    "ProductPartNumber": "ns=1;s=W16WP-L5-HE-PruefstandIV1673000304.\"IOT-SmartFactory\".\"Process\".\"Automatic\".\"ProductPartNumber\""
+                  },
+                  "name": "DB_100",
+                  "outputTopic": "DB_100",
+                  "publishingIntervalMs": 250,
+                  "republishingIntervalMs": 5000
+                }
+              },
+              "subscriptions": {},
+              "url": "opc.tcp://10.31.128.114:4840",
+              "resetBlackListIntervalMs": 15000
+            },
+            "client": {
+              "application": {
+                "security": {
+                  "authentication": {
+                    "credentials": {},
+                    "strategy": "Anonymous"
+                  },
+                  "endpoint": {
+                    "isEnabled": false,
+                    "level": 0,
+                    "mode": "None",
+                    "policy": "None",
+                    "timeout": 15000
+                  }
+                }
+              },
+              "session": {
+                "subscription": {}
+              },
+              "optimizeNodeValueReadAccess": true
+            },
+            "edgeMethodMapping": {},
+            "conditions": {},
+            "statusCodeMapping": {}
+          }
+        },
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.OpcUaClientModule/versions/2",
+        "$messageOutputs": {
+          "W16HeliumTesterODUIV1673000304.S1.Data": "splunkPoll",
+          "W16HeliumTesterODUIV1673000304.S7.Data ": "splunkPoll",
+          "W16HeliumTesterODUIV1673000304.W16HeliumTesterODUIV1673000304": "splunk",
+          "W16HeliumTesterODUIV1673000304.W16HeliumTesterODUIV1673000304_DataBlock": "W16HeliumTesterODUIV1673000304_DataBlock",
+          "W16HeliumTesterODUIV1673000304.DB_100": "DB_100"
+        },
+        "$timestamp": "2023-12-12T06:36:42.4726319Z",
+        "$version": 54
+      }
+    },
+    "mustache": {
+      "configuration": {
+        "$timestamp": "2023-12-12T06:36:42.4598728Z",
+        "$version": 10
+      }
+    },
+    "rfcreader": {
+      "configuration": {
+        "$messageOutputs": {},
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.RFC1006ReaderModule/versions/1",
+        "plcs": {
+          "PLC": {
+            "connection": {
+              "cpu": "S71500",
+              "ip": "10.31.128.114",
+              "rack": 0,
+              "slot": 0
+            },
+            "pollGroups": {},
+            "subscriptionGroups": {}
+          }
+        },
+        "$timestamp": "2023-12-12T06:36:42.4725352Z",
+        "$version": 10
+      }
+    },
+    "logger": {
+      "configuration": {
+        "$timestamp": "2023-12-12T06:36:42.4879954Z",
+        "$version": 10
+      }
+    },
+    "streamprocessor": {
+      "configuration": {
+        "$timestamp": "2023-12-12T06:36:42.4879499Z",
+        "$version": 10
+      }
+    },
+    "system": {
+      "configuration": {
+        "firewallrules": {
+          "AdminAPIAutoRuleHTTP": {
+            "description": "Auto generated rule from AdminApiModule for HTTP Port.",
+            "action": "accept",
+            "direction": "inbound",
+            "protocol": "tcp",
+            "destPort": 80,
+            "srcPort": 0
+          },
+          "AdminAPIAutoRuleHTTPS": {
+            "description": "Auto generated rule from AdminApiModule for HTTPS Port.",
+            "action": "accept",
+            "direction": "inbound",
+            "protocol": "tcp",
+            "destPort": 443,
+            "srcPort": 0
+          }
+        },
+        "metrics": {
+          "interval": 0,
+          "autoReset": false
+        },
+        "signals": {
+          "groups": {
+            "system_signals": {
+              "outputTopic": "system_signals",
+              "intervalMs": 60000,
+              "signals": {
+                "ss_modbus": {
+                  "source": "moduleStatus",
+                  "sourceKey": "modbus.status.connection.modbus_test.code"
+                },
+                "ss_opc": {
+                  "source": "moduleStatus",
+                  "sourceKey": "opcua.status.connection.W16HeliumTesterODUIV1673000304.code"
+                }
+              }
+            }
+          }
+        },
+        "$timestamp": "2023-12-12T06:36:42.5259205Z",
+        "$version": 12
+      }
+    }
+  }
+}

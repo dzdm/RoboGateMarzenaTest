@@ -1,0 +1,281 @@
+{
+  "modules": {
+    "modbus": {
+      "configuration": {
+        "$messageOutputs": {
+          "modbus_test.slave.modbus_PG": "modbus_PG"
+        },
+        "servers": {
+          "modbus_test": {
+            "connection": {
+              "variant": "Tcp",
+              "tcp": {
+                "ipAddress": "10.31.128.67",
+                "port": 4840
+              }
+            },
+            "slaves": {
+              "slave": {
+                "pollGroups": {
+                  "modbus_PG": {
+                    "model": {
+                      "Sensor": {
+                        "registerStartAddress": 1,
+                        "registerLength": 1,
+                        "functionCode": 1
+                      }
+                    },
+                    "intervalMs": 1000,
+                    "sourceMode": "UseSlaveName"
+                  }
+                },
+                "setupGroups": {},
+                "slaveId": 1,
+                "subscriptionGroups": {}
+              }
+            }
+          }
+        },
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.ModbusReaderModule/versions/2",
+        "$timestamp": "2024-02-12T12:25:05.6938242Z",
+        "$version": 3
+      }
+    },
+    "center": {
+      "configuration": {
+        "$timestamp": "2024-02-12T12:25:05.7049898Z",
+        "$version": 3
+      }
+    },
+    "mqtt": {
+      "configuration": {
+        "$timestamp": "2024-02-12T12:25:05.7052459Z",
+        "$version": 3
+      }
+    },
+    "azure": {
+      "configuration": {
+        "$timestamp": "2024-02-12T12:25:05.7061493Z",
+        "$version": 3
+      }
+    },
+    "splunk": {
+      "configuration": {
+        "endpoint": {
+          "url": "https://10.10.212.27:8088/services/collector/event",
+          "token": "a5a26423-9874-4383-8f31-436c3c86a4ee",
+          "sslCheck": false,
+          "proxy": ""
+        },
+        "host": "COTL0006W05-4072",
+        "interval": 1000,
+        "sendTimestamp": true,
+        "sourceType": "_json",
+        "bufferQueueSettings": {
+          "enablePersist": false
+        },
+        "$messageInputs": {
+          "splunkPoll": "telemetry",
+          "splunk": "event",
+          "$system_signals": "telemetry"
+        },
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.SplunkHecModule/versions/3",
+        "$timestamp": "2024-02-13T10:35:15.0000435Z",
+        "$version": 15
+      }
+    },
+    "opcua": {
+      "configuration": {
+        "servers": {
+          "W16FunctionTesterODUIV1673000313": {
+            "endpoint": {
+              "pollGroups": {
+                "S1.Data": {
+                  "nodes": {
+                    "S1.Producing_PG": "ns=1;s=W16WP-L5-EOL-PruefstandIV1673000313.\"IOT-SmartFactory\".\"State_1\".\"Producing\"",
+                    "S1.Waiting_PG": "ns=1;s=W16WP-L5-EOL-PruefstandIV1673000313.\"IOT-SmartFactory\".\"State_1\".\"Waiting\"",
+                    "S1.SettingMode_PG": "ns=1;s=W16WP-L5-EOL-PruefstandIV1673000313.\"IOT-SmartFactory\".\"State_1\".\"SettingMode\"",
+                    "S1.MaintenanceMode_PG": "ns=1;s=W16WP-L5-EOL-PruefstandIV1673000313.\"IOT-SmartFactory\".\"State_1\".\"MaintenanceMode\"",
+                    "S1.MachineDowntime_PG": "ns=1;s=W16WP-L5-EOL-PruefstandIV1673000313.\"IOT-SmartFactory\".\"State_1\".\"MachineDowntime\""
+                  },
+                  "name": "S1.Data",
+                  "outputTopic": "splunkPoll",
+                  "intervalMs": 15000
+                }
+              },
+              "subscriptionGroups": {
+                "W16FunctionTesterODUIV1673000313": {
+                  "onChangeSubmitFullModel": false,
+                  "onRepublishSubmitFullModel": true,
+                  "nodes": {
+                    "S7.ProductPartNumber": "ns=1;s=W16WP-L5-EOL-PruefstandIV1673000313.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"ProductPartNumber\"",
+                    "S7.IdentNumber": "ns=1;s=W16WP-L5-EOL-PruefstandIV1673000313.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"PartNumber\"",
+                    "S7.TestingStarted": "ns=1;s=W16WP-L5-EOL-PruefstandIV1673000313.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"Started\"",
+                    "S7.TestingInProgress": "ns=1;s=W16WP-L5-EOL-PruefstandIV1673000313.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"inProgress\"",
+                    "S7.TestingFinished": "ns=1;s=W16WP-L5-EOL-PruefstandIV1673000313.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"Finished\"",
+                    "S7.TestStep": "ns=1;s=W16WP-L5-EOL-PruefstandIV1673000313.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"TestStep\"",
+                    "S7.TestTime": "ns=1;s=W16WP-L5-EOL-PruefstandIV1673000313.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"TestTime\"",
+                    "S7.TestingPassed": "ns=1;s=W16WP-L5-EOL-PruefstandIV1673000313.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"Result\".\"Pass\"",
+                    "S7.TestingFailed": "ns=1;s=W16WP-L5-EOL-PruefstandIV1673000313.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"Result\".\"Fail\"",
+                    "S7.TestingCanceled": "ns=1;s=W16WP-L5-EOL-PruefstandIV1673000313.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"Result\".\"Canceled\"",
+                    "S7.Scrap": "ns=1;s=W16WP-L5-EOL-PruefstandIV1673000313.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"Result\".\"Scrap\"",
+                    "S1.Connected": "ns=1;s=W16WP-L5-EOL-PruefstandIV1673000313.\"IOT-SmartFactory\".\"State_1\".\"Connected\"",
+                    "S1.PowerOn": "ns=1;s=W16WP-L5-EOL-PruefstandIV1673000313.\"IOT-SmartFactory\".\"State_1\".\"PowerOn\"",
+                    "S1.AutomaticMode": "ns=1;s=W16WP-L5-EOL-PruefstandIV1673000313.\"IOT-SmartFactory\".\"State_1\".\"AutomaticMode\"",
+                    "S1.ManualMode": "ns=1;s=W16WP-L5-EOL-PruefstandIV1673000313.\"IOT-SmartFactory\".\"State_1\".\"ManualMode\"",
+                    "S1.SetupMode": "ns=1;s=W16WP-L5-EOL-PruefstandIV1673000313.\"IOT-SmartFactory\".\"State_1\".\"SetupMode\"",
+                    "S1.QuantityPulse": "ns=1;s=W16WP-L5-EOL-PruefstandIV1673000313.\"IOT-SmartFactory\".\"State_1\".\"QuantityPulse\"",
+                    "S1.CollectedOperating": "ns=1;s=W16WP-L5-EOL-PruefstandIV1673000313.\"IOT-SmartFactory\".\"State_1\".\"CollectedOperating\"",
+                    "S1.ValenceQuantityPulse": "ns=1;s=W16WP-L5-EOL-PruefstandIV1673000313.\"IOT-SmartFactory\".\"State_1\".\"ValenceQuantityPulse\"",
+                    "S1.CollectedError": "ns=1;s=W16WP-L5-EOL-PruefstandIV1673000313.\"IOT-SmartFactory\".\"State_1\".\"CollectedError\"",
+                    "S1.CollectedWarning": "ns=1;s=W16WP-L5-EOL-PruefstandIV1673000313.\"IOT-SmartFactory\".\"State_1\".\"CollectedWarning\"",
+                    "S1.CollectedMaintenance": "ns=1;s=W16WP-L5-EOL-PruefstandIV1673000313.\"IOT-SmartFactory\".\"State_1\".\"CollectedMaintenance\"",
+                    "S1.Producing": "ns=1;s=W16WP-L5-EOL-PruefstandIV1673000313.\"IOT-SmartFactory\".\"State_1\".\"Producing\"",
+                    "S1.Waiting": "ns=1;s=W16WP-L5-EOL-PruefstandIV1673000313.\"IOT-SmartFactory\".\"State_1\".\"Waiting\"",
+                    "S1.SettingMode": "ns=1;s=W16WP-L5-EOL-PruefstandIV1673000313.\"IOT-SmartFactory\".\"State_1\".\"SettingMode\"",
+                    "S1.MaintenanceMode": "ns=1;s=W16WP-L5-EOL-PruefstandIV1673000313.\"IOT-SmartFactory\".\"State_1\".\"MaintenanceMode\"",
+                    "S1.MachineDowntime": "ns=1;s=W16WP-L5-EOL-PruefstandIV1673000313.\"IOT-SmartFactory\".\"State_1\".\"MachineDowntime\"",
+                    "CompressorSpeedPercent": "ns=1;s=W16WP-L5-EOL-PruefstandIV1673000313.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"Test\"[0].\"R_Messergebnis\"",
+                    "ElectronicExpansionValveOneCurrentPositionPercent": "ns=1;s=W16WP-L5-EOL-PruefstandIV1673000313.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"Test\"[1].\"R_Messergebnis\"",
+                    "ElectronicExpansionValveTwoCurrentPositionPercent": "ns=1;s=W16WP-L5-EOL-PruefstandIV1673000313.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"Test\"[2].\"R_Messergebnis\"",
+                    "PrimarySourceRpsOne": "ns=1;s=W16WP-L5-EOL-PruefstandIV1673000313.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"Test\"[3].\"R_Messergebnis\"",
+                    "PrimarySourceRpsTwo": "ns=1;s=W16WP-L5-EOL-PruefstandIV1673000313.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"Test\"[4].\"R_Messergebnis\"",
+                    "RefrigerantCircuitFourWayValve": "ns=1;s=W16WP-L5-EOL-PruefstandIV1673000313.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"Test\"[5].\"R_Messergebnis\"",
+                    "PrimaryHeatExchangerBaseHeater": "ns=1;s=W16WP-L5-EOL-PruefstandIV1673000313.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"Test\"[6].\"R_Messergebnis\"",
+                    "CompressorCrankCaseHeater": "ns=1;s=W16WP-L5-EOL-PruefstandIV1673000313.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"Test\"[7].\"R_Messergebnis\"",
+                    "FanDuctHeater": "ns=1;s=W16WP-L5-EOL-PruefstandIV1673000313.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"Test\"[8].\"R_Messergebnis\"",
+                    "ElectricalPowerConsumptionInverter": "ns=1;s=W16WP-L5-EOL-PruefstandIV1673000313.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"Test\"[9].\"R_Messergebnis\"",
+                    "CompressorInletPressureSensor": "ns=1;s=W16WP-L5-EOL-PruefstandIV1673000313.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"Test\"[10].\"R_Messergebnis\"",
+                    "CompressorOutletPressureSensor": "ns=1;s=W16WP-L5-EOL-PruefstandIV1673000313.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"Test\"[11].\"R_Messergebnis\"",
+                    "CompressorInletTemperatureSensor": "ns=1;s=W16WP-L5-EOL-PruefstandIV1673000313.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"Test\"[12].\"R_Messergebnis\"",
+                    "CompressorOutletTemperatureSensor": "ns=1;s=W16WP-L5-EOL-PruefstandIV1673000313.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"Test\"[13].\"R_Messergebnis\"",
+                    "PrimaryInletTemperatureSensor": "ns=1;s=W16WP-L5-EOL-PruefstandIV1673000313.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"Test\"[14].\"R_Messergebnis\"",
+                    "PrimaryHeatExchangerLiquidTemperatureSensor": "ns=1;s=W16WP-L5-EOL-PruefstandIV1673000313.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"Test\"[15].\"R_Messergebnis\"",
+                    "SecondaryHeatExchangerLiquidTemperatureSensor": "ns=1;s=W16WP-L5-EOL-PruefstandIV1673000313.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"Test\"[16].\"R_Messergebnis\"",
+                    "SecondaryOutletTemperatureSensor": "ns=1;s=W16WP-L5-EOL-PruefstandIV1673000313.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"Test\"[17].\"R_Messergebnis\"",
+                    "CompressorOilTemperatureSensor": "ns=1;s=W16WP-L5-EOL-PruefstandIV1673000313.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"Test\"[18].\"R_Messergebnis\"",
+                    "EconomizerLiquidTemperatureSensor": "ns=1;s=W16WP-L5-EOL-PruefstandIV1673000313.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"Test\"[19].\"R_Messergebnis\"",
+                    "EvaporatorVaporTemperatureSensor": "ns=1;s=W16WP-L5-EOL-PruefstandIV1673000313.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"Test\"[20].\"R_Messergebnis\"",
+                    "EngineRoomTemperatureSensor": "ns=1;s=W16WP-L5-EOL-PruefstandIV1673000313.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"Test\"[21].\"R_Messergebnis\"",
+                    "CompressorSetpointPercent_Target": "ns=1;s=W16WP-L5-EOL-PruefstandIV1673000313.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"Test\"[22].\"R_Messergebnis\"",
+                    "ElectronicExpansionValveOneTargetPositionPercent_Target": "ns=1;s=W16WP-L5-EOL-PruefstandIV1673000313.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"Test\"[23].\"R_Messergebnis\"",
+                    "ElectronicExpansionValveTwoTargetPositionPercent_Target": "ns=1;s=W16WP-L5-EOL-PruefstandIV1673000313.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"Test\"[24].\"R_Messergebnis\"",
+                    "PrimaryCircuitFanOne_Target": "ns=1;s=W16WP-L5-EOL-PruefstandIV1673000313.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"Test\"[25].\"R_Messergebnis\"",
+                    "PrimaryCircuitFanTwo_Target": "ns=1;s=W16WP-L5-EOL-PruefstandIV1673000313.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"Test\"[26].\"R_Messergebnis\"",
+                    "RefrigerantCircuitFourWayValve_Target": "ns=1;s=W16WP-L5-EOL-PruefstandIV1673000313.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"Test\"[27].\"R_Messergebnis\"",
+                    "PrimaryHeatExchangerBaseHeater_Target": "ns=1;s=W16WP-L5-EOL-PruefstandIV1673000313.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"Test\"[28].\"R_Messergebnis\"",
+                    "CompressorCrankCaseHeater_Target": "ns=1;s=W16WP-L5-EOL-PruefstandIV1673000313.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"Test\"[29].\"R_Messergebnis\"",
+                    "FanDuctHeater_Target": "ns=1;s=W16WP-L5-EOL-PruefstandIV1673000313.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"Test\"[30].\"R_Messergebnis\"",
+                    "MAT_Erorr_Codes": "ns=1;s=W16WP-L5-EOL-PruefstandIV1673000313.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"MAT_Erorr_Codes\"",
+                    "MAT_Erorr_Codes_Victory": "ns=1;s=W16WP-L5-EOL-PruefstandIV1673000313.\"DB_100-Arbeitsdaten\".\"Victory\".\"Steuerbits\".\"Pr\u00fcfablauf\".\"MAT_Erorr_Codes\""
+                  },
+                  "name": "W16FunctionTesterODUIV1673000313",
+                  "outputTopic": "splunk",
+                  "publishingIntervalMs": 500
+                }
+              },
+              "subscriptions": {},
+              "url": "opc.tcp://10.31.128.67:4840",
+              "resetBlackListIntervalMs": 500
+            },
+            "client": {
+              "application": {
+                "security": {
+                  "authentication": {
+                    "credentials": {},
+                    "strategy": "Anonymous"
+                  },
+                  "endpoint": {
+                    "isEnabled": false,
+                    "level": 0,
+                    "mode": "None",
+                    "policy": "None",
+                    "timeout": 15000
+                  }
+                }
+              },
+              "session": {
+                "subscription": {}
+              },
+              "optimizeNodeValueReadAccess": true
+            },
+            "edgeMethodMapping": {}
+          }
+        },
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.OpcUaClientModule/versions/2",
+        "$messageOutputs": {
+          "W16FunctionTesterODUIV1673000313.S1.Data": "splunkPoll",
+          "W16FunctionTesterODUIV1673000313.W16FunctionTesterODUIV1673000313": "splunk"
+        },
+        "$timestamp": "2024-03-25T10:58:29.2782755Z",
+        "$version": 50
+      }
+    },
+    "mustache": {
+      "configuration": {
+        "$timestamp": "2024-02-12T12:25:05.7077124Z",
+        "$version": 3
+      }
+    },
+    "rfcreader": {
+      "configuration": {
+        "$timestamp": "2024-02-12T12:25:05.7077669Z",
+        "$version": 3
+      }
+    },
+    "logger": {
+      "configuration": {
+        "$timestamp": "2024-02-12T12:25:05.7077903Z",
+        "$version": 3
+      }
+    },
+    "streamprocessor": {
+      "configuration": {
+        "$timestamp": "2024-02-12T12:25:05.7078127Z",
+        "$version": 3
+      }
+    },
+    "system": {
+      "configuration": {
+        "firewallrules": {
+          "AdminAPIAutoRuleHTTP": {
+            "description": "Auto generated rule from AdminApiModule for HTTP Port.",
+            "action": "accept",
+            "direction": "inbound",
+            "protocol": "tcp",
+            "srcPort": 0,
+            "destPort": 80
+          },
+          "AdminAPIAutoRuleHTTPS": {
+            "description": "Auto generated rule from AdminApiModule for HTTPS Port.",
+            "action": "accept",
+            "direction": "inbound",
+            "protocol": "tcp",
+            "srcPort": 0,
+            "destPort": 443
+          }
+        },
+        "signals": {
+          "groups": {
+            "system_signals": {
+              "outputTopic": "system_signals",
+              "intervalMs": 1000,
+              "signals": {
+                "ss_modbus": {
+                  "source": "moduleStatus",
+                  "sourceKey": "modbus.status.connection.modbus_test.code"
+                },
+                "ss_opc": {
+                  "source": "moduleStatus",
+                  "sourceKey": "opcua.status.connection.W16FunctionTesterODUIV1673000313.code"
+                }
+              }
+            }
+          }
+        },
+        "$timestamp": "2024-02-12T12:25:05.7078337Z",
+        "$version": 4
+      }
+    }
+  }
+}

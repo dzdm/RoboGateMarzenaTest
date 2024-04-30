@@ -1,0 +1,253 @@
+{
+  "modules": {
+    "modbus": {
+      "configuration": {
+        "$timestamp": "2024-04-25T06:56:09.9733078Z",
+        "$version": 4
+      }
+    },
+    "center": {
+      "configuration": {
+        "$timestamp": "2024-04-25T06:56:09.973572Z",
+        "$version": 4
+      }
+    },
+    "mqtt": {
+      "configuration": {
+        "$timestamp": "2024-04-25T06:56:09.973713Z",
+        "$version": 4
+      }
+    },
+    "azure": {
+      "configuration": {
+        "$timestamp": "2024-04-25T06:56:09.9743584Z",
+        "$version": 4
+      }
+    },
+    "splunk": {
+      "configuration": {
+        "endpoint": {
+          "url": "https://10.10.212.27:8088/services/collector/event",
+          "token": "a5a26423-9874-4383-8f31-436c3c86a4ee",
+          "sslCheck": false,
+          "proxy": ""
+        },
+        "host": "COTL0006W05-4063",
+        "interval": 1000,
+        "sendTimestamp": true,
+        "sourceType": "_json",
+        "bufferQueueSettings": {
+          "enablePersist": false
+        },
+        "$messageInputs": {
+          "splunkPoll": "telemetry",
+          "splunk": "event",
+          "Streamed": "telemetry"
+        },
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.SplunkHecModule/versions/3",
+        "$timestamp": "2024-04-25T07:04:37.1086362Z",
+        "$version": 12
+      }
+    },
+    "opcua": {
+      "configuration": {
+        "servers": {
+          "W16Stern22LineCUPPIV16780973": {
+            "endpoint": {
+              "pollGroups": {
+                "S1.Data": {
+                  "name": "S1.Data",
+                  "nodes": {
+                    "S1.MachineDowntime_PG": "ns=2;s=EFX50.DOWN_TIME",
+                    "S1.MaintenanceMode_PG": "ns=2;s=EFX50.MAINTENANCE",
+                    "S1.SettingMode_PG": "ns=2;s=EFX50.SETTING_MODE",
+                    "S1.Producing_PG": "ns=2;s=EFX50.PRODUCTING",
+                    "S1.Waiting_PG": "ns=2;s=EFX50.WAITING",
+                    "S7.CurrentProgramName": "ns=2;s=EFX50.PROGRAM_NAME"
+                  },
+                  "intervalMs": 500,
+                  "outputTopic": "splunkPoll"
+                },
+                "S3.Data_X10": {
+                  "name": "S3.Data_X10",
+                  "nodes": {
+                    "CompressedAirPressure_X10": "ns=2;s=EFX50.AIR_PRESSUREX10",
+                    "CurrentL1_X10": "ns=2;s=EFX50.AMPERE_1X10",
+                    "CurrentL2_X10": "ns=2;s=EFX50.AMPERE_2X10",
+                    "CurrentL3_X10": "ns=2;s=EFX50.AMPERE_3X10",
+                    "VoltageL1L2_X10": "ns=2;s=EFX50.VOLT_1X10",
+                    "VoltageL2L3_X10": "ns=2;s=EFX50.VOLT_3X10",
+                    "VoltageL3L1_X10": "ns=2;s=EFX50.VOLT_2X10",
+                    "ActivePower_X10": "ns=2;s=EFX50.ACTIVE_POWERX10",
+                    "CompressedAirTemperature_X10": "ns=2;s=EFX50.AIR_TEMPERATUREX10",
+                    "CompressedAirFlow_X10": "ns=2;s=EFX50.AIR_SPEEDX10"
+                  },
+                  "intervalMs": 1000,
+                  "outputTopic": "Stream"
+                }
+              },
+              "subscriptionGroups": {
+                "W16Stern22LineCUPPIV16780973": {
+                  "onChangeSubmitFullModel": false,
+                  "onRepublishSubmitFullModel": true,
+                  "nodes": {
+                    "S7.TestingFailed": "ns=2;s=EFX50.TEST_FAILED",
+                    "S7.TestingPassed": "ns=2;s=EFX50.TEST_PASSED",
+                    "S7.ProductName": "ns=2;s=EFX50.PROGRAM_NAME",
+                    "S1.QuantityPulse": "ns=2;s=EFX50.QUANTITY_PULSE"
+                  },
+                  "name": "W16Stern22LineCUPPIV16780973",
+                  "publishingIntervalMs": 200,
+                  "outputTopic": "splunk"
+                }
+              },
+              "subscriptions": {},
+              "url": "opc.tcp://10.31.128.60:4843",
+              "resetBlackListIntervalMs": 15000
+            },
+            "client": {
+              "application": {
+                "security": {
+                  "authentication": {
+                    "credentials": {},
+                    "strategy": "Anonymous"
+                  },
+                  "endpoint": {
+                    "isEnabled": false,
+                    "level": 0,
+                    "mode": "None",
+                    "policy": "None",
+                    "timeout": 15000
+                  }
+                }
+              },
+              "session": {
+                "subscription": {}
+              },
+              "optimizeNodeValueReadAccess": false
+            },
+            "edgeMethodMapping": {}
+          }
+        },
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.OpcUaClientModule/versions/2",
+        "$messageOutputs": {
+          "W16Stern22LineCUPPIV16780973.S1.Data": "splunkPoll",
+          "W16Stern22LineCUPPIV16780973.W16Stern22LineCUPPIV16780973": "splunk",
+          "W16Stern22LineCUPPIV16780973.S3.Data_X10": "Stream"
+        },
+        "$timestamp": "2024-04-25T06:56:09.974585Z",
+        "$version": 56
+      }
+    },
+    "mustache": {
+      "configuration": {
+        "$timestamp": "2024-04-25T06:56:09.9751868Z",
+        "$version": 4
+      }
+    },
+    "rfcreader": {
+      "configuration": {
+        "$timestamp": "2024-04-25T06:56:09.9752206Z",
+        "$version": 4
+      }
+    },
+    "logger": {
+      "configuration": {
+        "$timestamp": "2024-04-25T06:56:09.9752417Z",
+        "$version": 4
+      }
+    },
+    "streamprocessor": {
+      "configuration": {
+        "configuration": {
+          "inputs": {
+            "Input_X10": {
+              "sourceRegEx": ".*",
+              "scopeRegEx": ".*_X10",
+              "into": [
+                "Divide by 10"
+              ]
+            }
+          },
+          "blocks": {
+            "Output": {
+              "type": "Output",
+              "source": "",
+              "scope": "S3.Data"
+            },
+            "Divide by 10": {
+              "type": "ExpEval",
+              "expressions": {
+                "S3.CompressedAir.Pressure": "CompressedAirPressure_X10 / 10",
+                "S3.ActivePower": "ActivePower_X10 / 10",
+                "S3.VoltageL2L3": "VoltageL2L3_X10 / 10",
+                "S3.VoltageL3L1": "VoltageL3L1_X10 / 10",
+                "S3.VoltageL1L2": "VoltageL1L2_X10 / 10",
+                "S3.CurrentL1": "CurrentL1_X10 / 10",
+                "S3.CurrentL2": "CurrentL2_X10 / 10",
+                "S3.CurrentL3": "CurrentL3_X10 / 10",
+                "S3.CompressedAir.Temperature": "CompressedAirTemperature_X10 / 10",
+                "S3.CompressedAir.Flow": "CompressedAirFlow_X10"
+              },
+              "into": [
+                "Output"
+              ]
+            }
+          },
+          "DefaultOutputTopic": "Streamed",
+          "ui": {
+            "flowEditor": {
+              "blockPositions": {
+                "Input_X10": {
+                  "x": -876,
+                  "y": -306
+                },
+                "Output": {
+                  "x": -95,
+                  "y": -305
+                },
+                "Divide by 10": {
+                  "x": -478,
+                  "y": -306
+                }
+              }
+            }
+          }
+        },
+        "$messageInputs": {
+          "Stream": "streamprocessor"
+        },
+        "$messageOutputs": {
+          "Output": "Streamed"
+        },
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.StreamProcessorModule/versions/5",
+        "$timestamp": "2024-04-25T06:56:09.9752927Z",
+        "$version": 4
+      }
+    },
+    "system": {
+      "configuration": {
+        "firewallrules": {
+          "AdminAPIAutoRuleHTTP": {
+            "description": "Auto generated rule from AdminApiModule for HTTP Port.",
+            "action": "accept",
+            "direction": "inbound",
+            "protocol": "tcp",
+            "srcPort": 0,
+            "destPort": 80
+          },
+          "AdminAPIAutoRuleHTTPS": {
+            "description": "Auto generated rule from AdminApiModule for HTTPS Port.",
+            "action": "accept",
+            "direction": "inbound",
+            "protocol": "tcp",
+            "srcPort": 0,
+            "destPort": 443
+          }
+        },
+        "$timestamp": "2024-04-25T06:56:09.9757082Z",
+        "$version": 5
+      }
+    }
+  }
+}

@@ -1,0 +1,211 @@
+{
+  "modules": {
+    "mustache": {
+      "configuration": {
+        "$timestamp": "2023-08-08T12:53:32.1030926Z",
+        "$version": 1
+      }
+    },
+    "center": {
+      "configuration": {
+        "$timestamp": "2023-08-08T12:53:32.1071792Z",
+        "$version": 1
+      }
+    },
+    "mqtt": {
+      "configuration": {
+        "$timestamp": "2023-08-08T12:53:32.1083005Z",
+        "$version": 1
+      }
+    },
+    "rfcreader": {
+      "configuration": {
+        "$timestamp": "2023-08-08T12:53:32.1099665Z",
+        "$version": 1
+      }
+    },
+    "opcua": {
+      "configuration": {
+        "servers": {
+          "W16OetikerEPC01ODUIV10005607": {
+            "endpoint": {
+              "pollGroups": {},
+              "subscriptionGroups": {
+                "W16OetikerEPC01ODUIV10005607": {
+                  "onChangeSubmitFullModel": false,
+                  "onRepublishSubmitFullModel": true,
+                  "nodes": {
+                    "S7.Gap": "ns=2;s=S7-1500.DB.IOT_OetikerEPC01_Line4.IOT_DataOetiker.Gap",
+                    "S7.ClosingForceSW": "ns=2;s=S7-1500.DB.IOT_OetikerEPC01_Line4.IOT_DataOetiker.ClosingForceSW",
+                    "S7.ClosingForceIW": "ns=2;s=S7-1500.DB.IOT_OetikerEPC01_Line4.IOT_DataOetiker.ClosingForceIW",
+                    "S7.Result": "ns=2;s=S7-1500.DB.IOT_OetikerEPC01_Line4.IOT_DataOetiker.i_Result",
+                    "S7.Result_OK": "ns=2;s=S7-1500.DB.IOT_OetikerEPC01_Line4.IOT_DataOetiker.b_Result_OK",
+                    "S7.Result_NOK": "ns=2;s=S7-1500.DB.IOT_OetikerEPC01_Line4.IOT_DataOetiker.b_Result_NOK",
+                    "S7.GapSW": "ns=2;s=S7-1500.DB.IOT_OetikerEPC01_Line4.IOT_DataOetiker.GapSW"
+                  },
+                  "name": "W16OetikerEPC01ODUIV10005607",
+                  "outputTopic": "splunk",
+                  "publishingIntervalMs": 200
+                },
+                "W16SCSODUIV160000607": {
+                  "onChangeSubmitFullModel": false,
+                  "onRepublishSubmitFullModel": true,
+                  "nodes": {
+                    "S1.PowerOn": "ns=2;s=S7-1500.DB.IOT_SCSTools_Line4.SCS_Data_IOT.S1.PowerON",
+                    "S7.TimeStamp": "ns=2;s=S7-1500.DB.IOT_SCSTools_Line4.SCS_Data_IOT.S7.TimeStamp",
+                    "S7.VIN": "ns=2;s=S7-1500.DB.IOT_SCSTools_Line4.SCS_Data_IOT.S7.VIN",
+                    "S7.CellID": "ns=2;s=S7-1500.DB.IOT_SCSTools_Line4.SCS_Data_IOT.S7.CellID",
+                    "S7.ChannelID": "ns=2;s=S7-1500.DB.IOT_SCSTools_Line4.SCS_Data_IOT.S7.ChannelID",
+                    "S7.TorqueControllerName": "ns=2;s=S7-1500.DB.IOT_SCSTools_Line4.SCS_Data_IOT.S7.TorqueController Name",
+                    "S7.JobID": "ns=2;s=S7-1500.DB.IOT_SCSTools_Line4.SCS_Data_IOT.S7.JobID",
+                    "S7.ParameterSetID": "ns=2;s=S7-1500.DB.IOT_SCSTools_Line4.SCS_Data_IOT.S7.ParameterSetID",
+                    "S7.BatchSize": "ns=2;s=S7-1500.DB.IOT_SCSTools_Line4.SCS_Data_IOT.S7.BatchSize",
+                    "S7.BatchCounter": "ns=2;s=S7-1500.DB.IOT_SCSTools_Line4.SCS_Data_IOT.S7.BatchCounter",
+                    "S7.TighteningStatus": "ns=2;s=S7-1500.DB.IOT_SCSTools_Line4.SCS_Data_IOT.S7.TighteningStatus",
+                    "S7.TorqueStatus": "ns=2;s=S7-1500.DB.IOT_SCSTools_Line4.SCS_Data_IOT.S7.TorqueStatus",
+                    "S7.AngleStatus": "ns=2;s=S7-1500.DB.IOT_SCSTools_Line4.SCS_Data_IOT.S7.AngleStatus",
+                    "S7.TorqueMinLimit": "ns=2;s=S7-1500.DB.IOT_SCSTools_Line4.SCS_Data_IOT.S7.TorqueMinLimit",
+                    "S7.TorqueMaxLimit": "ns=2;s=S7-1500.DB.IOT_SCSTools_Line4.SCS_Data_IOT.S7.TorqueMaxLimit",
+                    "S7.TorqueFinalTarget": "ns=2;s=S7-1500.DB.IOT_SCSTools_Line4.SCS_Data_IOT.S7.TorqueFinalTarget",
+                    "S7.Torque": "ns=2;s=S7-1500.DB.IOT_SCSTools_Line4.SCS_Data_IOT.S7.Torque",
+                    "S7.AngleMinLimit": "ns=2;s=S7-1500.DB.IOT_SCSTools_Line4.SCS_Data_IOT.S7.Angle MinLimit",
+                    "S7.AngleMaxLimit": "ns=2;s=S7-1500.DB.IOT_SCSTools_Line4.SCS_Data_IOT.S7.AngleMaxLimit",
+                    "S7.FinalAngleTarget": "ns=2;s=S7-1500.DB.IOT_SCSTools_Line4.SCS_Data_IOT.S7.FinalAngleTarget",
+                    "S7.Angle": "ns=2;s=S7-1500.DB.IOT_SCSTools_Line4.SCS_Data_IOT.S7.Angle",
+                    "S7.LastChangeInParameterSet": "ns=2;s=S7-1500.DB.IOT_SCSTools_Line4.SCS_Data_IOT.S7.Last ChangeInParameterSet",
+                    "S7.BatchStatus": "ns=2;s=S7-1500.DB.IOT_SCSTools_Line4.SCS_Data_IOT.S7.BatchStatus",
+                    "S7.TighteningID": "ns=2;s=S7-1500.DB.IOT_SCSTools_Line4.SCS_Data_IOT.S7.TighteningID"
+                  },
+                  "name": "W16SCSODUIV160000607",
+                  "outputTopic": "splunk",
+                  "publishingIntervalMs": 200
+                }
+              },
+              "subscriptions": {},
+              "url": "opc.tcp://10.31.132.46:4840",
+              "resetBlackListIntervalMs": 15000
+            },
+            "client": {
+              "application": {
+                "security": {
+                  "authentication": {
+                    "credentials": {},
+                    "strategy": "Anonymous"
+                  },
+                  "endpoint": {
+                    "isEnabled": true,
+                    "level": 0,
+                    "mode": "None",
+                    "policy": "None",
+                    "timeout": 15000
+                  }
+                }
+              },
+              "session": {
+                "subscription": {}
+              },
+              "optimizeNodeValueReadAccess": true
+            },
+            "edgeMethodMapping": {},
+            "conditions": {},
+            "statusCodeMapping": {}
+          }
+        },
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.OpcUaClientModule/versions/2",
+        "$messageOutputs": {
+          "W16OetikerEPC01ODUIV10005607.W16OetikerEPC01ODUIV10005607": "splunk",
+          "W16OetikerEPC01ODUIV10005607.W16SCSODUIV160000607": "splunk"
+        },
+        "$timestamp": "2024-03-13T08:32:32.2741518Z",
+        "$version": 24
+      }
+    },
+    "streamprocessor": {
+      "configuration": {
+        "$timestamp": "2023-08-08T12:53:32.1111211Z",
+        "$version": 1
+      }
+    },
+    "logger": {
+      "configuration": {
+        "$timestamp": "2023-08-08T12:53:32.1112298Z",
+        "$version": 1
+      }
+    },
+    "azure": {
+      "configuration": {
+        "$timestamp": "2023-08-08T12:53:32.1113089Z",
+        "$version": 1
+      }
+    },
+    "modbus": {
+      "configuration": {
+        "$timestamp": "2023-08-08T12:53:32.1113498Z",
+        "$version": 1
+      }
+    },
+    "splunk": {
+      "configuration": {
+        "endpoint": {
+          "url": "https://10.10.212.27:8088/services/collector/event",
+          "token": "a5a26423-9874-4383-8f31-436c3c86a4ee",
+          "sslCheck": false,
+          "proxy": ""
+        },
+        "host": "COTL0006W05-4034",
+        "interval": 1000,
+        "sendTimestamp": true,
+        "sourceType": "_json",
+        "bufferQueueSettings": {
+          "enablePersist": false
+        },
+        "$messageInputs": {
+          "splunkPoll": "telemetry",
+          "splunk": "event",
+          "$S1.Connected": "telemetry"
+        },
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.SplunkHecModule/versions/3",
+        "$timestamp": "2023-08-08T12:53:32.111479Z",
+        "$version": 5
+      }
+    },
+    "system": {
+      "configuration": {
+        "firewallrules": {
+          "AdminAPIAutoRuleHTTP": {
+            "description": "Auto generated rule from AdminApiModule for HTTP Port.",
+            "action": "accept",
+            "direction": "inbound",
+            "protocol": "tcp",
+            "srcPort": 0,
+            "destPort": 80
+          },
+          "AdminAPIAutoRuleHTTPS": {
+            "description": "Auto generated rule from AdminApiModule for HTTPS Port.",
+            "action": "accept",
+            "direction": "inbound",
+            "protocol": "tcp",
+            "srcPort": 0,
+            "destPort": 443
+          }
+        },
+        "signals": {
+          "groups": {
+            "S1.Conected": {
+              "outputTopic": "S1.Connected",
+              "intervalMs": 15000,
+              "signals": {
+                "W16OetikerEPC01ODUIV10005607": {
+                  "source": "moduleStatus",
+                  "sourceKey": "opcua.status.connection.W16OetikerEPC01ODUIV10005607.reason"
+                }
+              }
+            }
+          }
+        },
+        "$timestamp": "2023-08-08T12:53:32.1143746Z",
+        "$version": 5
+      }
+    }
+  }
+}

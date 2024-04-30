@@ -1,0 +1,256 @@
+{
+  "modules": {
+    "modbus": {
+      "configuration": {
+        "$messageOutputs": {
+          "modbus_test.slave.modbus_PG": "modbus_PG"
+        },
+        "servers": {
+          "modbus_test": {
+            "connection": {
+              "variant": "Tcp",
+              "tcp": {
+                "ipAddress": "10.31.132.58",
+                "port": 4840
+              }
+            },
+            "slaves": {
+              "slave": {
+                "pollGroups": {
+                  "modbus_PG": {
+                    "model": {
+                      "Sensor": {
+                        "registerLength": 1,
+                        "functionCode": 1,
+                        "registerStartAddress": 1,
+                        "isLittleEndian": false
+                      }
+                    },
+                    "intervalMs": 1000,
+                    "sourceMode": "UseSlaveName"
+                  }
+                },
+                "setupGroups": {},
+                "slaveId": 1,
+                "subscriptionGroups": {}
+              }
+            }
+          }
+        },
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.ModbusReaderModule/versions/2",
+        "$timestamp": "2023-10-24T11:49:21.470049Z",
+        "$version": 6
+      }
+    },
+    "center": {
+      "configuration": {
+        "$version": 0
+      }
+    },
+    "mqtt": {
+      "configuration": {
+        "$version": 0
+      }
+    },
+    "azure": {
+      "configuration": {
+        "$version": 0
+      }
+    },
+    "splunk": {
+      "configuration": {
+        "endpoint": {
+          "url": "https://10.10.212.27:8088/services/collector/event",
+          "token": "a5a26423-9874-4383-8f31-436c3c86a4ee",
+          "sslCheck": false,
+          "proxy": ""
+        },
+        "host": "COTL0001W05-4083",
+        "interval": 1000,
+        "sendTimestamp": true,
+        "sourceType": "_json",
+        "bufferQueueSettings": {
+          "enablePersist": false
+        },
+        "$messageInputs": {
+          "$system_signals": "telemetry",
+          "splunk": "event",
+          "splunkPoll": "telemetry"
+        },
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.SplunkHecModule/versions/3",
+        "$timestamp": "2023-12-07T13:02:17.7439986Z",
+        "$version": 10
+      }
+    },
+    "opcua": {
+      "configuration": {
+        "servers": {
+          "W16WeerthCUPPIV16780960": {
+            "endpoint": {
+              "pollGroups": {
+                "S1.Data": {
+                  "nodes": {
+                    "S1.MachineDowntime_PG": "ns=2;s=S7-1.DB.GVL_Gr00OPCUA.State1.bMachineDowntime",
+                    "S1.Producing_PG": "ns=2;s=S7-1.DB.GVL_Gr00OPCUA.State1.bProducing",
+                    "S1.Waiting_PG": "ns=2;s=S7-1.DB.GVL_Gr00OPCUA.State1.bWaiting",
+                    "S1.AutomaticMode_PG": "ns=2;s=S7-1.DB.GVL_Gr00OPCUA.State1.bAutomaticMode",
+                    "S1.ManualMode_PG": "ns=2;s=S7-1.DB.GVL_Gr00OPCUA.State1.bManualMode"
+                  },
+                  "name": "S1.Data",
+                  "outputTopic": "splunkPoll",
+                  "intervalMs": 15000
+                }
+              },
+              "subscriptionGroups": {
+                "W16WeerthCUPPIV16780960": {
+                  "onChangeSubmitFullModel": false,
+                  "onRepublishSubmitFullModel": true,
+                  "nodes": {
+                    "S1.Connected": "ns=2;s=S7-1.DB.GVL_Gr00OPCUA.State1.bConnected",
+                    "S7.ProductName": "ns=2;s=S7-1.DB.GVL_Gr00OPCUA.State7.sProductName",
+                    "S7.ModelNumber": "ns=2;s=S7-1.DB.GVL_Gr00OPCUA.State7.rModelNumber",
+                    "S1.QuantityPulse": "ns=2;s=S7-1.DB.GVL_Gr00OPCUA.State1.bQuanityPulse",
+                    "S7.TestingPassed": "ns=2;s=S7-1.DB.GVL_Gr00OPCUA.State7.bPassed",
+                    "S7.TestingFailed": "ns=2;s=S7-1.DB.GVL_Gr00OPCUA.State7.bFailed"
+                  },
+                  "name": "W16WeerthCUPPIV16780960",
+                  "outputTopic": "splunk",
+                  "publishingIntervalMs": 250
+                }
+              },
+              "subscriptions": {},
+              "url": "opc.tcp://10.31.132.58:4840",
+              "resetBlackListIntervalMs": 15000
+            },
+            "client": {
+              "application": {
+                "security": {
+                  "authentication": {
+                    "credentials": {},
+                    "strategy": "Anonymous"
+                  },
+                  "endpoint": {
+                    "isEnabled": false,
+                    "level": 0,
+                    "mode": "None",
+                    "policy": "None",
+                    "timeout": 15000
+                  }
+                }
+              },
+              "session": {
+                "subscription": {}
+              },
+              "optimizeNodeValueReadAccess": false
+            },
+            "edgeMethodMapping": {}
+          }
+        },
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.OpcUaClientModule/versions/2",
+        "$messageOutputs": {
+          "W16WeerthCUPPIV16780960.S1.Data": "splunkPoll",
+          "W16WeerthCUPPIV16780960.W16WeerthCUPPIV16780960": "splunk"
+        },
+        "$timestamp": "2024-03-15T07:08:55.9094915Z",
+        "$version": 15
+      }
+    },
+    "mustache": {
+      "configuration": {
+        "$version": 0
+      }
+    },
+    "rfcreader": {
+      "configuration": {
+        "$messageOutputs": {
+          "PLC.test_RFC": "test_RFC"
+        },
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.RFC1006ReaderModule/versions/1",
+        "plcs": {
+          "PLC": {
+            "connection": {
+              "cpu": "S71500",
+              "ip": "10.31.132.58",
+              "rack": 0,
+              "slot": 2
+            },
+            "pollGroups": {
+              "test_RFC": {
+                "model": {
+                  "Sensor": {
+                    "bit": 0,
+                    "intervalMs": 1000,
+                    "count": 1,
+                    "varType": "Byte",
+                    "dataType": "Input",
+                    "startByte": 1000
+                  }
+                },
+                "intervalMs": 1000
+              }
+            },
+            "subscriptionGroups": {}
+          }
+        },
+        "$timestamp": "2023-10-24T12:21:03.3830142Z",
+        "$version": 2
+      }
+    },
+    "logger": {
+      "configuration": {
+        "$version": 0
+      }
+    },
+    "streamprocessor": {
+      "configuration": {
+        "$version": 0
+      }
+    },
+    "system": {
+      "configuration": {
+        "firewallrules": {
+          "AdminAPIAutoRuleHTTP": {
+            "description": "Auto generated rule from AdminApiModule for HTTP Port.",
+            "action": "accept",
+            "direction": "inbound",
+            "protocol": "tcp",
+            "srcPort": 0,
+            "destPort": 80
+          },
+          "AdminAPIAutoRuleHTTPS": {
+            "description": "Auto generated rule from AdminApiModule for HTTPS Port.",
+            "action": "accept",
+            "direction": "inbound",
+            "protocol": "tcp",
+            "srcPort": 0,
+            "destPort": 443
+          }
+        },
+        "signals": {
+          "groups": {
+            "system_signals": {
+              "outputTopic": "system_signals",
+              "intervalMs": 1000,
+              "signals": {
+                "ss_opc": {
+                  "source": "moduleStatus",
+                  "sourceKey": "opcua.status.connection.W16WeerthCUPPIV16780960.code"
+                },
+                "ss_modbus_old": {
+                  "source": "moduleStatus",
+                  "sourceKey": "modbus.status.overall.code"
+                },
+                "ss_modbus": {
+                  "source": "moduleStatus",
+                  "sourceKey": "modbus.status.connection.modbus_test.code"
+                }
+              }
+            }
+          }
+        },
+        "$timestamp": "2023-10-24T12:56:33.3146978Z",
+        "$version": 8
+      }
+    }
+  }
+}

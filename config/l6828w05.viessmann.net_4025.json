@@ -1,0 +1,449 @@
+{
+  "modules": {
+    "mustache": {
+      "configuration": {
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.MustacheEnricherModule/versions/1",
+        "templates": {
+          "body": "{{message.body}}",
+          "headers": {
+            "name": "Event"
+          },
+          "modules": {},
+          "library": "",
+          "messageOutput": ""
+        },
+        "$messageInputs": {
+          "splunk": "raw"
+        },
+        "$messageOutputs": {
+          "result": "isbEvent"
+        },
+        "environment": {},
+        "$timestamp": "2023-11-03T06:13:33.1673892Z",
+        "$version": 1
+      }
+    },
+    "azure": {
+      "configuration": {
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.IotHubSenderModule/versions/1",
+        "$timestamp": "2023-11-03T06:13:33.1149703Z",
+        "$version": 1
+      }
+    },
+    "center": {
+      "configuration": {
+        "$timestamp": "2023-11-03T06:13:33.1695669Z",
+        "$version": 1
+      }
+    },
+    "modbus": {
+      "configuration": {
+        "$messageOutputs": {
+          "modbus_test.slave.modbus_PG": "modbus_PG"
+        },
+        "servers": {
+          "modbus_test": {
+            "connection": {
+              "variant": "Tcp",
+              "tcp": {
+                "ipAddress": "199.216.0.41",
+                "port": 4840
+              }
+            },
+            "slaves": {
+              "slave": {
+                "pollGroups": {
+                  "modbus_PG": {
+                    "model": {
+                      "Sensor": {
+                        "registerStartAddress": 1,
+                        "registerLength": 1,
+                        "functionCode": 1
+                      }
+                    },
+                    "intervalMs": 1000,
+                    "sourceMode": "UseSlaveName"
+                  }
+                },
+                "setupGroups": {},
+                "slaveId": 1,
+                "subscriptionGroups": {}
+              }
+            }
+          }
+        },
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.ModbusReaderModule/versions/2",
+        "$timestamp": "2023-11-03T06:13:33.1193815Z",
+        "$version": 1
+      }
+    },
+    "mqtt": {
+      "configuration": {
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.MqttSenderModule/versions/2",
+        "broker": {
+          "tls": {
+            "allowUntrustedCertificates": true,
+            "use": true
+          },
+          "cleansession": true,
+          "clientid": "W16HeliumtesterLineKMIV44797",
+          "enabled": true,
+          "hostname": "I6683w05.viessmann.net",
+          "password": "testMaschine",
+          "port": 8443,
+          "username": "testMaschine"
+        },
+        "$messageInputs": {
+          "isbEvent": "data",
+          "splunkPoll": "data"
+        },
+        "default_message_retain_flag": false,
+        "topic": "isb/1/1/Test//eq/W16HeliumtesterLineKMIV44797/inSignals{name}/{scope}",
+        "skip_non_json_messages_from_mqttbroker": true,
+        "$messageOutputs": {},
+        "subscribe": {},
+        "maxQueueSize": 1000,
+        "$timestamp": "2023-11-03T06:13:33.1181556Z",
+        "$version": 1
+      }
+    },
+    "rfcreader": {
+      "configuration": {
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.RFC1006ReaderModule/versions/1",
+        "$timestamp": "2023-11-03T06:13:33.1674573Z",
+        "$version": 1
+      }
+    },
+    "opcua": {
+      "configuration": {
+        "servers": {
+          "W16HeliumtesterLineKMIV44797": {
+            "client": {
+              "session": {
+                "subscription": {}
+              },
+              "application": {
+                "security": {
+                  "authentication": {
+                    "strategy": "Anonymous",
+                    "credentials": {}
+                  },
+                  "endpoint": {
+                    "isEnabled": true,
+                    "level": 0,
+                    "mode": "None",
+                    "timeout": 15000,
+                    "policy": "None"
+                  }
+                }
+              },
+              "optimizeNodeValueReadAccess": false
+            },
+            "endpoint": {
+              "url": "opc.tcp://199.216.0.41:4840",
+              "subscriptions": {},
+              "pollGroups": {
+                "S1.Data": {
+                  "nodes": {
+                    "S1.Waiting_PG": "ns=2;s=S7-1.IOT-SmartFactory.State_1.Waiting",
+                    "S1.MachineDowntime_PG": "ns=2;s=S7-1.IOT-SmartFactory.State_1.MachineDowntime",
+                    "S1.Producing_PG": "ns=2;s=S7-1.IOT-SmartFactory.State_1.Producing",
+                    "S1.MaintenanceMode_PG": "ns=2;s=S7-1.IOT-SmartFactory.State_1.MaintenanceMode",
+                    "S1.SettingMode_PG": "ns=2;s=S7-1.IOT-SmartFactory.State_1.SettingMode"
+                  },
+                  "intervalMs": 15000,
+                  "name": "S1.Data",
+                  "outputTopic": "splunkPoll"
+                },
+                "S7.Data": {
+                  "nodes": {
+                    "S7-1.ISTWERTE.MASCHINEN_FAKTOR_PG": "ns=2;s=S7-1.ISTWERTE.MASCHINEN_FAKTOR"
+                  },
+                  "name": "S7.Data",
+                  "outputTopic": "splunkPoll",
+                  "intervalMs": 300000
+                },
+                "GatewayWatchdog": {
+                  "nodes": {
+                    "Gateway_Temperature_PG": "ns=3;s=_System.General.Temperature"
+                  },
+                  "name": "GatewayWatchdog",
+                  "outputTopic": "splunkPoll",
+                  "intervalMs": 900000
+                }
+              },
+              "subscriptionGroups": {
+                "W16HeliumtesterLineKMIV44797": {
+                  "publishingIntervalMs": 500,
+                  "republishingIntervalMs": 0,
+                  "onChangeSubmitFullModel": false,
+                  "onRepublishSubmitFullModel": false,
+                  "nodes": {
+                    "S1.InternalComm": "ns=2;s=S7-1.IOT-SmartFactory.State_1.InternalComm",
+                    "S1.SetupMode": "ns=2;s=S7-1.IOT-SmartFactory.State_1.SetupMode",
+                    "S1.CollectedError": "ns=2;s=S7-1.IOT-SmartFactory.State_1.CollectedError",
+                    "S1.CollectedOperating": "ns=2;s=S7-1.IOT-SmartFactory.State_1.CollectedOperating",
+                    "S1.QuantityPulse": "ns=2;s=S7-1.IOT-SmartFactory.State_1.QuantityPulse",
+                    "S1.SettingMode": "ns=2;s=S7-1.IOT-SmartFactory.State_1.SettingMode",
+                    "S1.AutomaticMode": "ns=2;s=S7-1.IOT-SmartFactory.State_1.AutomaticMode",
+                    "S1.ManualMode": "ns=2;s=S7-1.IOT-SmartFactory.State_1.ManualMode",
+                    "S1.Producing": "ns=2;s=S7-1.IOT-SmartFactory.State_1.Producing",
+                    "S7.TestingPassed": "ns=2;s=S7-1.SOLLWERT.PASS",
+                    "S1.Connected": "ns=2;s=S7-1.IOT-SmartFactory.State_1.Connected",
+                    "S7.TestingFailed": "ns=2;s=S7-1.SOLLWERT.FAIL",
+                    "S1.PowerOn": "ns=2;s=S7-1.IOT-SmartFactory.State_1.PowerOn",
+                    "S1.MachineDowntime": "ns=2;s=S7-1.IOT-SmartFactory.State_1.MachineDowntime",
+                    "S1.Waiting": "ns=2;s=S7-1.IOT-SmartFactory.State_1.Waiting",
+                    "S1.MaintenanceMode": "ns=2;s=S7-1.IOT-SmartFactory.State_1.MaintenanceMode",
+                    "S7.TestingPassed_OLD": "ns=2;s=S7-1.IOT-SmartFactory.Process.TestStation.Result.Pass",
+                    "S7.TestingFailed_OLD": "ns=2;s=S7-1.IOT-SmartFactory.Process.TestStation.Result.Fail",
+                    "S7.ModelNumber": "ns=2;s=S7-1.SOLLWERT.SACHNUMMER",
+                    "S7.IdentNumber": "ns=2;s=S7-1.SOLLWERT.IDENTNUMMER",
+                    "S7-1.ISTWERTE.ABBRUCH_GROBLECK": "ns=2;s=S7-1.ISTWERTE.ABBRUCH_GROBLECK",
+                    "S7-1.ISTWERTE.ABBRUCH_UEBERDRUCK_ND": "ns=2;s=S7-1.ISTWERTE.ABBRUCH_UEBERDRUCK_ND",
+                    "S7-1.ISTWERTE.ABBRUCH_DRUCKVERLUST_HD": "ns=2;s=S7-1.ISTWERTE.ABBRUCH_DRUCKVERLUST_HD",
+                    "S7-1.ISTWERTE.KATASTROPHENTRIGGER": "ns=2;s=S7-1.ISTWERTE.KATASTROPHENTRIGGER",
+                    "S7-1.ISTWERTE.ABBRUCH_WERKER": "ns=2;s=S7-1.ISTWERTE.ABBRUCH_WERKER",
+                    "S7-1.ISTWERTE.ABBRUCH_KEIN_PRUEFLING": "ns=2;s=S7-1.ISTWERTE.ABBRUCH_KEIN_PRUEFLING",
+                    "S7-1.ISTWERTE.ABBRUCH_GLPR_DIFF_DRUCK": "ns=2;s=S7-1.ISTWERTE.ABBRUCH_GLPR_DIFF_DRUCK",
+                    "S7-1.ISTWERTE.ABBRUCH_HDPR_DIFF_DRUCK": "ns=2;s=S7-1.ISTWERTE.ABBRUCH_HDPR_DIFF_DRUCK",
+                    "S7-1.ISTWERTE.ABBRUCH_UEBERDRUCK_HD": "ns=2;s=S7-1.ISTWERTE.ABBRUCH_UEBERDRUCK_HD",
+                    "S7-1.ISTWERTE.T_GROBLECK_PRUEFUNG": "ns=2;s=S7-1.ISTWERTE.T_GROBLECK_PRUEFUNG",
+                    "S7-1.ISTWERTE.TTL_KAMMER_EVAKUIEREN": "ns=2;s=S7-1.ISTWERTE.TTL_KAMMER_EVAKUIEREN",
+                    "S7-1.ISTWERTE.TTL_PRUEFLING_ENTSPANNEN": "ns=2;s=S7-1.ISTWERTE.TTL_PRUEFLING_ENTSPANNEN",
+                    "S7-1.ISTWERTE.TTL_PRUEFLING_EVAKUIEREN": "ns=2;s=S7-1.ISTWERTE.TTL_PRUEFLING_EVAKUIEREN",
+                    "S7-1.ISTWERTE.T_STABILISIERUNGSZEIT": "ns=2;s=S7-1.ISTWERTE.T_STABILISIERUNGSZEIT",
+                    "S7-1.ISTWERTE.T_PRUEFZEIT_LECKSUCHE": "ns=2;s=S7-1.ISTWERTE.T_PRUEFZEIT_LECKSUCHE",
+                    "S7-1.ISTWERTE.TTL_PRUEFL_MIT_N_FUELLEN": "ns=2;s=S7-1.ISTWERTE.TTL_PRUEFL_MIT_N_FUELLEN",
+                    "S7-1.ISTWERTE.TTL_PRUEFL_MI_He_FUELLEN": "ns=2;s=S7-1.ISTWERTE.TTL_PRUEFL_MI_He_FUELLEN",
+                    "S7-1.ISTWERTE.TTL_KAMMER_ENTSPANNEN": "ns=2;s=S7-1.ISTWERTE.TTL_KAMMER_ENTSPANNEN",
+                    "S7-1.ISTWERTE.MESSWERT_PEW256": "ns=2;s=S7-1.ISTWERTE.MESSWERT_PEW256",
+                    "S7-1.ISTWERTE._ROHWERT_PEW256": "ns=2;s=S7-1.ISTWERTE._ROHWERT_PEW256",
+                    "S7-1.ISTWERTE._ROHWERT_PEW258": "ns=2;s=S7-1.ISTWERTE._ROHWERT_PEW258",
+                    "S7-1.ISTWERTE.MESSWERT_PEW258": "ns=2;s=S7-1.ISTWERTE.MESSWERT_PEW258",
+                    "S7-1.ISTWERTE.MESSWERT_PEW260_V": "ns=2;s=S7-1.ISTWERTE.MESSWERT_PEW260_V",
+                    "S7-1.ISTWERTE.MESSWERT_PEW260_mbar": "ns=2;s=S7-1.ISTWERTE.MESSWERT_PEW260_mbar",
+                    "S7-1.ISTWERTE.B_DBB": "ns=2;s=S7-1.ISTWERTE.B_DBB",
+                    "S7-1.ISTWERTE.LECKRATE_LDS2010_ROH": "ns=2;s=S7-1.ISTWERTE.LECKRATE_LDS2010_ROH",
+                    "S7-1.ISTWERTE.LECKRATE_LDS2010_KORR": "ns=2;s=S7-1.ISTWERTE.LECKRATE_LDS2010_KORR",
+                    "S7-1.ISTWERTE.ERG_LECKRATE_KORRIGIERT": "ns=2;s=S7-1.ISTWERTE.ERG_LECKRATE_KORRIGIERT",
+                    "S7-1.ISTWERTE.VORVAKUUMDRUCK_LDS2010": "ns=2;s=S7-1.ISTWERTE.VORVAKUUMDRUCK_LDS2010",
+                    "S7-1.ISTWERTE.KATA_STROPHEN_GRENZWERT": "ns=2;s=S7-1.ISTWERTE.KATA_STROPHEN_GRENZWERT",
+                    "S7-1.ISTWERTE.MASCHINEN_FAKTOR": "ns=2;s=S7-1.ISTWERTE.MASCHINEN_FAKTOR",
+                    "S7-1.ISTWERTE.ND_SCHALTER_SCHALTWERT": "ns=2;s=S7-1.ISTWERTE.ND_SCHALTER_SCHALTWERT",
+                    "S7-1.ISTWERTE.SHD_1_SCHALTWERT": "ns=2;s=S7-1.ISTWERTE.SHD_1_SCHALTWERT",
+                    "S7-1.ISTWERTE.SHD_2_SCHALTWERT": "ns=2;s=S7-1.ISTWERTE.SHD_2_SCHALTWERT",
+                    "S7-1.ISTWERTE.C_DBB": "ns=2;s=S7-1.ISTWERTE.C_DBB",
+                    "S7-1.ISTWERTE.AKT_BETRSTD_601M1": "ns=2;s=S7-1.ISTWERTE.AKT_BETRSTD_601M1",
+                    "S7-1.ISTWERTE.GESAMT_BETRSTD_601M1": "ns=2;s=S7-1.ISTWERTE.GESAMT_BETRSTD_601M1",
+                    "S7-1.ISTWERTE.STATUS_BETRSTD_601M1": "ns=2;s=S7-1.ISTWERTE.STATUS_BETRSTD_601M1",
+                    "S7-1.ISTWERTE.WARTUNG_PUMPE_601M1": "ns=2;s=S7-1.ISTWERTE.WARTUNG_PUMPE_601M1",
+                    "S7-1.ISTWERTE.AKT_BETRSTD_601M2": "ns=2;s=S7-1.ISTWERTE.AKT_BETRSTD_601M2",
+                    "S7-1.ISTWERTE.GESAMT_BETRSTD_601M2": "ns=2;s=S7-1.ISTWERTE.GESAMT_BETRSTD_601M2",
+                    "S7-1.ISTWERTE.STATUS_BETRSTD_601M2": "ns=2;s=S7-1.ISTWERTE.STATUS_BETRSTD_601M2",
+                    "S7-1.ISTWERTE.WARTUNG_PUMPE_601M2": "ns=2;s=S7-1.ISTWERTE.WARTUNG_PUMPE_601M2",
+                    "S7-1.ISTWERTE.AKT_BETRSTD_602M1": "ns=2;s=S7-1.ISTWERTE.AKT_BETRSTD_602M1",
+                    "S7-1.ISTWERTE.GESAMT_BETRSTD_602M1": "ns=2;s=S7-1.ISTWERTE.GESAMT_BETRSTD_602M1",
+                    "S7-1.ISTWERTE.STATUS_BETRSTD_602M1": "ns=2;s=S7-1.ISTWERTE.STATUS_BETRSTD_602M1",
+                    "S7-1.ISTWERTE.WARTUNG_PUMPE_602M1": "ns=2;s=S7-1.ISTWERTE.WARTUNG_PUMPE_602M1",
+                    "S7-1.ISTWERTE.AKT_BETRSTD_602M2": "ns=2;s=S7-1.ISTWERTE.AKT_BETRSTD_602M2",
+                    "S7-1.ISTWERTE.GESAMT_BETRSTD_602M2": "ns=2;s=S7-1.ISTWERTE.GESAMT_BETRSTD_602M2",
+                    "S7-1.ISTWERTE.STATUS_BETRSTD_602M2": "ns=2;s=S7-1.ISTWERTE.STATUS_BETRSTD_602M2",
+                    "S7-1.ISTWERTE.WARTUNG_PUMPE_602M2": "ns=2;s=S7-1.ISTWERTE.WARTUNG_PUMPE_602M2",
+                    "S7-1.ISTWERTE._ROHWERT_PEW274": "ns=2;s=S7-1.ISTWERTE._ROHWERT_PEW274",
+                    "S7-1.ISTWERTE.MESSWERT_PEW274": "ns=2;s=S7-1.ISTWERTE.MESSWERT_PEW274",
+                    "S7-1.ISTWERTE._ROHWERT_PEW276": "ns=2;s=S7-1.ISTWERTE._ROHWERT_PEW276",
+                    "S7-1.ISTWERTE.MESSWERT_PEW276": "ns=2;s=S7-1.ISTWERTE.MESSWERT_PEW276",
+                    "S7-1.ISTWERTE._ROHWERT_PEW278": "ns=2;s=S7-1.ISTWERTE._ROHWERT_PEW278",
+                    "S7-1.ISTWERTE.MESSWERT_PEW278": "ns=2;s=S7-1.ISTWERTE.MESSWERT_PEW278",
+                    "S7-1.ISTWERTE._ROHWERT_PEW280": "ns=2;s=S7-1.ISTWERTE._ROHWERT_PEW280",
+                    "S7-1.ISTWERTE.MESSWERT_PEW280": "ns=2;s=S7-1.ISTWERTE.MESSWERT_PEW280",
+                    "S7-1.ISTWERTE._ROHWERT_PEW282": "ns=2;s=S7-1.ISTWERTE._ROHWERT_PEW282",
+                    "S7-1.ISTWERTE.MESSWERT_PEW282": "ns=2;s=S7-1.ISTWERTE.MESSWERT_PEW282",
+                    "S7-1.ISTWERTE._ROHWERT_PEW284": "ns=2;s=S7-1.ISTWERTE._ROHWERT_PEW284",
+                    "S7-1.ISTWERTE.MESSWERT_PEW284": "ns=2;s=S7-1.ISTWERTE.MESSWERT_PEW284",
+                    "S7-1.ISTWERTE._ROHWERT_PEW264": "ns=2;s=S7-1.ISTWERTE._ROHWERT_PEW264",
+                    "S7-1.ISTWERTE.MESSWERT_PEW264": "ns=2;s=S7-1.ISTWERTE.MESSWERT_PEW264",
+                    "S7-1.SOLLWERT.PROGRAMMBITS": "ns=2;s=S7-1.SOLLWERT.PROGRAMMBITS",
+                    "S7-1.SOLLWERT.PRUEFL_ENTSPANNT_RAUS": "ns=2;s=S7-1.SOLLWERT.PRUEFL_ENTSPANNT_RAUS",
+                    "S7-1.SOLLWERT.PRUEFL_EVAKUIERT_RAUS": "ns=2;s=S7-1.SOLLWERT.PRUEFL_EVAKUIERT_RAUS",
+                    "S7-1.SOLLWERT.PRUEFL_MIT_STICKST_RAUS": "ns=2;s=S7-1.SOLLWERT.PRUEFL_MIT_STICKST_RAUS",
+                    "S7-1.SOLLWERT.PRUEFUNG_ND_SCHALTER": "ns=2;s=S7-1.SOLLWERT.PRUEFUNG_ND_SCHALTER",
+                    "S7-1.SOLLWERT.MIT_N2_GROBLECKPRUEFUNG": "ns=2;s=S7-1.SOLLWERT.MIT_N2_GROBLECKPRUEFUNG",
+                    "S7-1.SOLLWERT.MIT_N2_HOCHDRUCKPRUEFUNG": "ns=2;s=S7-1.SOLLWERT.MIT_N2_HOCHDRUCKPRUEFUNG",
+                    "S7-1.SOLLWERT.DRUCKSENSOR_IM_PRUEFLING": "ns=2;s=S7-1.SOLLWERT.DRUCKSENSOR_IM_PRUEFLING",
+                    "S7-1.SOLLWERT.PRUEF_GRUPPE_1": "ns=2;s=S7-1.SOLLWERT.PRUEF_GRUPPE_1",
+                    "S7-1.SOLLWERT.PRUEF_GRUPPE_2": "ns=2;s=S7-1.SOLLWERT.PRUEF_GRUPPE_2",
+                    "S7-1.SOLLWERT.PRUEF_GRUPPE_3": "ns=2;s=S7-1.SOLLWERT.PRUEF_GRUPPE_3",
+                    "S7-1.SOLLWERT.PRUEF_GRUPPE_4": "ns=2;s=S7-1.SOLLWERT.PRUEF_GRUPPE_4",
+                    "S7-1.SOLLWERT.PRUEF_GRUPPE_5_Split_1": "ns=2;s=S7-1.SOLLWERT.PRUEF_GRUPPE_5_Split_1",
+                    "S7-1.SOLLWERT.PRUEF_GRUPPE_5_Split_2": "ns=2;s=S7-1.SOLLWERT.PRUEF_GRUPPE_5_Split_2",
+                    "S7-1.SOLLWERT.STEUERBITS_HAND": "ns=2;s=S7-1.SOLLWERT.STEUERBITS_HAND",
+                    "S7-1.SOLLWERT.STEUERBITS_EINR": "ns=2;s=S7-1.SOLLWERT.STEUERBITS_EINR",
+                    "S7-1.SOLLWERT.STEUERBITS_AUTO": "ns=2;s=S7-1.SOLLWERT.STEUERBITS_AUTO",
+                    "S7-1.SOLLWERT.A_DBB": "ns=2;s=S7-1.SOLLWERT.A_DBB",
+                    "S7-1.SOLLWERT.PRUEFZEIT_GROBLECK": "ns=2;s=S7-1.SOLLWERT.PRUEFZEIT_GROBLECK",
+                    "S7-1.SOLLWERT.TTL_KAMMER_EVAKUIEREN": "ns=2;s=S7-1.SOLLWERT.TTL_KAMMER_EVAKUIEREN",
+                    "S7-1.SOLLWERT.TTL_PRUEFLING_ENTSPANNEN": "ns=2;s=S7-1.SOLLWERT.TTL_PRUEFLING_ENTSPANNEN",
+                    "S7-1.SOLLWERT.TTL_PRUEFLING_EVAKUIEREN": "ns=2;s=S7-1.SOLLWERT.TTL_PRUEFLING_EVAKUIEREN",
+                    "S7-1.SOLLWERT.STABILISIERUNGSZEIT": "ns=2;s=S7-1.SOLLWERT.STABILISIERUNGSZEIT",
+                    "S7-1.SOLLWERT.PRUEFZEIT_LECKSUCHE": "ns=2;s=S7-1.SOLLWERT.PRUEFZEIT_LECKSUCHE",
+                    "S7-1.SOLLWERT.TTL_PRUEFL_MIT_N_FUELLEN": "ns=2;s=S7-1.SOLLWERT.TTL_PRUEFL_MIT_N_FUELLEN",
+                    "S7-1.SOLLWERT.TTL_PRUEFL_MI_He_FUELLEN": "ns=2;s=S7-1.SOLLWERT.TTL_PRUEFL_MI_He_FUELLEN",
+                    "S7-1.SOLLWERT.TTL_KAMMER_ENTSPANNEN": "ns=2;s=S7-1.SOLLWERT.TTL_KAMMER_ENTSPANNEN",
+                    "S7-1.SOLLWERT.BEHARRUNG_DRUCKAUSGLEICH": "ns=2;s=S7-1.SOLLWERT.BEHARRUNG_DRUCKAUSGLEICH",
+                    "S7-1.SOLLWERT.N2_ENTNAHME_DRUCK": "ns=2;s=S7-1.SOLLWERT.N2_ENTNAHME_DRUCK",
+                    "S7-1.SOLLWERT.HELIUM_PRUEFDRUCK_PRUEFL": "ns=2;s=S7-1.SOLLWERT.HELIUM_PRUEFDRUCK_PRUEFL",
+                    "S7-1.SOLLWERT.VAKUUM_ENDDRUCK_PRUEFL": "ns=2;s=S7-1.SOLLWERT.VAKUUM_ENDDRUCK_PRUEFL",
+                    "S7-1.SOLLWERT.VAKUUM_ENDDRUCK_KAMMER": "ns=2;s=S7-1.SOLLWERT.VAKUUM_ENDDRUCK_KAMMER",
+                    "S7-1.SOLLWERT.GRENZLECKRATE": "ns=2;s=S7-1.SOLLWERT.GRENZLECKRATE",
+                    "S7-1.SOLLWERT.LECKRATE_TESTLECK": "ns=2;s=S7-1.SOLLWERT.LECKRATE_TESTLECK",
+                    "S7-1.SOLLWERT.N2_FUELLDRUCK": "ns=2;s=S7-1.SOLLWERT.N2_FUELLDRUCK",
+                    "S7-1.SOLLWERT.N2_PRUEFDRUCK": "ns=2;s=S7-1.SOLLWERT.N2_PRUEFDRUCK",
+                    "S7-1.SOLLWERT.N2_DRUCK_HALTEZEIT": "ns=2;s=S7-1.SOLLWERT.N2_DRUCK_HALTEZEIT",
+                    "S7-1.SOLLWERT.DeltaP_GROBLECKDRUCK": "ns=2;s=S7-1.SOLLWERT.DeltaP_GROBLECKDRUCK",
+                    "S7-1.SOLLWERT.DeltaP_HOCHDRUCK": "ns=2;s=S7-1.SOLLWERT.DeltaP_HOCHDRUCK",
+                    "S7-1.SOLLWERT.B_DBB": "ns=2;s=S7-1.SOLLWERT.B_DBB",
+                    "S7-1.SOLLWERT.RS_AKT_BETRSTD_601M1": "ns=2;s=S7-1.SOLLWERT.RS_AKT_BETRSTD_601M1",
+                    "S7-1.SOLLWERT.WART_BETRSTD_601M1": "ns=2;s=S7-1.SOLLWERT.WART_BETRSTD_601M1",
+                    "S7-1.SOLLWERT.RS_AKT_BETRSTD_601M2": "ns=2;s=S7-1.SOLLWERT.RS_AKT_BETRSTD_601M2",
+                    "S7-1.SOLLWERT.WART_BETRSTD_601M2": "ns=2;s=S7-1.SOLLWERT.WART_BETRSTD_601M2",
+                    "S7-1.SOLLWERT.RS_AKT_BETRSTD_602M1": "ns=2;s=S7-1.SOLLWERT.RS_AKT_BETRSTD_602M1",
+                    "S7-1.SOLLWERT.WART_BETRSTD_602M1": "ns=2;s=S7-1.SOLLWERT.WART_BETRSTD_602M1",
+                    "S7-1.SOLLWERT.RS_AKT_BETRSTD_602M2": "ns=2;s=S7-1.SOLLWERT.RS_AKT_BETRSTD_602M2",
+                    "S7-1.SOLLWERT.WART_BETRSTD_602M2": "ns=2;s=S7-1.SOLLWERT.WART_BETRSTD_602M2",
+                    "S7-1.SOLLWERT.DB58_PVPER_ON": "ns=2;s=S7-1.SOLLWERT.DB58_PVPER_ON",
+                    "S7-1.SOLLWERT.DB58_CYCLE": "ns=2;s=S7-1.SOLLWERT.DB58_CYCLE",
+                    "S7-1.SOLLWERT.DB58_GAIN": "ns=2;s=S7-1.SOLLWERT.DB58_GAIN",
+                    "S7-1.SOLLWERT.DB58_TI": "ns=2;s=S7-1.SOLLWERT.DB58_TI",
+                    "S7-1.SOLLWERT.DB58_PER_MODE": "ns=2;s=S7-1.SOLLWERT.DB58_PER_MODE",
+                    "S7-1.SOLLWERT.DB58_TD": "ns=2;s=S7-1.SOLLWERT.DB58_TD",
+                    "S7-1.SOLLWERT.DB58_LMN_HLM": "ns=2;s=S7-1.SOLLWERT.DB58_LMN_HLM",
+                    "S7-1.SOLLWERT.DB58_LMN_LLM": "ns=2;s=S7-1.SOLLWERT.DB58_LMN_LLM",
+                    "S7-1.SOLLWERT.DB58_PV_FAC": "ns=2;s=S7-1.SOLLWERT.DB58_PV_FAC",
+                    "S7.DO_2.0_Close_Door": "ns=2;s=S7-1.Standard-Variablentabelle.=02-Y2.0_GLOCKE FAHR ZU",
+                    "S7.DO_Y4.0_VK2_KAMMER_EVAK": "ns=2;s=S7-1.Standard-Variablentabelle.=02-Y4.0_VK2 KAMMER EVAK",
+                    "S5.DI.S1.5G.DoorsOpened": "ns=2;s=S7-1.Standard-Variablentabelle.=02-S1.5G VAKUGLOCK_AUF",
+                    "S5.DO.Y2.1.DoorsOpen": "ns=2;s=S7-1.Standard-Variablentabelle.=02-Y2.1_GLOCKE FAHR AUF",
+                    "S5.DI.S1.6G.DoorsClosed": "ns=2;s=S7-1.Standard-Variablentabelle.=02-S1.6G VAKUGLOCK_ZU"
+                  },
+                  "name": "W16HeliumtesterLineKMIV44797",
+                  "outputTopic": "splunk"
+                },
+                "RgStatus": {
+                  "republishingIntervalMs": 100,
+                  "onChangeSubmitFullModel": false,
+                  "onRepublishSubmitFullModel": true,
+                  "nodes": {
+                    "Server.ServerStatus.StartTime": "i=2257",
+                    "Server.ServerStatus.CurrentTime": "i=2258",
+                    "Server.ServerStatus.State": "i=2259",
+                    "Server.ServerStatus.BuildInfo.ProductUri": "i=2262",
+                    "Server.ServerStatus.BuildInfo.ManufacturerName": "i=2263",
+                    "Server.ServerStatus.BuildInfo.ProductName": "i=2261",
+                    "Server.ServerStatus.BuildInfo.SoftwareVersion": "i=2264",
+                    "Server.ServerStatus.BuildInfo.BuildNumber": "i=2265",
+                    "Server.ServerStatus.BuildInfo.BuildDate": "i=2266",
+                    "Server.ServerStatus.SecondsTillShutdown": "i=2992",
+                    "Server.ServerStatus.ShutdownReason": "i=2993",
+                    "Server.ServerDiagnostics.EnabledFlag": "i=2294",
+                    "Server.ServerDiagnostics.UpdateInterval": "ns=4;s=UpdateInterval",
+                    "Server.ServerDiagnostics.SubscriptionDiagnosticsArray": "i=2290",
+                    "Server.Namespaces.http://opcfoundation.org/UA/.NamespaceUri": "i=15958",
+                    "Server.Namespaces.http://opcfoundation.org/UA/.NamespaceVersion": "i=15959",
+                    "Server.Namespaces.http://opcfoundation.org/UA/.NamespacePublicationDate": "i=15960",
+                    "Server.Namespaces.http://opcfoundation.org/UA/.IsNamespaceSubset": "i=15961",
+                    "Server.Namespaces.http://opcfoundation.org/UA/.StaticNodeIdTypes": "i=15962",
+                    "Server.Namespaces.http://opcfoundation.org/UA/.StaticNumericNodeIdRange": "i=15963",
+                    "Server.Namespaces.http://opcfoundation.org/UA/.StaticStringNodeIdPattern": "i=15964",
+                    "Server.Namespaces.http://opcfoundation.org/UA/.DefaultRolePermissions": "i=16134",
+                    "Server.Namespaces.http://opcfoundation.org/UA/.DefaultUserRolePermissions": "i=16135",
+                    "Server.Namespaces.http://opcfoundation.org/UA/.DefaultAccessRestrictions": "i=16136"
+                  },
+                  "name": "RgStatus",
+                  "outputTopic": "splunk",
+                  "publishingIntervalMs": 1000
+                }
+              },
+              "resetBlackListIntervalMs": 15000
+            },
+            "edgeMethodMapping": {},
+            "conditions": {},
+            "statusCodeMapping": {}
+          }
+        },
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.OpcUaClientModule/versions/2",
+        "$messageOutputs": {
+          "W16HeliumtesterLineKMIV44797.W16HeliumtesterLineKMIV44797": "splunk",
+          "W16HeliumtesterLineKMIV44797.S1.Data": "splunkPoll",
+          "W16HeliumtesterLineKMIV44797.S7.Data": "splunkPoll",
+          "W16HeliumtesterLineKMIV44797.GatewayWatchdog": "splunkPoll",
+          "W16HeliumtesterLineKMIV44797.RgStatus": "splunk"
+        },
+        "$timestamp": "2023-11-03T06:13:33.1674881Z",
+        "$version": 1
+      }
+    },
+    "streamprocessor": {
+      "configuration": {
+        "$timestamp": "2023-11-03T06:13:33.1703481Z",
+        "$version": 1
+      }
+    },
+    "logger": {
+      "configuration": {
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.FileLoggerModule/versions/1",
+        "$timestamp": "2023-11-03T06:13:33.1672668Z",
+        "$version": 1
+      }
+    },
+    "splunk": {
+      "configuration": {
+        "endpoint": {
+          "url": "https://10.13.21.22:8088/services/collector/event",
+          "token": "6112a68b-c8f6-4946-a7dd-7d48a710bc83",
+          "sslCheck": false
+        },
+        "interval": 1000,
+        "$messageInputs": {
+          "splunk": "event",
+          "splunkPoll": "telemetry",
+          "$system_signals": "telemetry"
+        },
+        "host": "I6828w05.4025",
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.SplunkHecModule/versions/3",
+        "sendTimestamp": true,
+        "sourceType": "_json",
+        "bufferQueueSettings": {
+          "enablePersist": false
+        },
+        "$timestamp": "2024-04-12T05:42:31.2582206Z",
+        "$version": 3
+      }
+    },
+    "system": {
+      "configuration": {
+        "firewallrules": {
+          "AdminAPIAutoRuleHTTP": {
+            "description": "Auto generated rule from AdminApiModule for HTTP Port.",
+            "action": "accept",
+            "direction": "inbound",
+            "protocol": "tcp",
+            "srcPort": 0,
+            "destPort": 80
+          },
+          "AdminAPIAutoRuleHTTPS": {
+            "description": "Auto generated rule from AdminApiModule for HTTPS Port.",
+            "action": "accept",
+            "direction": "inbound",
+            "protocol": "tcp",
+            "srcPort": 0,
+            "destPort": 443
+          }
+        },
+        "$timestamp": "2024-04-11T04:38:30.0418443Z",
+        "$version": 1
+      }
+    }
+  }
+}

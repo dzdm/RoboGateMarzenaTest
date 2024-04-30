@@ -1,0 +1,191 @@
+{
+  "modules": {
+    "azure": {
+      "configuration": {
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.IotHubSenderModule/versions/1",
+        "$timestamp": "2024-04-26T09:41:51.2355059Z",
+        "$version": 12
+      }
+    },
+    "mqtt": {
+      "configuration": {
+        "$schema": "https://schemas.robotron.de/robogate/modules/MqttSender.IotEdge.Modules.MqttSenderModule/versions/1",
+        "$timestamp": "2024-04-26T09:41:51.2419971Z",
+        "$version": 12
+      }
+    },
+    "modbus": {
+      "configuration": {
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.ModbusReaderModule/versions/1",
+        "$timestamp": "2024-04-26T09:41:51.2437237Z",
+        "$version": 12
+      }
+    },
+    "logger": {
+      "configuration": {
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.FileLoggerModule/versions/1",
+        "$timestamp": "2024-04-26T09:41:51.2440584Z",
+        "$version": 12
+      }
+    },
+    "mustache": {
+      "configuration": {
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.MustacheEnricherModule/versions/1",
+        "$timestamp": "2024-04-26T09:41:51.2441547Z",
+        "$version": 12
+      }
+    },
+    "rfcreader": {
+      "configuration": {
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.RFC1006ReaderModule/versions/1",
+        "$timestamp": "2024-04-26T09:41:51.2442253Z",
+        "$version": 12
+      }
+    },
+    "opcua": {
+      "configuration": {
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.OpcUaClientModule/versions/2",
+        "servers": {
+          "W16PS9500CablesGMIV1610000324": {
+            "endpoint": {
+              "pollGroups": {
+                "S1.Data": {
+                  "nodes": {
+                    "S1.Connected_PG": "ns=2;s=S7-1.DB.IOT_DB_GM_PS9500_EQ8511324.IOT_Data.IOT.Connected",
+                    "S1.Producing_PG": "ns=2;s=S7-1.DB.IOT_DB_GM_PS9500_EQ8511324.IOT_Data.IOT_Producing",
+                    "S1.PowerOn_PG": "ns=2;s=S7-1.DB.IOT_DB_GM_PS9500_EQ8511324.IOT_Data.IOT_PowerON",
+                    "S1.MaintenanceMode_PG": "ns=2;s=S7-1.DB.IOT_DB_GM_PS9500_EQ8511324.IOT_Data.IOT_Maintenance",
+                    "S1.SettingMode_PG": "ns=2;s=S7-1.DB.IOT_DB_GM_PS9500_EQ8511324.IOT_Data.IOT_Setting",
+                    "S1.MachineDowntime_PG": "ns=2;s=S7-1.DB.IOT_DB_GM_PS9500_EQ8511324.IOT_Data.IOT_DownTime",
+                    "S1.Waiting_PG": "ns=2;s=S7-1.DB.IOT_DB_GM_PS9500_EQ8511324.IOT_Data.IOT_Waiting",
+                    "S1.KPI_Availability": "ns=2;s=S7-1.DB.IOT_DB_GM_PS9500_EQ8511324.IOT_Data.IOT_KPI_Availability",
+                    "S1.KPI_Utilisation": "ns=2;s=S7-1.DB.IOT_DB_GM_PS9500_EQ8511324.IOT_Data.IOT_KPI_Utilisation",
+                    "S1.KPI_Waiting": "ns=2;s=S7-1.DB.IOT_DB_GM_PS9500_EQ8511324.IOT_Data.IOT_KPI_Waiting",
+                    "S1.KPI_Maintenace": "ns=2;s=S7-1.DB.IOT_DB_GM_PS9500_EQ8511324.IOT_Data.IOT_KPI_Maintenace",
+                    "S1.KPI_Setting": "ns=2;s=S7-1.DB.IOT_DB_GM_PS9500_EQ8511324.IOT_Data.IOT_KPI_Setting",
+                    "S1.KPI_DownTime": "ns=2;s=S7-1.DB.IOT_DB_GM_PS9500_EQ8511324.IOT_Data.IOT_KPI_DownTime",
+                    "S1.KPI_OFF": "ns=2;s=S7-1.DB.IOT_DB_GM_PS9500_EQ8511324.IOT_Data.IOT_KPI_OFF"
+                  },
+                  "intervalMs": 15000,
+                  "name": "S1.Data",
+                  "outputTopic": "splunkPoll"
+                }
+              },
+              "subscriptionGroups": {
+                "W16PS9500CablesGMIV1610000324": {
+                  "onChangeSubmitFullModel": false,
+                  "onRepublishSubmitFullModel": true,
+                  "nodes": {
+                    "S1.QuantityPulse": "ns=2;s=S7-1.DB.IOT_DB_GM_PS9500_EQ8511324.IOT_Data.IOT_Quantity",
+                    "S7.TestingPassed": "ns=2;s=S7-1.DB.IOT_DB_GM_PS9500_EQ8511324.IOT_Data.IOT_KPI_TestingPass",
+                    "S7.TestingFailed": "ns=2;s=S7-1.DB.IOT_DB_GM_PS9500_EQ8511324.IOT_Data.IOT_KPI_TestingFailed"
+                  },
+                  "publishingIntervalMs": 250,
+                  "name": "W16PS9500CablesGMIV1610000324",
+                  "outputTopic": "splunk"
+                }
+              },
+              "subscriptions": {},
+              "url": "opc.tcp://10.31.128.98:4840",
+              "resetBlackListIntervalMs": 15000
+            },
+            "client": {
+              "application": {
+                "security": {
+                  "authentication": {
+                    "credentials": {},
+                    "strategy": "Anonymous"
+                  },
+                  "endpoint": {
+                    "isEnabled": true,
+                    "level": 0,
+                    "mode": "None",
+                    "policy": "None",
+                    "timeout": 15000
+                  }
+                }
+              },
+              "session": {
+                "subscription": {}
+              },
+              "optimizeNodeValueReadAccess": true
+            },
+            "edgeMethodMapping": {},
+            "conditions": {},
+            "statusCodeMapping": {}
+          }
+        },
+        "$messageOutputs": {
+          "W16PS9500CablesGMIV1610000324.S1.Data": "splunkPoll",
+          "W16PS9500CablesGMIV1610000324.W16PS9500CablesGMIV1610000324": "splunk"
+        },
+        "$timestamp": "2024-04-26T09:42:45.6627835Z",
+        "$version": 71
+      }
+    },
+    "splunk": {
+      "configuration": {
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.SplunkHecModule/versions/3",
+        "endpoint": {
+          "url": "https://10.10.212.27:8088/services/collector/event",
+          "token": "a5a26423-9874-4383-8f31-436c3c86a4ee",
+          "sslCheck": false
+        },
+        "host": "COTL0001W05-4051",
+        "interval": 1000,
+        "sendTimestamp": true,
+        "sourceType": "_json",
+        "bufferQueueSettings": {
+          "enablePersist": false
+        },
+        "$messageInputs": {
+          "splunkPoll": "telemetry",
+          "splunk": "event"
+        },
+        "$timestamp": "2024-04-26T09:41:51.2454183Z",
+        "$version": 16
+      }
+    },
+    "center": {
+      "configuration": {
+        "$timestamp": "2024-04-26T09:41:51.2459281Z",
+        "$version": 12
+      }
+    },
+    "streamprocessor": {
+      "configuration": {
+        "$timestamp": "2024-04-26T09:41:51.2460716Z",
+        "$version": 12
+      }
+    },
+    "system": {
+      "configuration": {
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.EcmNetCore.Modules.SystemControlModule/versions/1",
+        "firewallrules": {
+          "AdminAPIAutoRuleHTTP": {
+            "description": "Auto generated rule from AdminApiModule for HTTP Port.",
+            "action": "accept",
+            "direction": "inbound",
+            "protocol": "tcp",
+            "destPort": 80,
+            "srcPort": 0
+          },
+          "AdminAPIAutoRuleHTTPS": {
+            "description": "Auto generated rule from AdminApiModule for HTTPS Port.",
+            "action": "accept",
+            "direction": "inbound",
+            "protocol": "tcp",
+            "destPort": 443,
+            "srcPort": 0
+          }
+        },
+        "metrics": {
+          "interval": 0,
+          "autoReset": false
+        },
+        "$timestamp": "2024-04-26T09:41:51.2461401Z",
+        "$version": 13
+      }
+    }
+  }
+}

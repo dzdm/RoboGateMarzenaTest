@@ -1,0 +1,385 @@
+{
+  "modules": {
+    "modbus": {
+      "configuration": {
+        "$messageOutputs": {
+          "modbus_test.slave.modbus_PG": "modbus_PG"
+        },
+        "servers": {
+          "modbus_test": {
+            "connection": {
+              "variant": "Tcp",
+              "tcp": {
+                "ipAddress": "10.31.132.44",
+                "port": 4840
+              }
+            },
+            "slaves": {
+              "slave": {
+                "pollGroups": {
+                  "modbus_PG": {
+                    "model": {
+                      "Sensor": {
+                        "registerStartAddress": 1,
+                        "registerLength": 1,
+                        "functionCode": 1
+                      }
+                    },
+                    "intervalMs": 1000,
+                    "sourceMode": "UseSlaveName"
+                  }
+                },
+                "setupGroups": {},
+                "slaveId": 1,
+                "subscriptionGroups": {}
+              }
+            }
+          }
+        },
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.ModbusReaderModule/versions/2",
+        "$timestamp": "2023-11-02T12:40:06.1007738Z",
+        "$version": 3
+      }
+    },
+    "center": {
+      "configuration": {
+        "$timestamp": "2023-11-02T12:40:06.1864761Z",
+        "$version": 3
+      }
+    },
+    "mqtt": {
+      "configuration": {
+        "$timestamp": "2023-11-02T12:40:06.1867835Z",
+        "$version": 3
+      }
+    },
+    "azure": {
+      "configuration": {
+        "$timestamp": "2023-11-02T12:40:06.1904276Z",
+        "$version": 3
+      }
+    },
+    "splunk": {
+      "configuration": {
+        "endpoint": {
+          "url": "https://10.10.212.27:8088/services/collector/event",
+          "token": "a5a26423-9874-4383-8f31-436c3c86a4ee",
+          "sslCheck": false,
+          "proxy": ""
+        },
+        "host": "COTL0006W05-4022",
+        "interval": 1000,
+        "sendTimestamp": true,
+        "sourceType": "_json",
+        "bufferQueueSettings": {
+          "enablePersist": false
+        },
+        "$messageInputs": {
+          "splunkPoll": "telemetry",
+          "splunk": "event",
+          "$system_signals": "telemetry"
+        },
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.SplunkHecModule/versions/3",
+        "$timestamp": "2023-11-02T12:40:16.1342684Z",
+        "$version": 7
+      }
+    },
+    "opcua": {
+      "configuration": {
+        "servers": {
+          "W16VDETesterODUIV1673000305": {
+            "endpoint": {
+              "pollGroups": {
+                "S1.Data": {
+                  "nodes": {
+                    "S1.PowerOn_PG": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_1\".\"PowerOn\"",
+                    "S1.AutomaticMode_PG": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_1\".\"AutomaticMode\"",
+                    "S1.ManualMode_PG": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_1\".\"ManualMode\"",
+                    "S1.SetupMode_PG": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_1\".\"SetupMode\"",
+                    "S1.Producing_PG": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_1\".\"Producing\"",
+                    "S1.Waiting_PG": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_1\".\"Waiting\"",
+                    "S1.QuantityPulse_PG": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_1\".\"QuantityPulse\"",
+                    "S1.SettingMode_PG": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_1\".\"SettingMode\"",
+                    "S1.MaintenanceMode_PG": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_1\".\"MaintenanceMode\"",
+                    "S1.MachineDowntime_PG": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_1\".\"MachineDowntime\"",
+                    "S1.Standby_PG": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_1\".\"Standby\""
+                  },
+                  "name": "S1.Data",
+                  "outputTopic": "splunkPoll",
+                  "intervalMs": 15000
+                }
+              },
+              "subscriptionGroups": {
+                "W16VDETesterODUIV1673000305": {
+                  "onChangeSubmitFullModel": false,
+                  "onRepublishSubmitFullModel": true,
+                  "nodes": {
+                    "S4.Pieces.perShift.Total": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_4\".\"Pieces\".\"perShift\".\"Total\"",
+                    "S4.Pieces.perShift.Fail": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_4\".\"Pieces\".\"perShift\".\"Fail\"",
+                    "S4.Pieces.perShift.Pass": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_4\".\"Pieces\".\"perShift\".\"Pass\"",
+                    "S4.Pieces.perShift.Canceled": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_4\".\"Pieces\".\"perShift\".\"Canceled\"",
+                    "S4.Pieces.perShift.Scrap": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_4\".\"Pieces\".\"perShift\".\"Scrap\"",
+                    "S4.Pieces.Lifetime.Total": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_4\".\"Pieces\".\"Lifetime\".\"Total\"",
+                    "S4.Pieces.Lifetime.Pass": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_4\".\"Pieces\".\"Lifetime\".\"Pass\"",
+                    "S4.Pieces.Lifetime.Fail": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_4\".\"Pieces\".\"Lifetime\".\"Fail\"",
+                    "S4.Pieces.Lifetime.Canceled": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_4\".\"Pieces\".\"Lifetime\".\"Canceled\"",
+                    "S4.Pieces.Lifetime.Scrap": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_4\".\"Pieces\".\"Lifetime\".\"Scrap\"",
+                    "S7.Bezeichnung": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"DB_100-Arbeitsdaten\".\"Projektinformationen\".\"Bezeichnung\"",
+                    "S7.IV-Nummer": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"DB_100-Arbeitsdaten\".\"Projektinformationen\".\"IV-Nummer\"",
+                    "S7.Diskettennummer": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"DB_100-Arbeitsdaten\".\"Projektinformationen\".\"Diskettennummer\"",
+                    "S7.Ersteller": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"DB_100-Arbeitsdaten\".\"Projektinformationen\".\"Ersteller\"",
+                    "S7.Telefonnummer": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"DB_100-Arbeitsdaten\".\"Projektinformationen\".\"Telefonnummer\"",
+                    "S7.Standort": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"DB_100-Arbeitsdaten\".\"Projektinformationen\".\"Standort\"",
+                    "S7.PASS": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"DB_100-Arbeitsdaten\".\"Pr\u00fcfergebnis\".\"Einzelpr\u00fcfungen\".\"Gesamt\".\"PASS\"",
+                    "S7.FAIL": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"DB_100-Arbeitsdaten\".\"Pr\u00fcfergebnis\".\"Einzelpr\u00fcfungen\".\"Gesamt\".\"FAIL\"",
+                    "S7.CANCELED": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"DB_100-Arbeitsdaten\".\"Pr\u00fcfergebnis\".\"Einzelpr\u00fcfungen\".\"Gesamt\".\"CANCELED\"",
+                    "S7.Taktzeit": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"DB_100-Arbeitsdaten\".\"Pr\u00fcfergebnis\".\"Einzelpr\u00fcfungen\".\"Gesamt\".\"Taktzeit\"",
+                    "S1.AutomaticMode": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_1\".\"AutomaticMode\"",
+                    "S1.ManualMode": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_1\".\"ManualMode\"",
+                    "S1.SetupMode": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_1\".\"SetupMode\"",
+                    "S1.Producing": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_1\".\"Producing\"",
+                    "S1.Waiting": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_1\".\"Waiting\"",
+                    "S1.CollectedError": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_1\".\"CollectedError\"",
+                    "S1.CollectedOperating": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_1\".\"CollectedOperating\"",
+                    "S1.CollectedMaintenance": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_1\".\"CollectedMaintenance\"",
+                    "S1.CollectedWarning": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_1\".\"CollectedWarning\"",
+                    "S1.QuantityPulse": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_1\".\"QuantityPulse\"",
+                    "S1.ValenceQuantityPulse": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_1\".\"ValenceQuantityPulse\"",
+                    "S1.SettingMode": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_1\".\"SettingMode\"",
+                    "S1.MaintenanceMode": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_1\".\"MaintenanceMode\"",
+                    "S1.MachineDowntime": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_1\".\"MachineDowntime\"",
+                    "S1.Standby": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_1\".\"Standby\"",
+                    "S3.Electricmeter1.Current_L1": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_3\".\"Electricmeter1\".\"Current_L1\"",
+                    "S3.Electricmeter1.Voltage_L1_N": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_3\".\"Electricmeter1\".\"Voltage_L1_N\"",
+                    "S3.Electricmeter1.ActivePower": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_3\".\"Electricmeter1\".\"ActivePower\"",
+                    "S3.Electricmeter1.ReactivePower": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_3\".\"Electricmeter1\".\"ReactivePower\"",
+                    "S3.Electricmeter1.Current_L2": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_3\".\"Electricmeter1\".\"Current_L2\"",
+                    "S3.Electricmeter1.Current_L3": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_3\".\"Electricmeter1\".\"Current_L3\"",
+                    "S3.Electricmeter1.Voltage_L2_N": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_3\".\"Electricmeter1\".\"Voltage_L2_N\"",
+                    "S3.Electricmeter1.Voltage_L3_N": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_3\".\"Electricmeter1\".\"Voltage_L3_N\"",
+                    "S3.Electricmeter1.Voltage_L1_L2": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_3\".\"Electricmeter1\".\"Voltage_L1_L2\"",
+                    "S3.Electricmeter1.Voltage_L2_L3": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_3\".\"Electricmeter1\".\"Voltage_L2_L3\"",
+                    "S3.Electricmeter1.Voltage_L3_L1": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_3\".\"Electricmeter1\".\"Voltage_L3_L1\"",
+                    "S3.Electricmeter1.ApparentPower": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_3\".\"Electricmeter1\".\"ApparentPower\"",
+                    "S3.Electricmeter1.Frequency": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_3\".\"Electricmeter1\".\"Frequency\"",
+                    "S3.Electricmeter1.CosPhiL1": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_3\".\"Electricmeter1\".\"CosPhiL1\"",
+                    "S3.Electricmeter1.CosPhiL2": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_3\".\"Electricmeter1\".\"CosPhiL2\"",
+                    "S3.Electricmeter1.CosPhiL3": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_3\".\"Electricmeter1\".\"CosPhiL3\"",
+                    "S3.Electricmeter1.CosPhiTotal": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_3\".\"Electricmeter1\".\"CosPhiTotal\"",
+                    "S3.Electricmeter1.ElectricMeter": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_3\".\"Electricmeter1\".\"ElectricMeter\"",
+                    "S3.Media.0.UtilityMeter": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_3\".\"Media\"[0].\"UtilityMeter\"",
+                    "S3.Media.0.ActualFlow": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_3\".\"Media\"[0].\"ActualFlow\"",
+                    "S3.Media.0.ActualPressure": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_3\".\"Media\"[0].\"ActualPressure\"",
+                    "S3.Media.0.ValveState": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_3\".\"Media\"[0].\"ValveState\"",
+                    "S3.Media.0.PressureMin": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_3\".\"Media\"[0].\"PressureMin\"",
+                    "S3.Media.0.PressureMax": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_3\".\"Media\"[0].\"PressureMax\"",
+                    "S3.Media.0.ValveRunTime": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_3\".\"Media\"[0].\"ValveRunTime\"",
+                    "S3.Media.1.UtilityMeter": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_3\".\"Media\"[1].\"UtilityMeter\"",
+                    "S3.Media.1.ActualFlow": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_3\".\"Media\"[1].\"ActualFlow\"",
+                    "S3.Media.1.ActualPressure": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_3\".\"Media\"[1].\"ActualPressure\"",
+                    "S3.Media.1.ValveState": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_3\".\"Media\"[1].\"ValveState\"",
+                    "S3.Media.1.PressureMin": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_3\".\"Media\"[1].\"PressureMin\"",
+                    "S3.Media.1.PressureMax": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_3\".\"Media\"[1].\"PressureMax\"",
+                    "S3.Media.1.ValveRunTime": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_3\".\"Media\"[1].\"ValveRunTime\"",
+                    "S3.Media.2.UtilityMeter": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_3\".\"Media\"[2].\"UtilityMeter\"",
+                    "S3.Media.2.ActualFlow": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_3\".\"Media\"[2].\"ActualFlow\"",
+                    "S3.Media.2.ActualPressure": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_3\".\"Media\"[2].\"ActualPressure\"",
+                    "S3.Media.2.ValveState": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_3\".\"Media\"[2].\"ValveState\"",
+                    "S3.Media.2.PressureMin": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_3\".\"Media\"[2].\"PressureMin\"",
+                    "S3.Media.2.PressureMax": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_3\".\"Media\"[2].\"PressureMax\"",
+                    "S3.Media.2.ValveRunTime": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_3\".\"Media\"[2].\"ValveRunTime\"",
+                    "S3.Media.3.UtilityMeter": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_3\".\"Media\"[3].\"UtilityMeter\"",
+                    "S3.Media.3.ActualFlow": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_3\".\"Media\"[3].\"ActualFlow\"",
+                    "S3.Media.3.ActualPressure": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_3\".\"Media\"[3].\"ActualPressure\"",
+                    "S3.Media.3.ValveState": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_3\".\"Media\"[3].\"ValveState\"",
+                    "S3.Media.3.PressureMin": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_3\".\"Media\"[3].\"PressureMin\"",
+                    "S3.Media.3.PressureMax": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_3\".\"Media\"[3].\"PressureMax\"",
+                    "S3.Media.3.ValveRunTime": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_3\".\"Media\"[3].\"ValveRunTime\"",
+                    "S3.Media.4.UtilityMeter": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_3\".\"Media\"[4].\"UtilityMeter\"",
+                    "S3.Media.4.ActualFlow": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_3\".\"Media\"[4].\"ActualFlow\"",
+                    "S3.Media.4.ActualPressure": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_3\".\"Media\"[4].\"ActualPressure\"",
+                    "S3.Media.4.ValveState": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_3\".\"Media\"[4].\"ValveState\"",
+                    "S3.Media.4.PressureMin": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_3\".\"Media\"[4].\"PressureMin\"",
+                    "S3.Media.4.PressureMax": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_3\".\"Media\"[4].\"PressureMax\"",
+                    "S3.Media.4.ValveRunTime": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_3\".\"Media\"[4].\"ValveRunTime\"",
+                    "S3.Media.5.UtilityMeter": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_3\".\"Media\"[5].\"UtilityMeter\"",
+                    "S3.Media.5.ActualFlow": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_3\".\"Media\"[5].\"ActualFlow\"",
+                    "S3.Media.5.ActualPressure": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_3\".\"Media\"[5].\"ActualPressure\"",
+                    "S3.Media.5.ValveState": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_3\".\"Media\"[5].\"ValveState\"",
+                    "S3.Media.5.PressureMin": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_3\".\"Media\"[5].\"PressureMin\"",
+                    "S3.Media.5.PressureMax": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_3\".\"Media\"[5].\"PressureMax\"",
+                    "S3.Media.5.ValveRunTime": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_3\".\"Media\"[5].\"ValveRunTime\"",
+                    "S7.inProgress": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"inProgress\"",
+                    "S7.Finished": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"Finished\"",
+                    "S7.Result.Canceled": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"Result\".\"Canceled\"",
+                    "S7.Result.Scrap": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"Result\".\"Scrap\"",
+                    "S2.EmergencyStopButton1": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_2\".\"EmergencyStopButton1\"",
+                    "S2.Door1": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_2\".\"Door1\"",
+                    "S2.LightCurtain1": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_2\".\"LightCurtain1\"",
+                    "S2.ProtectionHousing1": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_2\".\"ProtectionHousing1\"",
+                    "S2.LaserScanner1": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_2\".\"LaserScanner1\"",
+                    "S2.EmergencyStop": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_2\".\"EmergencyStop\"",
+                    "S2.EmergencyStopButton2": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_2\".\"EmergencyStopButton2\"",
+                    "S2.Floodgate1.1": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_2\".\"Floodgate1.1\"",
+                    "S2.Floodgate1.2": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_2\".\"Floodgate1.2\"",
+                    "S2.SafetySystem": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_2\".\"SafetySystem\"",
+                    "S2.RollingGate1": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_2\".\"RollingGate1\"",
+                    "ManufacturingNumber.0": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"ManufacturingNumber\"[0]",
+                    "ManufacturingNumber.1": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"ManufacturingNumber\"[1]",
+                    "CompressorSpeedPercent": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"Test\"[0].\"R_Messergebnis\"",
+                    "ElectronicExpansionValveOneCurrentPositionPercent": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"Test\"[1].\"R_Messergebnis\"",
+                    "ElectronicExpansionValveTwoCurrentPositionPercent": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"Test\"[2].\"R_Messergebnis\"",
+                    "PrimarySourceRpsOne": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"Test\"[3].\"R_Messergebnis\"",
+                    "PrimarySourceRpsTwo": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"Test\"[4].\"R_Messergebnis\"",
+                    "RefrigerantCircuitFourWayValve": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"Test\"[5].\"R_Messergebnis\"",
+                    "PrimaryHeatExchangerBaseHeater": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"Test\"[6].\"R_Messergebnis\"",
+                    "CompressorCrankCaseHeater": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"Test\"[7].\"R_Messergebnis\"",
+                    "FanDuctHeater": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"Test\"[8].\"R_Messergebnis\"",
+                    "ElectricalPowerConsumptionInverter": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"Test\"[9].\"R_Messergebnis\"",
+                    "CompressorInletPressureSensor": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"Test\"[10].\"R_Messergebnis\"",
+                    "CompressorOutletPressureSensor": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"Test\"[11].\"R_Messergebnis\"",
+                    "CompressorInletTemperatureSensor": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"Test\"[12].\"R_Messergebnis\"",
+                    "CompressorOutletTemperatureSensor": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"Test\"[13].\"R_Messergebnis\"",
+                    "PrimaryInletTemperatureSensor": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"Test\"[14].\"R_Messergebnis\"",
+                    "PrimaryHeatExchangerLiquidTemperatureSensor": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"Test\"[15].\"R_Messergebnis\"",
+                    "SecondaryHeatExchangerLiquidTemperatureSensor": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"Test\"[16].\"R_Messergebnis\"",
+                    "SecondaryOutletTemperatureSensor": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"Test\"[17].\"R_Messergebnis\"",
+                    "CompressorOilTemperatureSensor": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"Test\"[18].\"R_Messergebnis\"",
+                    "EconomizerLiquidTemperatureSensor": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"Test\"[19].\"R_Messergebnis\"",
+                    "EvaporatorVaporTemperatureSensor": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"Test\"[20].\"R_Messergebnis\"",
+                    "EngineRoomTemperatureSensor": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"Test\"[21].\"R_Messergebnis\"",
+                    "CompressorSetpointPercent_Target": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"Test\"[22].\"R_Messergebnis\"",
+                    "ElectronicExpansionValveOneTargetPositionPercent_Target": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"Test\"[23].\"R_Messergebnis\"",
+                    "ElectronicExpansionValveTwoTargetPositionPercent_Target": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"Test\"[24].\"R_Messergebnis\"",
+                    "PrimaryCircuitFanOne_Target": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"Test\"[25].\"R_Messergebnis\"",
+                    "PrimaryCircuitFanTwo_Target": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"Test\"[26].\"R_Messergebnis\"",
+                    "RefrigerantCircuitFourWayValve_Target": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"Test\"[27].\"R_Messergebnis\"",
+                    "PrimaryHeatExchangerBaseHeater_Target": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"Test\"[28].\"R_Messergebnis\"",
+                    "CompressorCrankCaseHeater_Target": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"Test\"[29].\"R_Messergebnis\"",
+                    "FanDuctHeater_Target": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"Process\".\"TestStation\".\"Test\"[30].\"R_Messergebnis\"",
+                    "InternalComm": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_1\".\"InternalComm\""
+                  },
+                  "name": "W16VDETesterODUIV1673000305",
+                  "outputTopic": "splunk",
+                  "publishingIntervalMs": 250
+                },
+                "Connected": {
+                  "onChangeSubmitFullModel": true,
+                  "onRepublishSubmitFullModel": true,
+                  "nodes": {
+                    "S1.Connected": "ns=1;s=W16WP-L4-VDE-PruefstandIV1673000305.\"IOT-SmartFactory\".\"State_1\".\"Connected\""
+                  },
+                  "name": "Connected",
+                  "outputTopic": "splunk",
+                  "publishingIntervalMs": 1250
+                }
+              },
+              "subscriptions": {},
+              "url": "opc.tcp://10.31.132.44:4840",
+              "resetBlackListIntervalMs": 500
+            },
+            "client": {
+              "application": {
+                "security": {
+                  "authentication": {
+                    "credentials": {
+                      "password": "_4256182",
+                      "username": "PT"
+                    },
+                    "strategy": "Anonymous"
+                  },
+                  "endpoint": {
+                    "isEnabled": false,
+                    "level": 0,
+                    "mode": "None",
+                    "policy": "None",
+                    "timeout": 15000
+                  }
+                }
+              },
+              "session": {
+                "subscription": {}
+              },
+              "optimizeNodeValueReadAccess": true
+            },
+            "edgeMethodMapping": {}
+          }
+        },
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.OpcUaClientModule/versions/2",
+        "$messageOutputs": {
+          "W16VDETesterODUIV1673000305.S1.Data": "splunkPoll",
+          "W16VDETesterODUIV1673000305.W16VDETesterODUIV1673000305": "splunk",
+          "W16VDETesterODUIV1673000305.Connected": "splunk"
+        },
+        "$timestamp": "2023-11-02T12:40:06.1910745Z",
+        "$version": 64
+      }
+    },
+    "mustache": {
+      "configuration": {
+        "$timestamp": "2023-11-02T12:40:06.1977292Z",
+        "$version": 3
+      }
+    },
+    "rfcreader": {
+      "configuration": {
+        "$timestamp": "2023-11-02T12:40:06.1978998Z",
+        "$version": 3
+      }
+    },
+    "logger": {
+      "configuration": {
+        "$timestamp": "2023-11-02T12:40:06.1979621Z",
+        "$version": 3
+      }
+    },
+    "streamprocessor": {
+      "configuration": {
+        "$timestamp": "2023-11-02T12:40:06.1980173Z",
+        "$version": 3
+      }
+    },
+    "system": {
+      "configuration": {
+        "firewallrules": {
+          "AdminAPIAutoRuleHTTP": {
+            "description": "Auto generated rule from AdminApiModule for HTTP Port.",
+            "action": "accept",
+            "direction": "inbound",
+            "protocol": "tcp",
+            "srcPort": 0,
+            "destPort": 80
+          },
+          "AdminAPIAutoRuleHTTPS": {
+            "description": "Auto generated rule from AdminApiModule for HTTPS Port.",
+            "action": "accept",
+            "direction": "inbound",
+            "protocol": "tcp",
+            "srcPort": 0,
+            "destPort": 443
+          }
+        },
+        "signals": {
+          "groups": {
+            "system_signals": {
+              "outputTopic": "system_signals",
+              "intervalMs": 60000,
+              "signals": {
+                "ss_modbus": {
+                  "source": "moduleStatus",
+                  "sourceKey": "modbus.status.connection.modbus_test.code"
+                },
+                "ss_opc": {
+                  "source": "moduleStatus",
+                  "sourceKey": "opcua.status.connection.W16VDETesterODUIV1673000305.code"
+                }
+              }
+            }
+          }
+        },
+        "$timestamp": "2023-11-02T13:55:12.6612411Z",
+        "$version": 5
+      }
+    }
+  }
+}

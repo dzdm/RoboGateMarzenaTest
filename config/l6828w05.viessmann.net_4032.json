@@ -1,0 +1,505 @@
+{
+  "modules": {
+    "mustache": {
+      "configuration": {
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.MustacheEnricherModule/versions/1",
+        "$timestamp": "2023-11-03T06:35:07.5530883Z",
+        "$version": 1
+      }
+    },
+    "azure": {
+      "configuration": {
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.IotHubSenderModule/versions/1",
+        "$timestamp": "2023-11-03T06:35:07.4942229Z",
+        "$version": 1
+      }
+    },
+    "center": {
+      "configuration": {
+        "$timestamp": "2023-11-03T06:35:07.5573913Z",
+        "$version": 1
+      }
+    },
+    "modbus": {
+      "configuration": {
+        "$messageOutputs": {
+          "modbus_test.slave.modbus_PG": "modbus_PG"
+        },
+        "servers": {
+          "modbus_test": {
+            "connection": {
+              "variant": "Tcp",
+              "tcp": {
+                "ipAddress": "199.216.0.147",
+                "port": 4840
+              }
+            },
+            "slaves": {
+              "slave": {
+                "pollGroups": {
+                  "modbus_PG": {
+                    "model": {
+                      "Sensor": {
+                        "registerStartAddress": 1,
+                        "registerLength": 1,
+                        "functionCode": 1
+                      }
+                    },
+                    "intervalMs": 1000,
+                    "sourceMode": "UseSlaveName"
+                  }
+                },
+                "setupGroups": {},
+                "slaveId": 1,
+                "subscriptionGroups": {}
+              }
+            }
+          }
+        },
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.ModbusReaderModule/versions/2",
+        "$timestamp": "2023-11-03T06:35:07.5043279Z",
+        "$version": 1
+      }
+    },
+    "mqtt": {
+      "configuration": {
+        "$schema": "https://schemas.robotron.de/robogate/modules/MqttSender.IotEdge.Modules.MqttSenderModule/versions/1",
+        "$timestamp": "2023-11-03T06:35:07.5020732Z",
+        "$version": 1
+      }
+    },
+    "rfcreader": {
+      "configuration": {
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.RFC1006ReaderModule/versions/1",
+        "$timestamp": "2023-11-03T06:35:07.5531357Z",
+        "$version": 1
+      }
+    },
+    "opcua": {
+      "configuration": {
+        "servers": {
+          "W16HeliumTesterODUIV590432": {
+            "endpoint": {
+              "pollGroups": {
+                "S1.Data": {
+                  "nodes": {
+                    "S1.SettingMode_PG": "ns=2;s=W05WP_HPL1IV590432.SOLLWERT_DB4.Setting",
+                    "S1.MaintenanceMode_PG": "ns=2;s=W05WP_HPL1IV590432.SOLLWERT_DB4.Maintenance",
+                    "S1.Waiting_PG": "ns=2;s=W05WP_HPL1IV590432.SOLLWERT_DB4.Waiting",
+                    "S1.Producing_PG": "ns=2;s=W05WP_HPL1IV590432.SOLLWERT_DB4.Producing"
+                  },
+                  "name": "S1.Data",
+                  "outputTopic": "splunkPoll",
+                  "intervalMs": 15000
+                },
+                "S10.Data": {
+                  "nodes": {
+                    "S10.MachineFactor_PG": "ns=2;s=W05WP_HPL1IV590432.ISTWERTE_DB3.MASCHINEN_FAKTOR"
+                  },
+                  "name": "S10.Data",
+                  "outputTopic": "splunkPoll",
+                  "intervalMs": 300000
+                },
+                "GatewayWatchdog": {
+                  "nodes": {
+                    "Gateway_Temperature_PG": "ns=3;s=_System.General.Temperature"
+                  },
+                  "name": "GatewayWatchdog",
+                  "outputTopic": "splunkPoll",
+                  "intervalMs": 900000
+                }
+              },
+              "subscriptionGroups": {
+                "Datapoints1m": {
+                  "publishingIntervalMs": 1000,
+                  "republishingIntervalMs": 60000,
+                  "onChangeSubmitFullModel": false,
+                  "onRepublishSubmitFullModel": false,
+                  "nodes": {
+                    "S10.LDS_Detector_Busy1m": "ns=2;s=W05WP_HPL1IV590432.ISTWERTE_DB3.LDS_Stat_Detector_Busy",
+                    "S10.Setpoint_ecject_testsubject_inflated_N2_active1m": "ns=2;s=W05WP_HPL1IV590432.SOLLWERT_DB4.PRUEFL_MIT_STICKST_RAUS",
+                    "S10.Setpoint_vacuum_pressure_testsubject1m": "ns=2;s=W05WP_HPL1IV590432.SOLLWERT_DB4.VAKUUM_ENDDRUCK_HE_PRUEF",
+                    "S10.Setpoint_y0_yMIN_PEW256_1m": "ns=2;s=W05WP_HPL1IV590432.SOLLWERT_DB4._y0_yMIN_PEW256",
+                    "S10.LDS_Sniffer_clogged1m": "ns=2;s=W05WP_HPL1IV590432.ISTWERTE_DB3.LDS_Stat_Sniffer_clogged",
+                    "S10.LDS_Detector_Ready1m": "ns=2;s=W05WP_HPL1IV590432.ISTWERTE_DB3.LDS_Stat_Detector_Ready",
+                    "S10.Setpoint_time_pressurized_highpressure1m": "ns=2;s=W05WP_HPL1IV590432.SOLLWERT_DB4.N2_DRUCK_HALTEZEIT",
+                    "S10.Setpoint_DIGIT_x0PEW260_1m": "ns=2;s=W05WP_HPL1IV590432.SOLLWERT_DB4._DIGIT_x0PEW260",
+                    "S10.Setpoint_stabilization_time1m": "ns=2;s=W05WP_HPL1IV590432.SOLLWERT_DB4.STABILISIERUNGSZEIT",
+                    "S10.Setpoint_timeout_evacuate_chamber1m": "ns=2;s=W05WP_HPL1IV590432.SOLLWERT_DB4.TTL_KAMMER_EVAKUIEREN",
+                    "S1.ManualMode1m": "ns=2;s=W05WP_HPL1IV590432.ISTWERTE_DB3.BA_HAND_AKTIV",
+                    "S10.Setpoint_pressure_N2_highpressure1m": "ns=2;s=W05WP_HPL1IV590432.SOLLWERT_DB4.N2_HD_PRUEFDRUCK",
+                    "S10.Setpoint_DIGIT_x0PEW266_1m": "ns=2;s=W05WP_HPL1IV590432.SOLLWERT_DB4._DIGIT_x0PEW266",
+                    "S10.LDS_HV_Test_Active1m": "ns=2;s=W05WP_HPL1IV590432.ISTWERTE_DB3.LDS_Stat_HV_Test_Aktiv",
+                    "S10.Setpoint_timeout_fillwithN2_1m": "ns=2;s=W05WP_HPL1IV590432.SOLLWERT_DB4.TTL_PRUEFL_MIT_N_FUELLEN",
+                    "S10.Setpoint_time_pressure_equilization1m": "ns=2;s=W05WP_HPL1IV590432.SOLLWERT_DB4.BEHARRUNG_DRUCKAUSGLEICH",
+                    "S1.SetupMode1m": "ns=2;s=W05WP_HPL1IV590432.ISTWERTE_DB3.BA_EINR_AKTIV",
+                    "S10.Setpoint_He_pressure1m": "ns=2;s=W05WP_HPL1IV590432.SOLLWERT_DB4.HELIUM_PRUEFDRUCK_PRUEFL",
+                    "S10.Setpoint_y0_yMIN_PEW260_1m": "ns=2;s=W05WP_HPL1IV590432.SOLLWERT_DB4._y0_yMIN_PEW260",
+                    "S10.Setpoint_y1_yMAX_PEW260_1m": "ns=2;s=W05WP_HPL1IV590432.SOLLWERT_DB4._y1_yMAX_PEW260",
+                    "S10.Red_Light_On1m": "ns=2;s=W05WP_HPL1IV590432.SOLLWERT_DB4.STOERLAMPE_ROT_EIN",
+                    "S10.Setpoint_y0_yMIN_PEW266_1m": "ns=2;s=W05WP_HPL1IV590432.SOLLWERT_DB4._y0_yMIN_PEW266",
+                    "S10.Setpoint_timeout_fillwithHe1m": "ns=2;s=W05WP_HPL1IV590432.SOLLWERT_DB4.TTL_PRUEFL_MI_He_FUELLEN",
+                    "S10.Setpoint_DIGIT_x1PEW256_1m": "ns=2;s=W05WP_HPL1IV590432.SOLLWERT_DB4._DIGIT_x1PEW256",
+                    "S10.Setpoint_timeout_evacuate_testsubject1m": "ns=2;s=W05WP_HPL1IV590432.SOLLWERT_DB4.TTL_PRUEFLING_EVAKUIEREN",
+                    "S10.Setpoint_pressure_N2_grossleakage1m": "ns=2;s=W05WP_HPL1IV590432.SOLLWERT_DB4.N2_ND_PRUEFDRUCK",
+                    "S10.Setpoint_DIGIT_x1PEW264_1m": "ns=2;s=W05WP_HPL1IV590432.SOLLWERT_DB4._DIGIT_x1PEW264",
+                    "S10.LDS_Comm_OK1m": "ns=2;s=W05WP_HPL1IV590432.ISTWERTE_DB3.LDS_Stat_Komm_OK",
+                    "S10.Setpoint_vacuum_pressure_chamber1m": "ns=2;s=W05WP_HPL1IV590432.SOLLWERT_DB4.VAKUUM_ENDDRUCK_KAMMER",
+                    "S10.Setpoint_Monoblock_active1m": "ns=2;s=W05WP_HPL1IV590432.SOLLWERT_DB4.MONO_BLOCK_PRUEFEN",
+                    "S10.Setpoint_pressure_N2_endoftest1m": "ns=2;s=W05WP_HPL1IV590432.SOLLWERT_DB4.N2_FUELLDRUCK",
+                    "S10.Setpoint_y1_yMAX_PEW266_1m": "ns=2;s=W05WP_HPL1IV590432.SOLLWERT_DB4._y1_yMAX_PEW266",
+                    "S10.LDS_STATUS_Error1m": "ns=2;s=W05WP_HPL1IV590432.ISTWERTE_DB3.LDS_STATUS_FEHLER",
+                    "S10.Setpoint_switching_pressure_4wayvalve1m": "ns=2;s=W05WP_HPL1IV590432.SOLLWERT_DB4.HD_UMSCHALTDRUCK",
+                    "S10.LDS_Filament_On1m": "ns=2;s=W05WP_HPL1IV590432.ISTWERTE_DB3.LDS_Stat_Filament_On",
+                    "S10.Setpoint_DIGIT_x0PEW272_1m": "ns=2;s=W05WP_HPL1IV590432.SOLLWERT_DB4._DIGIT_x0PEW272",
+                    "S10.Setpoint_DIGIT_x1PEW272_1m": "ns=2;s=W05WP_HPL1IV590432.SOLLWERT_DB4._DIGIT_x1PEW272",
+                    "S10.Setpoint_max_deltapressure_grossleakage1m": "ns=2;s=W05WP_HPL1IV590432.SOLLWERT_DB4.DeltaP_GROBLECKDRUCK",
+                    "S10.LDS_Sniffer_Valve1m": "ns=2;s=W05WP_HPL1IV590432.ISTWERTE_DB3.LDS_Stat_Sniffer_Valve",
+                    "S10.Setpoint_y1_yMAX_PEW256_1m": "ns=2;s=W05WP_HPL1IV590432.SOLLWERT_DB4._y1_yMAX_PEW256",
+                    "S10.Setpoint_MOPD_heatingmode1m": "ns=2;s=W05WP_HPL1IV590432.SOLLWERT_DB4.MOPD_HEIZBETRIEB",
+                    "S10.Setpoint_leakage_testleak1m": "ns=2;s=W05WP_HPL1IV590432.SOLLWERT_DB4.LECKRATE_TESTLECK",
+                    "S10.Setpoint_DIGIT_x0PEW264_1m": "ns=2;s=W05WP_HPL1IV590432.SOLLWERT_DB4._DIGIT_x0PEW264",
+                    "S10.Setpoint_highpressure_test_active1m": "ns=2;s=W05WP_HPL1IV590432.SOLLWERT_DB4.MIT_N2_HOCHDRUCKPRUEFUNG",
+                    "S10.LDS_Calibration_fail1m": "ns=2;s=W05WP_HPL1IV590432.ISTWERTE_DB3.LDS_Stat_Calibratio_fail",
+                    "S10.Setpoint_y0_yMIN_PEW264_1m": "ns=2;s=W05WP_HPL1IV590432.SOLLWERT_DB4._y0_yMIN_PEW264",
+                    "S10.Setpoint_DIGIT_x0PEW256_1m": "ns=2;s=W05WP_HPL1IV590432.SOLLWERT_DB4._DIGIT_x0PEW256",
+                    "S10.Setpoint_testtime_gross_leakage1m": "ns=2;s=W05WP_HPL1IV590432.SOLLWERT_DB4.PRUEFZEIT_GROBLECK",
+                    "S10.Setpoint_DIGIT_x1PEW260-1m": "ns=2;s=W05WP_HPL1IV590432.SOLLWERT_DB4._DIGIT_x1PEW260",
+                    "S10.Setpoint_y0_yMIN_PEW258_1m": "ns=2;s=W05WP_HPL1IV590432.SOLLWERT_DB4._y0_yMIN_PEW258",
+                    "S10.Setpoint_testtime_leakagetest1m": "ns=2;s=W05WP_HPL1IV590432.SOLLWERT_DB4.PRUEFZEIT_LECKSUCHE",
+                    "S1.AutomaticMode1m": "ns=2;s=W05WP_HPL1IV590432.ISTWERTE_DB3.BA_AUTO_AKTIV",
+                    "S10.Setpoint_testsubject_hasSensor1m": "ns=2;s=W05WP_HPL1IV590432.SOLLWERT_DB4.PRUEFLING_MIT_DRUCKSENS",
+                    "S10.Setpoint_y1_yMAX_PEW264_1m": "ns=2;s=W05WP_HPL1IV590432.SOLLWERT_DB4._y1_yMAX_PEW264",
+                    "S10.LDS_Sniff_Test_Aktive1m": "ns=2;s=W05WP_HPL1IV590432.ISTWERTE_DB3.LDS_Stat_Sniff_Test_Akt",
+                    "S10.Setpoint_max_leakage1m": "ns=2;s=W05WP_HPL1IV590432.SOLLWERT_DB4.GRENZLECKRATE",
+                    "S10.Setpoint_y0_yMIN_PEW272_1m": "ns=2;s=W05WP_HPL1IV590432.SOLLWERT_DB4._y0_yMIN_PEW272",
+                    "S10.Setpoint_N2pressure_after_test1m": "ns=2;s=W05WP_HPL1IV590432.SOLLWERT_DB4.N2_ENTNAHME_DRUCK",
+                    "S10.Setpoint_grossleakage_test_active1m": "ns=2;s=W05WP_HPL1IV590432.SOLLWERT_DB4.MIT_N2_GROBLECKPRUEFUNG",
+                    "S10.Setpoint_DIGIT_x0PEW258_1m": "ns=2;s=W05WP_HPL1IV590432.SOLLWERT_DB4._DIGIT_x0PEW258",
+                    "S10.Setpoint_DIGIT_x1PEW266_1m": "ns=2;s=W05WP_HPL1IV590432.SOLLWERT_DB4._DIGIT_x1PEW266",
+                    "S10.Setpoint_y1_yMAX_PEW258_1m": "ns=2;s=W05WP_HPL1IV590432.SOLLWERT_DB4._y1_yMAX_PEW258",
+                    "S10.Setpoint_DIGIT_x1PEW258_1m": "ns=2;s=W05WP_HPL1IV590432.SOLLWERT_DB4._DIGIT_x1PEW258",
+                    "S1.CollectedError1m": "ns=2;s=W05WP_HPL1IV590432.ISTWERTE_DB3.SAMMELSTOE",
+                    "S10.Setpoint_timeout_deflate_chamber1m": "ns=2;s=W05WP_HPL1IV590432.SOLLWERT_DB4.TTL_KAMMER_ENTSPANNEN",
+                    "S10.Setpoint_y1_yMAX_PEW272_1m": "ns=2;s=W05WP_HPL1IV590432.SOLLWERT_DB4._y1_yMAX_PEW272",
+                    "S10.Setpoint_MOPD_coolingmode1m": "ns=2;s=W05WP_HPL1IV590432.SOLLWERT_DB4.MOPD_KUEHLBETRIEB",
+                    "S10.Setpoint_timeout_deflate_testsubject1m": "ns=2;s=W05WP_HPL1IV590432.SOLLWERT_DB4.TTL_PRUEFLING_ENTSPANNEN",
+                    "S10.Setpoint_eject_testsubject_deflated_active1m": "ns=2;s=W05WP_HPL1IV590432.SOLLWERT_DB4.PRUEFL_ENTSPANNT_RAUS",
+                    "S10.Setpoint_vacuum_pressure_testsubject_endoftest1m": "ns=2;s=W05WP_HPL1IV590432.SOLLWERT_DB4.VAKUUM_ENDDRUCK_N2_FUELL"
+                  },
+                  "name": "Datapoints1m",
+                  "outputTopic": "splunk"
+                },
+                "standard_data": {
+                  "publishingIntervalMs": 100,
+                  "republishingIntervalMs": 0,
+                  "onChangeSubmitFullModel": false,
+                  "onRepublishSubmitFullModel": false,
+                  "nodes": {
+                    "S1.ManualMode": "ns=2;s=W05WP_HPL1IV590432.ISTWERTE_DB3.BA_HAND_AKTIV",
+                    "S5.AI_B272_ChamberVacuum_mbar": "ns=2;s=W05WP_HPL1IV590432.ISTWERTE_DB3.MESSWERT_mbar_PEW272",
+                    "S10.LDS.Mantisse_BIT_04": "ns=2;s=W05WP_HPL1IV590432.LDS.Mantisse_BIT_04",
+                    "S10.LDS.STW_7": "ns=2;s=W05WP_HPL1IV590432.LDS.STW_7",
+                    "S5.DI_S1.1_ServiceSwitch_on": "ns=2;s=W05WP_HPL1IV590432.Standard-Variablentabelle.-S1.1_Servicesch. Ein",
+                    "S5.DI_114A1_coolingDevice_Alarm2_OK": "ns=2;s=W05WP_HPL1IV590432.Standard-Variablentabelle.-114A1_Klima Alarm 2 iO",
+                    "S5.DI_Q2.1M_OK": "ns=2;s=W05WP_HPL1IV590432.Standard-Variablentabelle.MOSCHU -Q2.1M",
+                    "S5.DI_131G1_PowerSupply_Current_OK": "ns=2;s=W05WP_HPL1IV590432.Standard-Variablentabelle.-131G1_Netzteil >I iO",
+                    "S10.LDS.Mantisse_BIT_06": "ns=2;s=W05WP_HPL1IV590432.LDS.Mantisse_BIT_06",
+                    "S8.OKTA1000_totalOperatingHours": "ns=2;s=W05WP_HPL1IV590432.ISTWERTE_DB3.GESAMT_BETRSTD_OKTA1000",
+                    "S10.LDS_Zero_Active": "ns=2;s=W05WP_HPL1IV590432.SOLLWERT_DB4.LDS_ZERO_AKT",
+                    "S8.HENA300_totalOperatingHours": "ns=2;s=W05WP_HPL1IV590432.ISTWERTE_DB3.GESAMT_BETRSTD_HENA300",
+                    "S5.DI_B6.2P_DiffPressure_ExhaustAir_MachineRoom_OK": "ns=2;s=W05WP_HPL1IV590432.Standard-Variablentabelle.-B6.2P_Abl.-Druck iO",
+                    "S5.DI_S10.1_Control_Off": "ns=2;s=W05WP_HPL1IV590432.Standard-Variablentabelle.-S10.1_Strg. AUS",
+                    "S5.AI_B258_Pressure_ND": "ns=2;s=W05WP_HPL1IV590432.ISTWERTE_DB3.MESSWERT_PEW258",
+                    "S10.LDS.Error_Data_Transmit": "ns=2;s=W05WP_HPL1IV590432.LDS.Fehler_Daten_Senden",
+                    "S10.LDS.IND_2": "ns=2;s=W05WP_HPL1IV590432.LDS.IND_2",
+                    "S5.DO_K3.0_EEV_Controller_ON": "ns=2;s=W05WP_HPL1IV590432.Standard-Variablentabelle.-K3.0_Netz LP_EEV EIN",
+                    "S5.DI_Y0.5V_CV_isClosed": "ns=2;s=W05WP_HPL1IV590432.Standard-Variablentabelle.-Y0.5V_EV-Fluten ist zu",
+                    "S10.LDS.ZSW_7": "ns=2;s=W05WP_HPL1IV590432.LDS.ZSW_7",
+                    "S5.DI_B6.1P_N2Supply_OK": "ns=2;s=W05WP_HPL1IV590432.Standard-Variablentabelle.-B6.1P_N2-Druck iO",
+                    "S5.DI_Q2.0T_OK": "ns=2;s=W05WP_HPL1IV590432.Standard-Variablentabelle.THERM. -Q2.0T iO",
+                    "S10.LDS.Exponent_BIT_02": "ns=2;s=W05WP_HPL1IV590432.LDS.Exponent_BIT_02",
+                    "S8.HENA25_currentOperatingHours": "ns=2;s=W05WP_HPL1IV590432.ISTWERTE_DB3.AKT_BETRSTD_HENA25",
+                    "S8.HENA300_currentOperatingHours": "ns=2;s=W05WP_HPL1IV590432.ISTWERTE_DB3.AKT_BETRSTD_HENA300",
+                    "S5.DO_K0.6V_CV_evac_chamber": "ns=2;s=W05WP_HPL1IV590432.Standard-Variablentabelle.-K0.6V_EV-Kammer evak.",
+                    "S5.DO_K0.1_PC_Display_ON": "ns=2;s=W05WP_HPL1IV590432.Standard-Variablentabelle.-K0.1_PC+MONITOR EIN",
+                    "S6.Cancel_HighPressure_inLowPressureSide": "ns=2;s=W05WP_HPL1IV590432.ISTWERTE_DB3.ABBRUCH_UEBERDRUCK_ND",
+                    "S10.LDS.ZSW_4": "ns=2;s=W05WP_HPL1IV590432.LDS.ZSW_4",
+                    "S10.LDS.EXPONENT": "ns=2;s=W05WP_HPL1IV590432.LDS.EXPONENT",
+                    "S10.LDS.STW_10": "ns=2;s=W05WP_HPL1IV590432.LDS.STW_10",
+                    "S8.HENA25_totalOperatingHours": "ns=2;s=W05WP_HPL1IV590432.ISTWERTE_DB3.GESAMT_BETRSTD_HENA25",
+                    "S5.DO_K6.0V_SV_pressured_air": "ns=2;s=W05WP_HPL1IV590432.Standard-Variablentabelle.-K6.0V_MV-Pneumatik",
+                    "S10.LDS.PKE_0": "ns=2;s=W05WP_HPL1IV590432.LDS.PKE_0",
+                    "S5.AI_B264_TestObject_Pressure_HD": "ns=2;s=W05WP_HPL1IV590432.ISTWERTE_DB3.MESSWERT_PEW264",
+                    "S1.CollectedError": "ns=2;s=W05WP_HPL1IV590432.ISTWERTE_DB3.SAMMELSTOE",
+                    "S5.DO_K0.5V_CV_refill_chamber": "ns=2;s=W05WP_HPL1IV590432.Standard-Variablentabelle.-K0.5V_EV-Kammer fluten",
+                    "S10.LDS_Stat_HV_Test_Active": "ns=2;s=W05WP_HPL1IV590432.ISTWERTE_DB3.LDS_Stat_HV_Test_Aktiv",
+                    "S10.LDS.Exponent_BIT_00": "ns=2;s=W05WP_HPL1IV590432.LDS.Exponent_BIT_00",
+                    "S10.LDS.Exponent_BIT_01": "ns=2;s=W05WP_HPL1IV590432.LDS.Exponent_BIT_01",
+                    "S10.LDS.Error_Data_Received": "ns=2;s=W05WP_HPL1IV590432.LDS.Fehler_Daten_Empfangen",
+                    "S10.Setpoint_CatastrophyTrigger": "ns=2;s=W05WP_HPL1IV590432.ISTWERTE_DB3.KATA_STROPHEN_GRENZWERT",
+                    "S10.LDS.Errorcode_SFC14": "ns=2;s=W05WP_HPL1IV590432.LDS.Fehlercode_SFC14",
+                    "S5.DO_K3.3_4_2_DirectionalControlValve": "ns=2;s=W05WP_HPL1IV590432.Standard-Variablentabelle.-K3.3_4/2-WEGEVENT AUF",
+                    "S10.LDS.Mantisse_BIT_01": "ns=2;s=W05WP_HPL1IV590432.LDS.Mantisse_BIT_01",
+                    "S10.LDS.ZSW_8": "ns=2;s=W05WP_HPL1IV590432.LDS.ZSW_8",
+                    "S10.LDS.COPY_IND_2": "ns=2;s=W05WP_HPL1IV590432.LDS.COPY_IND_2",
+                    "S5.DI_B3.5_PZ5_DoorDriven_isOpened": "ns=2;s=W05WP_HPL1IV590432.Standard-Variablentabelle.-B3.5_PZ5 KammT\u00fcrStAuf",
+                    "S5.DO_K1.5V_SV-Reserve": "ns=2;s=W05WP_HPL1IV590432.Standard-Variablentabelle.-K1.4V_MV-Reserve",
+                    "S10.LDS.Mantisse_BIT_05": "ns=2;s=W05WP_HPL1IV590432.LDS.Mantisse_BIT_05",
+                    "S10.LDS.STW_4": "ns=2;s=W05WP_HPL1IV590432.LDS.STW_4",
+                    "S10.LDS.STW_0": "ns=2;s=W05WP_HPL1IV590432.LDS.STW_0",
+                    "S8.DUO5M_currentOperatingHours": "ns=2;s=W05WP_HPL1IV590432.ISTWERTE_DB3.AKT_BETRSTD_DUO5M",
+                    "S10.LDS.ZSW_14": "ns=2;s=W05WP_HPL1IV590432.LDS.ZSW_14",
+                    "S5.DO_K6.7V_SV_He_10bar": "ns=2;s=W05WP_HPL1IV590432.Standard-Variablentabelle.-K6.7V_MV-He 10bar",
+                    "S10.LDS.ZSW_5": "ns=2;s=W05WP_HPL1IV590432.LDS.ZSW_5",
+                    "S10.ZSW_1": "ns=2;s=W05WP_HPL1IV590432.LDS.ZSW_1",
+                    "S5.DI_S7_KeySwitch_SetupMode": "ns=2;s=W05WP_HPL1IV590432.ISTWERTE_DB3.FS_S7_VW_BA_EINR",
+                    "S10.LDS_Stat_Comm_OK": "ns=2;s=W05WP_HPL1IV590432.ISTWERTE_DB3.LDS_Stat_Komm_OK",
+                    "S10.LDS.STW_15": "ns=2;s=W05WP_HPL1IV590432.LDS.STW_15",
+                    "S5.DO_K2.1M_HENA25": "ns=2;s=W05WP_HPL1IV590432.Standard-Variablentabelle.-K2.1M_VakPump Pr\u00fcfEvak.",
+                    "S5.DO_K0.7V_CV_LDS": "ns=2;s=W05WP_HPL1IV590432.Standard-Variablentabelle.-K0.7V_EV-Lecksucher",
+                    "S10.LDS.ZSW_6": "ns=2;s=W05WP_HPL1IV590432.LDS.ZSW_6",
+                    "S6.Cancel_GrossLeakage_highDiffPressure": "ns=2;s=W05WP_HPL1IV590432.ISTWERTE_DB3.ABBRUCH_GLPR_DIFF_DRUCK",
+                    "S1.Connected": "ns=2;s=W05WP_HPL1IV590432.Standard-Variablentabelle.LIVE-BIT-VISU",
+                    "S5.DO_K1.1V_SV_Door_open": "ns=2;s=W05WP_HPL1IV590432.Standard-Variablentabelle.-K1.1V_MV-KamT\u00fcrAuf",
+                    "S10.LDS_SniffingTest_Active": "ns=2;s=W05WP_HPL1IV590432.SOLLWERT_DB4.LDS_SNIFFING_TEST_AKT",
+                    "S10.LDS.Mantisse_BIT_09": "ns=2;s=W05WP_HPL1IV590432.LDS.Mantisse_BIT_09",
+                    "S5.DI_S10.2_Control_On": "ns=2;s=W05WP_HPL1IV590432.Standard-Variablentabelle.-S10.2_Strg. EIN",
+                    "S5.DI_B6.4N_Drawer_isClosed": "ns=2;s=W05WP_HPL1IV590432.Standard-Variablentabelle.-B6.4N_Schublade ZU",
+                    "S10.LDS.LEAKAGE_RATE": "ns=2;s=W05WP_HPL1IV590432.LDS.LECKRATE",
+                    "S5.DI_B6.3P_HeSupply_OK": "ns=2;s=W05WP_HPL1IV590432.Standard-Variablentabelle.-B6.3P_He-Druck iO",
+                    "S10.LDS.Errorcode_SFC15": "ns=2;s=W05WP_HPL1IV590432.LDS.Fehlercode_SFC15",
+                    "S10.LDS.STW_3": "ns=2;s=W05WP_HPL1IV590432.LDS.STW_3",
+                    "S10.LDS_Stat_Filament_On": "ns=2;s=W05WP_HPL1IV590432.ISTWERTE_DB3.LDS_Stat_Filament_On",
+                    "S10.LDS.COPY_PKE_0": "ns=2;s=W05WP_HPL1IV590432.LDS.COPY_PKE_0",
+                    "S5.DO_K7.4V_Safety_Valve": "ns=2;s=W05WP_HPL1IV590432.Standard-Variablentabelle.-K7.4V_Sicherheitsvent.",
+                    "S1.Ready": "ns=2;s=W05WP_HPL1IV590432.ISTWERTE_DB3.BETRIEBSBEREIT",
+                    "S10.LDS_Control_Reset": "ns=2;s=W05WP_HPL1IV590432.SOLLWERT_DB4.LDS_CONTROL_RESET",
+                    "S5.DO_K2.0M_Duo5m": "ns=2;s=W05WP_HPL1IV590432.Standard-Variablentabelle.-K2.0M_VakPump Lecksuch.",
+                    "S5.DI_S10.4_Acknowledge": "ns=2;s=W05WP_HPL1IV590432.Standard-Variablentabelle.-S10.4_Quittierung",
+                    "S10.LDS.Mantisse_BIT_03": "ns=2;s=W05WP_HPL1IV590432.LDS.Mantisse_BIT_03",
+                    "S5.AI_LDS_PreVacuumPressure": "ns=2;s=W05WP_HPL1IV590432.ISTWERTE_DB3.VORVAKUUMDRUCK_LDS",
+                    "S5.DO_K1.2V_SV_Door_driving_toClose": "ns=2;s=W05WP_HPL1IV590432.Standard-Variablentabelle.-K1.2V_MV-KamT\u00fcrSCHL",
+                    "S10.LDS.ZSW_10": "ns=2;s=W05WP_HPL1IV590432.LDS.ZSW_10",
+                    "S10.LDS_Stat_Detector_Ready": "ns=2;s=W05WP_HPL1IV590432.ISTWERTE_DB3.LDS_Stat_Detector_Ready",
+                    "S10.Leakage_Corrected": "ns=2;s=W05WP_HPL1IV590432.ISTWERTE_DB3.LECKRATE_LDS_KORR",
+                    "S10.LDS.STW_1": "ns=2;s=W05WP_HPL1IV590432.LDS.STW_1",
+                    "S5.DI_Q2.0M_OK": "ns=2;s=W05WP_HPL1IV590432.Standard-Variablentabelle.MOSCHU -Q2.0M iO",
+                    "S5.DI_Y0.6V_CV_isOpened": "ns=2;s=W05WP_HPL1IV590432.Standard-Variablentabelle.-Y0.6V_EV-Kammer ist auf",
+                    "S5.DI_S7_KeySwitch_AutomaticMode": "ns=2;s=W05WP_HPL1IV590432.ISTWERTE_DB3.FS_S7_VW_BA_AUTO",
+                    "S10.LDS.PWE_4": "ns=2;s=W05WP_HPL1IV590432.LDS.PWE_4",
+                    "S5.DI_111F2_MainPowerSupply_OverVoltage_OK": "ns=2;s=W05WP_HPL1IV590432.Standard-Variablentabelle.-111F2_Netz \u00dcberspg. iO",
+                    "S5.AI_B272_ChamberVacuum_Voltage": "ns=2;s=W05WP_HPL1IV590432.ISTWERTE_DB3.MESSWERT_V_PEW272",
+                    "S10.LDS.STW_6": "ns=2;s=W05WP_HPL1IV590432.LDS.STW_6",
+                    "S5.DI_Y0.6V_CV_isClosed": "ns=2;s=W05WP_HPL1IV590432.Standard-Variablentabelle.-Y0.6V_EV-Kammer ist zu",
+                    "S5.DO_K0.3": "ns=2;s=W05WP_HPL1IV590432.Standard-Variablentabelle.-K0.3",
+                    "S10.LDS.ZSW_13": "ns=2;s=W05WP_HPL1IV590432.LDS.ZSW_13",
+                    "S10.TestLeakage_Test_Active": "ns=2;s=W05WP_HPL1IV590432.SOLLWERT_DB4.PRUEF_MIT_TESTLECK",
+                    "S5.DO_K2.4_Diaphragm_Pump_Chamber_sealing": "ns=2;s=W05WP_HPL1IV590432.Standard-Variablentabelle.-K2.4_MembPump Kamdicht.",
+                    "S10.LDS.ARRAY_24_49": "ns=2;s=W05WP_HPL1IV590432.LDS.ARRAY_24_49",
+                    "S8.OKTA1000_currentOperatingHours": "ns=2;s=W05WP_HPL1IV590432.ISTWERTE_DB3.AKT_BETRSTD_OKTA1000",
+                    "S5.AI_B256_Pressure_HD": "ns=2;s=W05WP_HPL1IV590432.ISTWERTE_DB3.MESSWERT_PEW256",
+                    "S5.DI_B3.0_PZ1_Door_isOpened": "ns=2;s=W05WP_HPL1IV590432.Standard-Variablentabelle.-B3.0_PZ1 KammT\u00fcr = auf",
+                    "S10.LDS_STATUS_Error": "ns=2;s=W05WP_HPL1IV590432.ISTWERTE_DB3.LDS_STATUS_FEHLER",
+                    "S5.DI_131G1_PowerSupply_24VDC_OK": "ns=2;s=W05WP_HPL1IV590432.Standard-Variablentabelle.-131G1_Netzteil 24VDC iO",
+                    "S5.DI_Y0.5V_CV_isOpened": "ns=2;s=W05WP_HPL1IV590432.Standard-Variablentabelle.-Y0.5V_EV-Fluten ist auf",
+                    "S10.LDS.Mantisse_BIT_00": "ns=2;s=W05WP_HPL1IV590432.LDS.Mantisse_BIT_00",
+                    "S5.DO_K6.4V_SV_N2_50bar": "ns=2;s=W05WP_HPL1IV590432.Standard-Variablentabelle.-K6.4V_MV-N2 50 bar",
+                    "S5.DI_S10.0_PC_On": "ns=2;s=W05WP_HPL1IV590432.Standard-Variablentabelle.-S10.0_PC-Ein",
+                    "S10.LDS.Mantisse_BIT_02": "ns=2;s=W05WP_HPL1IV590432.LDS.Mantisse_BIT_02",
+                    "S5.AI_B266_TestObject_Pressure_ND": "ns=2;s=W05WP_HPL1IV590432.ISTWERTE_DB3.MESSWERT_PEW266",
+                    "S10.LDS_Stat_Sniff_Test_Active": "ns=2;s=W05WP_HPL1IV590432.ISTWERTE_DB3.LDS_Stat_Sniff_Test_Akt",
+                    "S5.DO_K3.1_EEV_open": "ns=2;s=W05WP_HPL1IV590432.Standard-Variablentabelle.-K3.1_EEV-VENTIL AUF",
+                    "S5.DI_B3.2_PZ3_Door_isOpened": "ns=2;s=W05WP_HPL1IV590432.Standard-Variablentabelle.-B3.2_PZ3 KammT\u00fcr = auf",
+                    "S10.LDS.STW_12": "ns=2;s=W05WP_HPL1IV590432.LDS.STW_12",
+                    "S10.LDS_Stat_Sniffer_clogged": "ns=2;s=W05WP_HPL1IV590432.ISTWERTE_DB3.LDS_Stat_Sniffer_clogged",
+                    "S10.LDS.Mantisse_BIT_07": "ns=2;s=W05WP_HPL1IV590432.LDS.Mantisse_BIT_07",
+                    "S10.LDS_Stat_Calibration_fail": "ns=2;s=W05WP_HPL1IV590432.ISTWERTE_DB3.LDS_Stat_Calibratio_fail",
+                    "S5.DI_111F2_MainPowerSupply_UnderVoltage_OK": "ns=2;s=W05WP_HPL1IV590432.Standard-Variablentabelle.-111F2_Netz Unterspg. iO",
+                    "S5.DO_K2.3M_HENA300": "ns=2;s=W05WP_HPL1IV590432.Standard-Variablentabelle.-K2.3M_VakPump 1. Stufe",
+                    "S10.ZSW_2": "ns=2;s=W05WP_HPL1IV590432.LDS.ZSW_2",
+                    "S10.LDS_Start_InternalCalibration": "ns=2;s=W05WP_HPL1IV590432.SOLLWERT_DB4.LDS_START_INT_CAL",
+                    "S10.LDS.Exponent_BIT_04": "ns=2;s=W05WP_HPL1IV590432.LDS.Exponent_BIT_04",
+                    "S5.DO_K6.6V_SV_N2_4bar": "ns=2;s=W05WP_HPL1IV590432.Standard-Variablentabelle.-K6.6V_MV-N2 4 bar",
+                    "S10.LDS.PWE_6": "ns=2;s=W05WP_HPL1IV590432.LDS.PWE_6",
+                    "S5.DO_K1.3V_SV_Door_driving_toOpen": "ns=2;s=W05WP_HPL1IV590432.Standard-Variablentabelle.-K1.3V_MV-KamT\u00fcr\u00d6FFN",
+                    "S5.DI_S10.5_Test_Cancel": "ns=2;s=W05WP_HPL1IV590432.Standard-Variablentabelle.-S10.5_Pruefung Abbruch",
+                    "S10.ZSW_0": "ns=2;s=W05WP_HPL1IV590432.LDS.ZSW_0",
+                    "S10.LDS.Mantisse_BIT_08": "ns=2;s=W05WP_HPL1IV590432.LDS.Mantisse_BIT_08",
+                    "S10.LDS.COPY_PWE_6": "ns=2;s=W05WP_HPL1IV590432.LDS.COPY_PWE_6",
+                    "S5.DI_114A1_coolingDevice_Alarm1_OK": "ns=2;s=W05WP_HPL1IV590432.Standard-Variablentabelle.-114A1_Klima Alarm 1 iO",
+                    "S5.DO_K6.2V_SV_Helium": "ns=2;s=W05WP_HPL1IV590432.Standard-Variablentabelle.-K6.2V_MV-Helium",
+                    "S10.LDS_Stat_Sniffer_Valve": "ns=2;s=W05WP_HPL1IV590432.ISTWERTE_DB3.LDS_Stat_Sniffer_Valve",
+                    "S5.DO_K6.1V_SV_N2": "ns=2;s=W05WP_HPL1IV590432.Standard-Variablentabelle.-K6.1V_MV-Stickstoff",
+                    "S1.ControlOn": "ns=2;s=W05WP_HPL1IV590432.ISTWERTE_DB3.STRG_EIN",
+                    "S5.DI_Q2.3M_OK": "ns=2;s=W05WP_HPL1IV590432.Standard-Variablentabelle.MOSCHU -Q2.3M iO",
+                    "S5.DI_B3.4_PZ5_DoorDriven_isClosed": "ns=2;s=W05WP_HPL1IV590432.Standard-Variablentabelle.-B3.4_PZ5 KammT\u00fcrStZu",
+                    "S5.DI_B3.3_PZ3_Door_isClosed": "ns=2;s=W05WP_HPL1IV590432.Standard-Variablentabelle.-B3.3_PZ3 KammT\u00fcr = zu",
+                    "S5.DO_K7.3V_BYPASS_HD_ND": "ns=2;s=W05WP_HPL1IV590432.Standard-Variablentabelle.-K7.3V_BYPASS HD/ND",
+                    "S1.AutomaticMode": "ns=2;s=W05WP_HPL1IV590432.ISTWERTE_DB3.BA_AUTO_AKTIV",
+                    "S10.LDS.ZSW_9": "ns=2;s=W05WP_HPL1IV590432.LDS.ZSW_9",
+                    "S10.LDS.Exponent_BIT_05": "ns=2;s=W05WP_HPL1IV590432.LDS.Exponent_BIT_05",
+                    "S10.Set_MachineFactor_Active": "ns=2;s=W05WP_HPL1IV590432.SOLLWERT_DB4.MASCH_FAKT_ERMITT",
+                    "S10.MachineFactor": "ns=2;s=W05WP_HPL1IV590432.ISTWERTE_DB3.MASCHINEN_FAKTOR",
+                    "S10.LDS.ZSW_11": "ns=2;s=W05WP_HPL1IV590432.LDS.ZSW_11",
+                    "S5.DI_Q2.2M_OK": "ns=2;s=W05WP_HPL1IV590432.Standard-Variablentabelle.MOSCHU -Q2.2M iO",
+                    "S6.Cancel_Worker": "ns=2;s=W05WP_HPL1IV590432.ISTWERTE_DB3.ABBRUCH_WERKER",
+                    "S5.DI_Q2.1T_OK": "ns=2;s=W05WP_HPL1IV590432.Standard-Variablentabelle.THERM. -Q2.1T iO",
+                    "S10.Leakage_RAW": "ns=2;s=W05WP_HPL1IV590432.ISTWERTE_DB3.LECKRATE_LDS_ROH",
+                    "S5.DI_Y0.7V_CV_isClosed": "ns=2;s=W05WP_HPL1IV590432.Standard-Variablentabelle.-Y0.7V_EV-LDS ist zu",
+                    "S10.LDS_Stat_Detector_Busy": "ns=2;s=W05WP_HPL1IV590432.ISTWERTE_DB3.LDS_Stat_Detector_Busy",
+                    "S5.DI_Y0.7V_CV_isOpened": "ns=2;s=W05WP_HPL1IV590432.Standard-Variablentabelle.-Y0.7V_EV-LDS ist auf",
+                    "S5.DO_K1.4V_SV_Door_break": "ns=2;s=W05WP_HPL1IV590432.Standard-Variablentabelle.-K1.4V_MV-Bremse T\u00fcr",
+                    "S5.DI_Q2.3T_OK": "ns=2;s=W05WP_HPL1IV590432.Standard-Variablentabelle.THERM. -Q2.3T iO",
+                    "S5.DO_K7.0V_SV_evacuate_test_object": "ns=2;s=W05WP_HPL1IV590432.Standard-Variablentabelle.-K7.0V_MV-Pr\u00fcf. evak.",
+                    "S10.LDS.STW_13": "ns=2;s=W05WP_HPL1IV590432.LDS.STW_13",
+                    "S5.B6.0P_PressuredAirSupply_OK": "ns=2;s=W05WP_HPL1IV590432.Standard-Variablentabelle.-B6.0P_Dl-Druck iO",
+                    "S10.LDS.STW_11": "ns=2;s=W05WP_HPL1IV590432.LDS.STW_11",
+                    "S5.DO_K3.2_230V_SHD_allowed": "ns=2;s=W05WP_HPL1IV590432.Standard-Variablentabelle.-K3.2_Frg.230V_SHD",
+                    "S10.LDS.Exponent_BIT_03": "ns=2;s=W05WP_HPL1IV590432.LDS.Exponent_BIT_03",
+                    "S6.Cancel_GrossLeakage": "ns=2;s=W05WP_HPL1IV590432.ISTWERTE_DB3.ABBRUCH_GROBLECK",
+                    "S5.AI_B260_TestObject_VacuumPressure": "ns=2;s=W05WP_HPL1IV590432.ISTWERTE_DB3.MESSWERT_PEW260",
+                    "S10.ZSW_15": "ns=2;s=W05WP_HPL1IV590432.LDS.ZSW_15",
+                    "S8.DUO5M_totalOperatingHours": "ns=2;s=W05WP_HPL1IV590432.ISTWERTE_DB3.GESAMT_BETRSTD_DUO5M",
+                    "S5.DI_S10.6_MachineroomLight_On": "ns=2;s=W05WP_HPL1IV590432.Standard-Variablentabelle.-S10.6_Maschbeleuch_EIN",
+                    "S10.LDS.ZSW_12": "ns=2;s=W05WP_HPL1IV590432.LDS.ZSW_12",
+                    "S1.SetupMode": "ns=2;s=W05WP_HPL1IV590432.ISTWERTE_DB3.BA_EINR_AKTIV",
+                    "S10.LDS.STW_2": "ns=2;s=W05WP_HPL1IV590432.LDS.STW_2",
+                    "S10.LDS.BYTE_11_12": "ns=2;s=W05WP_HPL1IV590432.LDS.BYTE_11_12",
+                    "S6.Cancel_Leakage": "ns=2;s=W05WP_HPL1IV590432.ISTWERTE_DB3.ABBRUCH_LDS_MESSWERT",
+                    "S10.SHD_SwitchPoint": "ns=2;s=W05WP_HPL1IV590432.ISTWERTE_DB3.SHD_SCHALTWERT",
+                    "S10.LDS.MANTISSA": "ns=2;s=W05WP_HPL1IV590432.LDS.MANTISSE",
+                    "S5.DI_B3.1_PZ1_Door_isClosed": "ns=2;s=W05WP_HPL1IV590432.Standard-Variablentabelle.-B3.1_PZ1 KammT\u00fcr = zu",
+                    "S5.DI_S10.3_LightsTest": "ns=2;s=W05WP_HPL1IV590432.Standard-Variablentabelle.-S10.3_Lampentest",
+                    "S5.DO_K6.5V_SV_N2_50bar_throttled": "ns=2;s=W05WP_HPL1IV590432.Standard-Variablentabelle.-K6.5V_MV-N2 50 bar red.",
+                    "S5.DO_K7.1V_SV_measuring_lt_100mbar": "ns=2;s=W05WP_HPL1IV590432.Standard-Variablentabelle.-K7.1V_MV-Druck 100 mbar",
+                    "S5.DI_Q2.2T_OK": "ns=2;s=W05WP_HPL1IV590432.Standard-Variablentabelle.THERM. -Q2.2T iO",
+                    "S10.LDS.STW_5": "ns=2;s=W05WP_HPL1IV590432.LDS.STW_5",
+                    "S5.DO_K2.2M_OKTA1000": "ns=2;s=W05WP_HPL1IV590432.Standard-Variablentabelle.-K2.2M_VakPump 2. Stufe",
+                    "S10.Result_Leakage": "ns=2;s=W05WP_HPL1IV590432.ISTWERTE_DB3.ERG_LECKRATE_KORRIGIERT",
+                    "S5.DO_K7.2V_SV_deflate_test_object": "ns=2;s=W05WP_HPL1IV590432.Standard-Variablentabelle.-K7.2V_MV-Pr\u00fcf. entlast.",
+                    "S10.LDS.COPY_PWE_4": "ns=2;s=W05WP_HPL1IV590432.LDS.COPY_PWE_4",
+                    "S6.CatastrophyTrigger": "ns=2;s=W05WP_HPL1IV590432.ISTWERTE_DB3.KATASTROPHENTRIGGER",
+                    "S10.LDS.STW_8": "ns=2;s=W05WP_HPL1IV590432.LDS.STW_8",
+                    "S10.LDS.STW_9": "ns=2;s=W05WP_HPL1IV590432.LDS.STW_9",
+                    "S5.DO_K1.0V_SV_Door_close": "ns=2;s=W05WP_HPL1IV590432.Standard-Variablentabelle.-K1.0V_MV-KamT\u00fcrZu",
+                    "S10.LDS.ZSW_3": "ns=2;s=W05WP_HPL1IV590432.LDS.ZSW_3",
+                    "S10.LDS.STW_14": "ns=2;s=W05WP_HPL1IV590432.LDS.STW_14",
+                    "S10.LDS_HV_Test_Active": "ns=2;s=W05WP_HPL1IV590432.SOLLWERT_DB4.LDS_HV_TEST_AKT",
+                    "S5.DI_S7_KeySwitch_ManualMode": "ns=2;s=W05WP_HPL1IV590432.ISTWERTE_DB3.FS_S7_VW_BA_HAND",
+                    "W05WP_HPL1IV590432.SOLLWERT_DB4.Producing": "ns=2;s=W05WP_HPL1IV590432.SOLLWERT_DB4.Producing",
+                    "W05WP_HPL1IV590432.SOLLWERT_DB4.Waiting": "ns=2;s=W05WP_HPL1IV590432.SOLLWERT_DB4.Waiting",
+                    "S7.ModelNumber": "ns=2;s=W05WP_HPL1IV590432.SOLLWERT_DB4.Sachnummer",
+                    "S7.IdentNumber": "ns=2;s=W05WP_HPL1IV590432.SOLLWERT_DB4.Identnummer",
+                    "S7.TestingPassed": "ns=2;s=W05WP_HPL1IV590432.SOLLWERT_DB4.PASS",
+                    "S7.TestingFailed": "ns=2;s=W05WP_HPL1IV590432.SOLLWERT_DB4.FAIL",
+                    "S1.SettingMode": "ns=2;s=W05WP_HPL1IV590432.SOLLWERT_DB4.Setting",
+                    "S1.MaintenanceMode": "ns=2;s=W05WP_HPL1IV590432.SOLLWERT_DB4.Maintenance"
+                  },
+                  "name": "standard_data",
+                  "outputTopic": "splunk"
+                }
+              },
+              "subscriptions": {},
+              "url": "opc.tcp://199.216.0.147:4840",
+              "resetBlackListIntervalMs": 15000
+            },
+            "client": {
+              "application": {
+                "security": {
+                  "authentication": {
+                    "credentials": {},
+                    "strategy": "Anonymous"
+                  },
+                  "endpoint": {
+                    "isEnabled": true,
+                    "level": 0,
+                    "mode": "None",
+                    "policy": "None",
+                    "timeout": 15000
+                  }
+                }
+              },
+              "session": {
+                "subscription": {}
+              },
+              "optimizeNodeValueReadAccess": false
+            },
+            "edgeMethodMapping": {}
+          }
+        },
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.OpcUaClientModule/versions/2",
+        "$messageOutputs": {
+          "W16HeliumTesterODUIV590432.Datapoints1m": "splunk",
+          "W16HeliumTesterODUIV590432.standard_data": "splunk",
+          "W16HeliumTesterODUIV590432.S1.Data": "splunkPoll",
+          "W16HeliumTesterODUIV590432.S10.Data": "splunkPoll",
+          "W16HeliumTesterODUIV590432.GatewayWatchdog": "splunkPoll"
+        },
+        "$timestamp": "2023-11-03T06:35:07.5531752Z",
+        "$version": 1
+      }
+    },
+    "streamprocessor": {
+      "configuration": {
+        "$timestamp": "2023-11-03T06:35:07.5603138Z",
+        "$version": 1
+      }
+    },
+    "logger": {
+      "configuration": {
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.FileLoggerModule/versions/1",
+        "$timestamp": "2023-11-03T06:35:07.5529418Z",
+        "$version": 1
+      }
+    },
+    "splunk": {
+      "configuration": {
+        "endpoint": {
+          "url": "https://10.13.21.22:8088/services/collector/event",
+          "token": "6112a68b-c8f6-4946-a7dd-7d48a710bc83",
+          "sslCheck": false
+        },
+        "interval": 1000,
+        "$messageInputs": {
+          "splunk": "event",
+          "splunkPoll": "telemetry",
+          "$system_signals": "telemetry"
+        },
+        "host": "I6828w05.4032",
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.SplunkHecModule/versions/3",
+        "sendTimestamp": true,
+        "sourceType": "_json",
+        "bufferQueueSettings": {
+          "enablePersist": false
+        },
+        "$timestamp": "2024-04-12T05:47:25.058153Z",
+        "$version": 3
+      }
+    },
+    "system": {
+      "configuration": {
+        "firewallrules": {
+          "AdminAPIAutoRuleHTTP": {
+            "description": "Auto generated rule from AdminApiModule for HTTP Port.",
+            "action": "accept",
+            "direction": "inbound",
+            "protocol": "tcp",
+            "srcPort": 0,
+            "destPort": 80
+          },
+          "AdminAPIAutoRuleHTTPS": {
+            "description": "Auto generated rule from AdminApiModule for HTTPS Port.",
+            "action": "accept",
+            "direction": "inbound",
+            "protocol": "tcp",
+            "srcPort": 0,
+            "destPort": 443
+          }
+        },
+        "$timestamp": "2024-04-11T12:49:41.54821Z",
+        "$version": 1
+      }
+    }
+  }
+}

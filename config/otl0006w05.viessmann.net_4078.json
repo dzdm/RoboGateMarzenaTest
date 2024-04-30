@@ -1,0 +1,283 @@
+{
+  "modules": {
+    "modbus": {
+      "configuration": {
+        "$messageOutputs": {
+          "modbus_test.slave.modbus_PG": "modbus_PG"
+        },
+        "servers": {
+          "modbus_test": {
+            "connection": {
+              "variant": "Tcp",
+              "tcp": {
+                "ipAddress": "10.31.128.52",
+                "port": 4840
+              }
+            },
+            "slaves": {
+              "slave": {
+                "pollGroups": {
+                  "modbus_PG": {
+                    "model": {
+                      "Sensor": {
+                        "registerStartAddress": 1,
+                        "registerLength": 1,
+                        "functionCode": 1
+                      }
+                    },
+                    "intervalMs": 1000,
+                    "sourceMode": "UseSlaveName"
+                  }
+                },
+                "setupGroups": {},
+                "slaveId": 1,
+                "subscriptionGroups": {}
+              }
+            }
+          }
+        },
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.ModbusReaderModule/versions/2",
+        "$timestamp": "2023-11-02T12:36:50.1527553Z",
+        "$version": 2
+      }
+    },
+    "center": {
+      "configuration": {
+        "$timestamp": "2023-11-02T12:36:50.2655731Z",
+        "$version": 2
+      }
+    },
+    "mqtt": {
+      "configuration": {
+        "$timestamp": "2023-11-02T12:36:50.2660132Z",
+        "$version": 2
+      }
+    },
+    "azure": {
+      "configuration": {
+        "$timestamp": "2023-11-02T12:36:50.2663556Z",
+        "$version": 2
+      }
+    },
+    "splunk": {
+      "configuration": {
+        "endpoint": {
+          "url": "https://10.10.212.27:8088/services/collector/event",
+          "token": "a5a26423-9874-4383-8f31-436c3c86a4ee",
+          "sslCheck": false,
+          "proxy": ""
+        },
+        "host": "COTL0006W05-4078",
+        "interval": 1000,
+        "sendTimestamp": true,
+        "sourceType": "_json",
+        "bufferQueueSettings": {
+          "enablePersist": false
+        },
+        "$messageInputs": {
+          "splunkPoll": "telemetry",
+          "splunk": "event",
+          "$system_signals": "telemetry"
+        },
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.SplunkHecModule/versions/3",
+        "$timestamp": "2023-11-02T12:37:26.785408Z",
+        "$version": 16
+      }
+    },
+    "opcua": {
+      "configuration": {
+        "servers": {
+          "W16HeliumTesterPWTIV1673000301": {
+            "endpoint": {
+              "pollGroups": {
+                "S1.Data": {
+                  "nodes": {
+                    "S1.Connected_PG": "ns=2;s=S7-1.DB.MES.S1.Connected",
+                    "S1.AutomaticMode_PG": "ns=2;s=S7-1.DB.MES.S1.AutomaticMode",
+                    "S1.ManualMode_PG": "ns=2;s=S7-1.DB.MES.S1.ManualMode",
+                    "S1.Producing_PG": "ns=2;s=S7-1.DB.MES.S1.Producing",
+                    "S1.Waiting_PG": "ns=2;s=S7-1.DB.MES.S1.Waiting",
+                    "S1.SnifferMode_PG": "ns=2;s=S7-1.DB.MES.S1.SnifferMode",
+                    "S1.MachineDowntime_PG": "ns=2;s=S7-1.DB.MES.S1.MachineDowntime",
+                    "S1.ServiceArrival_PG": "ns=2;s=S7-1.DB.MES.S1.ServiceArrival"
+                  },
+                  "name": "S1.Data",
+                  "outputTopic": "splunkPoll",
+                  "intervalMs": 500
+                }
+              },
+              "subscriptionGroups": {
+                "W16HeliumTesterPWTIV1673000301": {
+                  "onChangeSubmitFullModel": false,
+                  "onRepublishSubmitFullModel": true,
+                  "nodes": {
+                    "S3.ActivePower": "ns=2;s=S7-1.DB.MES.S3.ActivePower",
+                    "S3.ElectricMeter": "ns=2;s=S7-1.DB.MES.S3.ElectricMeter",
+                    "S3.CurrentL1": "ns=2;s=S7-1.DB.MES.S3.CurrentL1",
+                    "S3.CurrentL2": "ns=2;s=S7-1.DB.MES.S3.CurrentL2",
+                    "S3.CurrentL3": "ns=2;s=S7-1.DB.MES.S3.CurrentL3",
+                    "S3.VoltageL1N": "ns=2;s=S7-1.DB.MES.S3.VoltageL1N",
+                    "S3.VoltageL2N": "ns=2;s=S7-1.DB.MES.S3.VoltageL2N",
+                    "S3.VoltageL3N": "ns=2;s=S7-1.DB.MES.S3.VoltageL3N",
+                    "S3.VoltageL1L2": "ns=2;s=S7-1.DB.MES.S3.VoltageL1L2",
+                    "S3.VoltageL2L3": "ns=2;s=S7-1.DB.MES.S3.VoltageL2L3",
+                    "S3.VoltageL3L1": "ns=2;s=S7-1.DB.MES.S3.VoltageL3L1",
+                    "S3.Nitrogen.ValveState": "ns=2;s=S7-1.DB.MES.S3.Nitrogen.ValveState.VMNH",
+                    "S3.Nitrogen.Pressure": "ns=2;s=S7-1.DB.MES.S3.Nitrogen.Pressure.SPNH",
+                    "S3.Helium.ValveState": "ns=2;s=S7-1.DB.MES.S3.Helium.ValveState.VMH",
+                    "S3.Helium.Pressure": "ns=2;s=S7-1.DB.MES.S3.Helium.Pressure.SPH",
+                    "S7.ProductPartNumber_1": "ns=2;s=S7-1.DB.MES.S7.ProductPartNumber1",
+                    "S7.ProductPartNumber_2": "ns=2;s=S7-1.DB.MES.S7.ProductPartNumber2",
+                    "S7.ProductIdentifer_1": "ns=2;s=S7-1.DB.MES.S7.ProductIdentifer1",
+                    "S7.ProductIdentifer_2": "ns=2;s=S7-1.DB.D9_Results.Result.[0].productCode2",
+                    "S7.ActiveProgram": "ns=2;s=S7-1.DB.MES.S7.ActiveProgram",
+                    "S7.ProcessStart": "ns=2;s=S7-1.DB.MES.S7.ProcessStart",
+                    "S7.ActiveProcessStep": "ns=2;s=S7-1.DB.MES.S7.ActiveProcessStep",
+                    "S7.ProcessEnd": "ns=2;s=S7-1.DB.MES.S7.ProcessEnd",
+                    "S7.ProcessDurationTime": "ns=2;s=S7-1.DB.MES.S7.ProcessDurationTime",
+                    "S7.Stopped": "ns=2;s=S7-1.DB.MES.S7.Stopped",
+                    "S7.FailedReason": "ns=2;s=S7-1.DB.MES.S7.FailedReason",
+                    "S7.VacuumPressureChamberNorm": "ns=2;s=S7-1.DB.MES.S7.VacuumPressureChamberNorm",
+                    "S7.LeakRateMeasValueCorrected": "ns=2;s=S7-1.DB.MES.S7.LeakRateMeasValueCorrected",
+                    "S7.LeakRateMeasValueRaw": "ns=2;s=S7-1.DB.MES.S7.LeakRateMeasValueRaw",
+                    "S7.LeakRateMeasValueResult": "ns=2;s=S7-1.DB.MES.S7.LeakRateMeasValueResult",
+                    "S6.MalfunctionCumulative": "ns=2;s=S7-1.DB.MES.S6.MalfunctionCumulative",
+                    "S6.ErrorW.[0]": "ns=2;s=S7-1.DB.MES.S6.ErrorW.[0]",
+                    "S6.ErrorW.[1]": "ns=2;s=S7-1.DB.MES.S6.ErrorW.[1]",
+                    "S6.ErrorW.[2]": "ns=2;s=S7-1.DB.MES.S6.ErrorW.[2]",
+                    "S6.ErrorW.[3]": "ns=2;s=S7-1.DB.MES.S6.ErrorW.[3]",
+                    "S6.ErrorW.[4]": "ns=2;s=S7-1.DB.MES.S6.ErrorW.[4]",
+                    "S6.ErrorW.[5]": "ns=2;s=S7-1.DB.MES.S6.ErrorW.[5]",
+                    "S6.WarningCumulative": "ns=2;s=S7-1.DB.MES.S6.WarningCumulative",
+                    "S6.WarningW.[0]": "ns=2;s=S7-1.DB.MES.S6.WarningW.[0]",
+                    "S6.WarningW.[1]": "ns=2;s=S7-1.DB.MES.S6.WarningW.[1]",
+                    "S6.WarningW.[2]": "ns=2;s=S7-1.DB.MES.S6.WarningW.[2]",
+                    "S6.WarningW.[3]": "ns=2;s=S7-1.DB.MES.S6.WarningW.[3]",
+                    "S6.WarningW.[4]": "ns=2;s=S7-1.DB.MES.S6.WarningW.[4]",
+                    "S6.WarningW.[5]": "ns=2;s=S7-1.DB.MES.S6.WarningW.[5]",
+                    "S4.CounterATTotal": "ns=2;s=S7-1.DB.MES.S4.CounterATTotal",
+                    "S4.CounterATPass": "ns=2;s=S7-1.DB.MES.S4.CounterATPass",
+                    "S4.CounterATFail": "ns=2;s=S7-1.DB.MES.S4.CounterATFail",
+                    "S7.PressureNorm_1": "ns=2;s=S7-1.DB.MES.S7.Pressure1Norm",
+                    "S7.PressureTesterNorm_1": "ns=2;s=S7-1.DB.MES.S7.Pressure1TesterNorm",
+                    "S7.PressureNorm_2": "ns=2;s=S7-1.DB.MES.S7.Pressure2Norm",
+                    "S7.PressureTesterNorm_2": "ns=2;s=S7-1.DB.MES.S7.Pressure2TesterNorm",
+                    "S7.SHD-SwitchingPoint_1": "ns=2;s=S7-1.DB.MES.S7.SHD-SwitchingPoint1",
+                    "S7.SHD-SwitchingPoint_2": "ns=2;s=S7-1.DB.MES.S7.SHD-SwitchingPoint2",
+                    "S7.TestingPassed": "ns=2;s=S7-1.DB.MES.S7.Passed",
+                    "S7.TestingFailed": "ns=2;s=S7-1.DB.MES.S7.Failed",
+                    "S1.QuantityPulse": "ns=2;s=S7-1.DB.MES.S1.QuantityPulse",
+                    "S7.LeakActualValue": "ns=2;s=S7-1.DB.D6_Leak.Leak.actualValue",
+                    "S7.LeakMantisa": "ns=2;s=S7-1.I.H_LEAK_MANT.1",
+                    "S7.ProductIdentifer_22": "ns=2;s=S7-1.DB.MES.S7.ProductIdentifer2"
+                  },
+                  "name": "W16HeliumTesterPWTIV1673000301",
+                  "outputTopic": "splunk",
+                  "publishingIntervalMs": 200
+                }
+              },
+              "subscriptions": {},
+              "url": "opc.tcp://10.31.128.52:4840",
+              "resetBlackListIntervalMs": 15000
+            },
+            "client": {
+              "application": {
+                "security": {
+                  "authentication": {
+                    "credentials": {},
+                    "strategy": "Anonymous"
+                  },
+                  "endpoint": {
+                    "isEnabled": false,
+                    "level": 0,
+                    "mode": "None",
+                    "policy": "None",
+                    "timeout": 15000
+                  }
+                }
+              },
+              "session": {
+                "subscription": {}
+              },
+              "optimizeNodeValueReadAccess": false
+            },
+            "edgeMethodMapping": {}
+          }
+        },
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.OpcUaClientModule/versions/2",
+        "$messageOutputs": {
+          "W16HeliumTesterPWTIV1673000301.S1.Data": "splunkPoll",
+          "W16HeliumTesterPWTIV1673000301.W16HeliumTesterPWTIV1673000301": "splunk"
+        },
+        "$timestamp": "2024-02-05T12:38:18.9326164Z",
+        "$version": 21
+      }
+    },
+    "mustache": {
+      "configuration": {
+        "$timestamp": "2023-11-02T12:36:50.274074Z",
+        "$version": 2
+      }
+    },
+    "rfcreader": {
+      "configuration": {
+        "$timestamp": "2023-11-02T12:36:50.2741723Z",
+        "$version": 2
+      }
+    },
+    "logger": {
+      "configuration": {
+        "$timestamp": "2023-11-02T12:36:50.2742066Z",
+        "$version": 2
+      }
+    },
+    "streamprocessor": {
+      "configuration": {
+        "$timestamp": "2023-11-02T12:36:50.2742462Z",
+        "$version": 2
+      }
+    },
+    "system": {
+      "configuration": {
+        "firewallrules": {
+          "AdminAPIAutoRuleHTTP": {
+            "description": "Auto generated rule from AdminApiModule for HTTP Port.",
+            "action": "accept",
+            "direction": "inbound",
+            "protocol": "tcp",
+            "srcPort": 0,
+            "destPort": 80
+          },
+          "AdminAPIAutoRuleHTTPS": {
+            "description": "Auto generated rule from AdminApiModule for HTTPS Port.",
+            "action": "accept",
+            "direction": "inbound",
+            "protocol": "tcp",
+            "srcPort": 0,
+            "destPort": 443
+          }
+        },
+        "signals": {
+          "groups": {
+            "system_signals": {
+              "outputTopic": "system_signals",
+              "intervalMs": 60000,
+              "signals": {
+                "ss_modbus": {
+                  "source": "moduleStatus",
+                  "sourceKey": "modbus.status.connection.modbus_test.code"
+                },
+                "ss_opc": {
+                  "source": "moduleStatus",
+                  "sourceKey": "opcua.status.connection.W16HeliumTesterPWTIV1673000301.code"
+                }
+              }
+            }
+          }
+        },
+        "$timestamp": "2023-11-02T13:57:00.1610383Z",
+        "$version": 4
+      }
+    }
+  }
+}

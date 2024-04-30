@@ -1,0 +1,185 @@
+{
+  "modules": {
+    "mustache": {
+      "configuration": {
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.MustacheEnricherModule/versions/1",
+        "$timestamp": "2020-08-17T09:29:27.7346547Z",
+        "$version": 1
+      }
+    },
+    "azure": {
+      "configuration": {
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.IotHubSenderModule/versions/1",
+        "$timestamp": "2020-08-17T09:29:27.4633449Z",
+        "$version": 1
+      }
+    },
+    "center": {
+      "configuration": {
+        "$version": 0
+      }
+    },
+    "modbus": {
+      "configuration": {
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.ModbusReaderModule/versions/1",
+        "$timestamp": "2020-09-17T16:05:05.0807342Z",
+        "$version": 1
+      }
+    },
+    "mqtt": {
+      "configuration": {
+        "$schema": "https://schemas.robotron.de/robogate/modules/MqttSender.IotEdge.Modules.MqttSenderModule/versions/1",
+        "$timestamp": "2020-09-17T16:05:05.0806202Z",
+        "$version": 1
+      }
+    },
+    "rfcreader": {
+      "configuration": {
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.RFC1006ReaderModule/versions/1",
+        "$timestamp": "2020-08-17T09:29:26.7879014Z",
+        "$version": 1
+      }
+    },
+    "opcua": {
+      "configuration": {
+        "servers": {
+          "W16PS9550CablesGMIV1610000518": {
+            "endpoint": {
+              "pollGroups": {
+                "S1.Data": {
+                  "name": "S1.Data",
+                  "nodes": {
+                    "S1.PowerOn_PG": "ns=4;i=105",
+                    "S1.Producing_PG": "ns=4;i=109",
+                    "S1.Waiting_PG": "ns=4;i=110",
+                    "S1.MaintenanceMode_PG": "ns=4;i=115",
+                    "S1.StandbyMode_PG": "ns=4;i=117",
+                    "S1.MachineDowntime_PG": "ns=4;i=116"
+                  },
+                  "intervalMs": 15000,
+                  "outputTopic": "splunkPoll"
+                }
+              },
+              "subscriptionGroups": {
+                "W16PS9550CablesGMIV1610000518": {
+                  "onChangeSubmitFullModel": false,
+                  "onRepublishSubmitFullModel": false,
+                  "nodes": {
+                    "S1.Connected": "ns=4;i=104",
+                    "S1.AutomaticMode": "ns=4;i=106",
+                    "S1.ManualMode": "ns=4;i=107",
+                    "S1.SetupMode": "ns=4;i=108",
+                    "S1.QuantityPulse": "ns=4;i=111",
+                    "S1.CollectedError": "ns=4;i=112",
+                    "S1.CollectedWarning": "ns=4;i=113",
+                    "S1.StandbyMode": "ns=4;i=117",
+                    "S7.OperatorCode": "ns=4;i=123",
+                    "S7.ProductNumber": "ns=4;i=122",
+                    "S7.TestingFailed": "ns=4;i=121",
+                    "S7.TestingPassed": "ns=4;i=120"
+                  },
+                  "name": "W16PS9550CablesGMIV1610000518",
+                  "outputTopic": "splunk",
+                  "publishingIntervalMs": 400
+                }
+              },
+              "subscriptions": {},
+              "url": "",
+              "resetBlackListIntervalMs": 15000
+            },
+            "client": {
+              "application": {
+                "security": {
+                  "authentication": {
+                    "credentials": {},
+                    "strategy": "Anonymous"
+                  },
+                  "endpoint": {
+                    "isEnabled": true,
+                    "level": 0,
+                    "mode": "None",
+                    "policy": "None",
+                    "timeout": 15000
+                  }
+                }
+              },
+              "session": {
+                "subscription": {}
+              },
+              "optimizeNodeValueReadAccess": true
+            },
+            "edgeMethodMapping": {},
+            "conditions": {},
+            "statusCodeMapping": {}
+          }
+        },
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.OpcUaClientModule/versions/2",
+        "$messageOutputs": {
+          "W16PS9550CablesGMIV1610000518.S1.Data": "splunkPoll",
+          "W16PS9550CablesGMIV1610000518.W16PS9550CablesGMIV1610000518": "splunk"
+        },
+        "$timestamp": "2023-09-06T05:31:15.4745066Z",
+        "$version": 1
+      }
+    },
+    "streamprocessor": {
+      "configuration": {
+        "$version": 0
+      }
+    },
+    "logger": {
+      "configuration": {
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.FileLoggerModule/versions/1",
+        "$timestamp": "2020-09-17T16:05:04.4139748Z",
+        "$version": 1
+      }
+    },
+    "splunk": {
+      "configuration": {
+        "endpoint": {
+          "url": "https://10.13.21.22:8088/services/collector/event",
+          "token": "6112a68b-c8f6-4946-a7dd-7d48a710bc83",
+          "sslCheck": false
+        },
+        "interval": 1000,
+        "$messageInputs": {
+          "splunk": "event",
+          "splunkPoll": "telemetry"
+        },
+        "host": "I6828w05.4081",
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.SplunkHecModule/versions/3",
+        "sendTimestamp": true,
+        "sourceType": "_json",
+        "bufferQueueSettings": {
+          "enablePersist": false
+        },
+        "$timestamp": "2024-04-12T07:01:35.8880452Z",
+        "$version": 3
+      }
+    },
+    "system": {
+      "configuration": {
+        "firewallrules": {
+          "AdminAPIAutoRuleHTTP": {
+            "description": "Auto generated rule from AdminApiModule for HTTP Port.",
+            "action": "accept",
+            "direction": "inbound",
+            "protocol": "tcp",
+            "srcPort": 0,
+            "destPort": 80
+          },
+          "AdminAPIAutoRuleHTTPS": {
+            "description": "Auto generated rule from AdminApiModule for HTTPS Port.",
+            "action": "accept",
+            "direction": "inbound",
+            "protocol": "tcp",
+            "srcPort": 0,
+            "destPort": 443
+          }
+        },
+        "$timestamp": "2024-04-11T14:30:27.1746569Z",
+        "$version": 1
+      }
+    }
+  }
+}

@@ -1,0 +1,167 @@
+{
+  "modules": {
+    "mustache": {
+      "configuration": {
+        "$version": 0
+      }
+    },
+    "azure": {
+      "configuration": {
+        "$version": 0
+      }
+    },
+    "center": {
+      "configuration": {
+        "$version": 0
+      }
+    },
+    "modbus": {
+      "configuration": {
+        "$version": 0
+      }
+    },
+    "mqtt": {
+      "configuration": {
+        "$version": 0
+      }
+    },
+    "rfcreader": {
+      "configuration": {
+        "$version": 0
+      }
+    },
+    "opcua": {
+      "configuration": {
+        "servers": {
+          "W16BendingMachineODUIV16780715": {
+            "client": {
+              "session": {
+                "subscription": {}
+              },
+              "application": {
+                "security": {
+                  "authentication": {
+                    "strategy": "Anonymous",
+                    "credentials": {}
+                  },
+                  "endpoint": {
+                    "isEnabled": false,
+                    "level": 0,
+                    "mode": "None",
+                    "timeout": 15000,
+                    "policy": "None"
+                  }
+                }
+              },
+              "optimizeNodeValueReadAccess": true
+            },
+            "endpoint": {
+              "url": "opc.tcp://10.31.132.18:4840",
+              "subscriptions": {},
+              "pollGroups": {
+                "S1.Data": {
+                  "nodes": {
+                    "S1.SettingMode_PG": "ns=2;s=W16WP-LODUBiegevorrichtungIV16780715.DB.IOT-SmartFactory.State_1.SettingMode",
+                    "S1.Producing_PG": "ns=2;s=W16WP-LODUBiegevorrichtungIV16780715.DB.IOT-SmartFactory.State_1.Producing",
+                    "S1.Waiting_PG": "ns=2;s=W16WP-LODUBiegevorrichtungIV16780715.DB.IOT-SmartFactory.State_1.Waiting",
+                    "S1.MaintenanceMode_PG": "ns=2;s=W16WP-LODUBiegevorrichtungIV16780715.DB.IOT-SmartFactory.State_1.MaintenanceMode",
+                    "S1.MachineDowntime_PG": "ns=2;s=W16WP-LODUBiegevorrichtungIV16780715.DB.IOT-SmartFactory.State_1.MachineDowntime"
+                  },
+                  "intervalMs": 15000
+                },
+                "GatewayWatchdog": {
+                  "nodes": {
+                    "Gateway_Temperature_PG": "ns=3;s=_System.General.Temperature"
+                  },
+                  "intervalMs": 900000
+                }
+              },
+              "subscriptionGroups": {
+                "W16BendingMachineODUIV16780715": {
+                  "publishingIntervalMs": 250,
+                  "onChangeSubmitFullModel": false,
+                  "onRepublishSubmitFullModel": true,
+                  "nodes": {
+                    "S1.QuantityPulse": "ns=2;s=W16WP-LODUBiegevorrichtungIV16780715.DB.IOT-SmartFactory.State_1.QuantityPulse",
+                    "S7.TestingPassed": "ns=2;s=W16WP-LODUBiegevorrichtungIV16780715.DB.IOT-SmartFactory.Process.Automatic.Result.Pass",
+                    "S7.TestingFailed": "ns=2;s=W16WP-LODUBiegevorrichtungIV16780715.DB.IOT-SmartFactory.Process.Automatic.Result.Fail",
+                    "S1.Connected": "ns=2;s=W16WP-LODUBiegevorrichtungIV16780715.DB.IOT-SmartFactory.State_1.Connected"
+                  }
+                }
+              },
+              "resetBlackListIntervalMs": 15000
+            },
+            "edgeMethodMapping": {},
+            "conditions": {},
+            "statusCodeMapping": {}
+          }
+        },
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.OpcUaClientModule/versions/2",
+        "$messageOutputs": {
+          "W16BendingMachineODUIV16780715.W16BendingMachineODUIV16780715": "splunk",
+          "W16BendingMachineODUIV16780715.S1.Data": "splunkPoll",
+          "W16BendingMachineODUIV16780715.GatewayWatchdog": "splunkPoll"
+        },
+        "$timestamp": "2024-03-14T10:59:40.1442539Z",
+        "$version": 54
+      }
+    },
+    "streamprocessor": {
+      "configuration": {
+        "$version": 0
+      }
+    },
+    "logger": {
+      "configuration": {
+        "$version": 0
+      }
+    },
+    "splunk": {
+      "configuration": {
+        "endpoint": {
+          "url": "https://10.10.212.27:8088/services/collector/event",
+          "token": "a5a26423-9874-4383-8f31-436c3c86a4ee",
+          "sslCheck": false
+        },
+        "interval": 1000,
+        "$messageInputs": {
+          "splunk": "event",
+          "splunkPoll": "telemetry"
+        },
+        "host": "COTL0001W05-4094",
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.SplunkHecModule/versions/3",
+        "sendTimestamp": true,
+        "sourceType": "_json",
+        "bufferQueueSettings": {
+          "enablePersist": false
+        },
+        "$timestamp": "2024-03-06T12:49:03.0542474Z",
+        "$version": 20
+      }
+    },
+    "system": {
+      "configuration": {
+        "firewallrules": {
+          "AdminAPIAutoRuleHTTP": {
+            "description": "Auto generated rule from AdminApiModule for HTTP Port.",
+            "action": "accept",
+            "direction": "inbound",
+            "protocol": "tcp",
+            "srcPort": 0,
+            "destPort": 80
+          },
+          "AdminAPIAutoRuleHTTPS": {
+            "description": "Auto generated rule from AdminApiModule for HTTPS Port.",
+            "action": "accept",
+            "direction": "inbound",
+            "protocol": "tcp",
+            "srcPort": 0,
+            "destPort": 443
+          }
+        },
+        "$timestamp": "2023-11-14T12:17:11.7984011Z",
+        "$version": 1
+      }
+    }
+  }
+}

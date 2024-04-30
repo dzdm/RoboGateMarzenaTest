@@ -1,0 +1,391 @@
+{
+  "modules": {
+    "mustache": {
+      "configuration": {
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.MustacheEnricherModule/versions/1",
+        "$timestamp": "2019-09-05T13:06:10.4155047Z",
+        "$version": 1
+      }
+    },
+    "azure": {
+      "configuration": {
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.IotHubSenderModule/versions/1",
+        "$timestamp": "2019-09-13T13:09:49.3276975Z",
+        "$version": 1
+      }
+    },
+    "center": {
+      "configuration": {
+        "$version": 0
+      }
+    },
+    "modbus": {
+      "configuration": {
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.ModbusReaderModule/versions/1",
+        "$timestamp": "2020-09-17T16:04:09.8402366Z",
+        "$version": 1
+      }
+    },
+    "mqtt": {
+      "configuration": {
+        "$schema": "https://schemas.robotron.de/robogate/modules/MqttSender.IotEdge.Modules.MqttSenderModule/versions/1",
+        "$timestamp": "2020-09-17T16:04:09.8401315Z",
+        "$version": 1
+      }
+    },
+    "rfcreader": {
+      "configuration": {
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.RFC1006ReaderModule/versions/1",
+        "$timestamp": "2019-09-05T13:06:11.0584286Z",
+        "$version": 1
+      }
+    },
+    "opcua": {
+      "configuration": {
+        "servers": {
+          "W16HeliumTesterLinePWTIV590401": {
+            "client": {
+              "session": {
+                "subscription": {}
+              },
+              "application": {
+                "security": {
+                  "authentication": {
+                    "strategy": "Anonymous",
+                    "credentials": {}
+                  },
+                  "endpoint": {
+                    "isEnabled": true,
+                    "level": 0,
+                    "mode": "None",
+                    "timeout": 15000,
+                    "policy": "None"
+                  }
+                }
+              },
+              "optimizeNodeValueReadAccess": true
+            },
+            "endpoint": {
+              "url": "opc.tcp://199.216.3.65:4840",
+              "subscriptions": {},
+              "pollGroups": {
+                "S1.Data": {
+                  "nodes": {
+                    "S1.MachineDowntime_PG": "ns=2;s=W16WP-LPWTPruefstandIV590401.IOT-SmartFactory.State_1.MachineDowntime",
+                    "S1.Waiting_PG": "ns=2;s=W16WP-LPWTPruefstandIV590401.IOT-SmartFactory.State_1.Waiting",
+                    "S1.SettingMode_PG": "ns=2;s=W16WP-LPWTPruefstandIV590401.IOT-SmartFactory.State_1.SettingMode",
+                    "S1.Producing_PG": "ns=2;s=W16WP-LPWTPruefstandIV590401.IOT-SmartFactory.State_1.Producing",
+                    "S1.MaintenanceMode_PG": "ns=2;s=W16WP-LPWTPruefstandIV590401.IOT-SmartFactory.State_1.MaintenanceMode"
+                  },
+                  "intervalMs": 15000,
+                  "name": "S1.Data",
+                  "outputTopic": "splunkPoll"
+                },
+                "GatewayWatchdog": {
+                  "nodes": {
+                    "Gateway_Temperature_PG": "ns=3;s=_System.General.Temperature"
+                  },
+                  "name": "GatewayWatchdog",
+                  "outputTopic": "splunkPoll",
+                  "intervalMs": 900000
+                }
+              },
+              "subscriptionGroups": {
+                "W16HeliumTesterLinePWTIV590401": {
+                  "publishingIntervalMs": 100,
+                  "republishingIntervalMs": 0,
+                  "onChangeSubmitFullModel": false,
+                  "onRepublishSubmitFullModel": false,
+                  "nodes": {
+                    "OperatingHoursHena200": "ns=2;s=W16WP-LPWTPruefstandIV590401.ISTWERTE_DB3.GESAMT_BETRSTD_HENA200",
+                    "DoorClosingSetpointEndPositionREAL": "ns=2;s=W16WP-LPWTPruefstandIV590401.INSTANZ_DB_POS_KamT\u00fcrZu.HM_ZIELPOS_REAL",
+                    "StepTotal": "ns=2;s=W16WP-LPWTPruefstandIV590401.IOT-SmartFactory.Process.TestStation.StepTotal",
+                    "Y2.2V.FeedbackLeakDetectorOpen": "ns=2;s=W16WP-LPWTPruefstandIV590401.Standard-Variablentabelle.-Y2.2V_EV-LDS ist auf",
+                    "Y3.6.PumpChamberSealing": "ns=2;s=W16WP-LPWTPruefstandIV590401.Standard-Variablentabelle.-Y3.6_MembPump Kamdicht.",
+                    "S7.Started": "ns=2;s=W16WP-LPWTPruefstandIV590401.IOT-SmartFactory.Process.TestStation.Started",
+                    "S10.2.ControlOn": "ns=2;s=W16WP-LPWTPruefstandIV590401.Standard-Variablentabelle.-S10.2_Strg. EIN",
+                    "TestTimeLeakage": "ns=2;s=W16WP-LPWTPruefstandIV590401.SOLLWERT_DB4.PRUEFZEIT_LECKSUCHE",
+                    "DoorClosingStart": "ns=2;s=W16WP-LPWTPruefstandIV590401.INSTANZ_DB_POS_KamT\u00fcrZu.iSTART",
+                    "OperatingHoursHena25": "ns=2;s=W16WP-LPWTPruefstandIV590401.ISTWERTE_DB3.GESAMT_BETRSTD_HENA25",
+                    "PressureHighPressureTest": "ns=2;s=W16WP-LPWTPruefstandIV590401.SOLLWERT_DB4.N2_PRUEFDRUCK",
+                    "DoorManualSoftwareMaxPosition": "ns=2;s=W16WP-LPWTPruefstandIV590401.INSTANZ_DB_TIPP_U3.0.SOFTWARE_ENDE_PLUS",
+                    "DoorMotorLimitSwitchTop": "ns=2;s=W16WP-LPWTPruefstandIV590401.ISTWERTE_DB3.DP6_PE1_BIT_6_ENDSCH_OB",
+                    "OperatingHoursHena200afterMaintenance": "ns=2;s=W16WP-LPWTPruefstandIV590401.ISTWERTE_DB3.AKT_BETRSTD_HENA200",
+                    "TestLeakageTestActive": "ns=2;s=W16WP-LPWTPruefstandIV590401.SOLLWERT_DB4.PRUEF_MIT_TESTLECK",
+                    "B258.PressureTestObjectBAR": "ns=2;s=W16WP-LPWTPruefstandIV590401.ISTWERTE_DB3.MESSWERT_PEW258",
+                    "S1.SettingMode": "ns=2;s=W16WP-LPWTPruefstandIV590401.IOT-SmartFactory.State_1.SettingMode",
+                    "LDSsnifferClogged": "ns=2;s=W16WP-LPWTPruefstandIV590401.ISTWERTE_DB3.LDS_Stat_Sniffer_clogged",
+                    "MaxLeakage": "ns=2;s=W16WP-LPWTPruefstandIV590401.SOLLWERT_DB4.GRENZLECKRATE",
+                    "B264.PressureVacuumChamberVolt": "ns=2;s=W16WP-LPWTPruefstandIV590401.ISTWERTE_DB3.MESSWERT_V_PEW264",
+                    "DoorClosingSetpointEndPosition": "ns=2;s=W16WP-LPWTPruefstandIV590401.INSTANZ_DB_POS_KamT\u00fcrZu.iZIELPOSITION",
+                    "K3.3M.PumpTestObject": "ns=2;s=W16WP-LPWTPruefstandIV590401.Standard-Variablentabelle.-K3.3M_VakPump Pr\u00fcfEvak.",
+                    "K0.7V.HeSupply": "ns=2;s=W16WP-LPWTPruefstandIV590401.Standard-Variablentabelle.-K0.7V_MV-Helium",
+                    "K2.3V.DoorClose": "ns=2;s=W16WP-LPWTPruefstandIV590401.Standard-Variablentabelle.-K2.3V_MV-KamT\u00fcrZu",
+                    "SetMachineFactor": "ns=2;s=W16WP-LPWTPruefstandIV590401.SOLLWERT_DB4.MASCH_FAKT_ERMITT",
+                    "PressureTestObjectBeforeRemoving": "ns=2;s=W16WP-LPWTPruefstandIV590401.SOLLWERT_DB4.VAKUUM_ENDDRUCK_N2_FUELL",
+                    "DoorMotorActualWorkload": "ns=2;s=W16WP-LPWTPruefstandIV590401.ISTWERTE_DB3.DP6_PE6_ISTAUSLAST",
+                    "131G1.PowerSupply24VcurrentOK": "ns=2;s=W16WP-LPWTPruefstandIV590401.Standard-Variablentabelle.-131G1_Netzteil >I iO",
+                    "HighPressureTestActive": "ns=2;s=W16WP-LPWTPruefstandIV590401.SOLLWERT_DB4.MIT_N2_HOCHDRUCKPRUEFUNG",
+                    "LDSdetectorFilamentOn": "ns=2;s=W16WP-LPWTPruefstandIV590401.ISTWERTE_DB3.LDS_Stat_Filament_On",
+                    "Y2.2V.FeedbackLeakDetectorClosed": "ns=2;s=W16WP-LPWTPruefstandIV590401.Standard-Variablentabelle.-Y2.2V_EV-LDS ist zu",
+                    "S1.PowerOn": "ns=2;s=W16WP-LPWTPruefstandIV590401.IOT-SmartFactory.State_1.PowerOn",
+                    "LDShighVacuumTestActive": "ns=2;s=W16WP-LPWTPruefstandIV590401.ISTWERTE_DB3.LDS_Stat_HV_Test_Aktiv",
+                    "OverallPowerConsumptionSinceLastControlOn": "ns=2;s=W16WP-LPWTPruefstandIV590401.IDB_energy meters.okWh_A",
+                    "Y2.1V.FeedbackDoorClosed": "ns=2;s=W16WP-LPWTPruefstandIV590401.Standard-Variablentabelle.-Y2.1V_EV-Kammer ist zu",
+                    "S1.Producing": "ns=2;s=W16WP-LPWTPruefstandIV590401.IOT-SmartFactory.State_1.Producing",
+                    "LDScommunicationOK": "ns=2;s=W16WP-LPWTPruefstandIV590401.ISTWERTE_DB3.LDS_Stat_Komm_OK",
+                    "Q3.2M.OK": "ns=2;s=W16WP-LPWTPruefstandIV590401.Standard-Variablentabelle.MOSCHU -Q3.2M iO",
+                    "B5.7.DrawerClosed2": "ns=2;s=W16WP-LPWTPruefstandIV590401.Standard-Variablentabelle.-B5.7_Endl.2 Schubl = zu",
+                    "ResultLeakageRateCorrected": "ns=2;s=W16WP-LPWTPruefstandIV590401.ISTWERTE_DB3.ERG_LECKRATE_KORRIGIERT",
+                    "DoorManualPermissionTipOperation": "ns=2;s=W16WP-LPWTPruefstandIV590401.INSTANZ_DB_TIPP_U3.0.Freigabe",
+                    "DoorOpeningSetpointDelay": "ns=2;s=W16WP-LPWTPruefstandIV590401.INSTANZ_DB_POS_KamT\u00fcrAuf.iVERZOEGERUNG",
+                    "LeakageRateTestLeak": "ns=2;s=W16WP-LPWTPruefstandIV590401.SOLLWERT_DB4.LECKRATE_TESTLECK",
+                    "DoorMotorLimitSwitchBottom": "ns=2;s=W16WP-LPWTPruefstandIV590401.ISTWERTE_DB3.DP6_PE1_BIT_7_ENDSCH_UN",
+                    "DoorManualTipUpActive": "ns=2;s=W16WP-LPWTPruefstandIV590401.INSTANZ_DB_TIPP_U3.0.iTIPPEN_PLUS",
+                    "Q3.3M.OK": "ns=2;s=W16WP-LPWTPruefstandIV590401.Standard-Variablentabelle.MOSCHU -Q3.3M",
+                    "DoorOpeningSetpointEndPositionREAL": "ns=2;s=W16WP-LPWTPruefstandIV590401.INSTANZ_DB_POS_KamT\u00fcrAuf.HM_ZIELPOS_REAL",
+                    "K1.3V.He": "ns=2;s=W16WP-LPWTPruefstandIV590401.Standard-Variablentabelle.-K1.3V_MV-He 10bar",
+                    "ControlOn": "ns=2;s=W16WP-LPWTPruefstandIV590401.ISTWERTE_DB3.STRG_EIN",
+                    "DoorManualSetpointSpeed": "ns=2;s=W16WP-LPWTPruefstandIV590401.INSTANZ_DB_TIPP_U3.0.iGESCHWINDIGKEIT",
+                    "B5.5.DoorClosed2": "ns=2;s=W16WP-LPWTPruefstandIV590401.Standard-Variablentabelle.-B5.5_PZ3 KammT\u00fcr = zu",
+                    "114A1.ACunit2OK": "ns=2;s=W16WP-LPWTPruefstandIV590401.Standard-Variablentabelle.-114A1_Klima Alarm 2 iO",
+                    "DoorManualActualPosition": "ns=2;s=W16WP-LPWTPruefstandIV590401.INSTANZ_DB_TIPP_U3.0.ISTPOS",
+                    "LDScalibrationFail": "ns=2;s=W16WP-LPWTPruefstandIV590401.ISTWERTE_DB3.LDS_Stat_Calibratio_fail",
+                    "PressureTestObjectBeforeLeakageMBAR": "ns=2;s=W16WP-LPWTPruefstandIV590401.SOLLWERT_DB4.VAKUUM_ENDDRUCK_HE_PRUEF",
+                    "R3.0.TempBreakResistorOK": "ns=2;s=W16WP-LPWTPruefstandIV590401.Standard-Variablentabelle.-R3.0_Temp. Bremswid. iO",
+                    "S1.Waiting": "ns=2;s=W16WP-LPWTPruefstandIV590401.IOT-SmartFactory.State_1.Waiting",
+                    "S7.TestingFailed": "ns=2;s=W16WP-LPWTPruefstandIV590401.IOT-SmartFactory.Process.TestStation.Result.Fail",
+                    "S1.RedLight": "ns=2;s=W16WP-LPWTPruefstandIV590401.IOT-SmartFactory.State_1.Lights.Red",
+                    "B268.PressureTestObjectInObjectBAR": "ns=2;s=W16WP-LPWTPruefstandIV590401.ISTWERTE_DB3.MESSWERT_PEW268",
+                    "S1.Siren": "ns=2;s=W16WP-LPWTPruefstandIV590401.IOT-SmartFactory.State_1.Lights.Siren",
+                    "K0.5V.CompressedAirSupply": "ns=2;s=W16WP-LPWTPruefstandIV590401.Standard-Variablentabelle.-K0.5V_MV-Pneumatik",
+                    "CanceledDiffPressureHighPressure": "ns=2;s=W16WP-LPWTPruefstandIV590401.ISTWERTE_DB3.ABBRUCH_HDPR_DIFF_DRUCK",
+                    "LDSdetectorBusy": "ns=2;s=W16WP-LPWTPruefstandIV590401.ISTWERTE_DB3.LDS_Stat_Detector_Busy",
+                    "DoorMotorReady": "ns=2;s=W16WP-LPWTPruefstandIV590401.ISTWERTE_DB3.DP6_PE1_BIT_1_BEREIT",
+                    "K1.6V.ReleasePressure": "ns=2;s=W16WP-LPWTPruefstandIV590401.Standard-Variablentabelle.-K1.6V_MV-Pr\u00fcf. entlast.",
+                    "MaxDeltaPgrossLeakage": "ns=2;s=W16WP-LPWTPruefstandIV590401.SOLLWERT_DB4.DeltaP_GROBLECKDRUCK",
+                    "DoorManualTurnoverPositionMin": "ns=2;s=W16WP-LPWTPruefstandIV590401.INSTANZ_DB_TIPP_U3.0.Umschaltposition_Minus",
+                    "LDSsnifferValve": "ns=2;s=W16WP-LPWTPruefstandIV590401.ISTWERTE_DB3.LDS_Stat_Sniffer_Valve",
+                    "RemoveTestObjectFilled": "ns=2;s=W16WP-LPWTPruefstandIV590401.SOLLWERT_DB4.PRUEFL_MIT_STICKST_RAUS",
+                    "F3.0M.VoltageMotorDriveOK": "ns=2;s=W16WP-LPWTPruefstandIV590401.Standard-Variablentabelle.-F3.0M_Spg. FU-U3.0 iO",
+                    "PressurePreVacuumLeakDetector": "ns=2;s=W16WP-LPWTPruefstandIV590401.ISTWERTE_DB3.VORVAKUUMDRUCK_LDS",
+                    "K2.2M.OK": "ns=2;s=W16WP-LPWTPruefstandIV590401.Standard-Variablentabelle.THERM. -K2.3M iO",
+                    "B5.4.DoorOpen2": "ns=2;s=W16WP-LPWTPruefstandIV590401.Standard-Variablentabelle.-B5.4_PZ3 KammT\u00fcr = auf",
+                    "S0.7.ServiceSwitchOn": "ns=2;s=W16WP-LPWTPruefstandIV590401.Standard-Variablentabelle.-S0.7_Servicesch. Ein",
+                    "DoorMotorError": "ns=2;s=W16WP-LPWTPruefstandIV590401.ISTWERTE_DB3.DP6_PE1_BIT_5_STOERUNG",
+                    "ButtonCancel": "ns=2;s=W16WP-LPWTPruefstandIV590401.ISTWERTE_DB3.TAST_PRUEF_ABBR",
+                    "DoorOpeningSetpointEndPosition": "ns=2;s=W16WP-LPWTPruefstandIV590401.INSTANZ_DB_POS_KamT\u00fcrAuf.iZIELPOSITION",
+                    "Y2.1V.FeedbackDoorOpen": "ns=2;s=W16WP-LPWTPruefstandIV590401.Standard-Variablentabelle.-Y2.1V_EV-Kammer ist auf",
+                    "114A1.ACunit1OK": "ns=2;s=W16WP-LPWTPruefstandIV590401.Standard-Variablentabelle.-114A1_Klima Alarm 1 iO",
+                    "CanceledGrossLeakage": "ns=2;s=W16WP-LPWTPruefstandIV590401.ISTWERTE_DB3.ABBRUCH_GROBLECK",
+                    "S1.ValenceQuantityPulse": "ns=2;s=W16WP-LPWTPruefstandIV590401.IOT-SmartFactory.State_1.ValenceQuantityPulse",
+                    "K0.1.PCandMonitorON": "ns=2;s=W16WP-LPWTPruefstandIV590401.Standard-Variablentabelle.-K0.1_PC+MONITOR EIN",
+                    "DoorManualTurnoverPositionMax": "ns=2;s=W16WP-LPWTPruefstandIV590401.INSTANZ_DB_TIPP_U3.0.Umschaltposition_Plus",
+                    "DoorMotorZPOSreached": "ns=2;s=W16WP-LPWTPruefstandIV590401.ISTWERTE_DB3.DP6_PE1_BIT_3_ZPOS_ERRE",
+                    "111F2.UnderVoltageOK": "ns=2;s=W16WP-LPWTPruefstandIV590401.Standard-Variablentabelle.-111F2_Netz Unterspg. iO",
+                    "ButtonQuittieren": "ns=2;s=W16WP-LPWTPruefstandIV590401.ISTWERTE_DB3.TAST_QUITT",
+                    "SetpointHePressureTest": "ns=2;s=W16WP-LPWTPruefstandIV590401.SOLLWERT_DB4.HELIUM_PRUEFDRUCK_PRUEFL",
+                    "DoorOpeningStart": "ns=2;s=W16WP-LPWTPruefstandIV590401.INSTANZ_DB_POS_KamT\u00fcrAuf.iSTART",
+                    "111P1.S0.PowerConsumptionImpulse": "ns=2;s=W16WP-LPWTPruefstandIV590401.Standard-Variablentabelle.-111P1_S0-Impuls",
+                    "S1.Connected": "ns=2;s=W16WP-LPWTPruefstandIV590401.IOT-SmartFactory.State_1.Connected",
+                    "KatastrophentriggerSetpoint": "ns=2;s=W16WP-LPWTPruefstandIV590401.ISTWERTE_DB3.KATA_STROPHEN_GRENZWERT",
+                    "DoorClosingSetpointDelay": "ns=2;s=W16WP-LPWTPruefstandIV590401.INSTANZ_DB_POS_KamT\u00fcrZu.iVERZOEGERUNG",
+                    "CanceledLeakage": "ns=2;s=W16WP-LPWTPruefstandIV590401.ISTWERTE_DB3.ABBRUCH_LDS_MESSWERT",
+                    "K2.1V.EvacuateVacuumChamber": "ns=2;s=W16WP-LPWTPruefstandIV590401.Standard-Variablentabelle.-K2.1V_EV-Kammer evak.",
+                    "PressureGrossLeakageTest": "ns=2;s=W16WP-LPWTPruefstandIV590401.SOLLWERT_DB4.N2_FUELLDRUCK",
+                    "K2.2V.LeakDetector": "ns=2;s=W16WP-LPWTPruefstandIV590401.Standard-Variablentabelle.-K2.2V_EV-Lecksucher",
+                    "S10.0.PCon": "ns=2;s=W16WP-LPWTPruefstandIV590401.Standard-Variablentabelle.-S10.0_PC-Ein",
+                    "S1.CollectedWarning": "ns=2;s=W16WP-LPWTPruefstandIV590401.IOT-SmartFactory.State_1.CollectedWarning",
+                    "LDSdetectorReady": "ns=2;s=W16WP-LPWTPruefstandIV590401.ISTWERTE_DB3.LDS_Stat_Detector_Ready",
+                    "B4.0P.CompressedAirOK": "ns=2;s=W16WP-LPWTPruefstandIV590401.Standard-Variablentabelle.-B4.0P_Druck Pneum. iO",
+                    "K1.5V.VacuumPressureSensor": "ns=2;s=W16WP-LPWTPruefstandIV590401.Standard-Variablentabelle.-K1.5V_MV-Druck 100 mbar",
+                    "K2.3M.OK": "ns=2;s=W16WP-LPWTPruefstandIV590401.Standard-Variablentabelle.THERM. -K2.5M iO",
+                    "DoorMotorActualPosition": "ns=2;s=W16WP-LPWTPruefstandIV590401.ISTWERTE_DB3.DP6_PE2_3_ISTPOS",
+                    "S1.QuantityPulse": "ns=2;s=W16WP-LPWTPruefstandIV590401.IOT-SmartFactory.State_1.QuantityPulse",
+                    "K3.0.PowerSupplyMotorDrive": "ns=2;s=W16WP-LPWTPruefstandIV590401.Standard-Variablentabelle.-K3.0_Netz FU-U3.0",
+                    "isWithPressureSensor": "ns=2;s=W16WP-LPWTPruefstandIV590401.SOLLWERT_DB4.PRUEFLING_MIT_DRUCKSENS",
+                    "OperatingHoursDuo5MafterMaintenance": "ns=2;s=W16WP-LPWTPruefstandIV590401.ISTWERTE_DB3.AKT_BETRSTD_DUO5M",
+                    "B5.3.DoorClosed1": "ns=2;s=W16WP-LPWTPruefstandIV590401.Standard-Variablentabelle.-B5.3_PZ1 KammT\u00fcr = zu",
+                    "Katastrophentrigger": "ns=2;s=W16WP-LPWTPruefstandIV590401.ISTWERTE_DB3.KATASTROPHENTRIGGER",
+                    "K3.2M.PumpLeakDetector": "ns=2;s=W16WP-LPWTPruefstandIV590401.Standard-Variablentabelle.-K3.2M_VakPump Lecksuch.",
+                    "DoorOpeningSetpointEndPositionINT": "ns=2;s=W16WP-LPWTPruefstandIV590401.INSTANZ_DB_POS_KamT\u00fcrAuf.HM_ZIELPOS_DINT",
+                    "LDSstatusFehler": "ns=2;s=W16WP-LPWTPruefstandIV590401.ISTWERTE_DB3.LDS_STATUS_FEHLER",
+                    "S1.WhiteLight": "ns=2;s=W16WP-LPWTPruefstandIV590401.IOT-SmartFactory.State_1.Lights.white",
+                    "PressureRemovingTestObject": "ns=2;s=W16WP-LPWTPruefstandIV590401.SOLLWERT_DB4.N2_ENTNAHME_DRUCK",
+                    "StabilizationTime": "ns=2;s=W16WP-LPWTPruefstandIV590401.SOLLWERT_DB4.STABILISIERUNGSZEIT",
+                    "K3.4M.PumpChamber2": "ns=2;s=W16WP-LPWTPruefstandIV590401.Standard-Variablentabelle.-K3.4M_VakPump 2. Stufe",
+                    "HighPressureTestPressureHoldingTime": "ns=2;s=W16WP-LPWTPruefstandIV590401.SOLLWERT_DB4.N2_DRUCK_HALTEZEIT",
+                    "OperatingHoursOkta500afterMaintenance": "ns=2;s=W16WP-LPWTPruefstandIV590401.ISTWERTE_DB3.AKT_BETRSTD_OKTA500",
+                    "B256.PressureVacuumTestObjectMBAR": "ns=2;s=W16WP-LPWTPruefstandIV590401.ISTWERTE_DB3.MESSWERT_PEW256",
+                    "S7.InProgress": "ns=2;s=W16WP-LPWTPruefstandIV590401.IOT-SmartFactory.Process.TestStation.inProgress",
+                    "S7.TestingPassed": "ns=2;s=W16WP-LPWTPruefstandIV590401.IOT-SmartFactory.Process.TestStation.Result.Pass",
+                    "DoorClosingSetpointSpeed": "ns=2;s=W16WP-LPWTPruefstandIV590401.INSTANZ_DB_POS_KamT\u00fcrZu.iGESCHWINDIGKEIT",
+                    "B4.3P.HeOK": "ns=2;s=W16WP-LPWTPruefstandIV590401.Standard-Variablentabelle.-B4.3P_Druck He iO",
+                    "S1.CollectedError": "ns=2;s=W16WP-LPWTPruefstandIV590401.IOT-SmartFactory.State_1.CollectedError",
+                    "A0.3.DoorEndPositionTopActive": "ns=2;s=W16WP-LPWTPruefstandIV590401.Standard-Variablentabelle.-A0.3_HW-Endl. -S5.0",
+                    "S1.BlueLight": "ns=2;s=W16WP-LPWTPruefstandIV590401.IOT-SmartFactory.State_1.Lights.blue",
+                    "K1.1V.N2ThrottledHighPressure": "ns=2;s=W16WP-LPWTPruefstandIV590401.Standard-Variablentabelle.-K1.1V_MV-N2 50 bar red.",
+                    "RemoveTestObjectRelaxed": "ns=2;s=W16WP-LPWTPruefstandIV590401.SOLLWERT_DB4.PRUEFL_ENTSPANNT_RAUS",
+                    "K3.1.ControlEnabledMotorDrive": "ns=2;s=W16WP-LPWTPruefstandIV590401.Standard-Variablentabelle.-K3.1_RegFrg. FU-U3.0",
+                    "LDSstartInternalCalibration": "ns=2;s=W16WP-LPWTPruefstandIV590401.SOLLWERT_DB4.LDS_START_INT_CAL",
+                    "OverallPieceCount": "ns=2;s=W16WP-LPWTPruefstandIV590401.IDB_energy meters.oSt",
+                    "DoorMotorON": "ns=2;s=W16WP-LPWTPruefstandIV590401.ISTWERTE_DB3.DP6_PE1_BIT_0_MOTOR_DRE",
+                    "S1.MachineDowntime": "ns=2;s=W16WP-LPWTPruefstandIV590401.IOT-SmartFactory.State_1.MachineDowntime",
+                    "DoorOpeningSetpointSpeed": "ns=2;s=W16WP-LPWTPruefstandIV590401.INSTANZ_DB_POS_KamT\u00fcrAuf.iGESCHWINDIGKEIT",
+                    "K0.2.VoltageSHDon": "ns=2;s=W16WP-LPWTPruefstandIV590401.Standard-Variablentabelle.-K0.2_Frg.230V_SHD",
+                    "DoorClosingSetpointAcceleration": "ns=2;s=W16WP-LPWTPruefstandIV590401.INSTANZ_DB_POS_KamT\u00fcrZu.iBESCHLEUNIGUNG",
+                    "DoorMotorInReference": "ns=2;s=W16WP-LPWTPruefstandIV590401.ISTWERTE_DB3.DP6_PE1_BIT_2_IN_REFERE",
+                    "K3.5M.PumpChamber1": "ns=2;s=W16WP-LPWTPruefstandIV590401.Standard-Variablentabelle.-K3.5M_VakPump 1. Stufe",
+                    "S1.MaintenanceMode": "ns=2;s=W16WP-LPWTPruefstandIV590401.IOT-SmartFactory.State_1.MaintenanceMode",
+                    "DoorManualHMSpeed": "ns=2;s=W16WP-LPWTPruefstandIV590401.INSTANZ_DB_TIPP_U3.0.HM_GESCHWINDIGKEIT",
+                    "OverallPowerConsumption": "ns=2;s=W16WP-LPWTPruefstandIV590401.IDB_energy meters.okWh",
+                    "K2.1M.OK": "ns=2;s=W16WP-LPWTPruefstandIV590401.Standard-Variablentabelle.THERM. -K2.1M iO",
+                    "DoorManualDelayMoving": "ns=2;s=W16WP-LPWTPruefstandIV590401.INSTANZ_DB_TIPP_U3.0.iVERZOEGERUNG",
+                    "LeakageRateRaw": "ns=2;s=W16WP-LPWTPruefstandIV590401.ISTWERTE_DB3.LECKRATE_LDS_ROH",
+                    "B5.2.DoorOpen1": "ns=2;s=W16WP-LPWTPruefstandIV590401.Standard-Variablentabelle.-B5.2_PZ1 KammT\u00fcr = auf",
+                    "CanceledWorker": "ns=2;s=W16WP-LPWTPruefstandIV590401.ISTWERTE_DB3.ABBRUCH_WERKER",
+                    "S1.YellowLight": "ns=2;s=W16WP-LPWTPruefstandIV590401.IOT-SmartFactory.State_1.Lights.Yellow",
+                    "B264.PressureVacuumChamberMBAR": "ns=2;s=W16WP-LPWTPruefstandIV590401.ISTWERTE_DB3.MESSWERT_mbar_PEW264",
+                    "Q3.5M.OK": "ns=2;s=W16WP-LPWTPruefstandIV590401.Standard-Variablentabelle.MOSCHU -Q3.5M iO",
+                    "MachineFactor": "ns=2;s=W16WP-LPWTPruefstandIV590401.ISTWERTE_DB3.MASCHINEN_FAKTOR",
+                    "S7.Finished": "ns=2;s=W16WP-LPWTPruefstandIV590401.IOT-SmartFactory.Process.TestStation.Finished",
+                    "S1.AutomaticMode": "ns=2;s=W16WP-LPWTPruefstandIV590401.IOT-SmartFactory.State_1.AutomaticMode",
+                    "DoorOpeningSetpointAcceleration": "ns=2;s=W16WP-LPWTPruefstandIV590401.INSTANZ_DB_POS_KamT\u00fcrAuf.iBESCHLEUNIGUNG",
+                    "DoorClosingSetpointEndPositionINT": "ns=2;s=W16WP-LPWTPruefstandIV590401.INSTANZ_DB_POS_KamT\u00fcrZu.HM_ZIELPOS_DINT",
+                    "PressureVacuumChamberBeforLeakage": "ns=2;s=W16WP-LPWTPruefstandIV590401.SOLLWERT_DB4.VAKUUM_ENDDRUCK_KAMMER",
+                    "Q3.4M.OK": "ns=2;s=W16WP-LPWTPruefstandIV590401.Standard-Variablentabelle.MOSCHU -Q3.4M iO",
+                    "DoorMotorBreak": "ns=2;s=W16WP-LPWTPruefstandIV590401.ISTWERTE_DB3.DP6_PE1_BIT_4_BREMSE_OF",
+                    "S10.1.ControlOff": "ns=2;s=W16WP-LPWTPruefstandIV590401.Standard-Variablentabelle.-S10.1_Strg. AUS",
+                    "S1.GreenLight": "ns=2;s=W16WP-LPWTPruefstandIV590401.IOT-SmartFactory.State_1.Lights.Green",
+                    "LDSsnifferTestActive": "ns=2;s=W16WP-LPWTPruefstandIV590401.ISTWERTE_DB3.LDS_Stat_Sniff_Test_Akt",
+                    "B4.2P.N2OK": "ns=2;s=W16WP-LPWTPruefstandIV590401.Standard-Variablentabelle.-B4.2P_Druck N2 iO",
+                    "K2.7M.OK": "ns=2;s=W16WP-LPWTPruefstandIV590401.Standard-Variablentabelle.THERM. -K2.7M iO",
+                    "111F2.OverVoltageOK": "ns=2;s=W16WP-LPWTPruefstandIV590401.Standard-Variablentabelle.-111F2_Netz \u00dcberspg. iO",
+                    "Y2.0V.FeedbackAirInletClosed": "ns=2;s=W16WP-LPWTPruefstandIV590401.Standard-Variablentabelle.-Y2.0V_EV-Fluten ist zu",
+                    "SHDswitchPoint": "ns=2;s=W16WP-LPWTPruefstandIV590401.ISTWERTE_DB3.SHD_SCHALTWERT",
+                    "LeakageRateCorrected": "ns=2;s=W16WP-LPWTPruefstandIV590401.ISTWERTE_DB3.LECKRATE_LDS_KORR",
+                    "S1.InternalComm": "ns=2;s=W16WP-LPWTPruefstandIV590401.IOT-SmartFactory.State_1.InternalComm",
+                    "DoorActualPositionLiftingAxis": "ns=2;s=W16WP-LPWTPruefstandIV590401.ISTWERTE_DB3.DP6_IST_POS_HUBACHSE",
+                    "OperatingHoursDuo5M": "ns=2;s=W16WP-LPWTPruefstandIV590401.ISTWERTE_DB3.GESAMT_BETRSTD_DUO5M",
+                    "PieceCountSinceLastControlOn": "ns=2;s=W16WP-LPWTPruefstandIV590401.IDB_energy meters.oSt_A",
+                    "DoorManualSetpointAcceleration": "ns=2;s=W16WP-LPWTPruefstandIV590401.INSTANZ_DB_TIPP_U3.0.iBESCHLEUNIGUNG",
+                    "K2.4V.DoorOpen": "ns=2;s=W16WP-LPWTPruefstandIV590401.Standard-Variablentabelle.-K2.4V_MV-KamT\u00fcrAuf",
+                    "K0.6V.N2Supply": "ns=2;s=W16WP-LPWTPruefstandIV590401.Standard-Variablentabelle.-K0.6V_MV-Stickstoff",
+                    "Y2.0V.FeedbackAirInletOpen": "ns=2;s=W16WP-LPWTPruefstandIV590401.Standard-Variablentabelle.-Y2.0V_EV-Fluten ist auf",
+                    "GrossLeakageTestActive": "ns=2;s=W16WP-LPWTPruefstandIV590401.SOLLWERT_DB4.MIT_N2_GROBLECKPRUEFUNG",
+                    "S1.SetupMode": "ns=2;s=W16WP-LPWTPruefstandIV590401.IOT-SmartFactory.State_1.SetupMode",
+                    "CanceledDiffPressureGrossLeakage": "ns=2;s=W16WP-LPWTPruefstandIV590401.ISTWERTE_DB3.ABBRUCH_GLPR_DIFF_DRUCK",
+                    "S1.ManualMode": "ns=2;s=W16WP-LPWTPruefstandIV590401.IOT-SmartFactory.State_1.ManualMode",
+                    "K2.0V.AirInletVacuumChamber": "ns=2;s=W16WP-LPWTPruefstandIV590401.Standard-Variablentabelle.-K2.0V_EV-Kammer fluten",
+                    "DoorMotorActualSpeed": "ns=2;s=W16WP-LPWTPruefstandIV590401.ISTWERTE_DB3.DP6_PE4_ISTGESCHWI",
+                    "K1.4V.EvacuateTestObject": "ns=2;s=W16WP-LPWTPruefstandIV590401.Standard-Variablentabelle.-K1.4V_MV-Pr\u00fcf. evak.",
+                    "OperatingHoursOkta500": "ns=2;s=W16WP-LPWTPruefstandIV590401.ISTWERTE_DB3.GESAMT_BETRSTD_OKTA500",
+                    "S1.CollectedOperating": "ns=2;s=W16WP-LPWTPruefstandIV590401.IOT-SmartFactory.State_1.CollectedOperating",
+                    "131G1.PowerSupply24VDCok": "ns=2;s=W16WP-LPWTPruefstandIV590401.Standard-Variablentabelle.-131G1_Netzteil 24VDC iO",
+                    "CancelReasonString": "ns=2;s=W16WP-LPWTPruefstandIV590401.SOLLWERT_DB4.Abbruch_Grund",
+                    "OperatingHoursHena25afterMaintenance": "ns=2;s=W16WP-LPWTPruefstandIV590401.ISTWERTE_DB3.AKT_BETRSTD_HENA25",
+                    "K1.0V.N2HighPressure": "ns=2;s=W16WP-LPWTPruefstandIV590401.Standard-Variablentabelle.-K1.0V_MV-N2 50 bar",
+                    "DoorMotorActualMotorCurrent": "ns=2;s=W16WP-LPWTPruefstandIV590401.ISTWERTE_DB3.DP6_PE5_ISTSTROM",
+                    "DoorManualSoftwareMinPosition": "ns=2;s=W16WP-LPWTPruefstandIV590401.INSTANZ_DB_TIPP_U3.0.SOFTWARE_ENDE_MINUS",
+                    "K1.2V.N2LowPressure": "ns=2;s=W16WP-LPWTPruefstandIV590401.Standard-Variablentabelle.-K1.2V_MV-N2 4 bar",
+                    "B4.1P.DiffPressureExhaustAirOK": "ns=2;s=W16WP-LPWTPruefstandIV590401.Standard-Variablentabelle.-B4.1P_Druck Abluft iO",
+                    "ButtonLampTest": "ns=2;s=W16WP-LPWTPruefstandIV590401.ISTWERTE_DB3.TAST_LAMPTEST",
+                    "DoorManualTipDownActive": "ns=2;s=W16WP-LPWTPruefstandIV590401.INSTANZ_DB_TIPP_U3.0.iTIPPEN_MINUS",
+                    "B5.6.DrawerClosed1": "ns=2;s=W16WP-LPWTPruefstandIV590401.Standard-Variablentabelle.-B5.6_Endl.1 Schubl = zu",
+                    "WaitingOperator": "ns=2;s=W16WP-LPWTPruefstandIV590401.IOT-SmartFactory.Process.TestStation.WaitingOperator",
+                    "TestTimeGrossLeakage": "ns=2;s=W16WP-LPWTPruefstandIV590401.SOLLWERT_DB4.PRUEFZEIT_GROBLECK",
+                    "S7.TestingCanceled": "ns=2;s=W16WP-LPWTPruefstandIV590401.IOT-SmartFactory.Process.TestStation.Result.Canceled",
+                    "A0.4.DoorEndPositionBottomActive": "ns=2;s=W16WP-LPWTPruefstandIV590401.Standard-Variablentabelle.-A0.4_HW-Endl. -S5.1",
+                    "S7.TestingFailedReason": "ns=2;s=W16WP-LPWTPruefstandIV590401.IOT-SmartFactory.Process.TestStation.DemolitionReason",
+                    "S7.SerialNumber": "ns=2;s=W16WP-LPWTPruefstandIV590401.IOT-SmartFactory.Process.TestStation.ProductPartNumber",
+                    "S7.ProductPartNumber": "ns=2;s=W16WP-LPWTPruefstandIV590401.IOT-SmartFactory.Process.TestStation.PartNumber",
+                    "S7.StartTestS71200": "ns=2;s=W16WP-LPWTPruefstandIV590401.DataFromS71200.StartTest",
+                    "S7.DoubleTestS71200": "ns=2;s=W16WP-LPWTPruefstandIV590401.DataFromS71200.DoubleTest",
+                    "S7.FirstSachnummerS71200": "ns=2;s=W16WP-LPWTPruefstandIV590401.DataFromS71200.FirstSachnummer",
+                    "S7.FirstIdentNumberS71200": "ns=2;s=W16WP-LPWTPruefstandIV590401.DataFromS71200.FirstIdentNumber",
+                    "S7.SecondSachnummerS71200": "ns=2;s=W16WP-LPWTPruefstandIV590401.DataFromS71200.SecondSachnummer",
+                    "S7.SecondIdentNumberS71200": "ns=2;s=W16WP-LPWTPruefstandIV590401.DataFromS71200.SecondIdentNumber",
+                    "S7.LiveBitS71200": "ns=2;s=W16WP-LPWTPruefstandIV590401.DataFromS71200.LiveBit",
+                    "S7.SHD2switchPoint": "ns=2;s=W16WP-LPWTPruefstandIV590401.ISTWERTE_DB3.SHD_SCHALTWERT_2",
+                    "S5.AI.B270.PressureTestObjectInObject2BAR": "ns=2;s=W16WP-LPWTPruefstandIV590401.ISTWERTE_DB3.MESSWERT_PEW270"
+                  },
+                  "name": "W16HeliumTesterLinePWTIV590401",
+                  "outputTopic": "splunk"
+                }
+              },
+              "resetBlackListIntervalMs": 15000
+            },
+            "edgeMethodMapping": {}
+          }
+        },
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.OpcUaClientModule/versions/2",
+        "$messageOutputs": {
+          "W16HeliumTesterLinePWTIV590401.W16HeliumTesterLinePWTIV590401": "splunk",
+          "W16HeliumTesterLinePWTIV590401.S1.Data": "splunkPoll",
+          "W16HeliumTesterLinePWTIV590401.GatewayWatchdog": "splunkPoll"
+        },
+        "$timestamp": "2022-10-14T11:20:39.8637114Z",
+        "$version": 1
+      }
+    },
+    "streamprocessor": {
+      "configuration": {
+        "$version": 0
+      }
+    },
+    "logger": {
+      "configuration": {
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.FileLoggerModule/versions/1",
+        "$timestamp": "2020-09-17T16:04:09.8402067Z",
+        "$version": 1
+      }
+    },
+    "splunk": {
+      "configuration": {
+        "endpoint": {
+          "url": "https://10.13.21.22:8088/services/collector/event",
+          "token": "6112a68b-c8f6-4946-a7dd-7d48a710bc83",
+          "sslCheck": false
+        },
+        "interval": 1000,
+        "$messageInputs": {
+          "splunk": "event",
+          "splunkPoll": "telemetry"
+        },
+        "host": "I6828w05.4037",
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.SplunkHecModule/versions/3",
+        "sendTimestamp": true,
+        "sourceType": "_json",
+        "bufferQueueSettings": {
+          "enablePersist": false
+        },
+        "$timestamp": "2024-04-12T05:51:12.9881309Z",
+        "$version": 3
+      }
+    },
+    "system": {
+      "configuration": {
+        "firewallrules": {
+          "AdminAPIAutoRuleHTTP": {
+            "description": "Auto generated rule from AdminApiModule for HTTP Port.",
+            "action": "accept",
+            "direction": "inbound",
+            "protocol": "tcp",
+            "srcPort": 0,
+            "destPort": 80
+          },
+          "AdminAPIAutoRuleHTTPS": {
+            "description": "Auto generated rule from AdminApiModule for HTTPS Port.",
+            "action": "accept",
+            "direction": "inbound",
+            "protocol": "tcp",
+            "srcPort": 0,
+            "destPort": 443
+          }
+        },
+        "$timestamp": "2024-04-11T12:52:28.5046718Z",
+        "$version": 1
+      }
+    }
+  }
+}

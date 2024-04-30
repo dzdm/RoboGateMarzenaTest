@@ -1,0 +1,175 @@
+{
+  "modules": {
+    "logger": {
+      "configuration": {
+        "$version": 0
+      }
+    },
+    "opcua": {
+      "configuration": {
+        "servers": {
+          "W16EvacuationStationsIV9000000102": {
+            "endpoint": {
+              "pollGroups": {
+                "W16EvacuationStationsIV9000000102_PG": {
+                  "nodes": {
+                    "S3.TechnicalGases.VIN.Pomp3_line_4_PG": "ns=2;s=S7-1500.DB.IOT_Vaccum_Line_4.Pump_3_VinNr",
+                    "S3.TechnicalGases.Sach.Pomp3_line_4_PG": "ns=2;s=S7-1500.DB.IOT_Vaccum_Line_4.Pump_3_SachNr",
+                    "S3.TechnicalGases.Id.Pomp3_line_4_PG": "ns=2;s=S7-1500.DB.IOT_Vaccum_Line_4.Pump_3_IdentNr",
+                    "S3.TechnicalGases.Type.Pomp3_line_4_PG": "ns=2;s=S7-1500.DB.IOT_Vaccum_Line_4.Pump_3_Type",
+                    "S3.TechnicalGases.Model.Pomp3_line_4_PG": "ns=2;s=S7-1500.DB.IOT_Vaccum_Line_4.Pump_3_Model",
+                    "S3.TechnicalGases.Type_name.Pomp3_line_4_PG": "ns=2;s=S7-1500.DB.IOT_Vaccum_Line_4.Pump_3_Type_Name",
+                    "S3.TechnicalGases.Pressure.Pomp3_line_4_PG": "ns=2;s=S7-1500.DB.IOT_Vaccum_Line_4.Pump_3_Pressure"
+                  },
+                  "intervalMs": 1000
+                }
+              },
+              "subscriptionGroups": {
+                "W16EvacuationStationsIV9000000102": {
+                  "onChangeSubmitFullModel": false,
+                  "onRepublishSubmitFullModel": true,
+                  "nodes": {
+                    "S3.TechnicalGases.Pressure.Pomp3_line_4": "ns=2;s=S7-1500.DB.IOT_Vaccum_Line_4.Pump_3_Pressure",
+                    "S3.TechnicalGases.SachNr.Pomp3_line_4": "ns=2;s=S7-1500.DB.IOT_Vaccum_Line_4.Pump_3_SachNr"
+                  },
+                  "publishingIntervalMs": 200
+                }
+              },
+              "subscriptions": {},
+              "url": "opc.tcp://10.31.132.46:4840",
+              "resetBlackListIntervalMs": 15000
+            },
+            "client": {
+              "application": {
+                "security": {
+                  "authentication": {
+                    "credentials": {},
+                    "strategy": "Anonymous"
+                  },
+                  "endpoint": {
+                    "isEnabled": true,
+                    "level": 0,
+                    "mode": "None",
+                    "policy": "None",
+                    "timeout": 15000
+                  }
+                }
+              },
+              "session": {
+                "subscription": {}
+              },
+              "optimizeNodeValueReadAccess": true
+            },
+            "edgeMethodMapping": {},
+            "conditions": {},
+            "statusCodeMapping": {}
+          }
+        },
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.OpcUaClientModule/versions/2",
+        "$messageOutputs": {
+          "W16EvacuationStationsIV9000000102.W16EvacuationStationsIV9000000102": "splunk",
+          "W16EvacuationStationsIV9000000102.W16EvacuationStationsIV9000000102_PG": "splunkPoll"
+        },
+        "$timestamp": "2024-04-02T08:13:43.0608686Z",
+        "$version": 27
+      }
+    },
+    "rfcreader": {
+      "configuration": {
+        "$version": 0
+      }
+    },
+    "modbus": {
+      "configuration": {
+        "$version": 0
+      }
+    },
+    "splunk": {
+      "configuration": {
+        "endpoint": {
+          "url": "https://10.10.212.27:8088/services/collector/event",
+          "token": "a5a26423-9874-4383-8f31-436c3c86a4ee",
+          "sslCheck": false,
+          "proxy": ""
+        },
+        "host": "COTL0006W05-4034",
+        "interval": 1000,
+        "sendTimestamp": true,
+        "sourceType": "_json",
+        "bufferQueueSettings": {
+          "enablePersist": false
+        },
+        "$messageInputs": {
+          "splunkPoll": "telemetry",
+          "splunk": "event"
+        },
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.SplunkHecModule/versions/3",
+        "$timestamp": "2024-02-06T10:32:01.9368009Z",
+        "$version": 3
+      }
+    },
+    "mqtt": {
+      "configuration": {
+        "$version": 0
+      }
+    },
+    "azure": {
+      "configuration": {
+        "$version": 0
+      }
+    },
+    "center": {
+      "configuration": {
+        "$version": 0
+      }
+    },
+    "mustache": {
+      "configuration": {
+        "$version": 0
+      }
+    },
+    "streamprocessor": {
+      "configuration": {
+        "$version": 0
+      }
+    },
+    "system": {
+      "configuration": {
+        "firewallrules": {
+          "AdminAPIAutoRuleHTTP": {
+            "description": "Auto generated rule from AdminApiModule for HTTP Port.",
+            "action": "accept",
+            "direction": "inbound",
+            "protocol": "tcp",
+            "srcPort": 0,
+            "destPort": 80
+          },
+          "AdminAPIAutoRuleHTTPS": {
+            "description": "Auto generated rule from AdminApiModule for HTTPS Port.",
+            "action": "accept",
+            "direction": "inbound",
+            "protocol": "tcp",
+            "srcPort": 0,
+            "destPort": 443
+          }
+        },
+        "signals": {
+          "groups": {
+            "S1.Conected": {
+              "outputTopic": "S1.Connected",
+              "intervalMs": 15000,
+              "signals": {
+                "W16OetikerEPC01ODUIV10005607": {
+                  "source": "moduleStatus",
+                  "sourceKey": "opcua.status.connection.W16OetikerEPC01ODUIV10005607.reason"
+                }
+              }
+            }
+          }
+        },
+        "$timestamp": "2024-01-25T09:50:57.5190127Z",
+        "$version": 2
+      }
+    }
+  }
+}

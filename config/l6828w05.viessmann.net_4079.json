@@ -1,0 +1,181 @@
+{
+  "modules": {
+    "mustache": {
+      "configuration": {
+        "$version": 0
+      }
+    },
+    "azure": {
+      "configuration": {
+        "$version": 0
+      }
+    },
+    "center": {
+      "configuration": {
+        "$version": 0
+      }
+    },
+    "modbus": {
+      "configuration": {
+        "$version": 0
+      }
+    },
+    "mqtt": {
+      "configuration": {
+        "$version": 0
+      }
+    },
+    "rfcreader": {
+      "configuration": {
+        "$version": 0
+      }
+    },
+    "opcua": {
+      "configuration": {
+        "servers": {
+          "W16ManualSolderingMachineLiKKIV8508730": {
+            "endpoint": {
+              "pollGroups": {
+                "S1.Data": {
+                  "nodes": {
+                    "S1.PowerOn_PG": "ns=4;i=700",
+                    "S1.Producing_PG": "ns=4;i=704",
+                    "S1.Waiting_PG": "ns=4;i=705",
+                    "S1.StandbyMode_PG": "ns=4;i=707",
+                    "S1.SettingMode_PG": "ns=4;i=710",
+                    "S1.MaintenanceMode_PG": "ns=4;i=711",
+                    "S1.MachineDowntime_PG": "ns=4;i=712",
+                    "S7.OEE_HMI_Status_PG": "ns=5;i=182",
+                    "S7.OEE_HMI_Status_Service_PG": "ns=5;i=186"
+                  },
+                  "name": "S1.Data",
+                  "outputTopic": "splunkPoll",
+                  "intervalMs": 15000
+                }
+              },
+              "subscriptionGroups": {
+                "W16ManualSolderingMachineLiKKIV8508730": {
+                  "onChangeSubmitFullModel": false,
+                  "onRepublishSubmitFullModel": true,
+                  "nodes": {
+                    "S1.Connected": "ns=4;i=699",
+                    "S1.PowerOn": "ns=4;i=700",
+                    "S1.AutomaticMode": "ns=4;i=701",
+                    "S1.ManualMode": "ns=4;i=702",
+                    "S1.SetupMode": "ns=4;i=703",
+                    "S1.Producing": "ns=4;i=704",
+                    "S1.Waiting": "ns=4;i=705",
+                    "S1.QuantityPulse": "ns=4;i=706",
+                    "S1.StandbyMode": "ns=4;i=707",
+                    "S1.CollectedError": "ns=4;i=708",
+                    "S1.CollectedWarning": "ns=4;i=709",
+                    "S1.SettingMode": "ns=4;i=710",
+                    "S1.MaintenanceMode": "ns=4;i=711",
+                    "S1.MachineDowntime": "ns=4;i=712",
+                    "S3.ActivePower1": "ns=4;i=713",
+                    "S3.ElectricMeter1": "ns=4;i=714",
+                    "S7.TestingPassed": "ns=4;i=715",
+                    "S7.TestingFailed": "ns=4;i=716"
+                  },
+                  "name": "W16ManualSolderingMachineLiKKIV8508730",
+                  "outputTopic": "splunk",
+                  "publishingIntervalMs": 1000
+                }
+              },
+              "subscriptions": {},
+              "url": "opc.tcp://199.216.0.125:4840",
+              "resetBlackListIntervalMs": 15000
+            },
+            "client": {
+              "application": {
+                "security": {
+                  "authentication": {
+                    "credentials": {},
+                    "strategy": "Anonymous"
+                  },
+                  "endpoint": {
+                    "isEnabled": true,
+                    "level": 0,
+                    "mode": "None",
+                    "policy": "None",
+                    "timeout": 15000
+                  }
+                }
+              },
+              "session": {
+                "subscription": {}
+              },
+              "optimizeNodeValueReadAccess": false
+            },
+            "edgeMethodMapping": {}
+          }
+        },
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.OpcUaClientModule/versions/2",
+        "$messageOutputs": {
+          "W16ManualSolderingMachineLiKKIV8508730.S1.Data": "splunkPoll",
+          "W16ManualSolderingMachineLiKKIV8508730.W16ManualSolderingMachineLiKKIV8508730": "splunk"
+        },
+        "$timestamp": "2022-09-13T10:29:36.2484758Z",
+        "$version": 1
+      }
+    },
+    "streamprocessor": {
+      "configuration": {
+        "$version": 0
+      }
+    },
+    "logger": {
+      "configuration": {
+        "$version": 0
+      }
+    },
+    "splunk": {
+      "configuration": {
+        "endpoint": {
+          "url": "https://10.13.21.22:8088/services/collector/event",
+          "token": "6112a68b-c8f6-4946-a7dd-7d48a710bc83",
+          "sslCheck": false,
+          "proxy": ""
+        },
+        "host": "I6828w05.4079",
+        "interval": 1000,
+        "sendTimestamp": true,
+        "sourceType": "_json",
+        "bufferQueueSettings": {
+          "enablePersist": false
+        },
+        "$messageInputs": {
+          "splunkPoll": "telemetry",
+          "splunk": "event"
+        },
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.SplunkHecModule/versions/3",
+        "$timestamp": "2024-04-12T07:00:31.5004044Z",
+        "$version": 3
+      }
+    },
+    "system": {
+      "configuration": {
+        "firewallrules": {
+          "AdminAPIAutoRuleHTTP": {
+            "description": "Auto generated rule from AdminApiModule for HTTP Port.",
+            "action": "accept",
+            "direction": "inbound",
+            "protocol": "tcp",
+            "srcPort": 0,
+            "destPort": 80
+          },
+          "AdminAPIAutoRuleHTTPS": {
+            "description": "Auto generated rule from AdminApiModule for HTTPS Port.",
+            "action": "accept",
+            "direction": "inbound",
+            "protocol": "tcp",
+            "srcPort": 0,
+            "destPort": 443
+          }
+        },
+        "$timestamp": "2024-04-11T14:26:07.0595296Z",
+        "$version": 1
+      }
+    }
+  }
+}

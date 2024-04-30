@@ -1,0 +1,319 @@
+{
+  "modules": {
+    "mustache": {
+      "configuration": {
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.MustacheEnricherModule/versions/1",
+        "$timestamp": "2024-04-11T09:00:17.051876Z",
+        "$version": 1
+      }
+    },
+    "azure": {
+      "configuration": {
+        "$timestamp": "2024-04-11T09:00:17.0496805Z",
+        "$version": 1
+      }
+    },
+    "center": {
+      "configuration": {
+        "$timestamp": "2024-04-11T09:00:17.0533255Z",
+        "$version": 1
+      }
+    },
+    "modbus": {
+      "configuration": {
+        "$messageOutputs": {
+          "W16EnergyManagement.AxisB.AxisB": "splunk",
+          "W16EnergyManagement.AxisB.S1.Data": "splunkPoll"
+        },
+        "servers": {
+          "W16EnergyManagement": {
+            "connection": {
+              "variant": "Tcp",
+              "tcp": {
+                "ipAddress": "199.216.0.61",
+                "port": 502
+              }
+            },
+            "slaves": {
+              "AxisB": {
+                "pollGroups": {
+                  "S1.Data": {
+                    "model": {
+                      "Voltage_L12_PG": {
+                        "registerStartAddress": 7058,
+                        "registerLength": 2,
+                        "isLittleEndian": false,
+                        "type": "Float",
+                        "functionCode": 4
+                      },
+                      "Voltage_L23_PG": {
+                        "registerStartAddress": 7060,
+                        "registerLength": 2,
+                        "isLittleEndian": false,
+                        "type": "Float",
+                        "functionCode": 4
+                      },
+                      "Voltage_L31_PG": {
+                        "registerStartAddress": 7062,
+                        "registerLength": 2,
+                        "isLittleEndian": false,
+                        "type": "Float",
+                        "functionCode": 4
+                      }
+                    },
+                    "intervalMs": 500,
+                    "sourceMode": "UseBoth"
+                  }
+                },
+                "setupGroups": {},
+                "slaveId": 1,
+                "subscriptionGroups": {
+                  "AxisB": {
+                    "model": {
+                      "Voltage_L12": {
+                        "registerStartAddress": 7058,
+                        "registerLength": 2,
+                        "isLittleEndian": false,
+                        "type": "Float",
+                        "functionCode": 4
+                      },
+                      "Voltage_L23": {
+                        "registerStartAddress": 7060,
+                        "registerLength": 2,
+                        "isLittleEndian": false,
+                        "type": "Float",
+                        "functionCode": 4
+                      },
+                      "Voltage_L31": {
+                        "registerStartAddress": 7062,
+                        "registerLength": 2,
+                        "isLittleEndian": false,
+                        "type": "Float",
+                        "functionCode": 4
+                      }
+                    },
+                    "onChangeSubmitFullModel": false,
+                    "onRepublishSubmitFullModel": true,
+                    "publishingIntervalMs": 250,
+                    "sourceMode": "UseBoth"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.ModbusReaderModule/versions/2",
+        "$timestamp": "2024-04-11T09:00:17.05023Z",
+        "$version": 1
+      }
+    },
+    "mqtt": {
+      "configuration": {
+        "$timestamp": "2024-04-11T09:00:17.0498132Z",
+        "$version": 1
+      }
+    },
+    "rfcreader": {
+      "configuration": {
+        "$timestamp": "2024-04-11T09:00:17.0519014Z",
+        "$version": 1
+      }
+    },
+    "opcua": {
+      "configuration": {
+        "servers": {
+          "W16BuildingManagementSystemFM": {
+            "endpoint": {
+              "pollGroups": {},
+              "subscriptionGroups": {
+                "W16BuildingManagementSystemFM": {
+                  "onChangeSubmitFullModel": true,
+                  "onRepublishSubmitFullModel": false,
+                  "nodes": {
+                    "S3.Water.Meter6.NodeState": "ns=3;s=\"Licznik_wody_6\".\"Dane\".\"Node State\"",
+                    "S3.Water.Meter6.IdentificationNumber": "ns=3;s=\"Licznik_wody_6\".\"Dane\".\"Identification Number\"",
+                    "S3.Water.Meter6.FabricationNumber": "ns=3;s=\"Licznik_wody_6\".\"Dane\".\"Fabrication No (U0S0T0)\"",
+                    "S3.Water.Meter6.ErrorFlag": "ns=3;s=\"Licznik_wody_6\".\"Dane\".\"Error Flag (Binary) (U0S0T0)\"",
+                    "S3.Water.Meter6.Volume": "ns=3;s=\"Licznik_wody_6\".\"Dane\".\"Volume m3 (U0S0T0)\"",
+                    "S3.Water.Meter6.Flow": "ns=3;s=\"Licznik_wody_6\".\"Dane\".\"Volume Flow m3/h (U0S0T0)\"",
+                    "S3.Water.Meter1.NodeState": "ns=3;s=\"Licznik_wody_1\".\"Dane\".\"Node State\"",
+                    "S3.Water.Meter1.IdentificationNumber": "ns=3;s=\"Licznik_wody_1\".\"Dane\".\"Identification Number\"",
+                    "S3.Water.Meter1.FabricationNumber": "ns=3;s=\"Licznik_wody_1\".\"Dane\".\"Fabrication No (U0S0T0)\"",
+                    "S3.Water.Meter1.ErrorFlag": "ns=3;s=\"Licznik_wody_1\".\"Dane\".\"Error Flag (Binary) (U0S0T0)\"",
+                    "S3.Water.Meter1.Volume": "ns=3;s=\"Licznik_wody_1\".\"Dane\".\"Volume m3 (U0S0T0)\"",
+                    "S3.Water.Meter1.Flow": "ns=3;s=\"Licznik_wody_1\".\"Dane\".\"Volume Flow m3/h (U0S0T0)\"",
+                    "S3.Water.Meter3.NodeState": "ns=3;s=\"Licznik_wody_3\".\"Dane\".\"Node State\"",
+                    "S3.Water.Meter3.IdentificationNumber": "ns=3;s=\"Licznik_wody_3\".\"Dane\".\"Identification Number\"",
+                    "S3.Water.Meter3.FabricationNumber": "ns=3;s=\"Licznik_wody_3\".\"Dane\".\"Fabrication No (U0S0T0)\"",
+                    "S3.Water.Meter3.ErrorFlag": "ns=3;s=\"Licznik_wody_3\".\"Dane\".\"Error Flag (Binary) (U0S0T0)\"",
+                    "S3.Water.Meter3.Volume": "ns=3;s=\"Licznik_wody_3\".\"Dane\".\"Volume m3 (U0S0T0)\"",
+                    "S3.Water.Meter3.Flow": "ns=3;s=\"Licznik_wody_3\".\"Dane\".\"Volume Flow m3/h (U0S0T0)\"",
+                    "S3.Water.Meter4.NodeState": "ns=3;s=\"Licznik_wody_4\".\"Dane\".\"Node State\"",
+                    "S3.Water.Meter4..IdentificationNumber": "ns=3;s=\"Licznik_wody_4\".\"Dane\".\"Identification Number\"",
+                    "S3.Water.Meter4.FabricationNumber": "ns=3;s=\"Licznik_wody_4\".\"Dane\".\"Fabrication No (U0S0T0)\"",
+                    "S3.Water.Meter4.ErrorFlag": "ns=3;s=\"Licznik_wody_4\".\"Dane\".\"Error Flag (Binary) (U0S0T0)\"",
+                    "S3.Water.Meter4.Volume": "ns=3;s=\"Licznik_wody_4\".\"Dane\".\"Volume m3 (U0S0T0)\"",
+                    "S3.Water.Meter4.Flow": "ns=3;s=\"Licznik_wody_4\".\"Dane\".\"Volume Flow m3/h (U0S0T0)\"",
+                    "S3.Water.Meter2..NodeState": "ns=3;s=\"Licznik_wody_2\".\"Dane\".\"Node State\"",
+                    "S3.Water.Meter2.IdentificationNumber": "ns=3;s=\"Licznik_wody_2\".\"Dane\".\"Identification Number\"",
+                    "S3.Water.Meter2.FabricationNumber": "ns=3;s=\"Licznik_wody_2\".\"Dane\".\"Fabrication No (U0S0T0)\"",
+                    "S3.Water.Meter2.ErrorFlag": "ns=3;s=\"Licznik_wody_2\".\"Dane\".\"Error Flag (Binary) (U0S0T0)\"",
+                    "S3.Water.Meter2.Volume": "ns=3;s=\"Licznik_wody_2\".\"Dane\".\"Volume m3 (U0S0T0)\"",
+                    "S3.Water.Meter2.Flow": "ns=3;s=\"Licznik_wody_2\".\"Dane\".\"Volume Flow m3/h (U0S0T0)\"",
+                    "S3.Water.Meter5.NodeState": "ns=3;s=\"Licznik_wody_5\".\"Dane\".\"Node State\"",
+                    "S3.Water.Meter5.IdentificationNumber": "ns=3;s=\"Licznik_wody_5\".\"Dane\".\"Identification Number\"",
+                    "S3.Water.Meter5.FabricationNumber": "ns=3;s=\"Licznik_wody_5\".\"Dane\".\"Fabrication No (U0S0T0)\"",
+                    "S3.Water.Meter5.ErrorFlag": "ns=3;s=\"Licznik_wody_5\".\"Dane\".\"Error Flag (Binary) (U0S0T0)\"",
+                    "S3.Water.Meter5.Volume": "ns=3;s=\"Licznik_wody_5\".\"Dane\".\"Volume m3 (U0S0T0)\"",
+                    "S3.Water.Meter5.Flow": "ns=3;s=\"Licznik_wody_5\".\"Dane\".\"Volume Flow m3/h (U0S0T0)\"",
+                    "S3.Water.Meter7.NodeState": "ns=3;s=\"Licznik_wody_7\".\"Dane\".\"Node State\"",
+                    "S3.Water.Meter7.IdentificationNumber": "ns=3;s=\"Licznik_wody_7\".\"Dane\".\"Identification Number\"",
+                    "S3.Water.Meter7.FabricationNumber": "ns=3;s=\"Licznik_wody_7\".\"Dane\".\"Fabrication No (U0S0T0)\"",
+                    "S3.Water.Meter7.ErrorFlag": "ns=3;s=\"Licznik_wody_7\".\"Dane\".\"Error Flag (Binary) (U0S0T0)\"",
+                    "S3.Water.Meter7.Volume": "ns=3;s=\"Licznik_wody_7\".\"Dane\".\"Volume m3 (U0S0T0)\"",
+                    "S3.Water.Meter7.Flow": "ns=3;s=\"Licznik_wody_7\".\"Dane\".\"Volume Flow m3/h (U0S0T0)\""
+                  },
+                  "name": "W16BuildingManagementSystemFM",
+                  "publishingIntervalMs": 1000,
+                  "outputTopic": "splunk"
+                },
+                "GAZEX": {
+                  "onChangeSubmitFullModel": false,
+                  "onRepublishSubmitFullModel": true,
+                  "nodes": {
+                    "S3.Gazex1_Power_Supplay_Alarm": "ns=3;s=\"Boiler_room_IOT\".\"Gazex1_Power_Supplay_Alarm\"",
+                    "S3.Gazex2_First_Stage_Alarm_10%": "ns=3;s=\"Boiler_room_IOT\".\"Gazex2_First_Stage_Alarm 10%\"",
+                    "S3.Gazex2_Second_Stage_Alarm_30%": "ns=3;s=\"Boiler_room_IOT\".\"Gazex2_Second_Stage_Alarm 30%\"",
+                    "S3.Gazex2_Power_Supplay_Alarm": "ns=3;s=\"Boiler_room_IOT\".\"Gazex2_Power_Supplay_Alarm\"",
+                    "S3.Gazex1_First_Stage_Alarm_10%": "ns=3;s=\"Boiler_room_IOT\".\"Gazex1_First_Stage_Alarm 10%\"",
+                    "S3.Tank_empty": "ns=3;s=\"Boiler_room_IOT\".\"Tank_empty\"",
+                    "S3.General_error_Vitocontrol": "ns=3;s=\"Boiler_room_IOT\".\"General_error_Vitocontrol\"",
+                    "S3.Boiler_2_alarm": "ns=3;s=\"Boiler_room_IOT\".\"Boiler_2_alarm\"",
+                    "S3.Boiler_1_alarm": "ns=3;s=\"Boiler_room_IOT\".\"Boiler_1_alarm\"",
+                    "S3.Tank_ovefilled": "ns=3;s=\"Boiler_room_IOT\".\"Tank_ovefilled\"",
+                    "S3.Gazex1_Second_Stage_Alarm_30%": "ns=3;s=\"Boiler_room_IOT\".\"Gazex1_Second_Stage_Alarm 30%\""
+                  },
+                  "name": "GAZEX",
+                  "outputTopic": "splunk",
+                  "publishingIntervalMs": 1000,
+                  "republishingIntervalMs": 60000
+                },
+                "W16IFNPWT9501_GazexPWT": {
+                  "onChangeSubmitFullModel": false,
+                  "onRepublishSubmitFullModel": true,
+                  "nodes": {
+                    "S6.GazexPWT_E-Stop": "ns=3;s=\"16IFNPWT9501_GazexPWT_DB\".\"E-Stop\"",
+                    "S6.GazexPWT_First_Stage_Alarm_10%": "ns=3;s=\"16IFNPWT9501_GazexPWT_DB\".\"Gazex_DGW\"",
+                    "S6.GazexPWT_Second_Stage_Alarm_30%": "ns=3;s=\"16IFNPWT9501_GazexPWT_DB\".\"Gazex_GGW\"",
+                    "S6.GazexPWT_Power_Supply_Alarm": "ns=3;s=\"16IFNPWT9501_GazexPWT_DB\".\"Gazex_zasilanie\""
+                  },
+                  "name": "W16IFNPWT9501_GazexPWT",
+                  "outputTopic": "splunk",
+                  "publishingIntervalMs": 1000,
+                  "republishingIntervalMs": 60000
+                }
+              },
+              "subscriptions": {},
+              "url": "opc.tcp://199.216.0.29:4840",
+              "resetBlackListIntervalMs": 15000
+            },
+            "client": {
+              "application": {
+                "security": {
+                  "authentication": {
+                    "credentials": {},
+                    "strategy": "Anonymous"
+                  },
+                  "endpoint": {
+                    "isEnabled": true,
+                    "level": 0,
+                    "mode": "None",
+                    "policy": "None",
+                    "timeout": 15000
+                  }
+                }
+              },
+              "session": {
+                "subscription": {}
+              },
+              "optimizeNodeValueReadAccess": false
+            },
+            "edgeMethodMapping": {},
+            "conditions": {},
+            "statusCodeMapping": {}
+          }
+        },
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.OpcUaClientModule/versions/2",
+        "$messageOutputs": {
+          "W16BuildingManagementSystemFM.W16BuildingManagementSystemFM": "splunk",
+          "W16BuildingManagementSystemFM.GAZEX": "splunk",
+          "W16BuildingManagementSystemFM.W16IFNPWT9501_GazexPWT": "splunk"
+        },
+        "$timestamp": "2024-04-11T09:41:14.8951861Z",
+        "$version": 1
+      }
+    },
+    "streamprocessor": {
+      "configuration": {
+        "$timestamp": "2024-04-11T09:00:17.053462Z",
+        "$version": 1
+      }
+    },
+    "logger": {
+      "configuration": {
+        "$timestamp": "2024-04-11T09:00:17.0517876Z",
+        "$version": 1
+      }
+    },
+    "splunk": {
+      "configuration": {
+        "endpoint": {
+          "url": "https://10.13.21.22:8088/services/collector/event",
+          "token": "6112a68b-c8f6-4946-a7dd-7d48a710bc83",
+          "sslCheck": false,
+          "proxy": ""
+        },
+        "host": "I6828w05.4083",
+        "interval": 1000,
+        "sendTimestamp": true,
+        "sourceType": "_json",
+        "bufferQueueSettings": {
+          "enablePersist": false
+        },
+        "$messageInputs": {
+          "splunkPoll": "telemetry",
+          "splunk": "event",
+          "enriched_sub": "event",
+          "enriched_poll": "telemetry"
+        },
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.SplunkHecModule/versions/3",
+        "$timestamp": "2024-04-12T07:02:45.4008444Z",
+        "$version": 3
+      }
+    },
+    "system": {
+      "configuration": {
+        "firewallrules": {
+          "AdminAPIAutoRuleHTTP": {
+            "description": "Auto generated rule from AdminApiModule for HTTP Port.",
+            "action": "accept",
+            "direction": "inbound",
+            "protocol": "tcp",
+            "srcPort": 0,
+            "destPort": 80
+          },
+          "AdminAPIAutoRuleHTTPS": {
+            "description": "Auto generated rule from AdminApiModule for HTTPS Port.",
+            "action": "accept",
+            "direction": "inbound",
+            "protocol": "tcp",
+            "srcPort": 0,
+            "destPort": 443
+          }
+        },
+        "$timestamp": "2024-04-11T14:30:44.670429Z",
+        "$version": 1
+      }
+    }
+  }
+}

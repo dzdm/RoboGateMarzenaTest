@@ -1,0 +1,185 @@
+{
+  "modules": {
+    "mustache": {
+      "configuration": {
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.MustacheEnricherModule/versions/1",
+        "$timestamp": "2023-09-25T12:13:49.0291953Z",
+        "$version": 1
+      }
+    },
+    "azure": {
+      "configuration": {
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.IotHubSenderModule/versions/1",
+        "$timestamp": "2023-09-25T12:13:49.0286617Z",
+        "$version": 1
+      }
+    },
+    "center": {
+      "configuration": {
+        "$timestamp": "2023-09-25T12:13:49.0303509Z",
+        "$version": 1
+      }
+    },
+    "modbus": {
+      "configuration": {
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.ModbusReaderModule/versions/1",
+        "$timestamp": "2023-09-25T12:13:49.0290338Z",
+        "$version": 1
+      }
+    },
+    "mqtt": {
+      "configuration": {
+        "$schema": "https://schemas.robotron.de/robogate/modules/MqttSender.IotEdge.Modules.MqttSenderModule/versions/1",
+        "$timestamp": "2023-09-25T12:13:49.0288Z",
+        "$version": 1
+      }
+    },
+    "rfcreader": {
+      "configuration": {
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.RFC1006ReaderModule/versions/1",
+        "$timestamp": "2023-09-25T12:13:49.0292335Z",
+        "$version": 1
+      }
+    },
+    "opcua": {
+      "configuration": {
+        "servers": {
+          "W16BuildingManagementCompressorFM": {
+            "endpoint": {
+              "pollGroups": {},
+              "subscriptionGroups": {
+                "S3.CounterMedia": {
+                  "name": "S3.CounterMedia",
+                  "nodes": {
+                    "S3.VoltageP3Avg": "ns=3;s=\"IOT_COMPRESSOR_ROOM\".\"Voltage_between_phase_avg\"",
+                    "S3.VoltageAvg": "ns=3;s=\"IOT_COMPRESSOR_ROOM\".\"Voltage_avg\"",
+                    "S3.Totalpowerfactor": "ns=3;s=\"IOT_COMPRESSOR_ROOM\".\"PAC3220_basicType3\".\"Total\".\"Total power factor\"",
+                    "S3.CurrentN": "ns=3;s=\"IOT_COMPRESSOR_ROOM\".\"PAC3220_basicType3\".\"Neutral_conductor_current\"",
+                    "S3.CurrentP3Avg": "ns=3;s=\"IOT_COMPRESSOR_ROOM\".\"PAC3220_basicType3\".\"Current_AVG_3P\"",
+                    "S3.Frequency": "ns=3;s=\"IOT_COMPRESSOR_ROOM\".\"PAC3220_basicType3\".\"Frequency\"",
+                    "S3.Totalapparentpower": "ns=3;s=\"IOT_COMPRESSOR_ROOM\".\"PAC3220_basicType3\".\"Total\".\"Total apparent power\"",
+                    "S3.Totalactivepower": "ns=3;s=\"IOT_COMPRESSOR_ROOM\".\"PAC3220_basicType3\".\"Total\".\"Total active power\"",
+                    "S3.PowerfactorL3": "ns=3;s=\"IOT_COMPRESSOR_ROOM\".\"PAC3220_basicType3\".\"Powerfactor\".\"L3\"",
+                    "S3.PowerfactorL2": "ns=3;s=\"IOT_COMPRESSOR_ROOM\".\"PAC3220_basicType3\".\"Powerfactor\".\"L2\"",
+                    "S3.PowerfactorL1": "ns=3;s=\"IOT_COMPRESSOR_ROOM\".\"PAC3220_basicType3\".\"Powerfactor\".\"L1\"",
+                    "S3.VoltageL1N": "ns=3;s=\"IOT_COMPRESSOR_ROOM\".\"PAC3220_basicType3\".\"Voltage\".\"L1_N\"",
+                    "S3.VoltageL2N": "ns=3;s=\"IOT_COMPRESSOR_ROOM\".\"PAC3220_basicType3\".\"Voltage\".\"L2_N\"",
+                    "S3.VoltageL3N": "ns=3;s=\"IOT_COMPRESSOR_ROOM\".\"PAC3220_basicType3\".\"Voltage\".\"L3_N\"",
+                    "S3.VoltageL1L2": "ns=3;s=\"IOT_COMPRESSOR_ROOM\".\"PAC3220_basicType3\".\"Voltage\".\"L1_L2\"",
+                    "S3.VoltageL2L3": "ns=3;s=\"IOT_COMPRESSOR_ROOM\".\"PAC3220_basicType3\".\"Voltage\".\"L2_L3\"",
+                    "S3.VoltageL3L1": "ns=3;s=\"IOT_COMPRESSOR_ROOM\".\"PAC3220_basicType3\".\"Voltage\".\"L3_L1\"",
+                    "S3.CurrentL1": "ns=3;s=\"IOT_COMPRESSOR_ROOM\".\"PAC3220_basicType3\".\"Current\".\"L1\"",
+                    "S3.CurrentL2": "ns=3;s=\"IOT_COMPRESSOR_ROOM\".\"PAC3220_basicType3\".\"Current\".\"L2\"",
+                    "S3.CurrentL3": "ns=3;s=\"IOT_COMPRESSOR_ROOM\".\"PAC3220_basicType3\".\"Current\".\"L3\"",
+                    "S3.EnergyActiveExport": "ns=3;s=\"IOT_COMPRESSOR_ROOM\".\"PowerTarif1\".\"EnergyActiveExport\"",
+                    "S3.EnergyActiveImport": "ns=3;s=\"IOT_COMPRESSOR_ROOM\".\"PowerTarif1\".\"EnergyActiveImport\"",
+                    "S3.EnergyReactiveImport": "ns=3;s=\"IOT_COMPRESSOR_ROOM\".\"PowerTarif1\".\"EnergyReactiveExport\"",
+                    "S3.EnergyReactiveExport": "ns=3;s=\"IOT_COMPRESSOR_ROOM\".\"PowerTarif1\".\"EnergyReactiveImport\""
+                  },
+                  "intervalMs": 15000,
+                  "outputTopic": "splunk",
+                  "publishingIntervalMs": 1000,
+                  "onRepublishSubmitFullModel": true,
+                  "republishingIntervalMs": 600000
+                }
+              },
+              "subscriptions": {},
+              "resetBlackListIntervalMs": 15000,
+              "url": "opc.tcp://199.216.0.125:4840"
+            },
+            "client": {
+              "application": {
+                "security": {
+                  "authentication": {
+                    "credentials": {},
+                    "strategy": "Anonymous"
+                  },
+                  "endpoint": {
+                    "isEnabled": true,
+                    "level": 5,
+                    "mode": "None",
+                    "timeout": 15000,
+                    "policy": "None"
+                  }
+                }
+              },
+              "session": {
+                "subscription": {}
+              },
+              "optimizeNodeValueReadAccess": false
+            },
+            "edgeMethodMapping": {},
+            "conditions": {},
+            "statusCodeMapping": {}
+          }
+        },
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.OpcUaClientModule/versions/2",
+        "$messageOutputs": {
+          "W16BuildingManagementCompressorFM.S3.CounterMedia": "splunk"
+        },
+        "$timestamp": "2023-09-25T12:13:49.0292487Z",
+        "$version": 1
+      }
+    },
+    "streamprocessor": {
+      "configuration": {
+        "$timestamp": "2023-09-25T12:13:49.0304163Z",
+        "$version": 1
+      }
+    },
+    "logger": {
+      "configuration": {
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.FileLoggerModule/versions/1",
+        "$timestamp": "2023-09-25T12:13:49.0291588Z",
+        "$version": 1
+      }
+    },
+    "splunk": {
+      "configuration": {
+        "endpoint": {
+          "url": "https://10.13.21.22:8088/services/collector/event",
+          "token": "6112a68b-c8f6-4946-a7dd-7d48a710bc83",
+          "sslCheck": false
+        },
+        "interval": 1000,
+        "$messageInputs": {
+          "splunk": "event",
+          "splunkPoll": "telemetry"
+        },
+        "host": "I6828w05.4086",
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.SplunkHecModule/versions/3",
+        "sendTimestamp": true,
+        "sourceType": "_json",
+        "bufferQueueSettings": {
+          "enablePersist": false
+        },
+        "$timestamp": "2024-04-12T07:04:33.2773623Z",
+        "$version": 3
+      }
+    },
+    "system": {
+      "configuration": {
+        "firewallrules": {
+          "AdminAPIAutoRuleHTTP": {
+            "description": "Auto generated rule from AdminApiModule for HTTP Port.",
+            "action": "accept",
+            "direction": "inbound",
+            "protocol": "tcp",
+            "srcPort": 0,
+            "destPort": 80
+          },
+          "AdminAPIAutoRuleHTTPS": {
+            "description": "Auto generated rule from AdminApiModule for HTTPS Port.",
+            "action": "accept",
+            "direction": "inbound",
+            "protocol": "tcp",
+            "srcPort": 0,
+            "destPort": 443
+          }
+        },
+        "$timestamp": "2024-04-11T14:31:18.7744038Z",
+        "$version": 1
+      }
+    }
+  }
+}

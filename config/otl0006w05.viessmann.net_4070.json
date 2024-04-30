@@ -1,0 +1,218 @@
+{
+  "modules": {
+    "modbus": {
+      "configuration": {
+        "$timestamp": "2024-01-24T08:09:04.80938Z",
+        "$version": 1
+      }
+    },
+    "center": {
+      "configuration": {
+        "$timestamp": "2024-01-24T08:09:04.8522916Z",
+        "$version": 1
+      }
+    },
+    "mqtt": {
+      "configuration": {
+        "$timestamp": "2024-01-24T08:09:04.85275Z",
+        "$version": 1
+      }
+    },
+    "azure": {
+      "configuration": {
+        "$timestamp": "2024-01-24T08:09:04.8529626Z",
+        "$version": 1
+      }
+    },
+    "splunk": {
+      "configuration": {
+        "endpoint": {
+          "url": "https://10.10.212.27:8088/services/collector/event",
+          "token": "a5a26423-9874-4383-8f31-436c3c86a4ee",
+          "sslCheck": false,
+          "proxy": ""
+        },
+        "host": "COTL_0006W05-4070",
+        "interval": 1000,
+        "sendTimestamp": true,
+        "sourceType": "_json",
+        "bufferQueueSettings": {
+          "enablePersist": false
+        },
+        "$messageInputs": {
+          "splunkPoll": "telemetry",
+          "splunk": "event"
+        },
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.SplunkHecModule/versions/3",
+        "$timestamp": "2024-01-24T08:09:04.853057Z",
+        "$version": 5
+      }
+    },
+    "opcua": {
+      "configuration": {
+        "servers": {
+          "W16KT638TesterCablesKMIV1650002458": {
+            "endpoint": {
+              "pollGroups": {
+                "PollGroupS1.Data": {
+                  "name": "PollGroupS1.Data",
+                  "nodes": {
+                    "KPI_Utilisation": "ns=2;s=S7-1.DB.IOT_KT638_IV1650002458.IOT_Data.IOT_KPI_Utilisation",
+                    "KPI_Waiting": "ns=2;s=S7-1.DB.IOT_KT638_IV1650002458.IOT_Data.IOT_KPI_Waiting",
+                    "KPI_Availability": "ns=2;s=S7-1.DB.IOT_KT638_IV1650002458.IOT_Data.IOT_KPI_Availability",
+                    "KPI_Maintenace": "ns=2;s=S7-1.DB.IOT_KT638_IV1650002458.IOT_Data.IOT_KPI_Maintenace",
+                    "KPI_DownTime": "ns=2;s=S7-1.DB.IOT_KT638_IV1650002458.IOT_Data.IOT_KPI_DownTime",
+                    "KPI_Setting": "ns=2;s=S7-1.DB.IOT_KT638_IV1650002458.IOT_Data.IOT_KPI_Setting",
+                    "KPI_OFF": "ns=2;s=S7-1.DB.IOT_KT638_IV1650002458.IOT_Data.IOT_KPI_OFF",
+                    "S1.Producing_PG": "ns=2;s=S7-1.DB.IOT_KT638_IV1650002458.IOT_Data.IOT_Producing",
+                    "S1.MachineDowntime_PG": "ns=2;s=S7-1.DB.IOT_KT638_IV1650002458.IOT_Data.IOT_DownTime",
+                    "S1.MaintenanceMode_PG": "ns=2;s=S7-1.DB.IOT_KT638_IV1650002458.IOT_Data.IOT_Maintenance",
+                    "S1.SettingMode_PG": "ns=2;s=S7-1.DB.IOT_KT638_IV1650002458.IOT_Data.IOT_Setting",
+                    "S1.Waiting_PG": "ns=2;s=S7-1.DB.IOT_KT638_IV1650002458.IOT_Data.IOT_Waiting",
+                    "S1.PowerON_PG": "ns=2;s=S7-1.DB.IOT_KT638_IV1650002458.IOT_Data.IOT_PowerON",
+                    "S7.SachNr_PG": "ns=2;s=S7-1.DB.IOT_KT638_IV1650002458.IOT_Data.IOT_SachNr",
+                    "S7.Op_PG": "ns=2;s=S7-1.DB.IOT_KT638_IV1650002458.IOT_Data.IOT_Reserve_INT_1"
+                  },
+                  "intervalMs": 15000,
+                  "outputTopic": "splunkPoll"
+                }
+              },
+              "subscriptionGroups": {
+                "TestingPassed": {
+                  "onChangeSubmitFullModel": true,
+                  "onRepublishSubmitFullModel": true,
+                  "nodes": {
+                    "S7.TestingPassed": "ns=2;s=S7-1.DB.IOT_KT638_IV1650002458.IOT_Data.IOT_KPI_TestingPass",
+                    "S7.TestingFailed": "ns=2;s=S7-1.DB.IOT_KT638_IV1650002458.IOT_Data.IOT_KPI_TestingFailed",
+                    "S7.Rework": "ns=2;s=S7-1.DB.IOT_KT638_IV1650002458.IOT_Data.IOT_Rework"
+                  },
+                  "name": "TestingPassed",
+                  "outputTopic": "splunk",
+                  "publishingIntervalMs": 250
+                },
+                "Connected": {
+                  "onChangeSubmitFullModel": true,
+                  "onRepublishSubmitFullModel": true,
+                  "nodes": {
+                    "S1.Connected": "ns=2;s=S7-1.DB.IOT_KT638_IV1650002458.IOT_Data.IOT.Connected"
+                  },
+                  "name": "Connected",
+                  "outputTopic": "splunk",
+                  "publishingIntervalMs": 1250
+                },
+                "W16KT638TesterCabelsKMIV1650002044": {
+                  "onChangeSubmitFullModel": false,
+                  "onRepublishSubmitFullModel": true,
+                  "nodes": {
+                    "S7.SachNr": "ns=2;s=S7-1.DB.IOT_KT638_IV1650002458.IOT_Data.IOT_SachNr",
+                    "S7.FaultCounter": "ns=2;s=S7-1.DB.IOT_KT638_IV1650002458.IOT_Data.IOT_FaultCounter",
+                    "S7.OP": "ns=2;s=S7-1.DB.IOT_KT638_IV1650002458.IOT_Data.IOT_Reserve_INT_1",
+                    "S7.Damaged_cable": "ns=2;s=S7-1.DB.KT638_fauls.Damaged_cable",
+                    "S7.Damaged_clamp": "ns=2;s=S7-1.DB.KT638_fauls.Damaged_clamp",
+                    "S7.Damaged_injector": "ns=2;s=S7-1.DB.KT638_fauls.Damaged_injector",
+                    "S7.Damaged_connector": "ns=2;s=S7-1.DB.KT638_fauls.Damaged_connector",
+                    "S7.Damaged_connector_cube": "ns=2;s=S7-1.DB.KT638_fauls.Damaged_connector_cube",
+                    "S7.Damaged_Relay": "ns=2;s=S7-1.DB.KT638_fauls.Damaged_Relay",
+                    "S7.Damaged_Fe": "ns=2;s=S7-1.DB.KT638_fauls.Damaged_Fe",
+                    "S7.Damaged_body": "ns=2;s=S7-1.DB.KT638_fauls.Damaged_body",
+                    "S7.Burned_isolation": "ns=2;s=S7-1.DB.KT638_fauls.Burned_isolation",
+                    "S7.Missing_connector": "ns=2;s=S7-1.DB.KT638_fauls.Missing_connector",
+                    "S7.Missing_connector_cube": "ns=2;s=S7-1.DB.KT638_fauls.Missing_connector_cube",
+                    "S7.Missing_sleeve": "ns=2;s=S7-1.DB.KT638_fauls.Missing_sleeve",
+                    "S7.Other_error": "ns=2;s=S7-1.DB.KT638_fauls.Other_error_final",
+                    "S7.Other": "ns=2;s=S7-1.DB.KT638_fauls.Other"
+                  },
+                  "name": "W16KT638TesterCabelsKMIV1650002044",
+                  "outputTopic": "splunk",
+                  "publishingIntervalMs": 250
+                }
+              },
+              "subscriptions": {},
+              "url": "opc.tcp://10.31.128.98:4840",
+              "resetBlackListIntervalMs": 15000
+            },
+            "client": {
+              "application": {
+                "security": {
+                  "authentication": {
+                    "credentials": {},
+                    "strategy": "Anonymous"
+                  },
+                  "endpoint": {
+                    "isEnabled": true,
+                    "level": 0,
+                    "mode": "None",
+                    "policy": "None",
+                    "timeout": 15000
+                  }
+                }
+              },
+              "session": {
+                "subscription": {}
+              },
+              "optimizeNodeValueReadAccess": false
+            },
+            "edgeMethodMapping": {}
+          }
+        },
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.OpcUaClientModule/versions/2",
+        "$messageOutputs": {
+          "W16KT638TesterCablesKMIV1650002458.PollGroupS1.Data": "splunkPoll",
+          "W16KT638TesterCablesKMIV1650002458.TestingPassed": "splunk",
+          "W16KT638TesterCablesKMIV1650002458.Connected": "splunk",
+          "W16KT638TesterCablesKMIV1650002458.W16KT638TesterCabelsKMIV1650002044": "splunk"
+        },
+        "$timestamp": "2024-01-24T08:09:04.8791452Z",
+        "$version": 34
+      }
+    },
+    "mustache": {
+      "configuration": {
+        "$timestamp": "2024-01-24T08:09:04.8890106Z",
+        "$version": 1
+      }
+    },
+    "rfcreader": {
+      "configuration": {
+        "$timestamp": "2024-01-24T08:09:04.8890924Z",
+        "$version": 1
+      }
+    },
+    "logger": {
+      "configuration": {
+        "$timestamp": "2024-01-24T08:09:04.8891302Z",
+        "$version": 1
+      }
+    },
+    "streamprocessor": {
+      "configuration": {
+        "$timestamp": "2024-01-24T08:09:04.8891541Z",
+        "$version": 1
+      }
+    },
+    "system": {
+      "configuration": {
+        "firewallrules": {
+          "AdminAPIAutoRuleHTTP": {
+            "description": "Auto generated rule from AdminApiModule for HTTP Port.",
+            "action": "accept",
+            "direction": "inbound",
+            "protocol": "tcp",
+            "srcPort": 0,
+            "destPort": 80
+          },
+          "AdminAPIAutoRuleHTTPS": {
+            "description": "Auto generated rule from AdminApiModule for HTTPS Port.",
+            "action": "accept",
+            "direction": "inbound",
+            "protocol": "tcp",
+            "srcPort": 0,
+            "destPort": 443
+          }
+        },
+        "$timestamp": "2024-01-24T08:09:04.8891758Z",
+        "$version": 2
+      }
+    }
+  }
+}

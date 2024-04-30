@@ -1,0 +1,548 @@
+{
+  "modules": {
+    "mustache": {
+      "configuration": {
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.MustacheEnricherModule/versions/1",
+        "templates": {
+          "body": "{{message.body}}",
+          "headers": {
+            "source": "{{ (message.headers.scope | regex.match '^([^:]+):([^:]+):([^:]+)$')[2] }}",
+            "scope": "{{ (message.headers.scope | regex.match '^([^:]+):([^:]+):([^:]+)$')[3] }}"
+          },
+          "modules": {},
+          "library": "",
+          "messageOutput": "{{ (message.headers.scope | regex.match '^([^:]+):([^:]+):([^:]+)$')[1] }}"
+        },
+        "$messageInputs": {
+          "enrich": "raw"
+        },
+        "$messageOutputs": {
+          "poll": "enriched_poll",
+          "sub": "enriched_sub"
+        },
+        "environment": {},
+        "$timestamp": "2024-03-28T13:37:59.2783847Z",
+        "$version": 1
+      }
+    },
+    "azure": {
+      "configuration": {
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.IotHubSenderModule/versions/1",
+        "$timestamp": "2024-03-28T13:37:59.274127Z",
+        "$version": 1
+      }
+    },
+    "center": {
+      "configuration": {
+        "$timestamp": "2024-03-28T13:37:59.2808915Z",
+        "$version": 1
+      }
+    },
+    "modbus": {
+      "configuration": {
+        "$messageOutputs": {
+          "modbus_test.slave.modbus_PG": "modbus_PG"
+        },
+        "servers": {
+          "modbus_test": {
+            "connection": {
+              "variant": "Tcp",
+              "tcp": {
+                "ipAddress": "199.216.3.155",
+                "port": 4840
+              }
+            },
+            "slaves": {
+              "slave": {
+                "pollGroups": {
+                  "modbus_PG": {
+                    "model": {
+                      "Sensor": {
+                        "registerStartAddress": 1,
+                        "registerLength": 1,
+                        "functionCode": 1
+                      }
+                    },
+                    "intervalMs": 1000,
+                    "sourceMode": "UseSlaveName"
+                  }
+                },
+                "setupGroups": {},
+                "slaveId": 1,
+                "subscriptionGroups": {}
+              }
+            }
+          }
+        },
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.ModbusReaderModule/versions/2",
+        "$timestamp": "2024-03-28T13:37:59.274769Z",
+        "$version": 1
+      }
+    },
+    "mqtt": {
+      "configuration": {
+        "$schema": "https://schemas.robotron.de/robogate/modules/MqttSender.IotEdge.Modules.MqttSenderModule/versions/1",
+        "$timestamp": "2024-03-28T13:37:59.2742764Z",
+        "$version": 1
+      }
+    },
+    "rfcreader": {
+      "configuration": {
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.RFC1006ReaderModule/versions/1",
+        "$timestamp": "2024-03-28T13:37:59.2784574Z",
+        "$version": 1
+      }
+    },
+    "opcua": {
+      "configuration": {
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.OpcUaClientModule/versions/2",
+        "servers": {
+          "W16ICSIOT9400": {
+            "endpoint": {
+              "pollGroups": {
+                "GatewayWatchdog": {
+                  "name": "GatewayWatchdog",
+                  "nodes": {
+                    "Gateway_Temperature_PG": "ns=3;s=_System.General.Temperature"
+                  },
+                  "intervalMs": 900000,
+                  "outputTopic": "splunkPoll"
+                },
+                "poll:W16HeatExSolderingPWT8523885:S1.Data": {
+                  "name": "poll:W16HeatExSolderingPWT8523885:S1.Data",
+                  "nodes": {
+                    "S1.Producing_PG": "ns=2;s=S7-1.DB.8523885_IOT_DB.Static.S1.Producing",
+                    "S1.Waiting_PG": "ns=2;s=S7-1.DB.8523885_IOT_DB.Static.S1.Waiting",
+                    "S1.SettingMode_PG": "ns=2;s=S7-1.DB.8523885_IOT_DB.Static.S1.SettingMode",
+                    "S1.MaintenanceMode_PG": "ns=2;s=S7-1.DB.8523885_IOT_DB.Static.S1.MaintenanceMode",
+                    "S1.MachineDowntime_PG": "ns=2;s=S7-1.DB.8523885_IOT_DB.Static.S1.MachineDowntime",
+                    "S1.PowerOn_PG": "ns=2;s=S7-1.DB.8523885_IOT_DB.Static.S1.PowerOn"
+                  },
+                  "intervalMs": 15000,
+                  "outputTopic": "enrich"
+                },
+                "poll:W16HeatExSolderingPWT8524642:S1.Data": {
+                  "name": "poll:W16HeatExSolderingPWT8524642:S1.Data",
+                  "nodes": {
+                    "S1.Producing_PG": "ns=2;s=S7-1.DB.8524642_IOT_DB.Static.S1.Producing",
+                    "S1.Waiting_PG": "ns=2;s=S7-1.DB.8524642_IOT_DB.Static.S1.Waiting",
+                    "S1.SettingMode_PG": "ns=2;s=S7-1.DB.8524642_IOT_DB.Static.S1.SettingMode",
+                    "S1.MaintenanceMode_PG": "ns=2;s=S7-1.DB.8524642_IOT_DB.Static.S1.MaintenanceMode",
+                    "S1.MachineDowntime_PG": "ns=2;s=S7-1.DB.8524642_IOT_DB.Static.S1.MachineDowntime",
+                    "S1.PowerOn_PG": "ns=2;s=S7-1.DB.8524642_IOT_DB.Static.S1.PowerOn"
+                  },
+                  "intervalMs": 15000,
+                  "outputTopic": "enrich"
+                },
+                "poll:W16HeatExSolderingPWT8524643:S1.Data": {
+                  "name": "poll:W16HeatExSolderingPWT8524643:S1.Data",
+                  "nodes": {
+                    "S1.Producing_PG": "ns=2;s=S7-1.DB.8524643_IOT_DB.Static.S1.Producing",
+                    "S1.Waiting_PG": "ns=2;s=S7-1.DB.8524643_IOT_DB.Static.S1.Waiting",
+                    "S1.SettingMode_PG": "ns=2;s=S7-1.DB.8524643_IOT_DB.Static.S1.SettingMode",
+                    "S1.MaintenanceMode_PG": "ns=2;s=S7-1.DB.8524643_IOT_DB.Static.S1.MaintenanceMode",
+                    "S1.MachineDowntime_PG": "ns=2;s=S7-1.DB.8524643_IOT_DB.Static.S1.MachineDowntime",
+                    "S1.PowerOn_PG": "ns=2;s=S7-1.DB.8524643_IOT_DB.Static.S1.PowerOn"
+                  },
+                  "intervalMs": 15000,
+                  "outputTopic": "enrich"
+                },
+                "poll:W16HeatExSolderingPWT8527972:S1.Data": {
+                  "name": "poll:W16HeatExSolderingPWT8527972:S1.Data",
+                  "nodes": {
+                    "S1.Producing_PG": "ns=2;s=S7-1.DB.8527972_IOT_DB.Static.S1.Producing",
+                    "S1.Waiting_PG": "ns=2;s=S7-1.DB.8527972_IOT_DB.Static.S1.Waiting",
+                    "S1.SettingMode_PG": "ns=2;s=S7-1.DB.8527972_IOT_DB.Static.S1.SettingMode",
+                    "S1.MaintenanceMode_PG": "ns=2;s=S7-1.DB.8527972_IOT_DB.Static.S1.MaintenanceMode",
+                    "S1.MachineDowntime_PG": "ns=2;s=S7-1.DB.8527972_IOT_DB.Static.S1.MachineDowntime",
+                    "S1.PowerOn_PG": "ns=2;s=S7-1.DB.8527972_IOT_DB.Static.S1.PowerOn"
+                  },
+                  "intervalMs": 15000,
+                  "outputTopic": "enrich"
+                },
+                "poll:W16HeatExSolderingPWT8527970:S1.Data": {
+                  "name": "poll:W16HeatExSolderingPWT8527970:S1.Data",
+                  "nodes": {
+                    "S1.Producing_PG": "ns=2;s=S7-1.DB.8527970_IOT_DB.Static.S1.Producing",
+                    "S1.Waiting_PG": "ns=2;s=S7-1.DB.8527970_IOT_DB.Static.S1.Waiting",
+                    "S1.SettingMode_PG": "ns=2;s=S7-1.DB.8527970_IOT_DB.Static.S1.SettingMode",
+                    "S1.MaintenanceMode_PG": "ns=2;s=S7-1.DB.8527970_IOT_DB.Static.S1.MaintenanceMode",
+                    "S1.MachineDowntime_PG": "ns=2;s=S7-1.DB.8527970_IOT_DB.Static.S1.MachineDowntime",
+                    "S1.PowerOn_PG": "ns=2;s=S7-1.DB.8527970_IOT_DB.Static.S1.PowerOn"
+                  },
+                  "intervalMs": 15000,
+                  "outputTopic": "enrich"
+                },
+                "poll:W16HeatExSolderingPWT8524641:S1.Data": {
+                  "name": "poll:W16HeatExSolderingPWT8524641:S1.Data",
+                  "nodes": {
+                    "S1.Producing_PG": "ns=2;s=S7-1.DB.8524641_IOT_DB.Static.S1.Producing",
+                    "S1.Waiting_PG": "ns=2;s=S7-1.DB.8524641_IOT_DB.Static.S1.Waiting",
+                    "S1.SettingMode_PG": "ns=2;s=S7-1.DB.8524641_IOT_DB.Static.S1.SettingMode",
+                    "S1.MaintenanceMode_PG": "ns=2;s=S7-1.DB.8524641_IOT_DB.Static.S1.MaintenanceMode",
+                    "S1.MachineDowntime_PG": "ns=2;s=S7-1.DB.8524641_IOT_DB.Static.S1.MachineDowntime",
+                    "S1.PowerOn_PG": "ns=2;s=S7-1.DB.8524641_IOT_DB.Static.S1.PowerOn"
+                  },
+                  "intervalMs": 15000,
+                  "outputTopic": "enrich"
+                },
+                "poll:W16HeatExSolderingPWT8527973:S1.Data": {
+                  "name": "poll:W16HeatExSolderingPWT8527973:S1.Data",
+                  "nodes": {
+                    "S1.Producing_PG": "ns=2;s=S7-1.DB.8527973_IOT_DB.Static.S1.Producing",
+                    "S1.Waiting_PG": "ns=2;s=S7-1.DB.8527973_IOT_DB.Static.S1.Waiting",
+                    "S1.SettingMode_PG": "ns=2;s=S7-1.DB.8527973_IOT_DB.Static.S1.SettingMode",
+                    "S1.MaintenanceMode_PG": "ns=2;s=S7-1.DB.8527973_IOT_DB.Static.S1.MaintenanceMode",
+                    "S1.MachineDowntime_PG": "ns=2;s=S7-1.DB.8527973_IOT_DB.Static.S1.MachineDowntime",
+                    "S1.PowerOn_PG": "ns=2;s=S7-1.DB.8527973_IOT_DB.Static.S1.PowerOn"
+                  },
+                  "intervalMs": 15000,
+                  "outputTopic": "enrich"
+                },
+                "poll:W16HeatExSolderingPWT8527971:S1.Data": {
+                  "name": "poll:W16HeatExSolderingPWT8527971:S1.Data",
+                  "nodes": {
+                    "S1.Producing_PG": "ns=2;s=S7-1.DB.8527971_IOT_DB.Static.S1.Producing",
+                    "S1.Waiting_PG": "ns=2;s=S7-1.DB.8527971_IOT_DB.Static.S1.Waiting",
+                    "S1.SettingMode_PG": "ns=2;s=S7-1.DB.8527971_IOT_DB.Static.S1.SettingMode",
+                    "S1.MaintenanceMode_PG": "ns=2;s=S7-1.DB.8527971_IOT_DB.Static.S1.MaintenanceMode",
+                    "S1.MachineDowntime_PG": "ns=2;s=S7-1.DB.8527971_IOT_DB.Static.S1.MachineDowntime",
+                    "S1.PowerOn_PG": "ns=2;s=S7-1.DB.8527971_IOT_DB.Static.S1.PowerOn"
+                  },
+                  "intervalMs": 15000,
+                  "outputTopic": "enrich"
+                }
+              },
+              "subscriptionGroups": {
+                "sub:W16HeatExSolderingPWT8524642:W16HeatExSolderingPWT8524642": {
+                  "onChangeSubmitFullModel": false,
+                  "onRepublishSubmitFullModel": true,
+                  "nodes": {
+                    "S1.Connected": "ns=2;s=S7-1.DB.8524642_IOT_DB.Static.S1.Connected",
+                    "S1.ManualMode": "ns=2;s=S7-1.DB.8524642_IOT_DB.Static.S1.ManualMode",
+                    "S1.AutomaticMode": "ns=2;s=S7-1.DB.8524642_IOT_DB.Static.S1.AutomaticMode",
+                    "S1.Standby": "ns=2;s=S7-1.DB.8524642_IOT_DB.Static.S1.Standby",
+                    "S7.TestingPassed": "ns=2;s=S7-1.DB.8524642_IOT_DB.Static.S7.TestingPassed",
+                    "S7.TestingFailed": "ns=2;s=S7-1.DB.8524642_IOT_DB.Static.S7.TestingFailed",
+                    "S7.ActualScan": "ns=2;s=S7-1.DB.8524642_IOT_DB.Static.S7.ActualScan",
+                    "S7.Scan1": "ns=2;s=S7-1.DB.8524642_IOT_DB.Static.S7.Scan1",
+                    "S7.Scan2": "ns=2;s=S7-1.DB.8524642_IOT_DB.Static.S7.Scan2",
+                    "S7.Scan3": "ns=2;s=S7-1.DB.8524642_IOT_DB.Static.S7.Scan3",
+                    "S7.Scan1Total": "ns=2;s=S7-1.DB.8524642_IOT_DB.Static.S7.Scan1Total",
+                    "S7.Scan2Total": "ns=2;s=S7-1.DB.8524642_IOT_DB.Static.S7.Scan2Total",
+                    "S7.Scan3Total": "ns=2;s=S7-1.DB.8524642_IOT_DB.Static.S7.Scan3Total",
+                    "S7.PiecesSetpoint": "ns=2;s=S7-1.DB.8524642_Operation.Static.PiecesSetpoint",
+                    "S7.PiecesActual": "ns=2;s=S7-1.DB.8524642_Operation.Static.PiecesActual",
+                    "S7.PiecesFailed": "ns=2;s=S7-1.DB.8524642_Operation.Static.PiecesFailed"
+                  },
+                  "name": "sub:W16HeatExSolderingPWT8524642:W16HeatExSolderingPWT8524642",
+                  "publishingIntervalMs": 1000,
+                  "outputTopic": "enrich"
+                },
+                "sub:W16HeatExSolderingPWT8524643:W16HeatExSolderingPWT8524643": {
+                  "onChangeSubmitFullModel": false,
+                  "onRepublishSubmitFullModel": true,
+                  "nodes": {
+                    "S1.Connected": "ns=2;s=S7-1.DB.8524643_IOT_DB.Static.S1.Connected",
+                    "S1.AutomaticMode": "ns=2;s=S7-1.DB.8524643_IOT_DB.Static.S1.AutomaticMode",
+                    "S1.Standby": "ns=2;s=S7-1.DB.8524643_IOT_DB.Static.S1.Standby",
+                    "S7.TestingPassed": "ns=2;s=S7-1.DB.8524643_IOT_DB.Static.S7.TestingPassed",
+                    "S7.TestingFailed": "ns=2;s=S7-1.DB.8524643_IOT_DB.Static.S7.TestingFailed",
+                    "3S7.ActualScan": "ns=2;s=S7-1.DB.8524643_IOT_DB.Static.S7.ActualScan",
+                    "S7.Scan1": "ns=2;s=S7-1.DB.8524643_IOT_DB.Static.S7.Scan1",
+                    "S7.Scan2": "ns=2;s=S7-1.DB.8524643_IOT_DB.Static.S7.Scan2",
+                    "S7.Scan3": "ns=2;s=S7-1.DB.8524643_IOT_DB.Static.S7.Scan3",
+                    "S7.Scan1Total": "ns=2;s=S7-1.DB.8524643_IOT_DB.Static.S7.Scan1Total",
+                    "S7.Scan2Total": "ns=2;s=S7-1.DB.8524643_IOT_DB.Static.S7.Scan2Total",
+                    "S7.Scan3Total": "ns=2;s=S7-1.DB.8524643_IOT_DB.Static.S7.Scan3Total",
+                    "S1.ManualMode": "ns=2;s=S7-1.DB.8524643_IOT_DB.Static.S1.ManualMode",
+                    "S7.PiecesSetpoint": "ns=2;s=S7-1.DB.8524643_Operation.Static.PiecesSetpoint",
+                    "S7.PiecesActual": "ns=2;s=S7-1.DB.8524643_Operation.Static.PiecesActual",
+                    "S7.PiecesFailed": "ns=2;s=S7-1.DB.8524643_Operation.Static.PiecesFailed"
+                  },
+                  "name": "sub:W16HeatExSolderingPWT8524643:W16HeatExSolderingPWT8524643",
+                  "publishingIntervalMs": 1000,
+                  "outputTopic": "enrich"
+                },
+                "sub:W16HeatExSolderingPWT8523885:W16HeatExSolderingPWT8523885": {
+                  "onChangeSubmitFullModel": false,
+                  "onRepublishSubmitFullModel": true,
+                  "nodes": {
+                    "S1.Connected": "ns=2;s=S7-1.DB.8523885_IOT_DB.Static.S1.Connected",
+                    "S1.AutomaticMode": "ns=2;s=S7-1.DB.8523885_IOT_DB.Static.S1.AutomaticMode",
+                    "S1.Standby": "ns=2;s=S7-1.DB.8523885_IOT_DB.Static.S1.Standby",
+                    "S7.TestingPassed": "ns=2;s=S7-1.DB.8523885_IOT_DB.Static.S7.TestingPassed",
+                    "S7.TestingFailed": "ns=2;s=S7-1.DB.8523885_IOT_DB.Static.S7.TestingFailed",
+                    "3S7.ActualScan": "ns=2;s=S7-1.DB.8523885_IOT_DB.Static.S7.ActualScan",
+                    "S7.Scan1": "ns=2;s=S7-1.DB.8523885_IOT_DB.Static.S7.Scan1",
+                    "S7.Scan2": "ns=2;s=S7-1.DB.8523885_IOT_DB.Static.S7.Scan2",
+                    "S7.Scan3": "ns=2;s=S7-1.DB.8523885_IOT_DB.Static.S7.Scan3",
+                    "S7.Scan1Total": "ns=2;s=S7-1.DB.8523885_IOT_DB.Static.S7.Scan1Total",
+                    "S7.Scan2Total": "ns=2;s=S7-1.DB.8523885_IOT_DB.Static.S7.Scan2Total",
+                    "S7.Scan3Total": "ns=2;s=S7-1.DB.8523885_IOT_DB.Static.S7.Scan3Total",
+                    "S1.ManualMode": "ns=2;s=S7-1.DB.8523885_IOT_DB.Static.S1.ManualMode",
+                    "S7.PiecesActual": "ns=2;s=S7-1.DB.8523885_Operation.Static.PiecesActual",
+                    "S7.PiecesFailed": "ns=2;s=S7-1.DB.8523885_Operation.Static.PiecesFailed",
+                    "S7.PiecesSetpoint": "ns=2;s=S7-1.DB.8523885_Operation.Static.PiecesSetpoint"
+                  },
+                  "name": "sub:W16HeatExSolderingPWT8523885:W16HeatExSolderingPWT8523885",
+                  "publishingIntervalMs": 1000,
+                  "outputTopic": "enrich"
+                },
+                "sub:W16HeatExSolderingPWT8527972:W16HeatExSolderingPWT8527972": {
+                  "onChangeSubmitFullModel": false,
+                  "onRepublishSubmitFullModel": true,
+                  "nodes": {
+                    "S1.Connected": "ns=2;s=S7-1.DB.8527972_IOT_DB.Static.S1.Connected",
+                    "S1.AutomaticMode": "ns=2;s=S7-1.DB.8527972_IOT_DB.Static.S1.AutomaticMode",
+                    "S1.Standby": "ns=2;s=S7-1.DB.8527972_IOT_DB.Static.S1.Standby",
+                    "S7.TestingPassed": "ns=2;s=S7-1.DB.8527972_IOT_DB.Static.S7.TestingPassed",
+                    "S7.TestingFailed": "ns=2;s=S7-1.DB.8527972_IOT_DB.Static.S7.TestingFailed",
+                    "3S7.ActualScan": "ns=2;s=S7-1.DB.8527972_IOT_DB.Static.S7.ActualScan",
+                    "S7.Scan1": "ns=2;s=S7-1.DB.8527972_IOT_DB.Static.S7.Scan1",
+                    "S7.Scan2": "ns=2;s=S7-1.DB.8527972_IOT_DB.Static.S7.Scan2",
+                    "S7.Scan3": "ns=2;s=S7-1.DB.8527972_IOT_DB.Static.S7.Scan3",
+                    "S7.Scan1Total": "ns=2;s=S7-1.DB.8527972_IOT_DB.Static.S7.Scan1Total",
+                    "S7.Scan2Total": "ns=2;s=S7-1.DB.8527972_IOT_DB.Static.S7.Scan2Total",
+                    "S7.Scan3Total": "ns=2;s=S7-1.DB.8527972_IOT_DB.Static.S7.Scan3Total",
+                    "S1.ManualMode": "ns=2;s=S7-1.DB.8527972_IOT_DB.Static.S1.ManualMode",
+                    "S7.PiecesActual": "ns=2;s=S7-1.DB.8527972_Operation.Static.PiecesActual",
+                    "S7.PiecesFailed": "ns=2;s=S7-1.DB.8527972_Operation.Static.PiecesFailed",
+                    "S7.PiecesSetpoint": "ns=2;s=S7-1.DB.8527972_Operation.Static.PiecesSetpoint"
+                  },
+                  "name": "sub:W16HeatExSolderingPWT8527972:W16HeatExSolderingPWT8527972",
+                  "publishingIntervalMs": 1000,
+                  "outputTopic": "enrich"
+                },
+                "sub:W16HeatExSolderingPWT8527970:W16HeatExSolderingPWT8527970": {
+                  "onChangeSubmitFullModel": false,
+                  "onRepublishSubmitFullModel": true,
+                  "nodes": {
+                    "S1.Connected": "ns=2;s=S7-1.DB.8527970_IOT_DB.Static.S1.Connected",
+                    "S1.AutomaticMode": "ns=2;s=S7-1.DB.8527970_IOT_DB.Static.S1.AutomaticMode",
+                    "S1.Standby": "ns=2;s=S7-1.DB.8527970_IOT_DB.Static.S1.Standby",
+                    "S7.TestingPassed": "ns=2;s=S7-1.DB.8527970_IOT_DB.Static.S7.TestingPassed",
+                    "S7.TestingFailed": "ns=2;s=S7-1.DB.8527970_IOT_DB.Static.S7.TestingFailed",
+                    "3S7.ActualScan": "ns=2;s=S7-1.DB.8527970_IOT_DB.Static.S7.ActualScan",
+                    "S7.Scan1": "ns=2;s=S7-1.DB.8527970_IOT_DB.Static.S7.Scan1",
+                    "S7.Scan2": "ns=2;s=S7-1.DB.8527970_IOT_DB.Static.S7.Scan2",
+                    "S7.Scan3": "ns=2;s=S7-1.DB.8527970_IOT_DB.Static.S7.Scan3",
+                    "S7.Scan1Total": "ns=2;s=S7-1.DB.8527970_IOT_DB.Static.S7.Scan1Total",
+                    "S7.Scan2Total": "ns=2;s=S7-1.DB.8527970_IOT_DB.Static.S7.Scan2Total",
+                    "S7.Scan3Total": "ns=2;s=S7-1.DB.8527970_IOT_DB.Static.S7.Scan3Total",
+                    "S1.ManualMode": "ns=2;s=S7-1.DB.8527970_IOT_DB.Static.S1.ManualMode",
+                    "S7.PiecesActual": "ns=2;s=S7-1.DB.8527970_Operation.Static.PiecesActual",
+                    "S7.PiecesSetpoint": "ns=2;s=S7-1.DB.8527970_Operation.Static.PiecesSetpoint",
+                    "S7.PiecesFailed": "ns=2;s=S7-1.DB.8527970_Operation.Static.PiecesFailed"
+                  },
+                  "name": "sub:W16HeatExSolderingPWT8527970:W16HeatExSolderingPWT8527970",
+                  "publishingIntervalMs": 1000,
+                  "outputTopic": "enrich"
+                },
+                "sub:W16HeatExSolderingPWT8524641:W16HeatExSolderingPWT8524641": {
+                  "onChangeSubmitFullModel": false,
+                  "onRepublishSubmitFullModel": true,
+                  "nodes": {
+                    "S1.Connected": "ns=2;s=S7-1.DB.8524641_IOT_DB.Static.S1.Connected",
+                    "S1.AutomaticMode": "ns=2;s=S7-1.DB.8524641_IOT_DB.Static.S1.AutomaticMode",
+                    "S1.Standby": "ns=2;s=S7-1.DB.8524641_IOT_DB.Static.S1.Standby",
+                    "S7.TestingPassed": "ns=2;s=S7-1.DB.8524641_IOT_DB.Static.S7.TestingPassed",
+                    "S7.TestingFailed": "ns=2;s=S7-1.DB.8524641_IOT_DB.Static.S7.TestingFailed",
+                    "3S7.ActualScan": "ns=2;s=S7-1.DB.8524641_IOT_DB.Static.S7.ActualScan",
+                    "S7.Scan1": "ns=2;s=S7-1.DB.8524641_IOT_DB.Static.S7.Scan1",
+                    "S7.Scan2": "ns=2;s=S7-1.DB.8524641_IOT_DB.Static.S7.Scan2",
+                    "S7.Scan3": "ns=2;s=S7-1.DB.8524641_IOT_DB.Static.S7.Scan3",
+                    "S7.Scan1Total": "ns=2;s=S7-1.DB.8524641_IOT_DB.Static.S7.Scan1Total",
+                    "S7.Scan2Total": "ns=2;s=S7-1.DB.8524641_IOT_DB.Static.S7.Scan2Total",
+                    "S7.Scan3Total": "ns=2;s=S7-1.DB.8524641_IOT_DB.Static.S7.Scan3Total",
+                    "S1.ManualMode": "ns=2;s=S7-1.DB.8524641_IOT_DB.Static.S1.ManualMode",
+                    "S7.PiecesActual": "ns=2;s=S7-1.DB.8524641_Operation.Static.PiecesActual",
+                    "S7.PiecesFailed": "ns=2;s=S7-1.DB.8524641_Operation.Static.PiecesFailed",
+                    "S7.PiecesSetpoint": "ns=2;s=S7-1.DB.8524641_Operation.Static.PiecesSetpoint"
+                  },
+                  "name": "sub:W16HeatExSolderingPWT8524641:W16HeatExSolderingPWT8524641",
+                  "publishingIntervalMs": 1000,
+                  "outputTopic": "enrich"
+                },
+                "sub:W16HeatExSolderingPWT8527973:W16HeatExSolderingPWT8527973": {
+                  "onChangeSubmitFullModel": false,
+                  "onRepublishSubmitFullModel": true,
+                  "nodes": {
+                    "S1.Connected": "ns=2;s=S7-1.DB.8527973_IOT_DB.Static.S1.Connected",
+                    "S1.AutomaticMode": "ns=2;s=S7-1.DB.8527973_IOT_DB.Static.S1.AutomaticMode",
+                    "S1.Standby": "ns=2;s=S7-1.DB.8527973_IOT_DB.Static.S1.Standby",
+                    "S7.TestingPassed": "ns=2;s=S7-1.DB.8527973_IOT_DB.Static.S7.TestingPassed",
+                    "S7.TestingFailed": "ns=2;s=S7-1.DB.8527973_IOT_DB.Static.S7.TestingFailed",
+                    "3S7.ActualScan": "ns=2;s=S7-1.DB.8527973_IOT_DB.Static.S7.ActualScan",
+                    "S7.Scan1": "ns=2;s=S7-1.DB.8527973_IOT_DB.Static.S7.Scan1",
+                    "S7.Scan2": "ns=2;s=S7-1.DB.8527973_IOT_DB.Static.S7.Scan2",
+                    "S7.Scan3": "ns=2;s=S7-1.DB.8527973_IOT_DB.Static.S7.Scan3",
+                    "S7.Scan1Total": "ns=2;s=S7-1.DB.8527973_IOT_DB.Static.S7.Scan1Total",
+                    "S7.Scan2Total": "ns=2;s=S7-1.DB.8527973_IOT_DB.Static.S7.Scan2Total",
+                    "S7.Scan3Total": "ns=2;s=S7-1.DB.8527973_IOT_DB.Static.S7.Scan3Total",
+                    "S1.ManualMode": "ns=2;s=S7-1.DB.8527973_IOT_DB.Static.S1.ManualMode",
+                    "S7.PiecesActual": "ns=2;s=S7-1.DB.8527973_Operation.Static.PiecesActual",
+                    "S7.PiecesFailed": "ns=2;s=S7-1.DB.8527973_Operation.Static.PiecesFailed",
+                    "S7.PiecesSetpoint": "ns=2;s=S7-1.DB.8527973_Operation.Static.PiecesSetpoint"
+                  },
+                  "name": "sub:W16HeatExSolderingPWT8527973:W16HeatExSolderingPWT8527973",
+                  "publishingIntervalMs": 1000,
+                  "outputTopic": "enrich"
+                },
+                "sub:W16HeatExSolderingPWT8527971:W16HeatExSolderingPWT8527971": {
+                  "onChangeSubmitFullModel": false,
+                  "onRepublishSubmitFullModel": true,
+                  "nodes": {
+                    "S1.Connected": "ns=2;s=S7-1.DB.8527971_IOT_DB.Static.S1.Connected",
+                    "S1.AutomaticMode": "ns=2;s=S7-1.DB.8527971_IOT_DB.Static.S1.AutomaticMode",
+                    "S1.Standby": "ns=2;s=S7-1.DB.8527971_IOT_DB.Static.S1.Standby",
+                    "S7.TestingPassed": "ns=2;s=S7-1.DB.8527971_IOT_DB.Static.S7.TestingPassed",
+                    "S7.TestingFailed": "ns=2;s=S7-1.DB.8527971_IOT_DB.Static.S7.TestingFailed",
+                    "3S7.ActualScan": "ns=2;s=S7-1.DB.8527971_IOT_DB.Static.S7.ActualScan",
+                    "S7.Scan1": "ns=2;s=S7-1.DB.8527971_IOT_DB.Static.S7.Scan1",
+                    "S7.Scan2": "ns=2;s=S7-1.DB.8527971_IOT_DB.Static.S7.Scan2",
+                    "S7.Scan3": "ns=2;s=S7-1.DB.8527971_IOT_DB.Static.S7.Scan3",
+                    "S7.Scan1Total": "ns=2;s=S7-1.DB.8527971_IOT_DB.Static.S7.Scan1Total",
+                    "S7.Scan2Total": "ns=2;s=S7-1.DB.8527971_IOT_DB.Static.S7.Scan2Total",
+                    "S7.Scan3Total": "ns=2;s=S7-1.DB.8527971_IOT_DB.Static.S7.Scan3Total",
+                    "S1.ManualMode": "ns=2;s=S7-1.DB.8527971_IOT_DB.Static.S1.ManualMode",
+                    "S7.PiecesSetpoint": "ns=2;s=S7-1.DB.8527971_Operation.Static.PiecesSetpoint",
+                    "S7.PiecesActual": "ns=2;s=S7-1.DB.8527971_Operation.Static.PiecesActual",
+                    "S7.PiecesFailed": "ns=2;s=S7-1.DB.8527971_Operation.Static.PiecesFailed"
+                  },
+                  "name": "sub:W16HeatExSolderingPWT8527971:W16HeatExSolderingPWT8527971",
+                  "publishingIntervalMs": 1000,
+                  "outputTopic": "enrich"
+                }
+              },
+              "subscriptions": {},
+              "url": "opc.tcp://199.216.3.155:4840",
+              "resetBlackListIntervalMs": 15000
+            },
+            "client": {
+              "application": {
+                "security": {
+                  "authentication": {
+                    "credentials": {},
+                    "strategy": "Anonymous"
+                  },
+                  "endpoint": {
+                    "isEnabled": false,
+                    "level": 0,
+                    "mode": "None",
+                    "policy": "None",
+                    "timeout": 15000
+                  }
+                }
+              },
+              "session": {
+                "subscription": {}
+              },
+              "optimizeNodeValueReadAccess": true
+            },
+            "edgeMethodMapping": {},
+            "conditions": {},
+            "statusCodeMapping": {}
+          }
+        },
+        "$messageOutputs": {
+          "W16ICSIOT9400.GatewayWatchdog": "splunkPoll",
+          "W16ICSIOT9400.poll:W16HeatExSolderingPWT8523885:S1.Data": "enrich",
+          "W16ICSIOT9400.poll:W16HeatExSolderingPWT8524642:S1.Data": "enrich",
+          "W16ICSIOT9400.poll:W16HeatExSolderingPWT8524643:S1.Data": "enrich",
+          "W16ICSIOT9400.sub:W16HeatExSolderingPWT8524642:W16HeatExSolderingPWT8524642": "enrich",
+          "W16ICSIOT9400.sub:W16HeatExSolderingPWT8524643:W16HeatExSolderingPWT8524643": "enrich",
+          "W16ICSIOT9400.sub:W16HeatExSolderingPWT8523885:W16HeatExSolderingPWT8523885": "enrich",
+          "W16ICSIOT9400.poll:W16HeatExSolderingPWT8527972:S1.Data": "enrich",
+          "W16ICSIOT9400.poll:W16HeatExSolderingPWT8527970:S1.Data": "enrich",
+          "W16ICSIOT9400.poll:W16HeatExSolderingPWT8524641:S1.Data": "enrich",
+          "W16ICSIOT9400.poll:W16HeatExSolderingPWT8527973:S1.Data": "enrich",
+          "W16ICSIOT9400.poll:W16HeatExSolderingPWT8527971:S1.Data": "enrich",
+          "W16ICSIOT9400.sub:W16HeatExSolderingPWT8527972:W16HeatExSolderingPWT8527972": "enrich",
+          "W16ICSIOT9400.sub:W16HeatExSolderingPWT8527970:W16HeatExSolderingPWT8527970": "enrich",
+          "W16ICSIOT9400.sub:W16HeatExSolderingPWT8524641:W16HeatExSolderingPWT8524641": "enrich",
+          "W16ICSIOT9400.sub:W16HeatExSolderingPWT8527973:W16HeatExSolderingPWT8527973": "enrich",
+          "W16ICSIOT9400.sub:W16HeatExSolderingPWT8527971:W16HeatExSolderingPWT8527971": "enrich"
+        },
+        "$timestamp": "2024-03-28T13:37:59.2784815Z",
+        "$version": 1
+      }
+    },
+    "streamprocessor": {
+      "configuration": {
+        "configuration": {
+          "inputs": {},
+          "blocks": {},
+          "DefaultOutputTopic": "",
+          "ui": {
+            "flowEditor": {
+              "blockPositions": {}
+            }
+          }
+        },
+        "$messageInputs": {},
+        "$messageOutputs": {},
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.StreamProcessorModule/versions/5",
+        "$timestamp": "2024-03-28T13:37:59.2809764Z",
+        "$version": 1
+      }
+    },
+    "logger": {
+      "configuration": {
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.FileLoggerModule/versions/1",
+        "$timestamp": "2024-03-28T13:37:59.2783123Z",
+        "$version": 1
+      }
+    },
+    "splunk": {
+      "configuration": {
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.SplunkHecModule/versions/3",
+        "endpoint": {
+          "url": "https://10.13.21.22:8088/services/collector/event",
+          "token": "6112a68b-c8f6-4946-a7dd-7d48a710bc83",
+          "sslCheck": false
+        },
+        "host": "I6828w05.4090",
+        "interval": 1000,
+        "sendTimestamp": true,
+        "sourceType": "_json",
+        "bufferQueueSettings": {
+          "enablePersist": false
+        },
+        "$messageInputs": {
+          "splunkPoll": "telemetry",
+          "splunk": "event",
+          "$system_signals": "telemetry",
+          "enriched_poll": "telemetry",
+          "enriched_sub": "event"
+        },
+        "$timestamp": "2024-04-12T06:55:51.5602832Z",
+        "$version": 3
+      }
+    },
+    "system": {
+      "configuration": {
+        "firewallrules": {
+          "AdminAPIAutoRuleHTTP": {
+            "description": "Auto generated rule from AdminApiModule for HTTP Port.",
+            "action": "accept",
+            "direction": "inbound",
+            "protocol": "tcp",
+            "srcPort": 0,
+            "destPort": 80
+          },
+          "AdminAPIAutoRuleHTTPS": {
+            "description": "Auto generated rule from AdminApiModule for HTTPS Port.",
+            "action": "accept",
+            "direction": "inbound",
+            "protocol": "tcp",
+            "srcPort": 0,
+            "destPort": 443
+          }
+        },
+        "$timestamp": "2024-04-11T14:31:55.9309914Z",
+        "$version": 1
+      }
+    }
+  }
+}

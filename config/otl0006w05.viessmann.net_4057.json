@@ -1,0 +1,346 @@
+{
+  "modules": {
+    "azure": {
+      "configuration": {
+        "$timestamp": "2024-04-26T06:17:23.8428761Z",
+        "$version": 2
+      }
+    },
+    "mqtt": {
+      "configuration": {
+        "$timestamp": "2024-04-26T06:17:23.8490633Z",
+        "$version": 2
+      }
+    },
+    "modbus": {
+      "configuration": {
+        "$messageOutputs": {
+          "modbus_test.slave.modbus_PG": "modbus_PG"
+        },
+        "servers": {
+          "modbus_test": {
+            "connection": {
+              "variant": "Tcp",
+              "tcp": {
+                "ipAddress": "10.31.128.34",
+                "port": 4840
+              }
+            },
+            "slaves": {
+              "slave": {
+                "pollGroups": {
+                  "modbus_PG": {
+                    "model": {
+                      "Sensor": {
+                        "registerStartAddress": 1,
+                        "registerLength": 1,
+                        "functionCode": 1
+                      }
+                    },
+                    "intervalMs": 1000,
+                    "sourceMode": "UseSlaveName"
+                  }
+                },
+                "setupGroups": {},
+                "slaveId": 1,
+                "subscriptionGroups": {}
+              }
+            }
+          }
+        },
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.ModbusReaderModule/versions/2",
+        "$timestamp": "2024-04-26T06:17:23.8507335Z",
+        "$version": 2
+      }
+    },
+    "logger": {
+      "configuration": {
+        "$timestamp": "2024-04-26T06:17:23.858462Z",
+        "$version": 2
+      }
+    },
+    "mustache": {
+      "configuration": {
+        "$timestamp": "2024-04-26T06:17:23.8585739Z",
+        "$version": 2
+      }
+    },
+    "rfcreader": {
+      "configuration": {
+        "$timestamp": "2024-04-26T06:17:23.8586144Z",
+        "$version": 2
+      }
+    },
+    "opcua": {
+      "configuration": {
+        "servers": {
+          "W16HeliumTesterODUIV1600230202": {
+            "endpoint": {
+              "pollGroups": {
+                "S1.Data": {
+                  "nodes": {
+                    "S1.Producing_PG": "ns=2;s=S7-1.DB.MES.S1.Producing",
+                    "S1.Waiting_PG": "ns=2;s=S7-1.DB.MES.S1.Waiting",
+                    "S1.MachineDowntime_PG": "ns=2;s=S7-1.DB.MES.S1.MachineDowntime",
+                    "S1.AutomaticMode_PG": "ns=2;s=S7-1.DB.MES.S1.AutomaticMode",
+                    "S1.SnifferMode_PG": "ns=2;s=S7-1.DB.MES.S1.SnifferMode"
+                  },
+                  "name": "S1.Data",
+                  "outputTopic": "splunkPoll",
+                  "intervalMs": 15000
+                },
+                "S3.Data": {
+                  "nodes": {
+                    "S3.ActivePower": "ns=2;s=S7-1.DB.MES.S3.ActivePower",
+                    "S3.ElectricMeter": "ns=2;s=S7-1.DB.MES.S3.ElectricMeter",
+                    "S3.CurrentL1": "ns=2;s=S7-1.DB.MES.S3.CurrentL1",
+                    "S3.CurrentL2": "ns=2;s=S7-1.DB.MES.S3.CurrentL2",
+                    "S3.CurrentL3": "ns=2;s=S7-1.DB.MES.S3.CurrentL3",
+                    "S3.VoltageL1N": "ns=2;s=S7-1.DB.MES.S3.VoltageL1N",
+                    "S3.VoltageL2N": "ns=2;s=S7-1.DB.MES.S3.VoltageL2N",
+                    "S3.VoltageL3N": "ns=2;s=S7-1.DB.MES.S3.VoltageL3N",
+                    "S3.VoltageL1L2": "ns=2;s=S7-1.DB.MES.S3.VoltageL1L2",
+                    "S3.VoltageL2L3": "ns=2;s=S7-1.DB.MES.S3.VoltageL2L3",
+                    "S3.VoltageL3L1": "ns=2;s=S7-1.DB.MES.S3.VoltageL3L1",
+                    "S3.Nitrogen.ValveState.VMNH": "ns=2;s=S7-1.DB.MES.S3.Nitrogen.ValveState.VMNH",
+                    "S3.Nitrogen.Pressure.SPNH": "ns=2;s=S7-1.DB.MES.S3.Nitrogen.Pressure.SPNH",
+                    "S3.Helium.ValveState.VMH": "ns=2;s=S7-1.DB.MES.S3.Helium.ValveState.VMH",
+                    "S3.Helium.Pressure.SPH": "ns=2;s=S7-1.DB.MES.S3.Helium.Pressure.SPH"
+                  },
+                  "name": "S3.Data",
+                  "outputTopic": "splunkPoll",
+                  "intervalMs": 1000
+                }
+              },
+              "subscriptionGroups": {
+                "MES": {
+                  "onChangeSubmitFullModel": false,
+                  "onRepublishSubmitFullModel": true,
+                  "nodes": {
+                    "S1.Connected": "ns=2;s=S7-1.DB.MES.S1.Connected",
+                    "S1.AutomaticMode": "ns=2;s=S7-1.DB.MES.S1.AutomaticMode",
+                    "S1.ManualMode": "ns=2;s=S7-1.DB.MES.S1.ManualMode",
+                    "S1.Producing": "ns=2;s=S7-1.DB.MES.S1.Producing",
+                    "S1.Waiting": "ns=2;s=S7-1.DB.MES.S1.Waiting",
+                    "S1.QuantityPulse": "ns=2;s=S7-1.DB.MES.S1.QuantityPulse",
+                    "S1.SnifferMode": "ns=2;s=S7-1.DB.MES.S1.SnifferMode",
+                    "S1.MachineDowntime": "ns=2;s=S7-1.DB.MES.S1.MachineDowntime",
+                    "S1.ServiceArrival": "ns=2;s=S7-1.DB.MES.S1.ServiceArrival",
+                    "S3.ActivePower": "ns=2;s=S7-1.DB.MES.S3.ActivePower",
+                    "S3.ElectricMeter": "ns=2;s=S7-1.DB.MES.S3.ElectricMeter",
+                    "S3.CurrentL1": "ns=2;s=S7-1.DB.MES.S3.CurrentL1",
+                    "S3.CurrentL2": "ns=2;s=S7-1.DB.MES.S3.CurrentL2",
+                    "S3.CurrentL3": "ns=2;s=S7-1.DB.MES.S3.CurrentL3",
+                    "S3.VoltageL1N": "ns=2;s=S7-1.DB.MES.S3.VoltageL1N",
+                    "S3.VoltageL2N": "ns=2;s=S7-1.DB.MES.S3.VoltageL2N",
+                    "S3.VoltageL3N": "ns=2;s=S7-1.DB.MES.S3.VoltageL3N",
+                    "S3.VoltageL1L2": "ns=2;s=S7-1.DB.MES.S3.VoltageL1L2",
+                    "S3.VoltageL2L3": "ns=2;s=S7-1.DB.MES.S3.VoltageL2L3",
+                    "S3.VoltageL3L1": "ns=2;s=S7-1.DB.MES.S3.VoltageL3L1",
+                    "S3.Nitrogen.ValveState.VMNH": "ns=2;s=S7-1.DB.MES.S3.Nitrogen.ValveState.VMNH",
+                    "S3.Nitrogen.Pressure.SPNH": "ns=2;s=S7-1.DB.MES.S3.Nitrogen.Pressure.SPNH",
+                    "S3.Helium.ValveState.VMH": "ns=2;s=S7-1.DB.MES.S3.Helium.ValveState.VMH",
+                    "S3.Helium.Pressure.SPH": "ns=2;s=S7-1.DB.MES.S3.Helium.Pressure.SPH",
+                    "S5.DI.U3_OK": "ns=2;s=S7-1.DB.MES.S5.DI.U3_OK",
+                    "S5.DI.QAB1": "ns=2;s=S7-1.DB.MES.S5.DI.QAB1",
+                    "S5.DI.QAB2": "ns=2;s=S7-1.DB.MES.S5.DI.QAB2",
+                    "S5.DI.QAB3": "ns=2;s=S7-1.DB.MES.S5.DI.QAB3",
+                    "S5.DI.QAB4": "ns=2;s=S7-1.DB.MES.S5.DI.QAB4",
+                    "S5.DI.QAB5": "ns=2;s=S7-1.DB.MES.S5.DI.QAB5",
+                    "S5.DI.QAB6": "ns=2;s=S7-1.DB.MES.S5.DI.QAB6",
+                    "S5.DI.QAB7": "ns=2;s=S7-1.DB.MES.S5.DI.QAB7",
+                    "S5.DI.QAB8": "ns=2;s=S7-1.DB.MES.S5.DI.QAB8",
+                    "S5.DI.QAA3": "ns=2;s=S7-1.DB.MES.S5.DI.QAA3",
+                    "S5.DI.QAA4": "ns=2;s=S7-1.DB.MES.S5.DI.QAA4",
+                    "S5.DI.QAA5": "ns=2;s=S7-1.DB.MES.S5.DI.QAA5",
+                    "S5.DI.QAA6": "ns=2;s=S7-1.DB.MES.S5.DI.QAA6",
+                    "S5.DI.QAA7": "ns=2;s=S7-1.DB.MES.S5.DI.QAA7",
+                    "S5.AI.SPMHD": "ns=2;s=S7-1.DB.MES.S5.AI.SPMHD",
+                    "S5.AI.SPMND": "ns=2;s=S7-1.DB.MES.S5.AI.SPMND",
+                    "S5.DO.PFB1_GR": "ns=2;s=S7-1.DB.MES.S5.DO.PFB1_GR",
+                    "S5.DO.PFB1_YE": "ns=2;s=S7-1.DB.MES.S5.DO.PFB1_YE",
+                    "S5.DO.PFB1_RD": "ns=2;s=S7-1.DB.MES.S5.DO.PFB1_RD",
+                    "S5.AO.REG.HE": "ns=2;s=S7-1.DB.MES.S5.AO.REG.HE",
+                    "S4.CounterATTotal": "ns=2;s=S7-1.DB.MES.S4.CounterATTotal",
+                    "S4.CounterATPass": "ns=2;s=S7-1.DB.MES.S4.CounterATPass",
+                    "S4.CounterATFail": "ns=2;s=S7-1.DB.MES.S4.CounterATFail",
+                    "S6.MalfunctionCumulative": "ns=2;s=S7-1.DB.MES.S6.MalfunctionCumulative",
+                    "S6.ErrorW.[0]": "ns=2;s=S7-1.DB.MES.S6.ErrorW.[0]",
+                    "S6.ErrorW.[1]": "ns=2;s=S7-1.DB.MES.S6.ErrorW.[1]",
+                    "S6.ErrorW.[2]": "ns=2;s=S7-1.DB.MES.S6.ErrorW.[2]",
+                    "S6.ErrorW.[3]": "ns=2;s=S7-1.DB.MES.S6.ErrorW.[3]",
+                    "S6.ErrorW.[4]": "ns=2;s=S7-1.DB.MES.S6.ErrorW.[4]",
+                    "S6.ErrorW.[5]": "ns=2;s=S7-1.DB.MES.S6.ErrorW.[5]",
+                    "S6.WarningCumulative": "ns=2;s=S7-1.DB.MES.S6.WarningCumulative",
+                    "S6.WarningW.[0]": "ns=2;s=S7-1.DB.MES.S6.WarningW.[0]",
+                    "S6.WarningW.[1]": "ns=2;s=S7-1.DB.MES.S6.WarningW.[1]",
+                    "S6.WarningW.[2]": "ns=2;s=S7-1.DB.MES.S6.WarningW.[2]",
+                    "S6.WarningW.[3]": "ns=2;s=S7-1.DB.MES.S6.WarningW.[3]",
+                    "S6.WarningW.[4]": "ns=2;s=S7-1.DB.MES.S6.WarningW.[4]",
+                    "S6.WarningW.[5]": "ns=2;s=S7-1.DB.MES.S6.WarningW.[5]",
+                    "S7.ProductPartNumber": "ns=2;s=S7-1.DB.MES.S7.ProductPartNumber",
+                    "S7.ProductIdentifer": "ns=2;s=S7-1.DB.MES.S7.ProductIdentifer",
+                    "S7.ActiveProgram": "ns=2;s=S7-1.DB.MES.S7.ActiveProgram",
+                    "S7.ProcessStart": "ns=2;s=S7-1.DB.MES.S7.ProcessStart",
+                    "S7.ActiveProcessStep": "ns=2;s=S7-1.DB.MES.S7.ActiveProcessStep",
+                    "S7.ProcessEnd": "ns=2;s=S7-1.DB.MES.S7.ProcessEnd",
+                    "S7.ProcessDurationTime": "ns=2;s=S7-1.DB.MES.S7.ProcessDurationTime",
+                    "S7.FailedReason": "ns=2;s=S7-1.DB.MES.S7.FailedReason",
+                    "S7.HighPressureNorm": "ns=2;s=S7-1.DB.MES.S7.HighPressureNorm",
+                    "S7.HighPressureTesterNorm": "ns=2;s=S7-1.DB.MES.S7.HighPressureTesterNorm",
+                    "S7.LowPressureNorm": "ns=2;s=S7-1.DB.MES.S7.LowPressureNorm",
+                    "S7.LowPressureTesterNorm": "ns=2;s=S7-1.DB.MES.S7.LowPressureTesterNorm",
+                    "S7.SHD-SwitchingPoint": "ns=2;s=S7-1.DB.MES.S7.SHD-SwitchingPoint",
+                    "S7.VacuumPressureChamberNorm": "ns=2;s=S7-1.DB.MES.S7.VacuumPressureChamberNorm",
+                    "S7.LeakRateMeasValueCorrected": "ns=2;s=S7-1.DB.MES.S7.LeakRateMeasValueCorrected",
+                    "S7.LeakRateMeasValueRaw": "ns=2;s=S7-1.DB.MES.S7.LeakRateMeasValueRaw",
+                    "S7.LeakRateMeasValueResult": "ns=2;s=S7-1.DB.MES.S7.LeakRateMeasValueResult",
+                    "S7.TestingPassed": "ns=2;s=S7-1.DB.MES.S7.Passed",
+                    "S7.TestingFailed": "ns=2;s=S7-1.DB.MES.S7.Failed",
+                    "S7.TestingStopped": "ns=2;s=S7-1.DB.MES.S7.Stopped"
+                  },
+                  "name": "MES",
+                  "outputTopic": "splunk",
+                  "publishingIntervalMs": 200
+                },
+                "TurboPumpANDRoots": {
+                  "onChangeSubmitFullModel": false,
+                  "onRepublishSubmitFullModel": true,
+                  "nodes": {
+                    "S10.RootsPump_Current": "ns=2;s=S7-1.DB.D14_States.F6.Current",
+                    "S10.RootsPump_Freq": "ns=2;s=S7-1.DB.D14_States.F6.Freq",
+                    "S10.RootsPump_Error": "ns=2;s=S7-1.DB.D14_States.F6.Error",
+                    "S10.TurboPump_FreqHz": "ns=2;s=S7-1.DB.D15_Tp.FREQ_HZ",
+                    "S10.TurboPump_FreqMin": "ns=2;s=S7-1.DB.D15_Tp.FREQ_MIN",
+                    "S10.TurboPump_Temperature": "ns=2;s=S7-1.DB.D15_Tp.TEMPERATURE",
+                    "S10.TurboPump_TPStatus": "ns=2;s=S7-1.DB.D15_Tp.TPSTATUS",
+                    "S10.TurboPump_Error": "ns=2;s=S7-1.DB.D15_Tp.ERROR",
+                    "S10.TurboPump_Current": "ns=2;s=S7-1.DB.D15_Tp.CURRENT"
+                  },
+                  "name": "TurboPumpANDRoots",
+                  "outputTopic": "splunk",
+                  "publishingIntervalMs": 50
+                }
+              },
+              "subscriptions": {},
+              "url": "opc.tcp://10.31.128.34:4840/",
+              "resetBlackListIntervalMs": 15000
+            },
+            "client": {
+              "application": {
+                "security": {
+                  "authentication": {
+                    "credentials": {},
+                    "strategy": "Anonymous"
+                  },
+                  "endpoint": {
+                    "isEnabled": true,
+                    "level": 0,
+                    "mode": "None",
+                    "policy": "None",
+                    "timeout": 15000
+                  }
+                }
+              },
+              "session": {
+                "subscription": {}
+              },
+              "optimizeNodeValueReadAccess": false
+            },
+            "edgeMethodMapping": {},
+            "conditions": {},
+            "statusCodeMapping": {}
+          }
+        },
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.OpcUaClientModule/versions/2",
+        "$messageOutputs": {
+          "W16HeliumTesterODUIV1600230202.S1.Data": "splunkPoll",
+          "W16HeliumTesterODUIV1600230202.MES": "splunk",
+          "W16HeliumTesterODUIV1600230202.TurboPumpANDRoots": "splunk",
+          "W16HeliumTesterODUIV1600230202.S3.Data": "splunkPoll"
+        },
+        "$timestamp": "2024-04-26T06:17:53.0107472Z",
+        "$version": 34
+      }
+    },
+    "splunk": {
+      "configuration": {
+        "endpoint": {
+          "url": "https://10.10.212.27:8088/services/collector/event",
+          "token": "a5a26423-9874-4383-8f31-436c3c86a4ee",
+          "sslCheck": false,
+          "proxy": ""
+        },
+        "host": "COTL0006W05-4057",
+        "interval": 1000,
+        "sendTimestamp": true,
+        "sourceType": "_json",
+        "bufferQueueSettings": {
+          "enablePersist": false
+        },
+        "$messageInputs": {
+          "splunk": "event",
+          "splunkPoll": "telemetry",
+          "$system_signals": "telemetry"
+        },
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.SplunkHecModule/versions/3",
+        "$timestamp": "2024-04-26T06:17:23.859911Z",
+        "$version": 6
+      }
+    },
+    "center": {
+      "configuration": {
+        "$timestamp": "2024-04-26T06:17:23.8605778Z",
+        "$version": 2
+      }
+    },
+    "streamprocessor": {
+      "configuration": {
+        "$timestamp": "2024-04-26T06:17:23.8606794Z",
+        "$version": 2
+      }
+    },
+    "system": {
+      "configuration": {
+        "firewallrules": {
+          "AdminAPIAutoRuleHTTP": {
+            "description": "Auto generated rule from AdminApiModule for HTTP Port.",
+            "action": "accept",
+            "direction": "inbound",
+            "protocol": "tcp",
+            "srcPort": 0,
+            "destPort": 80
+          },
+          "AdminAPIAutoRuleHTTPS": {
+            "description": "Auto generated rule from AdminApiModule for HTTPS Port.",
+            "action": "accept",
+            "direction": "inbound",
+            "protocol": "tcp",
+            "srcPort": 0,
+            "destPort": 443
+          }
+        },
+        "signals": {
+          "groups": {
+            "system_signals": {
+              "outputTopic": "system_signals",
+              "intervalMs": 60000,
+              "signals": {
+                "ss_modbus": {
+                  "source": "moduleStatus",
+                  "sourceKey": "modbus.status.connection.modbus_test.code"
+                },
+                "ss_opc": {
+                  "source": "moduleStatus",
+                  "sourceKey": "opcua.status.connection.W16HeliumTesterODUIV1600230202.code"
+                }
+              }
+            }
+          }
+        },
+        "$timestamp": "2024-04-26T06:17:23.8607146Z",
+        "$version": 4
+      }
+    }
+  }
+}

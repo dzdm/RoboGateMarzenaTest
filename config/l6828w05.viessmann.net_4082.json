@@ -1,0 +1,418 @@
+{
+  "modules": {
+    "mustache": {
+      "configuration": {
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.MustacheEnricherModule/versions/1",
+        "$timestamp": "2023-11-03T07:59:38.9701832Z",
+        "$version": 1
+      }
+    },
+    "azure": {
+      "configuration": {
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.IotHubSenderModule/versions/1",
+        "$timestamp": "2023-11-03T07:59:38.92121Z",
+        "$version": 1
+      }
+    },
+    "center": {
+      "configuration": {
+        "$timestamp": "2023-11-03T07:59:38.97282Z",
+        "$version": 1
+      }
+    },
+    "modbus": {
+      "configuration": {
+        "$messageOutputs": {},
+        "servers": {},
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.ModbusReaderModule/versions/2",
+        "$timestamp": "2024-01-31T06:46:52.7768025Z",
+        "$version": 1
+      }
+    },
+    "mqtt": {
+      "configuration": {
+        "$schema": "https://schemas.robotron.de/robogate/modules/MqttSender.IotEdge.Modules.MqttSenderModule/versions/1",
+        "$timestamp": "2023-11-03T07:59:38.9288975Z",
+        "$version": 1
+      }
+    },
+    "rfcreader": {
+      "configuration": {
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.RFC1006ReaderModule/versions/1",
+        "$timestamp": "2023-11-03T07:59:38.9702243Z",
+        "$version": 1
+      }
+    },
+    "opcua": {
+      "configuration": {
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.OpcUaClientModule/versions/2",
+        "servers": {
+          "W16NoyenCleanerCUPPIV16780915": {
+            "endpoint": {
+              "pollGroups": {
+                "S1.Data": {
+                  "nodes": {
+                    "S1.Producing_PG": "ns=2;s=S7-1.DB.IoT.S1.Producing",
+                    "S1.Waiting_PG": "ns=2;s=S7-1.DB.IoT.S1.Waiting",
+                    "S1.SettingMode_PG": "ns=2;s=S7-1.DB.IoT.S1.SettingMode",
+                    "S1.MaintenanceMode_PG": "ns=2;s=S7-1.DB.IoT.S1.MaintenanceMode",
+                    "S1.MachineDowntime_PG": "ns=2;s=S7-1.DB.IoT.S1.MachineDowntime",
+                    "S1.PowerOn_PG": "ns=2;s=S7-1.M.AlwaysTRUE"
+                  },
+                  "name": "S1.Data",
+                  "outputTopic": "splunkPoll",
+                  "intervalMs": 15000
+                },
+                "GatewayWatchdog": {
+                  "nodes": {
+                    "Gateway_Temperature_PG": "ns=3;s=_System.General.Temperature"
+                  },
+                  "name": "GatewayWatchdog",
+                  "outputTopic": "splunkPoll",
+                  "intervalMs": 900000
+                }
+              },
+              "subscriptionGroups": {
+                "W16NoyenCleanerCUPPIV16780915": {
+                  "onChangeSubmitFullModel": false,
+                  "onRepublishSubmitFullModel": true,
+                  "nodes": {
+                    "S1.AutomaticMode": "ns=2;s=S7-1.DB.IoT.S1.AutomaticMode",
+                    "S1.ManualMode": "ns=2;s=S7-1.DB.IoT.S1.ManualMode",
+                    "S1.Producing": "ns=2;s=S7-1.DB.IoT.S1.Producing",
+                    "S1.Waiting": "ns=2;s=S7-1.DB.IoT.S1.Waiting",
+                    "S1.QuantityPulse": "ns=2;s=S7-1.DB.IoT.S1.QuantityPulse",
+                    "S1.SettingMode": "ns=2;s=S7-1.DB.IoT.S1.SettingMode",
+                    "S1.MaintenanceMode": "ns=2;s=S7-1.DB.IoT.S1.MaintenanceMode",
+                    "S1.MachineDowntime": "ns=2;s=S7-1.DB.IoT.S1.MachineDowntime",
+                    "S3.Water.ValveState.1": "ns=2;s=S7-1.DB.IoT.S3.Water.ValveState.1",
+                    "S3.Water.Flow.1": "ns=2;s=S7-1.DB.IoT.S3.Water.Flow.1",
+                    "S3.Water.UtilityMeter.1": "ns=2;s=S7-1.DB.IoT.S3.Water.UtilityMeter.1",
+                    "S3.Water.Pressure.1": "ns=2;s=S7-1.DB.IoT.S3.Water.Pressure.1",
+                    "S3.Water.PressureMin.1": "ns=2;s=S7-1.DB.IoT.S3.Water.PressureMin.1",
+                    "S3.Water.PressureMax.1": "ns=2;s=S7-1.DB.IoT.S3.Water.PressureMax.1",
+                    "S3.Water.Level.Washing": "ns=2;s=S7-1.DB.IoT.S3.Water.Level.Washing",
+                    "S3.Water.Level.Rinsing1": "ns=2;s=S7-1.DB.IoT.S3.Water.Level.Rinsing1",
+                    "S3.Water.Level.Rinsing2": "ns=2;s=S7-1.DB.IoT.S3.Water.Level.Rinsing2",
+                    "S3.CompressedAir.ValveState.1": "ns=2;s=S7-1.DB.IoT.S3.CompressedAir.ValveState.1",
+                    "S3.CompressedAir.CurrentFlow.1": "ns=2;s=S7-1.DB.IoT.S3.CompressedAir.CurrentFlow.1",
+                    "S3.CompressedAir.UtilityMeter.1": "ns=2;s=S7-1.DB.IoT.S3.CompressedAir.UtilityMeter.1",
+                    "S3.CompressedAir.Pressure.1": "ns=2;s=S7-1.DB.IoT.S3.CompressedAir.Pressure.1",
+                    "S3.CompressedAir.PressureMin.1": "ns=2;s=S7-1.DB.IoT.S3.CompressedAir.PressureMin.1",
+                    "S3.CompressedAir.PressureMax.1": "ns=2;s=S7-1.DB.IoT.S3.CompressedAir.PressureMax.1",
+                    "S4.RuntimeSwitchedTime": "ns=2;s=S7-1.DB.IoT.S4.RuntimeSwitchedTime",
+                    "S4.RuntimeProducingMode": "ns=2;s=S7-1.DB.IoT.S4.RuntimeProducingMode",
+                    "S4.CounterATotal": "ns=2;s=S7-1.DB.IoT.S4.CounterATotal",
+                    "S4.CounterAPass": "ns=2;s=S7-1.DB.IoT.S4.CounterAPass",
+                    "S4.CounterAFail": "ns=2;s=S7-1.DB.IoT.S4.CounterAFail",
+                    "S5.DI.Zabezpieczenia_F.PotwierdzenieZalaczenia": "ns=2;s=S7-1.DB.IoT.S5.DI.Zabezpieczenia_F.PotwierdzenieZalaczenia",
+                    "S5.DI.Zabezpieczenia_Q.PotwierdzenieZalaczenia": "ns=2;s=S7-1.DB.IoT.S5.DI.Zabezpieczenia_Q.PotwierdzenieZalaczenia",
+                    "S5.DI.K092_092.1_097_097.1.BladGeneratoraUltradzwiekow": "ns=2;s=S7-1.DB.IoT.S5.DI.K092_092.1_097_097.1.BladGeneratoraUltradzwiekow",
+                    "S5.DI.Res_A353_1.Rezerwa": "ns=2;s=S7-1.DB.IoT.S5.DI.Res_A353_1.Rezerwa",
+                    "S5.DI.T130.DrzwiWykonalyNawrot": "ns=2;s=S7-1.DB.IoT.S5.DI.T130.DrzwiWykonalyNawrot",
+                    "S5.DI.A344.DrzwiDoszczelnione": "ns=2;s=S7-1.DB.IoT.S5.DI.A344.DrzwiDoszczelnione",
+                    "S5.DI.S177_S333.E-STOPYOdbezpieczone": "ns=2;s=S7-1.DB.IoT.S5.DI.S177_S333.E-STOPYOdbezpieczone",
+                    "S5.DI.24V_O.E-STOP_OK": "ns=2;s=S7-1.DB.IoT.S5.DI.24V_O.E-STOP_OK",
+                    "S5.DI.S174.PrzyciskPrzygotowanieProcesu": "ns=2;s=S7-1.DB.IoT.S5.DI.S174.PrzyciskPrzygotowanieProcesu",
+                    "S5.DI.S174.1.PrzyciskStart": "ns=2;s=S7-1.DB.IoT.S5.DI.S174.1.PrzyciskStart",
+                    "S5.DI.S175.PrzyciskStop_NC": "ns=2;s=S7-1.DB.IoT.S5.DI.S175.PrzyciskStop_NC",
+                    "S5.DI.S176.PrzelacznikTrybuPracyAUTO": "ns=2;s=S7-1.DB.IoT.S5.DI.S176.PrzelacznikTrybuPracyAUTO",
+                    "S5.DI.K191.StycznikGrzalekMyciaZalaczony": "ns=2;s=S7-1.DB.IoT.S5.DI.K191.StycznikGrzalekMyciaZalaczony",
+                    "S5.DI.K192.StycznikGrzalekPlukania1Zalaczony": "ns=2;s=S7-1.DB.IoT.S5.DI.K192.StycznikGrzalekPlukania1Zalaczony",
+                    "S5.DI.K192.1.StycznikGrzalekPlukania2Zalaczony": "ns=2;s=S7-1.DB.IoT.S5.DI.K192.1.StycznikGrzalekPlukania2Zalaczony",
+                    "S5.DI.Res_A353_2.Reserve": "ns=2;s=S7-1.DB.IoT.S5.DI.Res_A353_2.Reserve",
+                    "S5.DI.S231.PoziomMINPlukania2": "ns=2;s=S7-1.DB.IoT.S5.DI.S231.PoziomMINPlukania2",
+                    "S5.DI.S232.PoziomNOMPlukania2_NC": "ns=2;s=S7-1.DB.IoT.S5.DI.S232.PoziomNOMPlukania2_NC",
+                    "S5.DI.S233.PoziomMAXWspolny_NC": "ns=2;s=S7-1.DB.IoT.S5.DI.S233.PoziomMAXWspolny_NC",
+                    "S5.DI.S234.CieczWTacyOciekowej_NC": "ns=2;s=S7-1.DB.IoT.S5.DI.S234.CieczWTacyOciekowej_NC",
+                    "S5.DI.S235.KanisterOdolejaczaOK_NC": "ns=2;s=S7-1.DB.IoT.S5.DI.S235.KanisterOdolejaczaOK_NC",
+                    "S5.DI.S236.Wodomierz": "ns=2;s=S7-1.DB.IoT.S5.DI.S236.Wodomierz",
+                    "S5.DI.S237.CisnieniePneumatykiOK": "ns=2;s=S7-1.DB.IoT.S5.DI.S237.CisnieniePneumatykiOK",
+                    "S5.DI.S238.PoziomMINPlukania1": "ns=2;s=S7-1.DB.IoT.S5.DI.S238.PoziomMINPlukania1",
+                    "S5.DI.S241.PoziomNOMPlukania1_NC": "ns=2;s=S7-1.DB.IoT.S5.DI.S241.PoziomNOMPlukania1_NC",
+                    "S5.DI.S242.BrakChemiiMycia": "ns=2;s=S7-1.DB.IoT.S5.DI.S242.BrakChemiiMycia",
+                    "S5.DI.S243.BrakChemiiPlukania1": "ns=2;s=S7-1.DB.IoT.S5.DI.S243.BrakChemiiPlukania1",
+                    "S5.DI.S244.BrakChemiiPlukania2": "ns=2;s=S7-1.DB.IoT.S5.DI.S244.BrakChemiiPlukania2",
+                    "S5.DI.S245.PoziomMinMycia": "ns=2;s=S7-1.DB.IoT.S5.DI.S245.PoziomMinMycia",
+                    "S5.DI.S246.PoziomNOMMycia_NC": "ns=2;s=S7-1.DB.IoT.S5.DI.S246.PoziomNOMMycia_NC",
+                    "S5.DI.Res_A230_1.Rezerwa": "ns=2;s=S7-1.DB.IoT.S5.DI.Res_A230_1.Rezerwa",
+                    "S5.DI.Res_A230_2.Rezerwa": "ns=2;s=S7-1.DB.IoT.S5.DI.Res_A230_2.Rezerwa",
+                    "S5.DI.S251.PoziomWKomorzeMinimalny": "ns=2;s=S7-1.DB.IoT.S5.DI.S251.PoziomWKomorzeMinimalny",
+                    "S5.DI.S252.PoziomWKomorzeNominalny": "ns=2;s=S7-1.DB.IoT.S5.DI.S252.PoziomWKomorzeNominalny",
+                    "S5.DI.S253.ZaworNadmuchuOtwarty": "ns=2;s=S7-1.DB.IoT.S5.DI.S253.ZaworNadmuchuOtwarty",
+                    "S5.DI.S253.ZaworNadmuchuZamkniety": "ns=2;s=S7-1.DB.IoT.S5.DI.S253.ZaworNadmuchuZamkniety",
+                    "S5.DI.S255.ZaworNadmuchu2Otwarty": "ns=2;s=S7-1.DB.IoT.S5.DI.S255.ZaworNadmuchu2Otwarty",
+                    "S5.DI.S255.ZaworNadmuchu2Zamkniety": "ns=2;s=S7-1.DB.IoT.S5.DI.S255.ZaworNadmuchu2Zamkniety",
+                    "S5.DI.Res_A250_1.Rezerwa": "ns=2;s=S7-1.DB.IoT.S5.DI.Res_A250_1.Rezerwa",
+                    "S5.DI.Res_A250_2.Rezerwa": "ns=2;s=S7-1.DB.IoT.S5.DI.Res_A250_2.Rezerwa",
+                    "S5.DI.S261.SpustPlukanie2Otwarty": "ns=2;s=S7-1.DB.IoT.S5.DI.S261.SpustPlukanie2Otwarty",
+                    "S5.DI.S262.SpustPlukanie2Zamkniety": "ns=2;s=S7-1.DB.IoT.S5.DI.S262.SpustPlukanie2Zamkniety",
+                    "S5.DI.S263.SpustMycieOtwarty": "ns=2;s=S7-1.DB.IoT.S5.DI.S263.SpustMycieOtwarty",
+                    "S5.DI.S264.SpustMycieZamkniety": "ns=2;s=S7-1.DB.IoT.S5.DI.S264.SpustMycieZamkniety",
+                    "S5.DI.S265.SpustPlukanieOtwarty": "ns=2;s=S7-1.DB.IoT.S5.DI.S265.SpustPlukanieOtwarty",
+                    "S5.DI.S266.SpustPlukanieZamkniety": "ns=2;s=S7-1.DB.IoT.S5.DI.S266.SpustPlukanieZamkniety",
+                    "S5.DI.S267.SpustZKomoryOtwarty": "ns=2;s=S7-1.DB.IoT.S5.DI.S267.SpustZKomoryOtwarty",
+                    "S5.DI.S268.SpustZKomoryZamkniety": "ns=2;s=S7-1.DB.IoT.S5.DI.S268.SpustZKomoryZamkniety",
+                    "S5.DI.S271.SilownikDocisku1Tyl": "ns=2;s=S7-1.DB.IoT.S5.DI.S271.SilownikDocisku1Tyl",
+                    "S5.DI.S272.SilownikDocisku3Tyl": "ns=2;s=S7-1.DB.IoT.S5.DI.S272.SilownikDocisku3Tyl",
+                    "S5.DI.S273.SilownikDocisku1Przod": "ns=2;s=S7-1.DB.IoT.S5.DI.S273.SilownikDocisku1Przod",
+                    "S5.DI.S274.SilownikDocisku3Przod": "ns=2;s=S7-1.DB.IoT.S5.DI.S274.SilownikDocisku3Przod",
+                    "S5.DI.S275.ZaworNatryskuMycieOtwarty": "ns=2;s=S7-1.DB.IoT.S5.DI.S275.ZaworNatryskuMycieOtwarty",
+                    "S5.DI.S275.ZaworNatryskuMycieZamkniety": "ns=2;s=S7-1.DB.IoT.S5.DI.S275.ZaworNatryskuMycieZamkniety",
+                    "S5.DI.S277.ZaworNatryskuPlukanie1Otwarty": "ns=2;s=S7-1.DB.IoT.S5.DI.S277.ZaworNatryskuPlukanie1Otwarty",
+                    "S5.DI.S277.ZaworNatryskuPlukanie1Zamkniety": "ns=2;s=S7-1.DB.IoT.S5.DI.S277.ZaworNatryskuPlukanie1Zamkniety",
+                    "S5.DI.S281.ZaworNatryskuPlukanie2Otwarty": "ns=2;s=S7-1.DB.IoT.S5.DI.S281.ZaworNatryskuPlukanie2Otwarty",
+                    "S5.DI.S281.ZaworNatryskuPlukanie2Zamkniety": "ns=2;s=S7-1.DB.IoT.S5.DI.S281.ZaworNatryskuPlukanie2Zamkniety",
+                    "S5.DI.S283.DrzwiZamkniete": "ns=2;s=S7-1.DB.IoT.S5.DI.S283.DrzwiZamkniete",
+                    "S5.DI.S284.DrzwiOtwarte": "ns=2;s=S7-1.DB.IoT.S5.DI.S284.DrzwiOtwarte",
+                    "S5.DI.S285.ZaworSzybkiegoZalewaniaOtwarty": "ns=2;s=S7-1.DB.IoT.S5.DI.S285.ZaworSzybkiegoZalewaniaOtwarty",
+                    "S5.DI.S285.ZaworSzybkiegoZalewaniaZamkniety": "ns=2;s=S7-1.DB.IoT.S5.DI.S285.ZaworSzybkiegoZalewaniaZamkniety",
+                    "S5.DI.S287.ZaworWyciaguOtwarty": "ns=2;s=S7-1.DB.IoT.S5.DI.S287.ZaworWyciaguOtwarty",
+                    "S5.DI.S287.ZaworWyciaguZamkniety": "ns=2;s=S7-1.DB.IoT.S5.DI.S287.ZaworWyciaguZamkniety",
+                    "S5.AI.A311_Res1.Rezerwa": "ns=2;s=S7-1.DB.IoT.S5.AI.A311_Res1.Rezerwa",
+                    "S5.AI.A311_Res2.Rezerwa": "ns=2;s=S7-1.DB.IoT.S5.AI.A311_Res2.Rezerwa",
+                    "S5.AI.A311_Res3.Rezerwa": "ns=2;s=S7-1.DB.IoT.S5.AI.A311_Res3.Rezerwa",
+                    "S5.AI.A311_Res4.Rezerwa": "ns=2;s=S7-1.DB.IoT.S5.AI.A311_Res4.Rezerwa",
+                    "S5.DO.K151.GrzalkiMycia": "ns=2;s=S7-1.DB.IoT.S5.DO.K151.GrzalkiMycia",
+                    "S5.DO.K152.GrzalkiPlukania1": "ns=2;s=S7-1.DB.IoT.S5.DO.K152.GrzalkiPlukania1",
+                    "S5.DO.K153.GrzalkiSuszenia": "ns=2;s=S7-1.DB.IoT.S5.DO.K153.GrzalkiSuszenia",
+                    "S5.DO.K154.PompaMycia": "ns=2;s=S7-1.DB.IoT.S5.DO.K154.PompaMycia",
+                    "S5.DO.K155.PompaPlukania1": "ns=2;s=S7-1.DB.IoT.S5.DO.K155.PompaPlukania1",
+                    "S5.DO.K156.PompaPlukania2": "ns=2;s=S7-1.DB.IoT.S5.DO.K156.PompaPlukania2",
+                    "S5.DO.K157.WentylatorSuszenia": "ns=2;s=S7-1.DB.IoT.S5.DO.K157.WentylatorSuszenia",
+                    "S5.DO.K158.WentylatorWyciagowy": "ns=2;s=S7-1.DB.IoT.S5.DO.K158.WentylatorWyciagowy",
+                    "S5.DO.K160_161_162_162.1.Ultradzwieki": "ns=2;s=S7-1.DB.IoT.S5.DO.K160_161_162_162.1.Ultradzwieki",
+                    "S5.DO.K163.DozowanieChemiiMycie": "ns=2;s=S7-1.DB.IoT.S5.DO.K163.DozowanieChemiiMycie",
+                    "DO.K164.DozowanieChemiiPlukanie1": "ns=2;s=S7-1.DB.IoT.S5.DO.K164.DozowanieChemiiPlukanie1",
+                    "S5.DO.K165.LampaKomoryCzerwony": "ns=2;s=S7-1.DB.IoT.S5.DO.K165.LampaKomoryCzerwony",
+                    "S5.DO.K166.LampaKomoryZielony": "ns=2;s=S7-1.DB.IoT.S5.DO.K166.LampaKomoryZielony",
+                    "S5.DO.K167.LampaKomoryNiebieski": "ns=2;s=S7-1.DB.IoT.S5.DO.K167.LampaKomoryNiebieski",
+                    "S5.DO.S174.LEDPrzyciskuPrzygotowanie": "ns=2;s=S7-1.DB.IoT.S5.DO.S174.LEDPrzyciskuPrzygotowanie",
+                    "S5.DO.S174.1.LEDPrzyciskuStart": "ns=2;s=S7-1.DB.IoT.S5.DO.S174.1.LEDPrzyciskuStart",
+                    "S5.DO.T130.OtwieranieDrzwiKomory": "ns=2;s=S7-1.DB.IoT.S5.DO.T130.OtwieranieDrzwiKomory",
+                    "S5.DO.T130.ZamykanieDrzwiKomory": "ns=2;s=S7-1.DB.IoT.S5.DO.T130.ZamykanieDrzwiKomory",
+                    "S5.DO.H173.WiezaZielony": "ns=2;s=S7-1.DB.IoT.S5.DO.H173.WiezaZielony",
+                    "S5.DO.H173.WiezaZolty": "ns=2;s=S7-1.DB.IoT.S5.DO.H173.WiezaZolty",
+                    "S5.DO.H173.WiezaCzerwony": "ns=2;s=S7-1.DB.IoT.S5.DO.H173.WiezaCzerwony",
+                    "S5.DO.H173.WiezaSygnalDzwiekowy": "ns=2;s=S7-1.DB.IoT.S5.DO.H173.WiezaSygnalDzwiekowy",
+                    "S5.DO.S179.LEDPrzyciskuResetSafety": "ns=2;s=S7-1.DB.IoT.S5.DO.S179.LEDPrzyciskuResetSafety",
+                    "S5.DO.k178.GrzalkiPlukania2": "ns=2;s=S7-1.DB.IoT.S5.DO.k178.GrzalkiPlukania2",
+                    "S5.DO.k171.WentylatorSuszenia2": "ns=2;s=S7-1.DB.IoT.S5.DO.k171.WentylatorSuszenia2",
+                    "S5.DO.k172.DozowanieChemiiPlukanie2": "ns=2;s=S7-1.DB.IoT.S5.DO.k172.DozowanieChemiiPlukanie2",
+                    "S5.DO.Res_A352.1_1.Rezerwa": "ns=2;s=S7-1.DB.IoT.S5.DO.Res_A352.1_1.Rezerwa",
+                    "S5.DO.Res_A352.1_2.Rezerwa": "ns=2;s=S7-1.DB.IoT.S5.DO.Res_A352.1_2.Rezerwa",
+                    "S5.DO.Res_A352.1_3.Rezerwa": "ns=2;s=S7-1.DB.IoT.S5.DO.Res_A352.1_3.Rezerwa",
+                    "S5.DO.Res_A352.1_4.Rezerwa": "ns=2;s=S7-1.DB.IoT.S5.DO.Res_A352.1_4.Rezerwa",
+                    "S5.DO.Res_A352.1_5.Rezerwa": "ns=2;s=S7-1.DB.IoT.S5.DO.Res_A352.1_5.Rezerwa",
+                    "S5.DO.Res_A352.1_6.Rezerwa": "ns=2;s=S7-1.DB.IoT.S5.DO.Res_A352.1_6.Rezerwa",
+                    "S5.DO.A412.ZaworMyciaOtwieranie": "ns=2;s=S7-1.DB.IoT.S5.DO.A412.ZaworMyciaOtwieranie",
+                    "S5.DO.A413.ZaworPlukania1Otwieranie": "ns=2;s=S7-1.DB.IoT.S5.DO.A413.ZaworPlukania1Otwieranie",
+                    "S5.DO.A415.ZaworSzybkiegoNapelnianiaOtwieranie": "ns=2;s=S7-1.DB.IoT.S5.DO.A415.ZaworSzybkiegoNapelnianiaOtwieranie",
+                    "S5.DO.A416.ZaworNadmuchuOtwieranie": "ns=2;s=S7-1.DB.IoT.S5.DO.A416.ZaworNadmuchuOtwieranie",
+                    "S5.DO.A418.ZaworWyciaguOtwieranie": "ns=2;s=S7-1.DB.IoT.S5.DO.A418.ZaworWyciaguOtwieranie",
+                    "S5.DO.A420, A422, A423, A424.SilownikiDociskuRozszczelnianie": "ns=2;s=S7-1.DB.IoT.S5.DO.A420, A422, A423, A424.SilownikiDociskuRozszczelnianie",
+                    "S5.DO.A420, A422, A423, A424.SilownikiDociskuDoszczelnianie": "ns=2;s=S7-1.DB.IoT.S5.DO.A420, A422, A423, A424.SilownikiDociskuDoszczelnianie",
+                    "S5.DO.A425.SpustZKomoryOtwieranie": "ns=2;s=S7-1.DB.IoT.S5.DO.A425.SpustZKomoryOtwieranie",
+                    "S5.DO.A425.SpustZKomoryZamykanie": "ns=2;s=S7-1.DB.IoT.S5.DO.A425.SpustZKomoryZamykanie",
+                    "S5.DO.A426.SpustDoMyciaOtwieranie": "ns=2;s=S7-1.DB.IoT.S5.DO.A426.SpustDoMyciaOtwieranie",
+                    "S5.DO.A426.SpustDoMyciaZamykanie": "ns=2;s=S7-1.DB.IoT.S5.DO.A426.SpustDoMyciaZamykanie",
+                    "S5.DO.A428.SpustDoPlukania1Otwieranie": "ns=2;s=S7-1.DB.IoT.S5.DO.A428.SpustDoPlukania1Otwieranie",
+                    "S5.DO.A428.SpustDoPlukania1Zamykanie": "ns=2;s=S7-1.DB.IoT.S5.DO.A428.SpustDoPlukania1Zamykanie",
+                    "S5.DO.A430.Odolejacz": "ns=2;s=S7-1.DB.IoT.S5.DO.A430.Odolejacz",
+                    "S5.DO.Y430.PrzedmuchKolektoraGlownego": "ns=2;s=S7-1.DB.IoT.S5.DO.Y430.PrzedmuchKolektoraGlownego",
+                    "S5.DO.Y432.PrzedmuchStrefySpustu1": "ns=2;s=S7-1.DB.IoT.S5.DO.Y432.PrzedmuchStrefySpustu1",
+                    "S5.DO.Y432.PrzedmuchStrefySpustu2": "ns=2;s=S7-1.DB.IoT.S5.DO.Y432.PrzedmuchStrefySpustu2",
+                    "S5.DO.A433.DolewanieWody": "ns=2;s=S7-1.DB.IoT.S5.DO.A433.DolewanieWody",
+                    "S5.DO.A434.CzyszczenieWannyMycia": "ns=2;s=S7-1.DB.IoT.S5.DO.A434.CzyszczenieWannyMycia",
+                    "S5.DO.A435.ZaworPlukania2Otwieranie": "ns=2;s=S7-1.DB.IoT.S5.DO.A435.ZaworPlukania2Otwieranie",
+                    "S5.DO.A437.ZaworNadmuchu2Otwieranie": "ns=2;s=S7-1.DB.IoT.S5.DO.A437.ZaworNadmuchu2Otwieranie",
+                    "S5.DO.A438.SpustDoPlukania2Otwieranie": "ns=2;s=S7-1.DB.IoT.S5.DO.A438.SpustDoPlukania2Otwieranie",
+                    "S5.DO.A438.SpustDoPlukania2Zamykanie": "ns=2;s=S7-1.DB.IoT.S5.DO.A438.SpustDoPlukania2Zamykanie",
+                    "S5.DO.A439.CzyszczenieWannyPlukania1": "ns=2;s=S7-1.DB.IoT.S5.DO.A439.CzyszczenieWannyPlukania1",
+                    "S5.DO.A439.1.CzyszczenieWannyPlukania2": "ns=2;s=S7-1.DB.IoT.S5.DO.A439.1.CzyszczenieWannyPlukania2",
+                    "S5.AO.R061_1.TemperaturaNagrzewnicy": "ns=2;s=S7-1.DB.IoT.S5.AO.R061_1.TemperaturaNagrzewnicy",
+                    "S5.AO.R063_1.TemperaturaNagrzewnicy": "ns=2;s=S7-1.DB.IoT.S5.AO.R063_1.TemperaturaNagrzewnicy",
+                    "S6.Alarm_Word_0": "ns=2;s=S7-1.DB.IoT.S6.Alarm_Word_0",
+                    "S6.Alarm_Word_1": "ns=2;s=S7-1.DB.IoT.S6.Alarm_Word_1",
+                    "S6.Alarm_Word_2": "ns=2;s=S7-1.DB.IoT.S6.Alarm_Word_2",
+                    "S6.Alarm_Word_3": "ns=2;s=S7-1.DB.IoT.S6.Alarm_Word_3",
+                    "S6.Alarm_Word_4": "ns=2;s=S7-1.DB.IoT.S6.Alarm_Word_4",
+                    "S6.Alarm_Word_5": "ns=2;s=S7-1.DB.IoT.S6.Alarm_Word_5",
+                    "S6.Alarm_Word_6": "ns=2;s=S7-1.DB.IoT.S6.Alarm_Word_6",
+                    "S6.Alarm_Word_7": "ns=2;s=S7-1.DB.IoT.S6.Alarm_Word_7",
+                    "S6.Message_Word_0": "ns=2;s=S7-1.DB.IoT.S6.Message_Word_0",
+                    "S6.Message_Word_1": "ns=2;s=S7-1.DB.IoT.S6.Message_Word_1",
+                    "S7.ProductionPartNumber": "ns=2;s=S7-1.DB.IoT.S7.ProductionPartNumber",
+                    "S7.ProductIdentifier": "ns=2;s=S7-1.DB.IoT.S7.ProductIdentifier",
+                    "S7.ProductName": "ns=2;s=S7-1.DB.IoT.S7.ProductName",
+                    "S7.ActiveProgram": "ns=2;s=S7-1.DB.IoT.S7.ActiveProgram",
+                    "S7.ProcessStart": "ns=2;s=S7-1.DB.IoT.S7.ProcessStart",
+                    "S7.ActiveProcessStep": "ns=2;s=S7-1.DB.IoT.S7.ActiveProcessStep",
+                    "S7.ProcessEnd": "ns=2;s=S7-1.DB.IoT.S7.ProcessEnd",
+                    "S7.ProcessTotalTime": "ns=2;s=S7-1.DB.IoT.S7.ProcessTotalTime",
+                    "S7.ProcessRemainingTime": "ns=2;s=S7-1.DB.IoT.S7.ProcessRemainingTime",
+                    "S7.ProcessRunTime": "ns=2;s=S7-1.DB.IoT.S7.ProcessRunTime",
+                    "S7.ProcessFail": "ns=2;s=S7-1.DB.IoT.S7.ProcessFail",
+                    "S7.ProcessFailReason": "ns=2;s=S7-1.DB.IoT.S7.ProcessFailReason",
+                    "S7.TestingStart": "ns=2;s=S7-1.DB.IoT.S7.TestingStart",
+                    "S7.TestingRunning": "ns=2;s=S7-1.DB.IoT.S7.TestingRunning",
+                    "S7.TestingEnd": "ns=2;s=S7-1.DB.IoT.S7.TestingEnd",
+                    "S7.TestStep1Started": "ns=2;s=S7-1.DB.IoT.S7.TestStep1Started",
+                    "S7.TestStep1Active": "ns=2;s=S7-1.DB.IoT.S7.TestStep1Active",
+                    "S7.TestStep1Description": "ns=2;s=S7-1.DB.IoT.S7.TestStep1Description",
+                    "S7.TestStep2Started": "ns=2;s=S7-1.DB.IoT.S7.TestStep2Started",
+                    "S7.TestStep2Active": "ns=2;s=S7-1.DB.IoT.S7.TestStep2Active",
+                    "S7.TestStep2Description": "ns=2;s=S7-1.DB.IoT.S7.TestStep2Description",
+                    "S7.TestStep3Started": "ns=2;s=S7-1.DB.IoT.S7.TestStep3Started",
+                    "S7.TestStep3Active": "ns=2;s=S7-1.DB.IoT.S7.TestStep3Active",
+                    "S7.TestStep3Description": "ns=2;s=S7-1.DB.IoT.S7.TestStep3Description",
+                    "S7.TestStep4Started": "ns=2;s=S7-1.DB.IoT.S7.TestStep4Started",
+                    "S7.TestStep4Active": "ns=2;s=S7-1.DB.IoT.S7.TestStep4Active",
+                    "S7.TestStep4Description": "ns=2;s=S7-1.DB.IoT.S7.TestStep4Description",
+                    "S7.TestStep5Started": "ns=2;s=S7-1.DB.IoT.S7.TestStep5Started",
+                    "S7.TestStep5Active": "ns=2;s=S7-1.DB.IoT.S7.TestStep5Active",
+                    "S7.TestStep5Description": "ns=2;s=S7-1.DB.IoT.S7.TestStep5Description",
+                    "S7.TestStep6Started": "ns=2;s=S7-1.DB.IoT.S7.TestStep6Started",
+                    "S7.TestStep6Active": "ns=2;s=S7-1.DB.IoT.S7.TestStep6Active",
+                    "S7.TestStep6Description": "ns=2;s=S7-1.DB.IoT.S7.TestStep6Description",
+                    "S7.TestStep8Started": "ns=2;s=S7-1.DB.IoT.S7.TestStep8Started",
+                    "S7.TestStep8Active": "ns=2;s=S7-1.DB.IoT.S7.TestStep8Active",
+                    "S7.TestStep8Description": "ns=2;s=S7-1.DB.IoT.S7.TestStep8Description",
+                    "S7.TestStep9Started": "ns=2;s=S7-1.DB.IoT.S7.TestStep9Started",
+                    "S7.TestStep9Active": "ns=2;s=S7-1.DB.IoT.S7.TestStep9Active",
+                    "S7.TestStep9Description": "ns=2;s=S7-1.DB.IoT.S7.TestStep9Description",
+                    "S7.TestStep10Started": "ns=2;s=S7-1.DB.IoT.S7.TestStep10Started",
+                    "S7.TestStep10Active": "ns=2;s=S7-1.DB.IoT.S7.TestStep10Active",
+                    "S7.TestStep10Description": "ns=2;s=S7-1.DB.IoT.S7.TestStep10Description",
+                    "S7.TestStep13Started": "ns=2;s=S7-1.DB.IoT.S7.TestStep13Started",
+                    "S7.TestStep13Active": "ns=2;s=S7-1.DB.IoT.S7.TestStep13Active",
+                    "S7.TestStep13Description": "ns=2;s=S7-1.DB.IoT.S7.TestStep13Description",
+                    "S7.TestStep99Started": "ns=2;s=S7-1.DB.IoT.S7.TestStep99Started",
+                    "S7.TestStep99Active": "ns=2;s=S7-1.DB.IoT.S7.TestStep99Active",
+                    "S7.TestStep99Description": "ns=2;s=S7-1.DB.IoT.S7.TestStep99Description",
+                    "S7.TestingPassed": "ns=2;s=S7-1.DB.IoT.S7.TestingPassed",
+                    "S7.TestingFailed": "ns=2;s=S7-1.DB.IoT.S7.TestingFailed",
+                    "S7.TestingStopped": "ns=2;s=S7-1.DB.IoT.S7.TestingStopped",
+                    "S7.TestingFailedReason": "ns=2;s=S7-1.DB.IoT.S7.TestingFailedReason",
+                    "S7.TestingStoppedReason": "ns=2;s=S7-1.DB.IoT.S7.TestingStoppedReason",
+                    "S1.Connected": "ns=2;s=S7-1.M.Clock_0.5Hz",
+                    "S5.AI.TemperaturaPlukanie2": "ns=2;s=S7-1.DB.IoT.S5.AI.S291.TemperaturaPlukanie2",
+                    "S5.AI.TemperaturaPlukanie1": "ns=2;s=S7-1.DB.IoT.S5.AI.S293.TemperaturaPlukanie1",
+                    "S5.AI.CisnieniePrzedFiltremMycia": "ns=2;s=S7-1.DB.IoT.S5.AI.S295.CisnieniePrzedFiltremMycia",
+                    "S5.AI.CisnieniePrzedFiltremPlukania1": "ns=2;s=S7-1.DB.IoT.S5.AI.S297.CisnieniePrzedFiltremPlukania1",
+                    "S5.AI.CisnieniePrzedFiltremPlukania2": "ns=2;s=S7-1.DB.IoT.S5.AI.S301.CisnieniePrzedFiltremPlukania2",
+                    "S5.AI.pHMycia": "ns=2;s=S7-1.DB.IoT.S5.AI.S303.pHMycia",
+                    "S5.AI.pHPlukania1": "ns=2;s=S7-1.DB.IoT.S5.AI.S305.pHPlukania1",
+                    "S5.AI.pHPlukania2": "ns=2;s=S7-1.DB.IoT.S5.AI.S307.pHPlukania2",
+                    "S5.AI.TemperaturaZaNagrzewnica1": "ns=2;s=S7-1.DB.IoT.S5.AI.S311.TemperaturaZaNagrzewnica1",
+                    "S5.AI.CisnienieNatrysku": "ns=2;s=S7-1.DB.IoT.S5.AI.S313.CisnienieNatrysku",
+                    "S5.AI.TemperaturaZaNagrzewnica2": "ns=2;s=S7-1.DB.IoT.S5.AI.S315.TemperaturaZaNagrzewnica2",
+                    "S5.AI.TemperaturaMycie": "ns=2;s=S7-1.DB.IoT.S5.AI.S317.TemperaturaMycie"
+                  },
+                  "name": "W16NoyenCleanerCUPPIV16780915",
+                  "outputTopic": "splunk",
+                  "publishingIntervalMs": 1000
+                }
+              },
+              "subscriptions": {},
+              "url": "opc.tcp://199.216.0.52:4840",
+              "resetBlackListIntervalMs": 15000
+            },
+            "client": {
+              "application": {
+                "security": {
+                  "authentication": {
+                    "credentials": {},
+                    "strategy": "Anonymous"
+                  },
+                  "endpoint": {
+                    "isEnabled": true,
+                    "level": 0,
+                    "mode": "None",
+                    "policy": "None",
+                    "timeout": 15000
+                  }
+                }
+              },
+              "session": {
+                "subscription": {}
+              },
+              "optimizeNodeValueReadAccess": false
+            },
+            "edgeMethodMapping": {},
+            "conditions": {},
+            "statusCodeMapping": {}
+          }
+        },
+        "$messageOutputs": {
+          "W16NoyenCleanerCUPPIV16780915.S1.Data": "splunkPoll",
+          "W16NoyenCleanerCUPPIV16780915.W16NoyenCleanerCUPPIV16780915": "splunk",
+          "W16NoyenCleanerCUPPIV16780915.GatewayWatchdog": "splunkPoll"
+        },
+        "$timestamp": "2024-04-02T08:36:21.4333589Z",
+        "$version": 1
+      }
+    },
+    "streamprocessor": {
+      "configuration": {
+        "$timestamp": "2023-11-03T07:59:38.9751633Z",
+        "$version": 1
+      }
+    },
+    "logger": {
+      "configuration": {
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.FileLoggerModule/versions/1",
+        "$timestamp": "2023-11-03T07:59:38.9700837Z",
+        "$version": 1
+      }
+    },
+    "splunk": {
+      "configuration": {
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.SplunkHecModule/versions/3",
+        "endpoint": {
+          "url": "https://10.13.21.22:8088/services/collector/event",
+          "token": "6112a68b-c8f6-4946-a7dd-7d48a710bc83",
+          "sslCheck": false
+        },
+        "host": "I6828w05.4082",
+        "interval": 1000,
+        "sendTimestamp": true,
+        "sourceType": "_json",
+        "bufferQueueSettings": {
+          "enablePersist": false
+        },
+        "$messageInputs": {
+          "splunkPoll": "telemetry",
+          "splunk": "event",
+          "$system_signals": "telemetry"
+        },
+        "$timestamp": "2024-04-12T07:02:07.3431038Z",
+        "$version": 3
+      }
+    },
+    "system": {
+      "configuration": {
+        "firewallrules": {
+          "AdminAPIAutoRuleHTTP": {
+            "description": "Auto generated rule from AdminApiModule for HTTP Port.",
+            "action": "accept",
+            "direction": "inbound",
+            "protocol": "tcp",
+            "srcPort": 0,
+            "destPort": 80
+          },
+          "AdminAPIAutoRuleHTTPS": {
+            "description": "Auto generated rule from AdminApiModule for HTTPS Port.",
+            "action": "accept",
+            "direction": "inbound",
+            "protocol": "tcp",
+            "srcPort": 0,
+            "destPort": 443
+          }
+        },
+        "$timestamp": "2024-04-11T14:30:42.9246378Z",
+        "$version": 1
+      }
+    }
+  }
+}

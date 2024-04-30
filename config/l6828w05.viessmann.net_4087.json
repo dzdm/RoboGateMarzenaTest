@@ -1,0 +1,1241 @@
+{
+  "modules": {
+    "mustache": {
+      "configuration": {
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.MustacheEnricherModule/versions/1",
+        "$timestamp": "2023-08-31T11:38:18.8385607Z",
+        "$version": 1
+      }
+    },
+    "azure": {
+      "configuration": {
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.IotHubSenderModule/versions/1",
+        "$timestamp": "2023-08-31T11:38:18.8360365Z",
+        "$version": 1
+      }
+    },
+    "center": {
+      "configuration": {
+        "$timestamp": "2023-08-31T11:38:18.8401918Z",
+        "$version": 1
+      }
+    },
+    "modbus": {
+      "configuration": {
+        "servers": {
+          "W16EnergyManagement1": {
+            "connection": {
+              "variant": "Tcp",
+              "tcp": {
+                "ipAddress": "199.216.0.61",
+                "port": 502
+              },
+              "chunkedDataAccess": false,
+              "rtu": {
+                "baudrate": 9600,
+                "parity": "Odd",
+                "stopBits": "One",
+                "rtsEnabled": false,
+                "dataBits": 8
+              }
+            },
+            "slaves": {
+              "AxisB": {
+                "setupGroups": {},
+                "pollGroups": {
+                  "Consumption": {
+                    "model": {
+                      "Active_Energy_PG_kWh": {
+                        "registerStartAddress": 7098,
+                        "registerLength": 2,
+                        "endiannessMode": "bigEndian",
+                        "type": "Float",
+                        "functionCode": 4
+                      },
+                      "Active_Energy_PG_100MWh": {
+                        "registerStartAddress": 7096,
+                        "registerLength": 2,
+                        "endiannessMode": "bigEndian",
+                        "type": "Float",
+                        "functionCode": 4
+                      }
+                    },
+                    "intervalMs": 60000,
+                    "sourceMode": "UseBoth"
+                  },
+                  "PollGroup Current": {
+                    "model": {
+                      "Current_L1": {
+                        "registerStartAddress": 7002,
+                        "registerLength": 2,
+                        "endiannessMode": "bigEndian",
+                        "type": "Float",
+                        "functionCode": 4
+                      },
+                      "Current_L2": {
+                        "registerStartAddress": 7016,
+                        "registerLength": 2,
+                        "endiannessMode": "bigEndian",
+                        "type": "Float",
+                        "functionCode": 4
+                      },
+                      "Current_L3": {
+                        "registerStartAddress": 7030,
+                        "registerLength": 2,
+                        "endiannessMode": "bigEndian",
+                        "type": "Float",
+                        "functionCode": 4
+                      },
+                      "Current_Average": {
+                        "registerStartAddress": 7044,
+                        "registerLength": 2,
+                        "endiannessMode": "bigEndian",
+                        "type": "Float",
+                        "functionCode": 4
+                      },
+                      "Current_Neutral": {
+                        "registerStartAddress": 7094,
+                        "registerLength": 2,
+                        "endiannessMode": "bigEndian",
+                        "type": "Float",
+                        "functionCode": 4
+                      }
+                    },
+                    "intervalMs": 1000,
+                    "sourceMode": "UseBoth"
+                  }
+                },
+                "subscriptionGroups": {
+                  "AxisB": {
+                    "model": {
+                      "Voltage_L12": {
+                        "registerStartAddress": 7058,
+                        "registerLength": 2,
+                        "endiannessMode": "bigEndian",
+                        "type": "Float",
+                        "functionCode": 4
+                      },
+                      "Voltage_L23": {
+                        "registerStartAddress": 7060,
+                        "registerLength": 2,
+                        "endiannessMode": "bigEndian",
+                        "type": "Float",
+                        "functionCode": 4
+                      },
+                      "Voltage_L31": {
+                        "registerStartAddress": 7062,
+                        "registerLength": 2,
+                        "endiannessMode": "bigEndian",
+                        "type": "Float",
+                        "functionCode": 4
+                      }
+                    },
+                    "onChangeSubmitFullModel": false,
+                    "onRepublishSubmitFullModel": true,
+                    "publishingIntervalMs": 500,
+                    "sourceMode": "UseBoth"
+                  }
+                },
+                "slaveId": 1
+              },
+              "AxisA": {
+                "pollGroups": {
+                  "Consumption": {
+                    "model": {
+                      "Active_Energy_PG_kWh": {
+                        "registerStartAddress": 7098,
+                        "registerLength": 2,
+                        "endiannessMode": "bigEndian",
+                        "type": "Float",
+                        "functionCode": 4
+                      },
+                      "Active_Energy_PG_100MWh": {
+                        "registerStartAddress": 7096,
+                        "registerLength": 2,
+                        "endiannessMode": "bigEndian",
+                        "type": "Float",
+                        "functionCode": 4
+                      }
+                    },
+                    "intervalMs": 60000,
+                    "sourceMode": "UseBoth"
+                  },
+                  "PollGroup Current": {
+                    "model": {
+                      "Current_L1": {
+                        "registerStartAddress": 7002,
+                        "registerLength": 2,
+                        "endiannessMode": "bigEndian",
+                        "type": "Float",
+                        "functionCode": 4
+                      },
+                      "Current_L2": {
+                        "registerStartAddress": 7016,
+                        "registerLength": 2,
+                        "endiannessMode": "bigEndian",
+                        "type": "Float",
+                        "functionCode": 4
+                      },
+                      "Current_L3": {
+                        "registerStartAddress": 7030,
+                        "registerLength": 2,
+                        "endiannessMode": "bigEndian",
+                        "type": "Float",
+                        "functionCode": 4
+                      },
+                      "Current_Average": {
+                        "registerStartAddress": 7044,
+                        "registerLength": 2,
+                        "endiannessMode": "bigEndian",
+                        "type": "Float",
+                        "functionCode": 4
+                      },
+                      "Current_Neutral": {
+                        "registerStartAddress": 7094,
+                        "registerLength": 2,
+                        "endiannessMode": "bigEndian",
+                        "type": "Float",
+                        "functionCode": 4
+                      }
+                    },
+                    "intervalMs": 1000,
+                    "sourceMode": "UseBoth"
+                  }
+                },
+                "setupGroups": {},
+                "slaveId": 14,
+                "subscriptionGroups": {
+                  "AxisA": {
+                    "model": {
+                      "Voltage_L1": {
+                        "registerStartAddress": 7000,
+                        "registerLength": 2,
+                        "type": "Float",
+                        "functionCode": 4,
+                        "endiannessMode": "bigEndian"
+                      }
+                    },
+                    "onChangeSubmitFullModel": false,
+                    "onRepublishSubmitFullModel": true,
+                    "publishingIntervalMs": 59990,
+                    "sourceMode": "UseBoth"
+                  }
+                }
+              },
+              "AxisC": {
+                "pollGroups": {
+                  "Consumption": {
+                    "model": {
+                      "Active_Energy_PG_kWh": {
+                        "registerStartAddress": 7098,
+                        "registerLength": 2,
+                        "endiannessMode": "bigEndian",
+                        "type": "Float",
+                        "functionCode": 4
+                      },
+                      "Active_Energy_PG_100MWh": {
+                        "registerStartAddress": 7096,
+                        "registerLength": 2,
+                        "endiannessMode": "bigEndian",
+                        "type": "Float",
+                        "functionCode": 4
+                      }
+                    },
+                    "intervalMs": 60000,
+                    "sourceMode": "UseBoth"
+                  },
+                  "PollGroup Current": {
+                    "model": {
+                      "Current_L1": {
+                        "registerStartAddress": 7002,
+                        "registerLength": 2,
+                        "endiannessMode": "bigEndian",
+                        "type": "Float",
+                        "functionCode": 4
+                      },
+                      "Current_L2": {
+                        "registerStartAddress": 7016,
+                        "registerLength": 2,
+                        "endiannessMode": "bigEndian",
+                        "type": "Float",
+                        "functionCode": 4
+                      },
+                      "Current_L3": {
+                        "registerStartAddress": 7030,
+                        "registerLength": 2,
+                        "endiannessMode": "bigEndian",
+                        "type": "Float",
+                        "functionCode": 4
+                      },
+                      "Current_Average": {
+                        "registerStartAddress": 7044,
+                        "registerLength": 2,
+                        "endiannessMode": "bigEndian",
+                        "type": "Float",
+                        "functionCode": 4
+                      },
+                      "Current_Neutral": {
+                        "registerStartAddress": 7094,
+                        "registerLength": 2,
+                        "endiannessMode": "bigEndian",
+                        "type": "Float",
+                        "functionCode": 4
+                      }
+                    },
+                    "intervalMs": 1000,
+                    "sourceMode": "UseBoth"
+                  }
+                },
+                "setupGroups": {},
+                "slaveId": 13,
+                "subscriptionGroups": {
+                  "AxisC": {
+                    "model": {
+                      "Voltage_L1": {
+                        "registerStartAddress": 7000,
+                        "registerLength": 2,
+                        "type": "Float",
+                        "functionCode": 4,
+                        "endiannessMode": "bigEndian"
+                      }
+                    },
+                    "onChangeSubmitFullModel": false,
+                    "onRepublishSubmitFullModel": true,
+                    "publishingIntervalMs": 59985,
+                    "sourceMode": "UseBoth"
+                  }
+                }
+              },
+              "LightingExterior": {
+                "pollGroups": {
+                  "Consumption": {
+                    "model": {
+                      "Active_Energy_PG_100MWh": {
+                        "registerStartAddress": 7096,
+                        "registerLength": 2,
+                        "endiannessMode": "bigEndian",
+                        "type": "Float",
+                        "functionCode": 4
+                      },
+                      "Active_Energy_PG_kWh": {
+                        "registerStartAddress": 7098,
+                        "registerLength": 2,
+                        "endiannessMode": "bigEndian",
+                        "type": "Float",
+                        "functionCode": 4
+                      }
+                    },
+                    "intervalMs": 60000,
+                    "sourceMode": "UseBoth"
+                  },
+                  "PollGroup Current": {
+                    "model": {
+                      "Current_L1": {
+                        "registerStartAddress": 7002,
+                        "registerLength": 2,
+                        "endiannessMode": "bigEndian",
+                        "type": "Float",
+                        "functionCode": 4
+                      },
+                      "Current_L2": {
+                        "registerStartAddress": 7016,
+                        "registerLength": 2,
+                        "endiannessMode": "bigEndian",
+                        "type": "Float",
+                        "functionCode": 4
+                      },
+                      "Current_L3": {
+                        "registerStartAddress": 7030,
+                        "registerLength": 2,
+                        "endiannessMode": "bigEndian",
+                        "type": "Float",
+                        "functionCode": 4
+                      },
+                      "Current_Average": {
+                        "registerStartAddress": 7044,
+                        "registerLength": 2,
+                        "endiannessMode": "bigEndian",
+                        "type": "Float",
+                        "functionCode": 4
+                      },
+                      "Current_Neutral": {
+                        "registerStartAddress": 7094,
+                        "registerLength": 2,
+                        "endiannessMode": "bigEndian",
+                        "type": "Float",
+                        "functionCode": 4
+                      }
+                    },
+                    "intervalMs": 1000,
+                    "sourceMode": "UseBoth"
+                  }
+                },
+                "setupGroups": {},
+                "slaveId": 22,
+                "subscriptionGroups": {
+                  "LightingExterior": {
+                    "model": {
+                      "Voltage_L1": {
+                        "registerStartAddress": 7000,
+                        "registerLength": 2,
+                        "type": "Float",
+                        "functionCode": 4,
+                        "endiannessMode": "bigEndian"
+                      }
+                    },
+                    "onChangeSubmitFullModel": false,
+                    "onRepublishSubmitFullModel": true,
+                    "publishingIntervalMs": 59980,
+                    "sourceMode": "UseBoth"
+                  }
+                }
+              },
+              "LightingGeneral": {
+                "pollGroups": {
+                  "Consumption": {
+                    "model": {
+                      "Active_Energy_PG_kWh": {
+                        "registerStartAddress": 7098,
+                        "registerLength": 2,
+                        "endiannessMode": "bigEndian",
+                        "type": "Float",
+                        "functionCode": 4
+                      },
+                      "Active_Energy_PG_100MWh": {
+                        "registerStartAddress": 7096,
+                        "registerLength": 2,
+                        "endiannessMode": "bigEndian",
+                        "type": "Float",
+                        "functionCode": 4
+                      }
+                    },
+                    "intervalMs": 60000,
+                    "sourceMode": "UseBoth"
+                  },
+                  "PollGroup Current": {
+                    "model": {
+                      "Current_L1": {
+                        "registerStartAddress": 7002,
+                        "registerLength": 2,
+                        "endiannessMode": "bigEndian",
+                        "type": "Float",
+                        "functionCode": 4
+                      },
+                      "Current_L2": {
+                        "registerStartAddress": 7016,
+                        "registerLength": 2,
+                        "endiannessMode": "bigEndian",
+                        "type": "Float",
+                        "functionCode": 4
+                      },
+                      "Current_L3": {
+                        "registerStartAddress": 7030,
+                        "registerLength": 2,
+                        "endiannessMode": "bigEndian",
+                        "type": "Float",
+                        "functionCode": 4
+                      },
+                      "Current_Average": {
+                        "registerStartAddress": 7044,
+                        "registerLength": 2,
+                        "endiannessMode": "bigEndian",
+                        "type": "Float",
+                        "functionCode": 4
+                      },
+                      "Current_Neutral": {
+                        "registerStartAddress": 7094,
+                        "registerLength": 2,
+                        "endiannessMode": "bigEndian",
+                        "type": "Float",
+                        "functionCode": 4
+                      }
+                    },
+                    "intervalMs": 1000,
+                    "sourceMode": "UseBoth"
+                  }
+                },
+                "setupGroups": {},
+                "slaveId": 21,
+                "subscriptionGroups": {
+                  "LightingGeneral": {
+                    "model": {
+                      "Voltage_L1": {
+                        "registerStartAddress": 7000,
+                        "registerLength": 2,
+                        "type": "Float",
+                        "functionCode": 4,
+                        "endiannessMode": "bigEndian"
+                      }
+                    },
+                    "onChangeSubmitFullModel": false,
+                    "onRepublishSubmitFullModel": true,
+                    "publishingIntervalMs": 59975,
+                    "sourceMode": "UseBoth"
+                  }
+                }
+              },
+              "BusBar2": {
+                "pollGroups": {
+                  "Consumption": {
+                    "model": {
+                      "Active_Energy_PG_kWh": {
+                        "registerStartAddress": 7098,
+                        "registerLength": 2,
+                        "endiannessMode": "bigEndian",
+                        "type": "Float",
+                        "functionCode": 4
+                      },
+                      "Active_Energy_PG_100MWh": {
+                        "registerStartAddress": 7096,
+                        "registerLength": 2,
+                        "endiannessMode": "bigEndian",
+                        "type": "Float",
+                        "functionCode": 4
+                      }
+                    },
+                    "intervalMs": 60000,
+                    "sourceMode": "UseBoth"
+                  },
+                  "Current": {
+                    "model": {
+                      "Current_L1": {
+                        "registerStartAddress": 7002,
+                        "registerLength": 2,
+                        "endiannessMode": "bigEndian",
+                        "type": "Float",
+                        "functionCode": 4
+                      },
+                      "Current_L2": {
+                        "registerStartAddress": 7016,
+                        "registerLength": 2,
+                        "endiannessMode": "bigEndian",
+                        "type": "Float",
+                        "functionCode": 4
+                      },
+                      "Current_L3": {
+                        "registerStartAddress": 7030,
+                        "registerLength": 2,
+                        "endiannessMode": "bigEndian",
+                        "type": "Float",
+                        "functionCode": 4
+                      },
+                      "Current_Average": {
+                        "registerStartAddress": 7044,
+                        "registerLength": 2,
+                        "endiannessMode": "bigEndian",
+                        "type": "Float",
+                        "functionCode": 4
+                      },
+                      "Current_Neutral": {
+                        "registerStartAddress": 7094,
+                        "registerLength": 2,
+                        "endiannessMode": "bigEndian",
+                        "type": "Float",
+                        "functionCode": 4
+                      }
+                    },
+                    "intervalMs": 1000,
+                    "sourceMode": "UseBoth"
+                  }
+                },
+                "setupGroups": {},
+                "slaveId": 3,
+                "subscriptionGroups": {
+                  "BusBar2": {
+                    "model": {
+                      "Voltage_L1": {
+                        "registerStartAddress": 7000,
+                        "registerLength": 2,
+                        "type": "Float",
+                        "functionCode": 4,
+                        "endiannessMode": "bigEndian"
+                      }
+                    },
+                    "onChangeSubmitFullModel": false,
+                    "onRepublishSubmitFullModel": true,
+                    "publishingIntervalMs": 60010,
+                    "sourceMode": "UseBoth"
+                  }
+                }
+              },
+              "BusBar4": {
+                "pollGroups": {
+                  "Consumption": {
+                    "model": {
+                      "Active_Energy_PG_kWh": {
+                        "registerStartAddress": 7098,
+                        "registerLength": 2,
+                        "endiannessMode": "bigEndian",
+                        "type": "Float",
+                        "functionCode": 4
+                      },
+                      "Active_Energy_PG_100MWh": {
+                        "registerStartAddress": 7096,
+                        "registerLength": 2,
+                        "endiannessMode": "bigEndian",
+                        "type": "Float",
+                        "functionCode": 4
+                      }
+                    },
+                    "intervalMs": 60000,
+                    "sourceMode": "UseBoth"
+                  },
+                  "Current": {
+                    "model": {
+                      "Current_L1": {
+                        "registerStartAddress": 7002,
+                        "registerLength": 2,
+                        "endiannessMode": "bigEndian",
+                        "type": "Float",
+                        "functionCode": 4
+                      },
+                      "Current_L2": {
+                        "registerStartAddress": 7016,
+                        "registerLength": 2,
+                        "endiannessMode": "bigEndian",
+                        "type": "Float",
+                        "functionCode": 4
+                      },
+                      "Current_L3": {
+                        "registerStartAddress": 7030,
+                        "registerLength": 2,
+                        "endiannessMode": "bigEndian",
+                        "type": "Float",
+                        "functionCode": 4
+                      },
+                      "Current_Average": {
+                        "registerStartAddress": 7044,
+                        "registerLength": 2,
+                        "endiannessMode": "bigEndian",
+                        "type": "Float",
+                        "functionCode": 4
+                      },
+                      "Current_Neutral": {
+                        "registerStartAddress": 7094,
+                        "registerLength": 2,
+                        "endiannessMode": "bigEndian",
+                        "type": "Float",
+                        "functionCode": 4
+                      }
+                    },
+                    "intervalMs": 1000,
+                    "sourceMode": "UseBoth"
+                  }
+                },
+                "setupGroups": {},
+                "slaveId": 4,
+                "subscriptionGroups": {}
+              },
+              "GT2500": {
+                "pollGroups": {
+                  "Consumption": {
+                    "model": {
+                      "Active_Energy_PG_kWh": {
+                        "registerStartAddress": 7098,
+                        "registerLength": 2,
+                        "endiannessMode": "bigEndian",
+                        "type": "Float",
+                        "functionCode": 4
+                      },
+                      "Active_Energy_PG_100MWh": {
+                        "registerStartAddress": 7096,
+                        "registerLength": 2,
+                        "endiannessMode": "bigEndian",
+                        "type": "Float",
+                        "functionCode": 4
+                      }
+                    },
+                    "intervalMs": 60000,
+                    "sourceMode": "UseBoth"
+                  },
+                  "Current": {
+                    "model": {
+                      "Current_L1": {
+                        "registerStartAddress": 7002,
+                        "registerLength": 2,
+                        "endiannessMode": "bigEndian",
+                        "type": "Float",
+                        "functionCode": 4
+                      },
+                      "Current_L2": {
+                        "registerStartAddress": 7016,
+                        "registerLength": 2,
+                        "endiannessMode": "bigEndian",
+                        "type": "Float",
+                        "functionCode": 4
+                      },
+                      "Current_L3": {
+                        "registerStartAddress": 7030,
+                        "registerLength": 2,
+                        "endiannessMode": "bigEndian",
+                        "type": "Float",
+                        "functionCode": 4
+                      },
+                      "Current_Average": {
+                        "registerStartAddress": 7044,
+                        "registerLength": 2,
+                        "endiannessMode": "bigEndian",
+                        "type": "Float",
+                        "functionCode": 4
+                      },
+                      "Current_Neutral": {
+                        "registerStartAddress": 7094,
+                        "registerLength": 2,
+                        "endiannessMode": "bigEndian",
+                        "type": "Float",
+                        "functionCode": 4
+                      }
+                    },
+                    "intervalMs": 1000,
+                    "sourceMode": "UseBoth"
+                  }
+                },
+                "setupGroups": {},
+                "slaveId": 5,
+                "subscriptionGroups": {
+                  "GT2500": {
+                    "model": {
+                      "Voltage_L1": {
+                        "registerStartAddress": 7000,
+                        "registerLength": 2,
+                        "endiannessMode": "bigEndian",
+                        "type": "Float",
+                        "functionCode": 4
+                      }
+                    },
+                    "onChangeSubmitFullModel": false,
+                    "onRepublishSubmitFullModel": true,
+                    "publishingIntervalMs": 1000,
+                    "sourceMode": "UseBoth"
+                  }
+                }
+              },
+              "BusBar1": {
+                "subscriptionGroups": {
+                  "BusBar1": {
+                    "model": {
+                      "Voltage_L1": {
+                        "registerStartAddress": 7000,
+                        "registerLength": 2,
+                        "type": "Float",
+                        "valueOffset": 0,
+                        "functionCode": 4,
+                        "endiannessMode": "bigEndian"
+                      }
+                    },
+                    "publishingIntervalMs": 59995,
+                    "onRepublishSubmitFullModel": true,
+                    "sourceMode": "UseBoth"
+                  }
+                },
+                "slaveId": 2,
+                "pollGroups": {
+                  "Consumption": {
+                    "model": {
+                      "Active_Energy_PG_kWh": {
+                        "registerStartAddress": 7098,
+                        "registerLength": 2,
+                        "endiannessMode": "bigEndian",
+                        "type": "Float",
+                        "functionCode": 4
+                      },
+                      "Active_Energy_PG_100MWh": {
+                        "registerStartAddress": 7096,
+                        "registerLength": 2,
+                        "endiannessMode": "bigEndian",
+                        "type": "Float",
+                        "functionCode": 4
+                      }
+                    },
+                    "intervalMs": 60000,
+                    "sourceMode": "UseBoth"
+                  },
+                  "PollGroup Current": {
+                    "model": {
+                      "Current_L1": {
+                        "registerStartAddress": 7002,
+                        "registerLength": 2,
+                        "endiannessMode": "bigEndian",
+                        "type": "Float",
+                        "functionCode": 4
+                      },
+                      "Current_L2": {
+                        "registerStartAddress": 7016,
+                        "registerLength": 2,
+                        "endiannessMode": "bigEndian",
+                        "type": "Float",
+                        "functionCode": 4
+                      },
+                      "Current_L3": {
+                        "registerStartAddress": 7030,
+                        "registerLength": 2,
+                        "endiannessMode": "bigEndian",
+                        "type": "Float",
+                        "functionCode": 4
+                      },
+                      "Current_Average": {
+                        "registerStartAddress": 7044,
+                        "registerLength": 2,
+                        "endiannessMode": "bigEndian",
+                        "type": "Float",
+                        "functionCode": 4
+                      },
+                      "Current_Neutral": {
+                        "registerStartAddress": 7094,
+                        "registerLength": 2,
+                        "endiannessMode": "bigEndian",
+                        "type": "Float",
+                        "functionCode": 4
+                      }
+                    },
+                    "intervalMs": 1000,
+                    "sourceMode": "UseBoth"
+                  }
+                },
+                "setupGroups": {}
+              },
+              "BusBar3": {
+                "pollGroups": {
+                  "Consumption": {
+                    "model": {
+                      "Active_Energy_PG_kWh": {
+                        "registerStartAddress": 7098,
+                        "registerLength": 2,
+                        "endiannessMode": "bigEndian",
+                        "type": "Float",
+                        "functionCode": 4
+                      },
+                      "Active_Energy_PG_100MWh": {
+                        "registerStartAddress": 7096,
+                        "registerLength": 2,
+                        "endiannessMode": "bigEndian",
+                        "type": "Float",
+                        "functionCode": 4
+                      }
+                    },
+                    "intervalMs": 60000,
+                    "sourceMode": "UseBoth"
+                  },
+                  "PollGroup Current": {
+                    "model": {
+                      "Current_L1": {
+                        "registerStartAddress": 7002,
+                        "registerLength": 2,
+                        "endiannessMode": "bigEndian",
+                        "type": "Float",
+                        "functionCode": 4
+                      },
+                      "Current_L2": {
+                        "registerStartAddress": 7016,
+                        "registerLength": 2,
+                        "endiannessMode": "bigEndian",
+                        "type": "Float",
+                        "functionCode": 4
+                      },
+                      "Current_L3": {
+                        "registerStartAddress": 7030,
+                        "registerLength": 2,
+                        "endiannessMode": "bigEndian",
+                        "type": "Float",
+                        "functionCode": 4
+                      },
+                      "Current_Average": {
+                        "registerStartAddress": 7044,
+                        "registerLength": 2,
+                        "endiannessMode": "bigEndian",
+                        "type": "Float",
+                        "functionCode": 4
+                      },
+                      "Current_Neutral": {
+                        "registerStartAddress": 7094,
+                        "registerLength": 2,
+                        "endiannessMode": "bigEndian",
+                        "type": "Float",
+                        "functionCode": 4
+                      }
+                    },
+                    "intervalMs": 1000,
+                    "sourceMode": "UseBoth"
+                  }
+                },
+                "setupGroups": {},
+                "slaveId": 7,
+                "subscriptionGroups": {}
+              }
+            }
+          }
+        },
+        "$messageOutputs": {
+          "W16EnergyManagement1.AxisB.AxisB": "splunk",
+          "W16EnergyManagement1.AxisA.AxisA": "splunk",
+          "W16EnergyManagement1.AxisC.AxisC": "splunk",
+          "W16EnergyManagement1.LightingExterior.LightingExterior": "splunk",
+          "W16EnergyManagement1.LightingGeneral.LightingGeneral": "splunk",
+          "W16EnergyManagement1.BusBar2.BusBar2": "BusBar2",
+          "W16EnergyManagement1.AxisA.Consumption": "splunkPoll",
+          "W16EnergyManagement1.AxisB.Consumption": "splunkPoll",
+          "W16EnergyManagement1.AxisC.Consumption": "splunkPoll",
+          "W16EnergyManagement1.LightingExterior.Consumption": "splunkPoll",
+          "W16EnergyManagement1.LightingGeneral.Consumption": "splunkPoll",
+          "W16EnergyManagement1.BusBar2.Consumption": "splunkPoll",
+          "W16EnergyManagement1.BusBar4.Consumption": "splunkPoll",
+          "W16EnergyManagement1.GT2500.Consumption": "splunkPoll",
+          "W16EnergyManagement1.GT2500.GT2500": "GT2500",
+          "W16EnergyManagement1.BusBar4.Current": "splunkPoll",
+          "W16EnergyManagement1.AxisB.PollGroup Current": "splunkPoll",
+          "W16EnergyManagement1.AxisA.PollGroup Current": "splunkPoll",
+          "W16EnergyManagement1.AxisC.PollGroup Current": "splunkPoll",
+          "W16EnergyManagement1.LightingExterior.PollGroup Current": "splunkPoll",
+          "W16EnergyManagement1.LightingGeneral.PollGroup Current": "splunkPoll",
+          "W16EnergyManagement1.BusBar2.Current": "splunkPoll",
+          "W16EnergyManagement1.GT2500.Current": "splunkPoll",
+          "W16EnergyManagement1.BusBar1.Consumption": "splunkPoll",
+          "W16EnergyManagement1.BusBar1.PollGroup Current": "splunkPoll",
+          "W16EnergyManagement1.BusBar1.BusBar1": "splunk",
+          "W16EnergyManagement1.BusBar3.Consumption": "splunkPoll",
+          "W16EnergyManagement1.BusBar3.PollGroup Current": "splunkPoll"
+        },
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.ModbusReaderModule/versions/2",
+        "$timestamp": "2024-02-28T20:05:45.1804522Z",
+        "$version": 1
+      }
+    },
+    "mqtt": {
+      "configuration": {
+        "$schema": "https://schemas.robotron.de/robogate/modules/MqttSender.IotEdge.Modules.MqttSenderModule/versions/1",
+        "$timestamp": "2023-08-31T11:38:18.8361784Z",
+        "$version": 1
+      }
+    },
+    "rfcreader": {
+      "configuration": {
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.RFC1006ReaderModule/versions/1",
+        "$messageOutputs": {},
+        "plcs": {},
+        "$timestamp": "2024-02-13T08:22:56.0716563Z",
+        "$version": 1
+      }
+    },
+    "opcua": {
+      "configuration": {
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.OpcUaClientModule/versions/2",
+        "servers": {
+          "W16RefrigerantStationIV73000218": {
+            "endpoint": {
+              "pollGroups": {
+                "GatewayWatchdog": {
+                  "nodes": {
+                    "Gateway_Temperature_PG": "ns=3;s=_System.General.Temperature",
+                    "S1.Connected": "ns=2;s=S7-1.M.AlwaysTRUE"
+                  },
+                  "name": "GatewayWatchdog",
+                  "outputTopic": "splunkPoll",
+                  "intervalMs": 900000
+                },
+                "DB_SYGNALY_DO_VIESSMANN_poll": {
+                  "nodes": {
+                    "PT761_CisnienieAzotu": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_PT761_CISNIENIE_AZOTU_SKALA",
+                    "290BIS_ZalSter": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_290BIS_ZAL_STER",
+                    "290BIS_TrybReczny": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_290BIS_TRYB_RECZNY",
+                    "290BIS_TrybAuto": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_290BIS_TRYB_AUTO",
+                    "290BIS_TrybAutoAB": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_290BIS_AUTO_A_B",
+                    "290BIS_TrybAutoA": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_290BIS_AUTO_A",
+                    "290BIS_TrybAutoB": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_290BIS_AUTO_B",
+                    "290BIS_TrybBrak": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_290BIS_BRAK_TRYBU",
+                    "290BIS_PracujeA": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_290BIS_ZBIORNIK_A_PRACUJE",
+                    "290BIS_PracujeB": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_290BIS_ZBIORNIK_B_PRACUJE",
+                    "290BIS_ZalSter_Linia3&4": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_290BIS_START_HALI",
+                    "290BIS_ZalSter_Linia5&6": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_290BIS_START_HALI_LINIA_5&6",
+                    "290BIS_PT101_CisnienieWZbiornikuA": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_PT101_BIS_CISNIENIE_ZB_A_SKALA",
+                    "290BIS_PT102_CisnienieZaPompaA": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_PT102_BIS_CISNIENIE_ZB_A_SKALA",
+                    "290BIS_PT201_CisnienieWZbiornikuB": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_PT201_BIS_CISNIENIE_ZB_B_SKALA",
+                    "290BIS_PT202_CisnienieZaPompaB": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_PT202_BIS_CISNIENIE_ZB_B_SKALA",
+                    "290BIS_PT251_CisnienieLinia3&4": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_PT251_CISNIENIE_HALA_SKALA",
+                    "290BIS_PT252_CisnienieLinia5&6": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_PT252_BIS_CISNIENIE_LINIA_5&6_SKALA",
+                    "290BIS_TW901_WagaBruttoZbA": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_TW901_WAGA_ZB_A_SKALA",
+                    "290BIS_TW901_WagaNettoZbA": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_TW901_WAGA_ZB_A_NETTO",
+                    "290BIS_TW901_WagaTaraZbA": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_TW901_WAGA_ZB_A_TARA",
+                    "290BIS_TW902_WagaBruttoZbB": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_TW902_WAGA_ZB_B_SKALA",
+                    "290BIS_TW902_WagaNettoZbB": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_TW902_WAGA_ZB_B_NETTO",
+                    "290BIS_TW902_WagaTaraZbB": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_TW902_WAGA_ZB_B_TARA",
+                    "290_ZalSter": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_290_ZAL_STER",
+                    "290_TrybReczny": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_290_TRYB_RECZNY",
+                    "290_TrybAuto": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_290_TRYB_AUTO",
+                    "290_TrybAutoAB": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_290_AUTO_A_B",
+                    "290_TrybAutoA": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_290_AUTO_A",
+                    "290_TrybAutoB": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_290_AUTO_B",
+                    "290_TrybBrak": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_290_BRAK_TRYBU",
+                    "290_PracujeA": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_290_ZBIORNIK_A_PRACUJE",
+                    "290_PracujeB": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_290_ZBIORNIK_B_PRACUJE",
+                    "290_ZalSter_Linia1&2": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_290_START_HALI",
+                    "290_PT301_CisnienieWZbiornikuA": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_PT301_CISNIENIE_ZB_A_SKALA",
+                    "290_PT302_CisnienieZaPompaA": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_PT302_CISNIENIE_ZB_A_SKALA",
+                    "290_PT401_CisnienieWZbiornikuB": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_PT401_CISNIENIE_ZB_B_SKALA",
+                    "290_PT402_CisnienieZaPompaB": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_PT402_CISNIENIE_ZB_B_SKALA",
+                    "290_PT451_CisnienieLinia1&2": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_PT451_CISNIENIE_HALA_SKALA",
+                    "290_TW903_WagaBruttoZbA": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_TW903_WAGA_ZB_A_SKALA",
+                    "290_TW903_WagaNettoZbA": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_TW903_WAGA_ZB_A_NETTO",
+                    "290_TW903_WagaTaraZbA": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_TW903_WAGA_ZB_A_TARA",
+                    "290_TW904_WagaBruttoZbB": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_TW904_WAGA_ZB_B_SKALA",
+                    "290_TW904_WagaNettoZbB": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_TW904_WAGA_ZB_B_NETTO",
+                    "290_TW904_WagaTaraZbB": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_TW904_WAGA_ZB_B_TARA",
+                    "410a_ZalSter": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_410A_ZAL_STER",
+                    "410a_TrybReczny": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_410a_TRYB_RECZNY",
+                    "410a_TrybAuto": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_410a_TRYB_AUTO",
+                    "410a_TrybAutoAB": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_410a_AUTO_A_B",
+                    "410a_TrybAutoA": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_410a_AUTO_A",
+                    "410a_TrybAutoB": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_410a_AUTO_B",
+                    "410a_TrybBrak": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_410a_BRAK_TRYBU",
+                    "410a_410aBIS_PracujeA": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_410_ZBIORNIK_A_PRACUJE",
+                    "410a_410aBIS_PracujeB": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_410_ZBIORNIK_B_PRACUJE",
+                    "410a_PT501_CisnienieWZbiornikuA": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_PT501_CISNIENIE_ZB_A_SKALA",
+                    "410a_PT502_CisnienieZaPompaA": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_PT502_CISNIENIE_WYJ_ZB_A_SKALA",
+                    "410a_PT601_CisnienieWZbiornikuB": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_PT601_CISNIENIE_ZB_B_SKALA",
+                    "410a_PT602_CisnienieZaPompaB": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_PT602_CISNIENIE_WYJ_ZB_B_SKALA",
+                    "410a_PT651_CisnienieLinia1&2": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_PT651_CISNIENIE_HALA_SKALA",
+                    "410a_410aBIS_TW905_WagaBruttoZbA": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_TW905_WAGA_ZB_A_SKALA",
+                    "410a_410aBIS_TW905_WagaNettoZbA": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_TW905_WAGA_ZB_A_NETTO",
+                    "410a_410aBIS_TW905_WagaTaraZbA": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_TW905_WAGA_ZB_A_TARA",
+                    "410a_410aBIS_TW906_WagaBruttoZbB": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_TW906_WAGA_ZB_B_SKALA",
+                    "410a_410aBIS_TW906_WagaNettoZbB": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_TW906_WAGA_ZB_B_NETTO",
+                    "410a_410aBIS_TW906_WagaTaraZbB": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_TW906_WAGA_ZB_B_TARA",
+                    "410aBIS_ZalSter": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_410bis_ZAL_STER",
+                    "410aBIS_TrybReczny": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_410a_bis_TRYB_RECZNY",
+                    "410aBIS_TrybAuto": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_410a_bis_TRYB_AUTO",
+                    "410aBIS_TrybAutoAB": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_410a_bis_AUTO_A_B",
+                    "410aBIS_TrybAutoA": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_410a_bis_AUTO_A",
+                    "410aBIS_TrybAutoB": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_410a_bis_AUTO_B",
+                    "410aBIS_TrybBrak": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_410bis_BRAK_TRYBU",
+                    "410aBIS_ZalSter_Linia3&4": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_410bis_HALA_START",
+                    "410aBIS_SPV853_Linia3": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_SV_853",
+                    "410aBIS_SPV854_Linia4": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_SV_854",
+                    "410aBIS_PT504_CisnienieZaPompaA": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_PT504_CISNIENIE_WYJ_POMPY_A_SKALA",
+                    "410aBIS_PT604_CisnienieZaPompaB": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_PT604_CISNIENIE_WYJ_POMPY_B_SKALA",
+                    "410aBIS_PT851_CisnienieLinia1&2": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_PT851_CISNIENIE_HALA_SKALA"
+                  },
+                  "name": "DB_SYGNALY_DO_VIESSMANN_poll",
+                  "outputTopic": "splunkPoll",
+                  "intervalMs": 1000
+                }
+              },
+              "subscriptionGroups": {
+                "Gateway_Data": {
+                  "onChangeSubmitFullModel": false,
+                  "onRepublishSubmitFullModel": false,
+                  "nodes": {},
+                  "name": "Gateway_Data",
+                  "outputTopic": "splunk",
+                  "publishingIntervalMs": 1000,
+                  "republishingIntervalMs": 0
+                },
+                "DB_SYGNALY_DO_VIESSMANN": {
+                  "onChangeSubmitFullModel": false,
+                  "onRepublishSubmitFullModel": true,
+                  "nodes": {
+                    "LampkaPusteZbiorniki": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_LAMPKA_PUSTE_ZBIORNIKI_KONTENER",
+                    "290BIS_SPV101": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_SPV_101_OPEN",
+                    "290BIS_SPV103": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_SPV_103_OPEN",
+                    "290BIS_SPV104": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_SPV_104_OPEN",
+                    "290BIS_SPV201": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_SPV_201_OPEN",
+                    "290BIS_SPV203": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_SPV_203_OPEN",
+                    "290BIS_SPV204": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_SPV_204_OPEN",
+                    "290BIS_SPV151": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_SPV_151_OPEN",
+                    "290BIS_Fault_EStop": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_ESTOP_290BIS",
+                    "290BIS_Fault_SYNCA": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_SYNC_A_290BIS",
+                    "290BIS_Fault_SYNCB": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_SYNC_B_290BIS",
+                    "290BIS_Fault_Waga901": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_WAGA901_BLAD_KANALU_ALARM",
+                    "290BIS_Fault_Waga902": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_WAGA902_BLAD_KANALU_ALARM",
+                    "290BIS_SPV453_Linia3": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_SPV_453",
+                    "290BIS_SPV454_Linia4": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_SPV_454",
+                    "290BIS_SPV455_Linia5": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_SPV_455",
+                    "290BIS_SPV456_Linia6": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_SPV_456",
+                    "290_SPV301": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_SPV_301_OPEN",
+                    "290_SPV303": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_SPV_303_OPEN",
+                    "290_SPV304": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_SPV_304_OPEN",
+                    "290_SPV401": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_SPV_401_OPEN",
+                    "290_SPV403": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_SPV_403_OPEN",
+                    "290_SPV404": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_SPV_404_OPEN",
+                    "290_SPV351": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_SPV_351_OPEN",
+                    "290_Fault_EStop": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_ESTOP_290",
+                    "290_Fault_SYNCA": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_SYNC_A_290",
+                    "290_Fault_SYNCB": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_SYNC_B_290",
+                    "290_SPV153_Linia1": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_SPV_153",
+                    "290_SPV154_Linia2": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_SPV_154",
+                    "410a_SPV501": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_SPV_501_OPEN",
+                    "410a_SPV503": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_SPV_503_OPEN",
+                    "410a_SPV521": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_SPV_521_OPEN",
+                    "410a_SPV601": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_SPV_601_OPEN",
+                    "410a_SPV603": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_SPV_603_OPEN",
+                    "410a_SPV522": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_SPV_522_OPEN",
+                    "410a_SPV511": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_SPV_511_OPEN",
+                    "410a_SPV531_UpustA": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_SPV_531_OPEN",
+                    "410a_SPV631_UpustB": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_SPV_631_OPEN",
+                    "410a_Fault_EStop": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_ESTOP_R410a",
+                    "410a_Fault_SYNCA": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_SYNC_A_410",
+                    "410a_Fault_SYNCB": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_SYNC_B_410",
+                    "410a_ZalSter_Linia1&2": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_410a_HALA_START",
+                    "410a_SPV653_LiniaSole": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_SV_653",
+                    "410a_SPV654_Linia1": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_SV_654",
+                    "410a_SPV655_Linia2": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_SV_655",
+                    "410aBIS_SPV502": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_SPV_502_OPEN",
+                    "410aBIS_SPV504": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_SPV_504_OPEN",
+                    "410aBIS_SPV621": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_SPV_621_OPEN",
+                    "410aBIS_SPV602": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_SPV_602_OPEN",
+                    "410aBIS_SPV604": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_SPV_604_OPEN",
+                    "410aBIS_SPV622": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_SPV_622_OPEN",
+                    "410aBIS_SPV611": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_SPV_611_OPEN",
+                    "410aBIS_SPV532_UpustA": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_SPV_532_OPEN",
+                    "410aBIS_SPV632_UpustB": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_SPV_632_OPEN",
+                    "410aBIS_SPV550": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_SPV_550_OPEN",
+                    "410aBIS_SPV650": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_SPV_650_OPEN",
+                    "410aBIS_Fault_EStop": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_ESTOP_410bis",
+                    "410aBIS_Fault_SYNCA": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_SYNC_A_410bis",
+                    "410aBIS_Fault_SYNCB": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_SYNC_B_410bis",
+                    "290BIS_SPV131_UpustA": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_SPV_131_OPEN",
+                    "290BIS_SPV132_UpustB": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_SPV_132_OPEN",
+                    "290_SPV331_UpustA": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_SPV_331_OPEN",
+                    "290_SPV332_UpustB": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_SPV_332_OPEN",
+                    "290BIS_SPV150_UpustComm": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_SPV_150_OPEN",
+                    "290_SPV350_UpustComm": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_SPV_350_OPEN",
+                    "410a_SPV552_UpustComm": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_SPV_552_OPEN",
+                    "410aBIS_SPV652_UpustComm": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_SPV_652_OPEN"
+                  },
+                  "name": "DB_SYGNALY_DO_VIESSMANN",
+                  "outputTopic": "splunk",
+                  "publishingIntervalMs": 2000,
+                  "republishingIntervalMs": 600000
+                },
+                "GAZEX": {
+                  "republishingIntervalMs": 60000,
+                  "onChangeSubmitFullModel": false,
+                  "onRepublishSubmitFullModel": true,
+                  "nodes": {
+                    "S6.GAZEX_A1_LINIA_5&6": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_GAZEX_A1_LINIA_5&6",
+                    "S6.GAZEX_A2_LINIA_5&6": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_GAZEX_A2_LINIA_5&6",
+                    "S6.GAZEX_TLEN_R410A_A1": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_GAZEX_TLEN_R410A_A1",
+                    "S6.GAZEX_TLEN_R410A_A2": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_GAZEX_TLEN_R410A_A2",
+                    "S6.GAZEX_TLEN_R290_A1": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_GAZEX_TLEN_R290_A1",
+                    "S6.GAZEX_TLEN_R290_A2": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_GAZEX_TLEN_R290_A2",
+                    "S6.GAZEX_R290_A1": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_GAZEX_R290_A1",
+                    "S6.GAZEX_R290_A2": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_GAZEX_R290_A2",
+                    "S6.GAZEX_R410A_A1": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_GAZEX_R410A_A1",
+                    "S6.GAZEX_R410A_A2": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_GAZEX_R410A_A2",
+                    "S6.GAZEX_290_BIS_A1_S1": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_GAZEX_290_BIS_A1_S1",
+                    "S6.GAZEX_290_BIS_A2_S1": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_GAZEX_290_BIS_A2_S1",
+                    "S6.GAZEX_290_BIS_A1_S2": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_GAZEX_290_BIS_A1_S2",
+                    "S6.GAZEX_290_BIS_A2_S2": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_GAZEX_290_BIS_A2_S2",
+                    "S6.GAZEX_290_A1_S1": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_GAZEX_290_A1_S1",
+                    "S6.GAZEX_290_A2_S1": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_GAZEX_290_A2_S1",
+                    "S6.GAZEX_290_A1_S2": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_GAZEX_290_A1_S2",
+                    "S6.GAZEX_290_A2_S2": "ns=2;s=S7-1.DB.DB_SYGNALY_DO_VIESSMANN.DB_VISU_GAZEX_290_A2_S2"
+                  },
+                  "name": "GAZEX",
+                  "outputTopic": "splunk",
+                  "publishingIntervalMs": 250
+                }
+              },
+              "subscriptions": {},
+              "url": "opc.tcp://199.216.0.158:4840",
+              "resetBlackListIntervalMs": 15000
+            },
+            "client": {
+              "application": {
+                "security": {
+                  "authentication": {
+                    "credentials": {},
+                    "strategy": "Anonymous"
+                  },
+                  "endpoint": {
+                    "isEnabled": true,
+                    "level": 0,
+                    "mode": "None",
+                    "policy": "None",
+                    "timeout": 15000
+                  }
+                }
+              },
+              "session": {
+                "subscription": {}
+              },
+              "optimizeNodeValueReadAccess": false
+            },
+            "edgeMethodMapping": {},
+            "conditions": {},
+            "statusCodeMapping": {}
+          }
+        },
+        "$messageOutputs": {
+          "W16RefrigerantStationIV73000218.Gateway_Data": "splunk",
+          "W16RefrigerantStationIV73000218.GatewayWatchdog": "splunkPoll",
+          "W16RefrigerantStationIV73000218.DB_SYGNALY_DO_VIESSMANN": "splunk",
+          "W16RefrigerantStationIV73000218.DB_SYGNALY_DO_VIESSMANN_poll": "splunkPoll",
+          "W16RefrigerantStationIV73000218.GAZEX": "splunk"
+        },
+        "$timestamp": "2024-03-22T06:08:42.1736044Z",
+        "$version": 1
+      }
+    },
+    "streamprocessor": {
+      "configuration": {
+        "$timestamp": "2023-08-31T11:38:18.8402472Z",
+        "$version": 1
+      }
+    },
+    "logger": {
+      "configuration": {
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.FileLoggerModule/versions/1",
+        "$timestamp": "2023-08-31T11:38:18.838527Z",
+        "$version": 1
+      }
+    },
+    "splunk": {
+      "configuration": {
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.SplunkHecModule/versions/3",
+        "endpoint": {
+          "url": "https://10.13.21.22:8088/services/collector/event",
+          "token": "6112a68b-c8f6-4946-a7dd-7d48a710bc83",
+          "sslCheck": false
+        },
+        "host": "I6828w05.4087",
+        "interval": 1000,
+        "sendTimestamp": true,
+        "sourceType": "_json",
+        "bufferQueueSettings": {
+          "enablePersist": false
+        },
+        "$messageInputs": {
+          "splunk": "event",
+          "splunkPoll": "telemetry",
+          "$splunkDiag": "telemetry",
+          "$system_signals": "telemetry"
+        },
+        "$timestamp": "2024-04-12T07:24:31.109928Z",
+        "$version": 4
+      }
+    },
+    "system": {
+      "configuration": {
+        "firewallrules": {
+          "AdminAPIAutoRuleHTTP": {
+            "description": "Auto generated rule from AdminApiModule for HTTP Port.",
+            "action": "accept",
+            "direction": "inbound",
+            "protocol": "tcp",
+            "srcPort": 0,
+            "destPort": 80
+          },
+          "AdminAPIAutoRuleHTTPS": {
+            "description": "Auto generated rule from AdminApiModule for HTTPS Port.",
+            "action": "accept",
+            "direction": "inbound",
+            "protocol": "tcp",
+            "srcPort": 0,
+            "destPort": 443
+          }
+        },
+        "$timestamp": "2024-04-11T14:31:20.4839932Z",
+        "$version": 1
+      }
+    }
+  }
+}

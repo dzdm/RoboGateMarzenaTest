@@ -1,0 +1,349 @@
+{
+  "modules": {
+    "mustache": {
+      "configuration": {
+        "$timestamp": "2024-02-13T10:47:29.4799624Z",
+        "$version": 1
+      }
+    },
+    "azure": {
+      "configuration": {
+        "$timestamp": "2024-02-13T10:47:29.4792028Z",
+        "$version": 1
+      }
+    },
+    "center": {
+      "configuration": {
+        "$timestamp": "2024-02-13T10:47:29.4826032Z",
+        "$version": 1
+      }
+    },
+    "modbus": {
+      "configuration": {
+        "$timestamp": "2024-02-13T10:47:29.4798001Z",
+        "$version": 1
+      }
+    },
+    "mqtt": {
+      "configuration": {
+        "$timestamp": "2024-02-13T10:47:29.4793895Z",
+        "$version": 1
+      }
+    },
+    "rfcreader": {
+      "configuration": {
+        "$timestamp": "2024-02-13T10:47:29.480001Z",
+        "$version": 1
+      }
+    },
+    "opcua": {
+      "configuration": {
+        "servers": {
+          "W16TightnessTesterODUIV1673000332": {
+            "endpoint": {
+              "pollGroups": {},
+              "subscriptionGroups": {
+                "W16TightnessTesterODUIV1673000332": {
+                  "republishingIntervalMs": 0,
+                  "onChangeSubmitFullModel": false,
+                  "onRepublishSubmitFullModel": true,
+                  "nodes": {
+                    "S7.Status.New_Data_available": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Standard_Status\".\"New_Data_available\"",
+                    "S7.Status_Ready_to_start": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Standard_Status\".\"Ready_to_start\"",
+                    "S7.Status_Standard_Status.Fault": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Standard_Status\".\"Fault\"",
+                    "S7.Status_Awaiting_Reset": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Standard_Status\".\"Awaiting_Reset\"",
+                    "S7.Status_Pressure_High": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Standard_Status\".\"Pressure_High\"",
+                    "S7.Status_Pressure_Low": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Standard_Status\".\"Pressure_Low\"",
+                    "S7.Status_Testing": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Standard_Status\".\"Testing\"",
+                    "S7.Status_Batch_complete": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Standard_Status\".\"Batch_complete\"",
+                    "S7.Status_Product_number": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Standard_Status\".\"Product_number\"",
+                    "S7.Status_Current_test_counter": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Standard_Status\".\"Current_test_counter\"",
+                    "S7.Status_Current_product_number": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Standard_Status\".\"Current_product_number\"",
+                    "S7.Status_Current_step_no": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Standard_Status\".\"Current_step_no\"",
+                    "S7.Status_Current_pressure_reading": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Standard_Status\".\"Current_pressure_reading\"",
+                    "S7.Status_Current_pressure_units": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Standard_Status\".\"Current_pressure_units\"",
+                    "S7.Status_Current_leak_reading": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Standard_Status\".\"Current_leak_reading\"",
+                    "S7.Status_Current_leak_units": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Standard_Status\".\"Current_leak_units\"",
+                    "S7.Stage_Standby": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Current_Stage\".\"Standby\"",
+                    "S7.Stage_Jig_open": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Current_Stage\".\"Jig_open\"",
+                    "S7.Stage_Clamping": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Current_Stage\".\"Clamping\"",
+                    "S7.Stage_Awaiting_feedback": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Current_Stage\".\"Awaiting_feedback\"",
+                    "S7.Stage_Prefilling": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Current_Stage\".\"Prefilling\"",
+                    "S7.Stage_Venting_prefill": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Current_Stage\".\"Venting_prefill\"",
+                    "S7.Stage_Filling": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Current_Stage\".\"Filling\"",
+                    "S7.Stage_Stabilising": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Current_Stage\".\"Stabilising\"",
+                    "S7.Stage_Testing": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Current_Stage\".\"Testing\"",
+                    "S7.Stage_Venting": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Current_Stage\".\"Venting\"",
+                    "S7.Stage_Holdoff": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Current_Stage\".\"Holdoff\"",
+                    "S7.Stage_Ramp": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Current_Stage\".\"Ramp\"",
+                    "S7.Stage_Sequence_delay": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Current_Stage\".\"Sequence_delay\"",
+                    "S7.Stage_Awaiting_Reset": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Current_Stage\".\"Awaiting_Reset\"",
+                    "S7.Stage_Awaiting_start": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Current_Stage\".\"Awaiting_start\"",
+                    "S7.Stage_Fault": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Current_Stage\".\"Fault\"",
+                    "S7.Stage_Pressure_high": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Current_Stage\".\"Pressure_high\"",
+                    "S7.Stage_Pressure_low": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Current_Stage\".\"Pressure_low\"",
+                    "S7.Stage_Filling_secondary_press": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Current_Stage\".\"Filling_secondary_press\"",
+                    "S7.Stage_Stabilising_second_press": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Current_Stage\".\"Stabilising_second_press\"",
+                    "S7.Stage_Awaiting_Barcode_scan": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Current_Stage\".\"Awaiting_Barcode_scan\"",
+                    "S7.Stage_Learn_cal_check": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Current_Stage\".\"Learn_cal_check\"",
+                    "S7.Stage_Calibration_check": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Current_Stage\".\"Calibration_check\"",
+                    "S7.Result_Test_ok": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Test_ok\"",
+                    "S7.Result_Negative_Fail_1": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Negative_Fail_1\"",
+                    "S7.Result_Negative_Fail_2": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Negative_Fail_2\"",
+                    "S7.Result_Negative_gross_fail": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Negative_gross_fail\"",
+                    "S7.Result_Positive_fail_1": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Positive_fail_1\"",
+                    "S7.Result_Positive_fail_2": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Positive_fail_2\"",
+                    "S7.Result_Positive_gross_fail": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Positive_gross_fail\"",
+                    "S7.Result_Pressure_gross": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Pressure_gross\"",
+                    "S7.Result_External_fail": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"External_fail\"",
+                    "S7.Result_Invalid_test": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Invalid_test\"",
+                    "S7.Result_Product_fail": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Product_fail\"",
+                    "S7.Result_Feedback_fail": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Feedback_fail\"",
+                    "S7.Result_Pressure_low": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Pressure_low\"",
+                    "S7.Result_Pressure_high": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Pressure_high\"",
+                    "S7.Result_Fill_valve_stuck_on": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Fill_valve_stuck_on\"",
+                    "S7.Result_Fill_valve_stuck_off": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Fill_valve_stuck_off\"",
+                    "S7.Result_Test_valve_stuck_on": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Test_valve_stuck_on\"",
+                    "S7.Result_Test_valve_stuck_off": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Test_valve_stuck_off\"",
+                    "S7.Result_Pressure_valve_stuck_on": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Pressure_valve_stuck_on\"",
+                    "S7.Result_Pressure_valve_stuck_off": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Pressure_valve_stuck_off\"",
+                    "S7.Result_Vent_valve_stuck_on": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Vent_valve_stuck_on\"",
+                    "S7.Result_Vent_valve_stuck_off": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Vent_valve_stuck_off\"",
+                    "S7.Result_Leak_zero_fault": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Leak_zero_fault\"",
+                    "S7.Result_Learn_offset_fault": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Learn_offset_fault\"",
+                    "S7.Result_Cal_check_low_fault": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Cal_check_low_fault\"",
+                    "S7.Result_Cal_check_high_fault": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Cal_check_high_fault\"",
+                    "S7.Result_Cal_check_fault": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Cal_check_fault\"",
+                    "S7.Result_int_ResultStatus": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"int_ResultStatus\"",
+                    "S7.Result_Step.[0].StepNumber": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Step\"[0].\"StepNumber\"",
+                    "S7.Result_Step.[0].Testnumber": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Step\"[0].\"Testnumber\"",
+                    "S7.Result_Step.[0].Status": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Step\"[0].\"Status\"",
+                    "S7.Result_Step.[0].Pressure_reading": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Step\"[0].\"Pressure_reading\"",
+                    "S7.Result_Step.[0].Pressure_units": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Step\"[0].\"Pressure_units\"",
+                    "S7.Result_Step.[0].Leak_reading": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Step\"[0].\"Leak_reading\"",
+                    "S7.Result_Step.[0].Leak_units": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Step\"[0].\"Leak_units\"",
+                    "S7.Result_Step.[0].Pressure_2_reading": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Step\"[0].\"Pressure_2_reading\"",
+                    "S7.Result_Step.[0].Pressure_2_units": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Step\"[0].\"Pressure_2_units\"",
+                    "S7.Result_Step.[0].Test_type": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Step\"[0].\"Test_type\"",
+                    "S7.Result_Step.[0].Lower_fail_limit": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Step\"[0].\"Lower_fail_limit\"",
+                    "S7.Result_Step.[0].Upper_fail_limit": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Step\"[0].\"Upper_fail_limit\"",
+                    "S7.Result_Step.[1].StepNumber": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Step\"[1].\"StepNumber\"",
+                    "S7.Result_Step.[1].Testnumber": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Step\"[1].\"Testnumber\"",
+                    "S7.Result_Step.[1].Status": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Step\"[1].\"Status\"",
+                    "S7.Result_Step.[1].Pressure_reading": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Step\"[1].\"Pressure_reading\"",
+                    "S7.Result_Step.[1].Pressure_units": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Step\"[1].\"Pressure_units\"",
+                    "S7.Result_Step.[1].Leak_reading": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Step\"[1].\"Leak_reading\"",
+                    "S7.Result_Step.[1].Leak_units": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Step\"[1].\"Leak_units\"",
+                    "S7.Result_Step.[1].Pressure_2_reading": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Step\"[1].\"Pressure_2_reading\"",
+                    "S7.Result_Step.[1].Pressure_2_units": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Step\"[1].\"Pressure_2_units\"",
+                    "S7.Result_Step.[1].Test_type": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Step\"[1].\"Test_type\"",
+                    "S7.Result_Step.[1].Lower_fail_limit": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Step\"[1].\"Lower_fail_limit\"",
+                    "S7.Result_Step.[1].Upper_fail_limit": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Step\"[1].\"Upper_fail_limit\"",
+                    "S7.Result_Step.[2].StepNumber": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Step\"[2].\"StepNumber\"",
+                    "S7.Result_Step.[2].Testnumber": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Step\"[2].\"Testnumber\"",
+                    "S7.Result_Step.[2].Status": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Step\"[2].\"Status\"",
+                    "S7.Result_Step.[2].Pressure_reading": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Step\"[2].\"Pressure_reading\"",
+                    "S7.Result_Step.[2].Pressure_units": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Step\"[2].\"Pressure_units\"",
+                    "S7.Result_Step.[2].Leak_reading": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Step\"[2].\"Leak_reading\"",
+                    "S7.Result_Step.[2].Leak_units": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Step\"[2].\"Leak_units\"",
+                    "S7.Result_Step.[2].Pressure_2_reading": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Step\"[2].\"Pressure_2_reading\"",
+                    "S7.Result_Step.[2].Pressure_2_units": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Step\"[2].\"Pressure_2_units\"",
+                    "S7.Result_Step.[2].Test_type": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Step\"[2].\"Test_type\"",
+                    "S7.Result_Step.[2].Lower_fail_limit": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Step\"[2].\"Lower_fail_limit\"",
+                    "S7.Result_Step.[2].Upper_fail_limit": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Step\"[2].\"Upper_fail_limit\"",
+                    "S7.Result_Step.[3].StepNumber": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Step\"[3].\"StepNumber\"",
+                    "S7.Result_Step.[3].Testnumber": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Step\"[3].\"Testnumber\"",
+                    "S7.Result_Step.[3].Status": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Step\"[3].\"Status\"",
+                    "S7.Result_Step.[3].Pressure_reading": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Step\"[3].\"Pressure_reading\"",
+                    "S7.Result_Step.[3].Pressure_units": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Step\"[3].\"Pressure_units\"",
+                    "S7.Result_Step.[3].Leak_reading": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Step\"[3].\"Leak_reading\"",
+                    "S7.Result_Step.[3].Leak_units": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Step\"[3].\"Leak_units\"",
+                    "S7.Result_Step.[3].Pressure_2_reading": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Step\"[3].\"Pressure_2_reading\"",
+                    "S7.Result_Step.[3].Pressure_2_units": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Step\"[3].\"Pressure_2_units\"",
+                    "S7.Result_Step.[3].Test_type": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Step\"[3].\"Test_type\"",
+                    "S7.Result_Step.[3].Lower_fail_limit": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Step\"[3].\"Lower_fail_limit\"",
+                    "S7.Result_Step.[3].Upper_fail_limit": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Step\"[3].\"Upper_fail_limit\"",
+                    "S7.Result_Step.[4].StepNumber": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Step\"[4].\"StepNumber\"",
+                    "S7.Result_Step.[4].Testnumber": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Step\"[4].\"Testnumber\"",
+                    "S7.Result_Step.[4].Status": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Step\"[4].\"Status\"",
+                    "S7.Result_Step.[4].Pressure_reading": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Step\"[4].\"Pressure_reading\"",
+                    "S7.Result_Step.[4].Pressure_units": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Step\"[4].\"Pressure_units\"",
+                    "S7.Result_Step.[4].Leak_reading": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Step\"[4].\"Leak_reading\"",
+                    "S7.Result_Step.[4].Leak_units": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Step\"[4].\"Leak_units\"",
+                    "S7.Result_Step.[4].Pressure_2_reading": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Step\"[4].\"Pressure_2_reading\"",
+                    "S7.Result_Step.[4].Pressure_2_units": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Step\"[4].\"Pressure_2_units\"",
+                    "S7.Result_Step.[4].Test_type": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Step\"[4].\"Test_type\"",
+                    "S7.Result_Step.[4].Lower_fail_limit": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Step\"[4].\"Lower_fail_limit\"",
+                    "S7.Result_Step.[4].Upper_fail_limit": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Step\"[4].\"Upper_fail_limit\"",
+                    "S7.Result_Serial_number": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"Serial_number\"",
+                    "S7.Result_product_number": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Result\".\"product_number\"",
+                    "S7.MEWS_Cycle_Count": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"MEWS\".\"Cycle_Count\"",
+                    "S7.MEWS_Cycle_time": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"MEWS\".\"Cycle_time\"",
+                    "S7.MEWS_Latency_time": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"MEWS\".\"Latency_time\"",
+                    "S7.MEWS_Leak_head_zero_offset": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"MEWS\".\"Leak_head_zero_offset\"",
+                    "S7.MEWS_alarm_state": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"MEWS\".\"alarm_state\"",
+                    "S7.Param_ACK": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Write_Param\".\"ACK\"",
+                    "S7.Param_NACK": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Write_Param\".\"NACK\"",
+                    "S7.Status_Last_command": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Last_command\"",
+                    "S7.Status_Last_command_1": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Last_command_1\"",
+                    "S7.Status_Last_command_2": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Last_command_2\"",
+                    "S7.Status_Last_command_3": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Last_command_3\"",
+                    "S7.Comm_Daten_uebernehmen": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Comm\".\"Daten_uebernehmen\"",
+                    "S7.Comm_data_readed": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Comm\".\"data_readed\"",
+                    "S7.Comm_mews_readed": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Comm\".\"mews_readed\"",
+                    "S7.Comm_ack_readed": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Comm\".\"ack_readed\"",
+                    "S7.Comm_nack_readed": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Comm\".\"nack_readed\"",
+                    "S7.Comm_standard_state_readed": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Comm\".\"standard_state_readed\"",
+                    "S7.Comm_result_readed": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Comm\".\"result_readed\"",
+                    "S7.Comm_durchlauf": "ns=3;s=\"DB_Furness_6_Leak\".\"Status\".\"Comm\".\"durchlauf\"",
+                    "S7.Control_Instrument_id": "ns=3;s=\"DB_Furness_6_Leak\".\"Control\".\"Instrument_id\"",
+                    "S7.Control_Program_no": "ns=3;s=\"DB_Furness_6_Leak\".\"Control\".\"Program_no\"",
+                    "S7.Control_Start_test": "ns=3;s=\"DB_Furness_6_Leak\".\"Control\".\"Start_test\"",
+                    "S7.Control_Reset_Test": "ns=3;s=\"DB_Furness_6_Leak\".\"Control\".\"Reset_Test\"",
+                    "S7.Control_Reset_Counters": "ns=3;s=\"DB_Furness_6_Leak\".\"Control\".\"Reset_Counters\"",
+                    "S7.Control_Reset_Logged_Data": "ns=3;s=\"DB_Furness_6_Leak\".\"Control\".\"Reset_Logged_Data\"",
+                    "S7.Control_Self_check": "ns=3;s=\"DB_Furness_6_Leak\".\"Control\".\"Self_check\"",
+                    "S7.Control_Zero_pressure": "ns=3;s=\"DB_Furness_6_Leak\".\"Control\".\"Zero_pressure\"",
+                    "S7.Control_Change_Program": "ns=3;s=\"DB_Furness_6_Leak\".\"Control\".\"Change_Program\"",
+                    "S7.Control_spare": "ns=3;s=\"DB_Furness_6_Leak\".\"Control\".\"spare\"",
+                    "S7.PressureReading_IOT": "ns=3;s=\"IOT_Furness_Line6\".\"IOT_Data\".\"S7.PressureReading\"",
+                    "S7.VIN_IOT": "ns=3;s=\"IOT_Furness_Line6\".\"IOT_Data\".\"S7.VIN\"",
+                    "S7.TEST_NOK_IOT": "ns=3;s=\"IOT_Furness_Line6\".\"IOT_Data\".\"S7.TEST_NOK\"",
+                    "S7.TEST_OK_IOT": "ns=3;s=\"IOT_Furness_Line6\".\"IOT_Data\".\"S7.TEST_OK\"",
+                    "S7.Counter_UP_IOT": "ns=3;s=\"IOT_Furness_Line6\".\"IOT_Data\".\"S7.Counter_UP\"",
+                    "S7.LeakReading_IOT": "ns=3;s=\"IOT_Furness_Line6\".\"IOT_Data\".\"S7.LeakReading\"",
+                    "S7.CurrentCounter_IOT": "ns=3;s=\"IOT_Furness_Line6\".\"IOT_Data\".\"S7.CurrentCounter\"",
+                    "S7.Stage.Standby_IOT": "ns=3;s=\"IOT_Furness_Line6\".\"IOT_Data\".\"Current_Stage\".\"Standby\"",
+                    "S7.Stage.Jig_open_IOT": "ns=3;s=\"IOT_Furness_Line6\".\"IOT_Data\".\"Current_Stage\".\"Jig_open\"",
+                    "S7.Stage.Clamping_IOT": "ns=3;s=\"IOT_Furness_Line6\".\"IOT_Data\".\"Current_Stage\".\"Clamping\"",
+                    "S7.Stage.Calibration_check_IOT": "ns=3;s=\"IOT_Furness_Line6\".\"IOT_Data\".\"Current_Stage\".\"Calibration_check\"",
+                    "S7.Stage.Learn_cal_check_IOT": "ns=3;s=\"IOT_Furness_Line6\".\"IOT_Data\".\"Current_Stage\".\"Learn_cal_check\"",
+                    "S7.Stage.Awaiting_Barcode_scan_IOT": "ns=3;s=\"IOT_Furness_Line6\".\"IOT_Data\".\"Current_Stage\".\"Awaiting_Barcode_scan\"",
+                    "S7.Stage.Stabilising_second_press_IOT": "ns=3;s=\"IOT_Furness_Line6\".\"IOT_Data\".\"Current_Stage\".\"Stabilising_second_press\"",
+                    "S7.Stage.Filling_secondary_press_IOT": "ns=3;s=\"IOT_Furness_Line6\".\"IOT_Data\".\"Current_Stage\".\"Filling_secondary_press\"",
+                    "S7.Stage.Pressure_low_IOT": "ns=3;s=\"IOT_Furness_Line6\".\"IOT_Data\".\"Current_Stage\".\"Pressure_low\"",
+                    "S7.Stage.Pressure_high_IOT": "ns=3;s=\"IOT_Furness_Line6\".\"IOT_Data\".\"Current_Stage\".\"Pressure_high\"",
+                    "S7.Stage.Fault_IOT": "ns=3;s=\"IOT_Furness_Line6\".\"IOT_Data\".\"Current_Stage\".\"Fault\"",
+                    "S7.Stage.Awaiting_start_IOT": "ns=3;s=\"IOT_Furness_Line6\".\"IOT_Data\".\"Current_Stage\".\"Awaiting_start\"",
+                    "S7.Stage.Sequence_delay_IOT": "ns=3;s=\"IOT_Furness_Line6\".\"IOT_Data\".\"Current_Stage\".\"Sequence_delay\"",
+                    "S7.Stage.Ramp_IOT": "ns=3;s=\"IOT_Furness_Line6\".\"IOT_Data\".\"Current_Stage\".\"Ramp\"",
+                    "S7.Stage.Holdoff_IOT": "ns=3;s=\"IOT_Furness_Line6\".\"IOT_Data\".\"Current_Stage\".\"Holdoff\"",
+                    "S7.Stage.Venting_IOT": "ns=3;s=\"IOT_Furness_Line6\".\"IOT_Data\".\"Current_Stage\".\"Venting\"",
+                    "S7.Stage.Testing_IOT": "ns=3;s=\"IOT_Furness_Line6\".\"IOT_Data\".\"Current_Stage\".\"Testing\"",
+                    "S7.Stage.Stabilising_IOT": "ns=3;s=\"IOT_Furness_Line6\".\"IOT_Data\".\"Current_Stage\".\"Stabilising\"",
+                    "S7.Stage.Filling_IOT": "ns=3;s=\"IOT_Furness_Line6\".\"IOT_Data\".\"Current_Stage\".\"Filling\"",
+                    "S7.Stage.Venting_prefill_IOT": "ns=3;s=\"IOT_Furness_Line6\".\"IOT_Data\".\"Current_Stage\".\"Venting_prefill\"",
+                    "S7.Stage.Prefilling_IOT": "ns=3;s=\"IOT_Furness_Line6\".\"IOT_Data\".\"Current_Stage\".\"Prefilling\"",
+                    "S7.Stage.Awaiting_feedback_IOT": "ns=3;s=\"IOT_Furness_Line6\".\"IOT_Data\".\"Current_Stage\".\"Awaiting_feedback\"",
+                    "S7.Stage.Awaiting_Reset_IOT": "ns=3;s=\"IOT_Furness_Line6\".\"IOT_Data\".\"Current_Stage\".\"Awaiting_Reset\"",
+                    "S7.ResultTest_IOT": "ns=3;s=\"IOT_Furness_Line6\".\"IOT_Data\".\"S7.ResultTest\"",
+                    "S7.ProductPartNumber": "ns=3;s=\"IOT_Furness_Line6\".\"IOT_Sach_Nummer\"",
+                    "S7.ProductSerialNumber": "ns=3;s=\"IOT_Furness_Line6\".\"IOT_Ident_Nummer\"",
+                    "S7.TEST_START": "ns=3;s=\"IOT_Furness_Line6\".\"IOT_Data\".\"S7.TEST_START\"",
+                    "S7.TestStartTime": "ns=3;s=\"IOT_Furness_Line6\".\"TestStartTime\"",
+                    "S7.TestEndTime": "ns=3;s=\"IOT_Furness_Line6\".\"TestEndTime\""
+                  },
+                  "publishingIntervalMs": 200
+                }
+              },
+              "subscriptions": {},
+              "url": "opc.tcp://199.216.0.29:4840",
+              "resetBlackListIntervalMs": 15000
+            },
+            "client": {
+              "application": {
+                "security": {
+                  "authentication": {
+                    "credentials": {},
+                    "strategy": "Anonymous",
+                    "certificate": {}
+                  },
+                  "endpoint": {
+                    "isEnabled": true,
+                    "level": 0,
+                    "mode": "None",
+                    "policy": "None",
+                    "timeout": 15000
+                  }
+                }
+              },
+              "session": {
+                "subscription": {}
+              },
+              "optimizeNodeValueReadAccess": true
+            },
+            "edgeMethodMapping": {},
+            "conditions": {},
+            "statusCodeMapping": {}
+          }
+        },
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.OpcUaClientModule/versions/2",
+        "$messageOutputs": {
+          "W16TightnessTesterODUIV1673000332.W16TightnessTesterODUIV1673000332": "splunk"
+        },
+        "$timestamp": "2024-04-23T10:50:03.7438818Z",
+        "$version": 4
+      }
+    },
+    "streamprocessor": {
+      "configuration": {
+        "$timestamp": "2024-02-13T10:47:29.4826886Z",
+        "$version": 1
+      }
+    },
+    "logger": {
+      "configuration": {
+        "$timestamp": "2024-02-13T10:47:29.4798844Z",
+        "$version": 1
+      }
+    },
+    "splunk": {
+      "configuration": {
+        "endpoint": {
+          "url": "https://10.13.21.22:8088/services/collector/event",
+          "token": "6112a68b-c8f6-4946-a7dd-7d48a710bc83",
+          "sslCheck": false,
+          "proxy": ""
+        },
+        "host": "I6828w05.4085",
+        "interval": 1000,
+        "sendTimestamp": true,
+        "sourceType": "_json",
+        "bufferQueueSettings": {
+          "enablePersist": false
+        },
+        "$messageInputs": {
+          "splunkPoll": "telemetry",
+          "splunk": "event"
+        },
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.SplunkHecModule/versions/3",
+        "$timestamp": "2024-04-12T07:03:55.8120736Z",
+        "$version": 3
+      }
+    },
+    "system": {
+      "configuration": {
+        "firewallrules": {
+          "AdminAPIAutoRuleHTTP": {
+            "description": "Auto generated rule from AdminApiModule for HTTP Port.",
+            "action": "accept",
+            "direction": "inbound",
+            "protocol": "tcp",
+            "srcPort": 0,
+            "destPort": 80
+          },
+          "AdminAPIAutoRuleHTTPS": {
+            "description": "Auto generated rule from AdminApiModule for HTTPS Port.",
+            "action": "accept",
+            "direction": "inbound",
+            "protocol": "tcp",
+            "srcPort": 0,
+            "destPort": 443
+          }
+        },
+        "$timestamp": "2024-04-11T14:31:02.7027731Z",
+        "$version": 1
+      }
+    }
+  }
+}

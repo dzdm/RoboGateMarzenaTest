@@ -1,0 +1,273 @@
+{
+  "modules": {
+    "mustache": {
+      "configuration": {
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.MustacheEnricherModule/versions/1",
+        "$timestamp": "2023-11-03T09:34:45.7211835Z",
+        "$version": 1
+      }
+    },
+    "azure": {
+      "configuration": {
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.IotHubSenderModule/versions/1",
+        "$timestamp": "2023-11-03T09:34:45.7201726Z",
+        "$version": 1
+      }
+    },
+    "center": {
+      "configuration": {
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.EcmNetCore.Modules.DeviceCenterModule/versions/1",
+        "$timestamp": "2023-11-03T09:34:45.7222275Z",
+        "$version": 1
+      }
+    },
+    "modbus": {
+      "configuration": {
+        "$messageOutputs": {
+          "modbus_test.slave.modbus_PG": "modbus_PG"
+        },
+        "servers": {
+          "modbus_test": {
+            "connection": {
+              "variant": "Tcp",
+              "tcp": {
+                "ipAddress": "199.216.0.124",
+                "port": 4841
+              }
+            },
+            "slaves": {
+              "slave": {
+                "pollGroups": {
+                  "modbus_PG": {
+                    "model": {
+                      "Sensor": {
+                        "registerLength": 1,
+                        "functionCode": 1,
+                        "registerStartAddress": 1
+                      }
+                    },
+                    "intervalMs": 1000,
+                    "sourceMode": "UseSlaveName"
+                  }
+                },
+                "setupGroups": {},
+                "slaveId": 1,
+                "subscriptionGroups": {}
+              }
+            }
+          }
+        },
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.ModbusReaderModule/versions/2",
+        "$timestamp": "2023-11-24T11:24:41.0138092Z",
+        "$version": 1
+      }
+    },
+    "mqtt": {
+      "configuration": {
+        "$schema": "https://schemas.robotron.de/robogate/modules/MqttSender.IotEdge.Modules.MqttSenderModule/versions/2",
+        "$timestamp": "2023-11-03T09:34:45.7203085Z",
+        "$version": 1
+      }
+    },
+    "rfcreader": {
+      "configuration": {
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.RFC1006ReaderModule/versions/1",
+        "$messageOutputs": {},
+        "plcs": {},
+        "$timestamp": "2023-11-24T11:23:54.0119295Z",
+        "$version": 1
+      }
+    },
+    "opcua": {
+      "configuration": {
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.OpcUaClientModule/versions/2",
+        "servers": {
+          "W16HeliumTesterODUIV1673000279": {
+            "endpoint": {
+              "pollGroups": {
+                "S1.Data": {
+                  "name": "S1.Data",
+                  "nodes": {
+                    "S1.PowerOn_PG": "ns=3;s=\"IOT-SmartFactory\".\"State_1\".\"PowerOn\"",
+                    "S1.Producing_PG": "ns=3;s=\"IOT-SmartFactory\".\"State_1\".\"Producing\"",
+                    "S1.Waiting_PG": "ns=3;s=\"IOT-SmartFactory\".\"State_1\".\"Waiting\"",
+                    "S1.MachineDowntime_PG": "ns=3;s=\"IOT-SmartFactory\".\"State_1\".\"MachineDowntime\"",
+                    "S1.SettingMode_PG": "ns=3;s=\"IOT-SmartFactory\".\"State_1\".\"SettingMode\"",
+                    "S1.MaintenanceMode_PG": "ns=3;s=\"IOT-SmartFactory\".\"State_1\".\"MaintenanceMode\""
+                  },
+                  "intervalMs": 15000,
+                  "outputTopic": "splunkPoll"
+                },
+                "S10.Data": {
+                  "nodes": {
+                    "S10.MachineFactor_PG": "ns=3;s=\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"R_Maschinenfaktor\""
+                  },
+                  "name": "S10.Data",
+                  "outputTopic": "splunkPoll",
+                  "intervalMs": 300000
+                }
+              },
+              "subscriptionGroups": {
+                "W16HeliumTesterODUIV1673000279": {
+                  "onChangeSubmitFullModel": false,
+                  "onRepublishSubmitFullModel": true,
+                  "nodes": {
+                    "S7.ModelNumber": "ns=3;s=\"IOT-SmartFactory\".\"Process\".\"Automatic\".\"PartNumber\"",
+                    "S7.IdentNumber": "ns=3;s=\"IOT-SmartFactory\".\"Process\".\"Automatic\".\"ProductPartNumber\"",
+                    "S7.TestingStart": "ns=3;s=\"IOT-SmartFactory\".\"Process\".\"Automatic\".\"Started\"",
+                    "S7.TestingRunning": "ns=3;s=\"IOT-SmartFactory\".\"Process\".\"Automatic\".\"inProgress\"",
+                    "S7.TestingEnd": "ns=3;s=\"IOT-SmartFactory\".\"Process\".\"Automatic\".\"Finished\"",
+                    "S7.AutomaticTime": "ns=3;s=\"IOT-SmartFactory\".\"Process\".\"Automatic\".\"Time\"",
+                    "S7.TestingPassed": "ns=3;s=\"IOT-SmartFactory\".\"Process\".\"Automatic\".\"Result\".\"Pass\"",
+                    "S7.TestingFailed": "ns=3;s=\"IOT-SmartFactory\".\"Process\".\"Automatic\".\"Result\".\"Fail\"",
+                    "S7.TestingCanceled": "ns=3;s=\"IOT-SmartFactory\".\"Process\".\"Automatic\".\"Result\".\"Canceled\"",
+                    "S7.LeakageRate": "ns=3;s=\"IOT-SmartFactory\".\"Process\".\"Automatic\".\"Result\".\"Leackage-Rate\"",
+                    "S7.TestingScrap": "ns=3;s=\"IOT-SmartFactory\".\"Process\".\"Automatic\".\"Result\".\"Scrap\"",
+                    "S2.EmergencyStopButton1": "ns=3;s=\"IOT-SmartFactory\".\"State_2\".\"EmergencyStopButton1\"",
+                    "S2.EmergencyStop": "ns=3;s=\"IOT-SmartFactory\".\"State_2\".\"EmergencyStop\"",
+                    "S2.Door1": "ns=3;s=\"IOT-SmartFactory\".\"State_2\".\"Door1\"",
+                    "S2.SafetySystem": "ns=3;s=\"IOT-SmartFactory\".\"State_2\".\"SafetySystem\"",
+                    "S3.Electricmeter1.ActivePower": "ns=3;s=\"IOT-SmartFactory\".\"State_3\".\"Electricmeter1\".\"ActivePower\"",
+                    "S3.Electricmeter1.Current_L3": "ns=3;s=\"IOT-SmartFactory\".\"State_3\".\"Electricmeter1\".\"Current_L3\"",
+                    "S3.Electricmeter1.Current_L2": "ns=3;s=\"IOT-SmartFactory\".\"State_3\".\"Electricmeter1\".\"Current_L2\"",
+                    "S3.Electricmeter1.Current_L1": "ns=3;s=\"IOT-SmartFactory\".\"State_3\".\"Electricmeter1\".\"Current_L1\"",
+                    "S3.Electricmeter1.ElectricMeter": "ns=3;s=\"IOT-SmartFactory\".\"State_3\".\"Electricmeter1\".\"ElectricMeter\"",
+                    "S1.Connected": "ns=3;s=\"IOT-SmartFactory\".\"State_1\".\"Connected\"",
+                    "S1.PowerOn": "ns=3;s=\"IOT-SmartFactory\".\"State_1\".\"PowerOn\"",
+                    "S1.AutomaticMode": "ns=3;s=\"IOT-SmartFactory\".\"State_1\".\"AutomaticMode\"",
+                    "S1.ManualMode": "ns=3;s=\"IOT-SmartFactory\".\"State_1\".\"ManualMode\"",
+                    "S1.SetupMode": "ns=3;s=\"IOT-SmartFactory\".\"State_1\".\"SetupMode\"",
+                    "S1.InternalComm": "ns=3;s=\"IOT-SmartFactory\".\"State_1\".\"InternalComm\"",
+                    "S1.Producing": "ns=3;s=\"IOT-SmartFactory\".\"State_1\".\"Producing\"",
+                    "S1.Waiting": "ns=3;s=\"IOT-SmartFactory\".\"State_1\".\"Waiting\"",
+                    "S1.CollectedOperating": "ns=3;s=\"IOT-SmartFactory\".\"State_1\".\"CollectedOperating\"",
+                    "S1.CollectedMaintenance": "ns=3;s=\"IOT-SmartFactory\".\"State_1\".\"CollectedMaintenance\"",
+                    "S1.CollectedWarning": "ns=3;s=\"IOT-SmartFactory\".\"State_1\".\"CollectedWarning\"",
+                    "S1.QuantityPulse": "ns=3;s=\"IOT-SmartFactory\".\"State_1\".\"QuantityPulse\"",
+                    "S7.ValenceQuantityPulse": "ns=3;s=\"IOT-SmartFactory\".\"State_1\".\"ValenceQuantityPulse\"",
+                    "S7.CollectedError": "ns=3;s=\"IOT-SmartFactory\".\"State_1\".\"CollectedError\"",
+                    "S1.SettingMode": "ns=3;s=\"IOT-SmartFactory\".\"State_1\".\"SettingMode\"",
+                    "S1.MaintenanceMode": "ns=3;s=\"IOT-SmartFactory\".\"State_1\".\"MaintenanceMode\"",
+                    "S1.MachineDowntime": "ns=3;s=\"IOT-SmartFactory\".\"State_1\".\"MachineDowntime\"",
+                    "S7.LeakRateASI35MeasValueResult": "ns=3;s=\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"R_Ergebnis_Leckrate_ASI35_korrigiert\"",
+                    "S7.LeakRateASI35MeasValueCorrected": "ns=3;s=\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"R_Leckrate_ASI35_korrigiert\"",
+                    "S7.LeakRateASI35MeasValueRaw": "ns=3;s=\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"R_Leckrate_ASI35_Messwert_Rohwert\"",
+                    "S7.LeakRateASI35MeasValueStabilized": "ns=3;s=\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"R_Leckrate_ASI35_Messwert_nach_Stabilisierungszeit\"",
+                    "S7.VacuumPressureChamberNorm": "ns=3;s=\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"R_Vakuumdruck_Kammer_mBar\"",
+                    "S5.DI.valve_chamber_evac_open": "ns=3;s=\"E_Stellungsgeber_Eckventil_Kammer_evakuieren_offen\"",
+                    "S7.HighPressureTesterNorm": "ns=3;s=\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"R_HD-Druck_Pr\u00fcfstand_relativ_normiert\"",
+                    "S7.LowPressureTesterNorm": "ns=3;s=\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"R_ND-Druck_Pr\u00fcfstand_relativ_normiert\"",
+                    "S7.HighPressureRelMBK": "ns=3;s=\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"R_HD-Druck_Pr\u00fcfling_relativ_normiert_MBK\"",
+                    "S7.LowPressureNorm": "ns=3;s=\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"R_ND-Druck_Pr\u00fcfling_relativ_normiert\"",
+                    "S7.LowPressureRelMBK": "ns=3;s=\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"R_ND-Druck_Pr\u00fcfling_relativ_normiert_MBK\"",
+                    "S5.DI.valve_spectrometer_open": "ns=3;s=\"E_Stellungsgeber_Eckventil_Kammer_Lecksucher_offen\"",
+                    "S5.DO.valve_He_10bar": "ns=3;s=\"A_COAX_Helium_10bar\"",
+                    "S7.SHDSwitchPoint": "ns=3;s=\"DB_100-Arbeitsdaten\".\"Victory\".\"Statusbits\".\"Istwerte\".\"R_Schaltpunkt_SHD\"",
+                    "S7.AirPressure_actual": "ns=3;s=\"DB_100-Arbeitsdaten\".\"Pneumatik\".\"Steuerdruck\".\"Out\".\"R_Value\""
+                  },
+                  "name": "W16HeliumTesterODUIV1673000279",
+                  "publishingIntervalMs": 100,
+                  "outputTopic": "splunk"
+                }
+              },
+              "subscriptions": {},
+              "url": "opc.tcp://199.216.0.124:4841",
+              "resetBlackListIntervalMs": 15000
+            },
+            "client": {
+              "application": {
+                "security": {
+                  "authentication": {
+                    "credentials": {},
+                    "strategy": "Anonymous"
+                  },
+                  "endpoint": {
+                    "isEnabled": true,
+                    "level": 0,
+                    "mode": "None",
+                    "policy": "None",
+                    "timeout": 15000
+                  }
+                }
+              },
+              "session": {
+                "subscription": {}
+              },
+              "optimizeNodeValueReadAccess": false
+            },
+            "edgeMethodMapping": {}
+          }
+        },
+        "$messageOutputs": {
+          "W16HeliumTesterODUIV1673000279.S1.Data": "splunkPoll",
+          "W16HeliumTesterODUIV1673000279.W16HeliumTesterODUIV1673000279": "splunk",
+          "W16HeliumTesterODUIV1673000279.S10.Data": "splunkPoll"
+        },
+        "$timestamp": "2023-11-03T09:34:45.7212644Z",
+        "$version": 1
+      }
+    },
+    "streamprocessor": {
+      "configuration": {
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.StreamProcessorModule/versions/1",
+        "$timestamp": "2023-11-03T09:34:45.7222866Z",
+        "$version": 1
+      }
+    },
+    "logger": {
+      "configuration": {
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.FileLoggerModule/versions/1",
+        "$timestamp": "2023-11-03T09:34:45.7211216Z",
+        "$version": 1
+      }
+    },
+    "splunk": {
+      "configuration": {
+        "$schema": "https://schemas.robotron.de/robogate/modules/Robotron.IotEdge.Modules.SplunkHecModule/versions/3",
+        "endpoint": {
+          "url": "https://10.13.21.22:8088/services/collector/event",
+          "token": "6112a68b-c8f6-4946-a7dd-7d48a710bc83",
+          "sslCheck": false
+        },
+        "host": "I6828w05.4035",
+        "interval": 1000,
+        "sendTimestamp": true,
+        "sourceType": "_json",
+        "bufferQueueSettings": {
+          "enablePersist": false
+        },
+        "$messageInputs": {
+          "splunk": "event",
+          "splunkPoll": "telemetry",
+          "$system_signals": "telemetry"
+        },
+        "$timestamp": "2024-04-12T05:49:44.0806915Z",
+        "$version": 3
+      }
+    },
+    "system": {
+      "configuration": {
+        "firewallrules": {
+          "AdminAPIAutoRuleHTTP": {
+            "description": "Auto generated rule from AdminApiModule for HTTP Port.",
+            "action": "accept",
+            "direction": "inbound",
+            "protocol": "tcp",
+            "srcPort": 0,
+            "destPort": 80
+          },
+          "AdminAPIAutoRuleHTTPS": {
+            "description": "Auto generated rule from AdminApiModule for HTTPS Port.",
+            "action": "accept",
+            "direction": "inbound",
+            "protocol": "tcp",
+            "srcPort": 0,
+            "destPort": 443
+          }
+        },
+        "$timestamp": "2024-04-11T12:51:28.3004287Z",
+        "$version": 1
+      }
+    }
+  }
+}
